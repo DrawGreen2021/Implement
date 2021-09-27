@@ -1,6 +1,8 @@
 package com.drawgreen.corpcollector.frontcontroller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class FrontController
  */
-@WebServlet({ "/member/*", "/findcorp/*", "/community/*" })
+@WebServlet({ "member/*", "/findcorp/*", "/community/*" })
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -47,12 +49,15 @@ public class FrontController extends HttpServlet {
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
 		
-		if(com.equals("/member/login")) {
-			//viewPage = "/member/login.jsp";
-			System.out.println("로그인 ok");
-		} else if(com.equals("/member/join")) {
-			//viewPage = "/member/join.jsp";
-			System.out.println("회원가입 ok");
+		if(com.equals("member/login")) {
+			viewPage = "member/login.jsp";
+			
+		} else if(com.equals("member/join")) {
+			viewPage = "member/join.jsp";
+			
 		}
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+		dispatcher.forward(request, response);
 	}
 }

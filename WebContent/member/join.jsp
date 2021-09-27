@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CorpCollector</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<a href="member/login">로그인</a> &nbsp;
-	<a href="member/join">회원가입</a>
+	회원가입 페이지입니다.
 </body>
 </html>
