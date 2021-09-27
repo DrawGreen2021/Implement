@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class FrontController
  */
-@WebServlet({ "member/*", "/findcorp/*", "/community/*" })
+@WebServlet("*.do")
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -49,12 +49,13 @@ public class FrontController extends HttpServlet {
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
 		
-		if(com.equals("member/login")) {
+		
+		
+		if(com.equals("/Login.do")) {
 			viewPage = "member/login.jsp";
 			
-		} else if(com.equals("member/join")) {
+		} else if(com.equals("/Join.do")) {
 			viewPage = "member/join.jsp";
-			
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
