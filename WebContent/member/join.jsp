@@ -31,7 +31,9 @@
    		생년월일 <input type="text" name="year" size="7">년&nbsp;
    			<input type="text" name="month" size="5">월&nbsp;
    			<input type="text" name="day" size="5">일 <br>
-   		성별 <input type="radio" name="gender" value="man">남 &nbsp;<input type="radio" name="gender" value="woman">여<br>
+   		성별 <input type="radio" name="gender" value="man">남 &nbsp;
+   			<input type="radio" name="gender" value="woman">여 &nbsp;
+   			<input type="radio" name="gender" value="other">그 외<br>
    		<input type="submit" value="회원가입"> <input type="reset" value="취소">
 	</form>
 </body>
