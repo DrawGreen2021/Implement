@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.drawgreen.corpcollector.command.Command;
+import com.drawgreen.corpcollector.command.JoinCommand;
+
 /**
  * Servlet implementation class FrontController
  */
@@ -44,6 +47,7 @@ public class FrontController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		String viewPage = null;
+		Command command = null;
 		
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath();
@@ -51,11 +55,15 @@ public class FrontController extends HttpServlet {
 		
 		
 		
-		if(com.equals("/Login.do")) {
+		if(com.equals("/Login_view.do")) {
 			viewPage = "member/login.jsp";
 			
-		} else if(com.equals("/Join.do")) {
+		} else if(com.equals("/Join_view.do")) {
 			viewPage = "member/join.jsp";
+		} else if(com.equals("/Join.do")) {
+			command = new JoinCommand();
+			command.execute(request, response);
+			viewPage = "member/joinOk.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
