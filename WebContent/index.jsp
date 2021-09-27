@@ -7,7 +7,7 @@
 <title>CorpCollector</title>
 </head>
 <body>
-	<a href="/Member/login">로그인</a> &nbsp;
-	<a href="/Member/Join">회원가입</a>
+	<a href="/member/login">로그인</a> &nbsp;
+	<a href="/member/join">회원가입</a>
 </body>
 </html>
