@@ -18,10 +18,11 @@ public class JoinCommand implements Command{
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String name = request.getParameter("name");
-		String email = request.getParameter("email1") + "@" + request.getParameter("email2");
+		String email = request.getParameter("email1") + "@" + request.getParameterValues("email2");
 		String birth = request.getParameter("year")+"-"+request.getParameter("month")+"-"+request.getParameter("day");
 		String gender = request.getParameter("gender");
 		
-		MemberDAO memberDAO = new MemberDAO(id, pw);
+		MemberDAO memberDAO = new MemberDAO();
+		memberDAO.insertMember(id, pw, name, email, birth, gender);
 	}
 }
