@@ -3,58 +3,90 @@ package com.drawgreen.corpcollector.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Date;
 
 public class MemberDAO {
 	Connection connection = null;
+	Connection rootConnection = null;
 	PreparedStatement preparedStatement = null;
-	String rootId = "drawgreen"; //root
-	String rootPw = "drawgreen2021"; //mysql
-	String url = "jdbc:mysql://corpcollector.ciqetekukvwo.ap-northeast-2.rds.amazonaws.com:3306/Member";
+	ResultSet resultSet = null;
+	private String userId = "general_user_id";
+	private String userPw = "general_user_password"; 
+	private String rootId = "drawgreen";
+	private String rootPw = "drawgreen2021"; 
+	private String url = "jdbc:mysql://corpcollector.ciqetekukvwo.ap-northeast-2.rds.amazonaws.com:3306/Member";
 	
-	public MemberDAO(String userid, String userpw) {
+	public MemberDAO() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			//grantUser(connection, preparedStatement, userid, userpw);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-	/*
-	//일반 사용자마다 DB접근권한 부여
-	public void grantUser(Connection connection, PreparedStatement preparedStatement, String userid, String userpw) {
+	
+	public boolean idCheck(String id) {
+		if(id == null || id.length() == 0) throw new NullPointerException("아이디가 없습니다.");
 		
+		String query = "select if(count(*)=1, 'true', 'false') as result"
+                + " from members"
+                + " where id = ?";
 		try {
-			connection = DriverManager.getConnection(url, rootId, rootPw);
-			if (connection != null) System.out.println("연결 성공");
-			
-			String query = "CREATE USER '?'@'%' identified by '?'";
-					//+ "GRANT select, insert, update, delete ON Member.* TO ?@'%' IDENTIFIED BY '?';"
-					//+ "GRANT select ON Corp.* TO ?@'%' IDENTIFIED BY '?';";
-					//+ "GRANT select, insert, update, delete ON Community.* TO ?@'%' IDENTIFIED BY '?';";
+			connection = DriverManager.getConnection(url, userId, userPw);
 			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, userid);
-			preparedStatement.setString(2, userpw);
-//			preparedStatement.setString(3, userid);
-//			preparedStatement.setString(4, userpw);
-//			preparedStatement.setString(5, userid);
-//			preparedStatement.setString(6, userpw);
-			boolean resultNum = preparedStatement.execute();
+			preparedStatement.setString(1, id);
 			
-			if(resultNum == false)
-				System.out.println("DB에 회원 계정 생성 및 권한 부여 성공");
-			else
-				System.out.println("DB에 회원 계정 생성 및 권한 부여 성공");
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			resultSet.next();
+            String result = resultSet.getString(1);
+
+            return Boolean.parseBoolean(result);
+            
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
 			try {
-				if(connection!=null) connection.close();
-				if(preparedStatement!=null) preparedStatement.close();
+				if (connection != null) connection.close();
+				if (preparedStatement != null) preparedStatement.close();
+				if (resultSet!=null) resultSet.close();
 			} catch (Exception e2) {
 				// TODO: handle exception
 				e2.printStackTrace();
 			}
 		}
 		
-	}*/
+		return false;
+	}
+	
+	public void insertMember(String id, String pw, String name, String email, String birth, String gender) {
+		String query = "INSERT INTO members values (?, ?, ?, ?, ?, ?)";
+		
+		try {
+			rootConnection = DriverManager.getConnection(url, rootId, rootPw);
+			PreparedStatement preparedStatement = rootConnection.prepareStatement(query);
+			preparedStatement.setString(1, id);
+			preparedStatement.setString(2, pw);
+			preparedStatement.setString(3, name);
+			preparedStatement.setString(4, email);
+			preparedStatement.setDate(5, java.sql.Date.valueOf(birth));
+			preparedStatement.setString(6, gender);
+			
+			preparedStatement.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rootConnection != null) rootConnection.close();
+				if (preparedStatement != null) preparedStatement.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+	}
+
 }
