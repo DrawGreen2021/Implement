@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Date;
 
 public class MemberDAO {
 	Connection connection = null;
@@ -17,12 +16,20 @@ public class MemberDAO {
 	private String rootPw = "drawgreen2021"; 
 	private String url = "jdbc:mysql://corpcollector.ciqetekukvwo.ap-northeast-2.rds.amazonaws.com:3306/Member";
 	
-	public MemberDAO() {
+	private MemberDAO() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private static class InnerInstance_MemberDAO {
+		private static final MemberDAO memberDAO = new MemberDAO();
+	}
+	
+	public static MemberDAO getInstance() {
+		return InnerInstance_MemberDAO.memberDAO;
 	}
 	
 	public boolean idCheck(String id) {
@@ -59,6 +66,8 @@ public class MemberDAO {
 		
 		return false;
 	}
+	
+	
 	
 	public void insertMember(String id, String pw, String name, String email, String birth, String gender) {
 		String query = "INSERT INTO members values (?, ?, ?, ?, ?, ?)";
