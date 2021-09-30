@@ -1,0 +1,256 @@
+@charset "utf-8";
+/* Cascading Style Sheets
+	HTML 파일을 작성할 때 글자의 크기나 색깔, 여백 등의 각종 스타일을 지정 할 때 사용
+ */
+ 
+ /* -----메인 화면------*/
+ 
+.header{
+	background-color:#21499b; 
+	position:relative; 
+	width:1200px; 
+	height: 140px;
+	margin:0 auto;
+}
+
+.nav{
+	background-color:white; 
+	height:70px; 
+	padding-top:10px;
+	font-size:8px; 
+	color:black; 
+	font-weight:normal; 
+	text-decoration:none; 
+	font-family:dotum; 
+}
+
+.nav_a{
+	font-size:10px; 
+	color:black; 
+	font-weight:normal; 
+	text-decoration:none; 
+	font-family:dotum; 
+	margin-right:10px;
+}
+
+.nav a{
+	font-size:12px; 
+	color:black; 
+	font-weight:bold; 
+	text-decoration:none; 
+	font-family:dotum; 
+	margin-left:10px;
+}
+
+.content_div{
+	position:relative; 
+	width:1000px; 
+	margin:0 auto;
+}
+
+.aside{
+	background-color:#FCFAED; 
+	position:absolute; 
+	top:0; 
+	right:0; 
+	width:25%; 
+	height:auto;
+	padding-left:15px;
+}
+
+.footer_div{
+	background-color: white; 
+	position:relative; 
+	width:1200px; 
+	margin:0 auto;
+	padding-top:10px;
+	padding-left:5px;
+}
+
+.img{
+	width:310px;
+	height:310px;
+	cursor: pointer;
+}
+
+/* ------로그인 화면------*/
+/* 로그인 화면 전체 div 설정*/
+.content_div_login{
+	background-color: white;
+	position: relative;
+	width: 500px;
+	height: 450px;
+	margin: 50px auto;
+	border:1px solid gray;
+}
+
+/* LOGIN 타이틀 검사 */
+.main_title{
+	color:gray;
+	font-size: 50px;
+	font-weight: bold;
+	margin-top:30px;
+	margin-bottom:30px;
+}
+
+/* 아이디 입력 텍스트 박스 테이블 설정 */
+.id_table{
+	height: 40px;
+	width: 430px;
+	border: solid 4px white;
+	margin-top: 1%;
+}
+
+/* id, pw 입력 텍스트 박스 */
+.id_pw_input{
+	height: 40px;
+	width: 410px;
+	font-size: 15px;
+}
+
+/* 로그인 버튼 테이블 설정 */
+.login_btn_table{
+	height: 40px;
+	width:430px;
+	margin-top: 1%;
+}
+
+/* 로그인 버튼 설정 */
+.login_btn{
+	height: 50px;
+	width:420px;
+	background-color:black;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	border: solid 1px black;
+	cursor: pointer;
+}
+
+/* 로그인 하위 메뉴 경계선 설정 */
+.menu_line{
+	height: 0px;
+	width: 430px;
+	border: solid 1px white;
+	margin-top: 2%;
+}
+
+/* 로그인 하위 메뉴 설정 */
+.login_sub_menu{
+	height: 50px;
+	margin-top: 1%;
+}
+
+/* 로그인 하위 메뉴 글자 설정 */
+.login_sub_menu a{
+	text-decoration: none;
+	color:gray;
+}
+
+/* ------ 회원가입 화면------*/
+/* 회원가입 화면 전체 div 설정 */
+.content_div_signUp{
+	background-color: white;
+	position: relative;
+	width:500px;
+	margin: 50px auto;
+	border:1px solid gray;
+}
+
+/* 타이틀 테이블 설정 */
+.signUp_table{
+	background-color: white;
+	color: gray;
+	font-size: 15pt;
+	font-weight: bold;
+}
+
+/* input 태그 전체 설정 */
+.signUp_table input{
+	width: 225px;
+	height:20px;
+}
+
+/* 가입하기 버튼 테이블 설정 */
+.signUp_btn_table{
+	margin-top:1%;
+}
+
+/* 가입하기 버튼 설정 */
+.signUp_btn{
+	height:45px;
+	width: 234px;
+	background-color:white;
+	color:black;
+	font-size: 15pt;
+	font-weight:bold;
+	border: solid 1px black;
+	cursor: pointer;
+}
+
+/* ------ 아이디, 비밀번호 찾기 ------*/
+/* 전체 div 설정 */
+.content_div_findInfo{
+	background-color: white;
+	position: relative;
+	width: 1000px;
+	margin: 10px auto;
+}
+
+/* 테이블 설정 */
+.findInfo_table{
+	background-color: white;
+	color: gray;
+	font-size:10pt;
+	font-weight:bold;
+}
+
+/* 테이블 안에 input 설정 */
+.findInfo_table input{
+	width:200px;
+	height:20px;
+}
+
+/* 버튼 table 설정 */
+.findInfo_btn_table{
+	margin-top:1%;
+}
+
+/* 인증번호 받기, 아이디 찾기 버튼 설정 */
+.findInfo_btn{
+	width: 206px;
+	height: 25px;
+	background-color: black;
+	color: white;
+	font-size: 10pt;
+	font-weight:bold;
+	border: solid 1px black;
+	cursor: pointer;
+}
+
+/* 인덱스 화면 로고 테이블*/
+.index_table{
+	width: 1200px;
+	position: relative;
+	margin:0 auto;
+}
+
+/* 인덱스 화면 로고 이미지*/
+.logo1_img{
+	width:400px;
+	cursor: pointer;
+}
+
+/* 검색바 */
+.search_bar{
+	width:600px;
+	position: relative;
+	background-color: white;
+	font-size: 20pt;
+}
+
+/* 검색바 안에 input 설정 */
+.search_bar input{
+	width:650px;
+	height:60px;
+}
