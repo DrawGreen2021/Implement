@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.drawgreen.corpcollector.command.Command;
+import com.drawgreen.corpcollector.command.EmailCheckCommand;
+import com.drawgreen.corpcollector.command.EmailSendCommand;
 import com.drawgreen.corpcollector.command.IdCheckCommand;
 import com.drawgreen.corpcollector.command.JoinCommand;
 
@@ -57,19 +59,27 @@ public class FrontController extends HttpServlet {
 		System.out.println(com);
 		
 		if(com.equals("/Login_view.do")) {
-			viewPage = "member/login.jsp";
-			
-		} else if(com.equals("/Join_view.do")) {
-			viewPage = "member/join.jsp";
-			
-		} else if(com.equals("/IdCheck.do")) {
+			viewPage = "jsp/login.jsp";
+		} 
+		else if(com.equals("/Join_view.do")) {
+			viewPage = "jsp/join.jsp";
+		} 
+		else if(com.equals("/IdCheck.do")) {
 			command = new IdCheckCommand();
 			command.execute(request, response);
-			
-		} else if(com.equals("/member/Join.do")) {
+		} 
+		else if(com.equals("/jsp/Join.do")) {
 			command = new JoinCommand();
 			command.execute(request, response);
 			viewPage = "joinOk.jsp";
+		} 
+		else if(com.equals("/EmailSend.do")) {
+			command = new EmailSendCommand();
+			command.execute(request, response);
+		}
+		else if(com.equals("/EmailCheck.do")) {
+			command = new EmailCheckCommand();
+			command.execute(request, response);
 		}
 
 		if (viewPage != null) {
