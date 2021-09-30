@@ -13,7 +13,7 @@ public class IdCheckCommand implements Command{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		MemberDAO dao = new MemberDAO();
+		MemberDAO dao = MemberDAO.getInstance();
         String id = request.getParameter("id");
         PrintWriter out = null;
 		try {
