@@ -58,13 +58,7 @@ public class FrontController extends HttpServlet {
 		
 		System.out.println(com);
 		
-		if(com.equals("/Login_view.do")) {
-			viewPage = "jsp/login.jsp";
-		} 
-		else if(com.equals("/Join_view.do")) {
-			viewPage = "jsp/join.jsp";
-		} 
-		else if(com.equals("/IdCheck.do")) {
+		if(com.equals("/IdCheck.do")) {
 			command = new IdCheckCommand();
 			command.execute(request, response);
 		} 

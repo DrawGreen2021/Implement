@@ -7,7 +7,7 @@
 <title>CorpCollector</title>
 </head>
 <body>
-	<a href="Login_view.do">로그인</a> &nbsp;
-	<a href="Join_view.do">회원가입</a>
+	<a href="jsp/login.jsp">로그인</a> &nbsp;
+	<a href="jsp/join.jsp">회원가입</a>
 </body>
 </html>
