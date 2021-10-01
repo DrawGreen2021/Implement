@@ -171,6 +171,12 @@
 	height:20px;
 }
 
+/* div 태그 전체 설정 - 오혜진 추가*/
+.signUp_table div{
+	width: 225px;
+	height:20px;
+} 
+
 /* 가입하기 버튼 테이블 설정 */
 .signUp_btn_table{
 	margin-top:1%;
