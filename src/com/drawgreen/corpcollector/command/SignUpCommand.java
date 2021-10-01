@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.drawgreen.corpcollector.dao.MemberDAO;
 
-public class JoinCommand implements Command{
+public class SignUpCommand implements Command{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response){
 		// TODO Auto-generated method stub
