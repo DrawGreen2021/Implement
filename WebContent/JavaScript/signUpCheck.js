@@ -9,17 +9,19 @@ document.getElementsByTagName('head')[0].appendChild(script);
 
 window.onload=function(){
 	 
-	$("#join").click(function () {
+	$("#signUpBtn").click(function () {
 		var id = $('#id').val();
 		var authID = $('#authID').val();
 		var pw = $('#pw').val();
 		var pw_chk = $('#pw_chk').val();
 		var name = $('#name').val();
-		var email = $('#email').val();
-		var authEmail = $('#authEmail').val();
 		var year = $('#year').val();
 		var month = $('#month').val();
 		var day = $('#day').val();
+		var gender = $('#gender').val();
+		var email = $('#email').val();
+		var authEmail = $('#authEmail').val();
+		
 		var pattern_chk_specialChar1 = /[`~!@#$%^&*|\\\'\";:\/?]/gi; //아이디 특수문자 체크
 		var pattern_chk_number = /[0-9]/;
 		var pattern_chk_char = /[a-zA-Z]/;
@@ -86,18 +88,6 @@ window.onload=function(){
 			return false;
 		}
 		
-		// 이메일 입력 검사
-		else if(email.length === 0 || email === null) {
-			alert("이메일을 입력하세요.");
-			return false;
-		} 
-		
-		// 이메일 인증 검사
-		else if(authEmail == "false") {
-			alert("이메일을 인증해주세요.");
-			return false;
-		}
-		
 		// 생년월일 검사
 		else if(year.length != 4) {
 			alert("생년은 4자리 숫자여야 합니다.");
@@ -114,7 +104,32 @@ window.onload=function(){
 			return false;
 		}
 		
-		$("form").attr("action", "Join.do");
+		// 성별 선택 검사
+		else if(gender.length == 0) {
+			alert("성별을 선택하세요.");
+			return false;
+		}
+		
+		// 이메일 입력 검사
+		else if(email.length === 0 || email === null) {
+			alert("이메일을 입력하세요.");
+			return false;
+		} 
+		
+		// 이메일 인증 검사
+		else if(authEmail == "false") {
+			alert("이메일을 인증해주세요.");
+			return false;
+		}
+		
+		else {
+			if(confirm("입력하신 정보로 가입하시겠습니까?") == true){
+				$("form").attr("action", "SignUp.do");
+			} else {
+				return false;
+			}
+		}
+		
 	});
 
 	// 아이디 중복 체크
