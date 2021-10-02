@@ -38,10 +38,11 @@
 		</table>
 		
 		<!-- 아이디 입력 텍스트 박스-->
+		<form method="post">
 		<table align="center" class="id_table">
 			<tr>
 				<td>
-					<input type="text" id="id" class="id_pw_input" placeholder=" 아이디 입력(admin/user01)" onkeyup="enterKey()">
+					<input type="text" id="id" name="id" class="id_pw_input" placeholder=" 아이디 입력" onkeyup="enterKey()">
 				</td>
 			</tr>
 		</table>
@@ -50,7 +51,7 @@
 		<table align="center" class="id_table">
 			<tr>
 				<td>
-					<input type="password" id="pw" class="id_pw_input" placeholder=" 비밀번호 입력(admin123/user111)" onkeyup="enterKey()">
+					<input type="password" id="pw" name="pw" class="id_pw_input" placeholder=" 비밀번호 입력" onkeyup="enterKey()">
 				</td>
 			</tr>
 		</table>
@@ -59,10 +60,11 @@
 		<table align="center" class="login_btn_table">
 			<tr>
 				<td>
-					<input type="button" value="LOGIN" class="login_btn" onclick="login_chk()">
+					<input type="submit" value="LOGIN" class="login_btn" onclick="login_chk()">
 				</td>
 			</tr>
 		</table>
+		</form>
 		
 		<!-- 하위 기타 메뉴 -->
 		<table align="center" class="menu_line"></table>
@@ -93,7 +95,7 @@
 	</div>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/common.js"></script>
-	
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="../JavaScript/loginCheck.js"></script>
 </body>
 </html>
