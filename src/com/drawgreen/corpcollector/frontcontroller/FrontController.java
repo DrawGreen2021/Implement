@@ -45,7 +45,7 @@ public class FrontController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		actionDo(request, response);
 	}
 	
 	@SuppressWarnings("unused")
@@ -66,7 +66,7 @@ public class FrontController extends HttpServlet {
 			command = new IdCheckCommand();
 			command.execute(request, response);
 		} 
-		else if(com.equals("/html/SignUp.do")) {
+		else if(com.equals("/member/SignUp.do")) {
 			command = new SignUpCommand();
 			command.execute(request, response);
 		} 
@@ -78,7 +78,7 @@ public class FrontController extends HttpServlet {
 			command = new EmailCheckCommand();
 			command.execute(request, response);
 		}
-		else if(com.equals("/html/Login.do")) {
+		else if(com.equals("/member/Login.do")) {
 			command = new LoginCommand();
 			command.execute(request, response);
 		}
