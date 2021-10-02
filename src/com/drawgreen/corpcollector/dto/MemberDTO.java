@@ -5,13 +5,20 @@ import java.sql.Date;
 public class MemberDTO {
 	private String id;
 	private String pw;
-	private String pw_chk;
 	private String name;
 	private String email;
 	private String birth;
 	private String gender;
 	
-	
+	public MemberDTO(String id, String pw, String name, String email, String birth, String gender) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+		this.email = email;
+		this.birth = birth;
+		this.gender = gender;
+	}
 	public String getId() {
 		return id;
 	}
@@ -23,12 +30,6 @@ public class MemberDTO {
 	}
 	public void setPw(String pw) {
 		this.pw = pw;
-	}
-	public String getPw_chk() {
-		return pw_chk;
-	}
-	public void setPw_chk(String pw_chk) {
-		this.pw_chk = pw_chk;
 	}
 	public String getName() {
 		return name;
