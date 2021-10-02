@@ -5,6 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 public class MemberDAO {
 	Connection connection = null;
 	Connection rootConnection = null;
@@ -35,9 +39,9 @@ public class MemberDAO {
 	public boolean idCheck(String id) {
 		if(id == null || id.length() == 0) throw new NullPointerException("아이디가 없습니다.");
 		
-		String query = "select if(count(*)=1, 'true', 'false') as result"
-                + " from members"
-                + " where id = ?";
+		String query = "SELECT IF(count(*)=1, 'true', 'false') AS result"
+                + " FROM members"
+                + " WHERE id = ?";
 		try {
 			connection = DriverManager.getConnection(url, userId, userPw);
 			preparedStatement = connection.prepareStatement(query);
@@ -45,7 +49,7 @@ public class MemberDAO {
 			
 			ResultSet resultSet = preparedStatement.executeQuery();
 			
-			resultSet.next();
+			//resultSet.next();
             String result = resultSet.getString(1);
 
             return Boolean.parseBoolean(result);
@@ -66,12 +70,11 @@ public class MemberDAO {
 		
 		return false;
 	}
+
 	
-	
-	
-	public void insertMember(String id, String pw, String name, String email, String birth, String gender) {
+	public boolean insertMember(String id, String pw, String name, String email, String birth, String gender) {
 		String query = "INSERT INTO members values (?, ?, ?, ?, ?, ?)";
-		
+		boolean singUpCheck = false;
 		try {
 			rootConnection = DriverManager.getConnection(url, rootId, rootPw);
 			PreparedStatement preparedStatement = rootConnection.prepareStatement(query);
@@ -82,8 +85,11 @@ public class MemberDAO {
 			preparedStatement.setDate(5, java.sql.Date.valueOf(birth));
 			preparedStatement.setString(6, gender);
 			
-			preparedStatement.executeUpdate();
+			int resultNum = preparedStatement.executeUpdate();
 			
+			if (resultNum > 0) {
+				singUpCheck = true;
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -96,6 +102,50 @@ public class MemberDAO {
 				e2.printStackTrace();
 			}
 		}
+		return singUpCheck;
+	}
+	
+	
+	public boolean login(String id, String pw, HttpServletRequest request, HttpServletResponse response) {
+		if(id == null || id.length() == 0) throw new NullPointerException("아이디가 없습니다.");
+		
+		String query = "SELECT * FROM members WHERE id=? AND password=?";
+		boolean loginCheck = false;
+		try {
+			
+			connection = DriverManager.getConnection(url, userId, userPw);
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, id);
+			preparedStatement.setString(2, pw);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()) {
+				String nickname = resultSet.getString("nickname");
+				
+				HttpSession httpSession = request.getSession();
+				httpSession.setAttribute("nickname", nickname);
+				httpSession.setAttribute("id", id);
+				httpSession.setAttribute("password", pw);
+				
+				loginCheck = true;
+			}
+            
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedStatement != null) preparedStatement.close();
+				if (resultSet!=null) resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+		
+		return loginCheck;
 	}
 
 }
