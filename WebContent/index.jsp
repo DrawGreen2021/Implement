@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,18 +14,8 @@
 </head>
 
 <body>
-	<div>
-		<!-- 헤더 영역-->
-		<header class="header">
-			
-			<!-- 네비게이션(메뉴) 영역-->
-			<nav class="nav">
-				<a href="index.jsp" style="margin-left : 10px;">CorpCollector</a>
-				<a href="html/login_main.html" style="margin-left : 1090px;">로그인</a>
-				<a href="html/signUp.html">회원가입</a>
-			</nav>
-		</header>
-	</div>
+	<!-- 헤더 파일 포함 -->
+	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!--콘텐츠 및 섹션 영역-->
 	<div class="index_table">
@@ -54,14 +45,8 @@
 		</article>
 	</div>
 	
-	<!-- 푸터 영역-->
-	<div class="footer_div">
-		<footer>
-			<b>
-				<font color="black">Copyright 2021. TEAM_DRAWGREEN All rights reserved</font>
-			</b>
-		</footer>
-	</div>
+	<!-- 푸터 파일 포함 -->
+	<c:import url='/importedFile/footer.html'></c:import>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
 	<script type="text/javascript" src="JavaScript/common.js"></script>
