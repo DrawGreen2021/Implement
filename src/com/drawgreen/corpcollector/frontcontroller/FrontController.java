@@ -14,6 +14,7 @@ import com.drawgreen.corpcollector.command.Command;
 import com.drawgreen.corpcollector.command.EmailCheckCommand;
 import com.drawgreen.corpcollector.command.EmailSendCommand;
 import com.drawgreen.corpcollector.command.IdCheckCommand;
+import com.drawgreen.corpcollector.command.LoginCommand;
 import com.drawgreen.corpcollector.command.SignUpCommand;
 
 /**
@@ -47,6 +48,7 @@ public class FrontController extends HttpServlet {
 		doGet(request, response);
 	}
 	
+	@SuppressWarnings("unused")
 	private void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -67,11 +69,6 @@ public class FrontController extends HttpServlet {
 		else if(com.equals("/html/SignUp.do")) {
 			command = new SignUpCommand();
 			command.execute(request, response);
-			viewPage = "html/login_main.html";
-			PrintWriter writer = response.getWriter(); 
-			writer.println("<script>alert('가입되었습니다. 메인 페이지에서 다시 로그인해 주세요.'); "
-					+ "location.href='../index.jsp';</script>"); 
-			writer.close();
 		} 
 		else if(com.equals("/EmailSend.do")) {
 			command = new EmailSendCommand();
@@ -79,6 +76,10 @@ public class FrontController extends HttpServlet {
 		}
 		else if(com.equals("/EmailCheck.do")) {
 			command = new EmailCheckCommand();
+			command.execute(request, response);
+		}
+		else if(com.equals("/html/Login.do")) {
+			command = new LoginCommand();
 			command.execute(request, response);
 		}
 
