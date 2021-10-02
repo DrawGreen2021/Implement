@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.drawgreen.corpcollector.dao.MemberDAO;
+import com.drawgreen.corpcollector.dto.MemberDTO;
 
 public class LoginCommand implements Command{
 
@@ -26,10 +27,10 @@ public class LoginCommand implements Command{
 			
 			if (loginCheck) {
 				HttpSession httpSession = request.getSession();
-				String nickname = (String)httpSession.getAttribute("nickname");
+				MemberDTO dto = (MemberDTO)httpSession.getAttribute("MemberDTO");
 				
 				out.println("<script>");
-				out.println("alert('"+nickname+"님 환영합니다.');");
+				out.println("alert('"+dto.getName()+"님 환영합니다.');");
 				out.println("location.href='../index.jsp';");
 				out.println("</script>");
 				out.close();

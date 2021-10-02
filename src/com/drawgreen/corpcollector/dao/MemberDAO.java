@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.drawgreen.corpcollector.dto.MemberDTO;
+
 public class MemberDAO {
 	Connection connection = null;
 	Connection rootConnection = null;
@@ -49,7 +51,7 @@ public class MemberDAO {
 			
 			ResultSet resultSet = preparedStatement.executeQuery();
 			
-			//resultSet.next();
+			resultSet.next();
             String result = resultSet.getString(1);
 
             return Boolean.parseBoolean(result);
@@ -122,11 +124,13 @@ public class MemberDAO {
 			
 			if(resultSet.next()) {
 				String nickname = resultSet.getString("nickname");
+				String email = resultSet.getString("email");
+				String birth = resultSet.getDate("birth").toString();
+				String gender = resultSet.getString("gender");
+				MemberDTO dto = new MemberDTO(id, pw, nickname, email, birth, gender);
 				
 				HttpSession httpSession = request.getSession();
-				httpSession.setAttribute("nickname", nickname);
-				httpSession.setAttribute("id", id);
-				httpSession.setAttribute("password", pw);
+				httpSession.setAttribute("MemberDTO", dto);
 				
 				loginCheck = true;
 			}
