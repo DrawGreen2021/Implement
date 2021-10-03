@@ -142,7 +142,7 @@ window.onload=function(){
         $.ajax({
             type:'post',
             async:false,
-            url:'http://localhost:8080/CorpCollector/IdCheck.do',
+            url:'/IdCheck.do',
             dataType:'text',
             data:{"id":id},
             success: function(data, textStatus) {
@@ -170,7 +170,7 @@ window.onload=function(){
 		$.ajax({
             type:'post',
             async:false,
-            url:'http://localhost:8080/CorpCollector/EmailSend.do',
+            url:'EmailSend.do',
             dataType:'text',
             data:{"email":email},
             success: function(data, textStatus) {
@@ -196,7 +196,7 @@ window.onload=function(){
 		$.ajax({
             type:'post',
             async:false,
-            url:'http://localhost:8080/CorpCollector/EmailCheck.do',
+            url:'EmailCheck.do',
             dataType:'text',
             data:{"email_auth_num":email_auth_num},
             success: function(data, textStatus) {
