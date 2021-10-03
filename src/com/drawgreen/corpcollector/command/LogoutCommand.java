@@ -22,7 +22,7 @@ public class LogoutCommand implements Command{
 
 		HttpSession httpSession = request.getSession();
 		httpSession.removeAttribute("MemberDTO");
-		
+
 		PrintWriter out;
 		try {
 			out = response.getWriter();
