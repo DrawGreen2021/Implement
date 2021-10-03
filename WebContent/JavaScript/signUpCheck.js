@@ -88,6 +88,12 @@ window.onload=function(){
 			return false;
 		}
 		
+		// 이름 숫자 검사
+		else if(pattern_chk_number.test(name)) {
+			alert("이름에 숫자는 들어갈 수 없습니다.");
+			return false;
+		}
+		
 		// 생년월일 검사
 		else if(year.length != 4) {
 			alert("생년은 4자리 숫자여야 합니다.");
@@ -142,7 +148,7 @@ window.onload=function(){
         $.ajax({
             type:'post',
             async:false,
-            url:'/IdCheck.do',
+            url:'IdCheck.do',
             dataType:'text',
             data:{"id":id},
             success: function(data, textStatus) {
