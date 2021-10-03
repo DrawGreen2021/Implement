@@ -26,7 +26,7 @@
 			<!-- 네비게이션(메뉴) 영역-->
 			<nav class="nav">
 				<a href="<c:url value='/index.jsp'/>" style="margin-left : 10px;">CorpCollector</a>
-				<a href="<c:url value='/member/login_main.jsp'/>" style="margin-left : 1090px;">로그인</a>
+				<a href="<c:url value='/member/login_main.jsp'/>" style="margin-left : 82%;">로그인</a>
 				<a href="<c:url value='/member/signUp.jsp'/>">회원가입</a>
 			</nav>
 			</header>
