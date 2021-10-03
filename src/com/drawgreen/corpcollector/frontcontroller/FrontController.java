@@ -15,6 +15,7 @@ import com.drawgreen.corpcollector.command.EmailCheckCommand;
 import com.drawgreen.corpcollector.command.EmailSendCommand;
 import com.drawgreen.corpcollector.command.IdCheckCommand;
 import com.drawgreen.corpcollector.command.LoginCommand;
+import com.drawgreen.corpcollector.command.LogoutCommand;
 import com.drawgreen.corpcollector.command.SignUpCommand;
 
 /**
@@ -80,6 +81,10 @@ public class FrontController extends HttpServlet {
 		}
 		else if(com.equals("/member/Login.do")) {
 			command = new LoginCommand();
+			command.execute(request, response);
+		}
+		else if(com.equals("/Logout.do")) {
+			command = new LogoutCommand();
 			command.execute(request, response);
 		}
 
