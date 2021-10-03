@@ -2,6 +2,7 @@ package com.drawgreen.corpcollector.frontcontroller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.StringTokenizer;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.drawgreen.corpcollector.command.Command;
 import com.drawgreen.corpcollector.command.EmailCheckCommand;
 import com.drawgreen.corpcollector.command.EmailSendCommand;
+import com.drawgreen.corpcollector.command.FindIdCommand;
 import com.drawgreen.corpcollector.command.IdCheckCommand;
 import com.drawgreen.corpcollector.command.LoginCommand;
 import com.drawgreen.corpcollector.command.LogoutCommand;
@@ -49,7 +51,6 @@ public class FrontController extends HttpServlet {
 		actionDo(request, response);
 	}
 	
-	@SuppressWarnings("unused")
 	private void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -57,35 +58,42 @@ public class FrontController extends HttpServlet {
 		String viewPage = null;
 		Command command = null;
 		
-		String uri = request.getRequestURI();
-		String conPath = request.getContextPath();
-		String com = uri.substring(conPath.length());
+		String com = request.getServletPath();
+		StringTokenizer tokenizer = new StringTokenizer(com, "/");
+		
+		while(tokenizer.hasMoreTokens())
+			com = tokenizer.nextToken();
 		
 		System.out.println(com);
 		
-		if(com.equals("/IdCheck.do")) {
+		if(com.equals("IdCheck.do")) {
 			command = new IdCheckCommand();
 			command.execute(request, response);
 		} 
-		else if(com.equals("/member/SignUp.do")) {
+		else if(com.equals("SignUp.do")) {
 			command = new SignUpCommand();
 			command.execute(request, response);
 		} 
-		else if(com.equals("/EmailSend.do")) {
+		else if(com.equals("EmailSend.do")) {
 			command = new EmailSendCommand();
 			command.execute(request, response);
 		}
-		else if(com.equals("/EmailCheck.do")) {
+		else if(com.equals("EmailCheck.do")) {
 			command = new EmailCheckCommand();
 			command.execute(request, response);
 		}
-		else if(com.equals("/member/Login.do")) {
+		else if(com.equals("Login.do")) {
 			command = new LoginCommand();
 			command.execute(request, response);
 		}
-		else if(com.equals("/Logout.do")) {
+		else if(com.equals("Logout.do")) {
 			command = new LogoutCommand();
 			command.execute(request, response);
+		}
+		else if(com.equals("FindId.do")) {
+			command = new FindIdCommand();
+			command.execute(request, response);
+			viewPage = "findID_result.jsp";
 		}
 
 		if (viewPage != null) {
