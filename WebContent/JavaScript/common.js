@@ -42,5 +42,5 @@ function logout_chk(){
 /* ----- 이미지 상세정보 이동 ----- */
 //인덱스 화면 로고1
 function logo1_click(){
-	location.href = "<c:url value='/index.jsp'/>";
+	location.href ="/index.jsp";
 }

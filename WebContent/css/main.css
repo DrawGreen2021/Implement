@@ -285,3 +285,14 @@
 	font-family:dotum; 
 	margin-left:10px;
 }
+
+/* 메뉴바 버튼 설정 */
+.menu_btn{
+	width:230px;
+	height:50px;
+	border:0px;
+	background-color:#21499b;
+	cursor:pointer;
+	position:relative;
+	color:white;
+}

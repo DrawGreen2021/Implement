@@ -153,10 +153,12 @@ window.onload=function(){
             data:{"id":id},
             success: function(data, textStatus) {
                 if(data === 'usable') {
-                    $('#idCheckMessage').text('사용할 수 있는 ID입니다.')      
+                    //$('#idCheckMessage').text('사용할 수 있는 ID입니다.')    
+					alert("사용할 수 있는 ID입니다.")  
                     $('#authID').val("true");
                 } else {
-                    $('#idCheckMessage').text('이미 사용 중인 아이디입니다.')
+                    //$('#idCheckMessage').text('이미 사용 중인 아이디입니다.')
+					alert("이미 사용 중인 ID입니다.") 
                 }
             },
             error:function (data, textStatus) {

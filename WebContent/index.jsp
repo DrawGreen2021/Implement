@@ -21,10 +21,10 @@
 	<div class="index_div" style="text-align: center;">
 			
 		<br><br><br><br><br>
-		<table width="800px;" style="text-align: center; margin:0;">
+		<table width="800px;" style="align: center; margin:0;">
 			<tr>
 				<td>
-					<img src="/images/logo1.PNG" alt="CorpCollector" class="logo1_img" onclick="logo1_click()">
+					<a href="<c:url value='/index.jsp'/>"><img src="/images/logo1.png" alt="CorpCollector" class="logo1_img"></a>
 				</td>
 			
 				<form align="center">
@@ -40,7 +40,7 @@
 			</tr>
 		</table>
 		<br>
-		<div style = "border:1px solid gray;" width="800px;"></div>	
+		<div style = "border:1px solid gray;" width="600px;"></div>	
 		<br>
 		<div class="index_keyword">
 			<a href=".">녹색 기업 &nbsp&nbsp&nbsp&nbsp</a>
