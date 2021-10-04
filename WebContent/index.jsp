@@ -19,9 +19,7 @@
 	
 	<!--콘텐츠 및 섹션 영역-->
 	<div class="index_div" style="text-align: center;">
-			
-		<br><br><br><br><br>
-		<table width="800px;" style="align: center; margin:0;">
+		<table width="800px;" style="text-align: center; margin:0;">
 			<tr>
 				<td>
 					<a href="<c:url value='/index.jsp'/>"><img src="/images/logo1.png" alt="CorpCollector" class="logo1_img"></a>
@@ -49,7 +47,7 @@
 			<a href=".">가족 친화 기업 &nbsp&nbsp&nbsp&nbsp</a>
 			<a href=".">청년 친화 강소 기업 &nbsp&nbsp&nbsp&nbsp</a>
 		</div>
-		<br><br><br><br><br><br><br><br><br><br>
+		<br><br><br>
 	</div>
 	
 	<!-- 푸터 파일 포함 -->
