@@ -15,10 +15,12 @@ import com.drawgreen.corpcollector.command.Command;
 import com.drawgreen.corpcollector.command.EmailCheckCommand;
 import com.drawgreen.corpcollector.command.EmailSendCommand;
 import com.drawgreen.corpcollector.command.FindIdCommand;
+import com.drawgreen.corpcollector.command.FindPwCommand;
 import com.drawgreen.corpcollector.command.IdCheckCommand;
 import com.drawgreen.corpcollector.command.LoginCommand;
 import com.drawgreen.corpcollector.command.LogoutCommand;
 import com.drawgreen.corpcollector.command.SignUpCommand;
+import com.drawgreen.corpcollector.command.UpdatePwCommand;
 
 /**
  * Servlet implementation class FrontController
@@ -94,6 +96,15 @@ public class FrontController extends HttpServlet {
 			command = new FindIdCommand();
 			command.execute(request, response);
 			viewPage = "findID_result.jsp";
+		}
+		else if(com.equals("FindPw.do")) {
+			command = new FindPwCommand();
+			command.execute(request, response);
+			viewPage = "findPW_result.jsp";
+		}
+		else if(com.equals("UpdatePw.do")) {
+			command = new UpdatePwCommand();
+			command.execute(request, response);
 		}
 
 		if (viewPage != null) {
