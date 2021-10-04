@@ -28,7 +28,9 @@
 		<c:otherwise>
 			<div>
 				${requestScope.nickname }님의
-				아이디는 ${found_ID}입니다.
+				아이디는 ${found_ID}입니다. <br>
+				<a href="<c:url value='/member/login_main.jsp'/>">로그인</a>
+				<a href="<c:url value='/member/findPW_main.jsp'/>">비밀번호 찾기</a>
 			</div>
 		</c:otherwise>
 	</c:choose>
