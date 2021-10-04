@@ -88,6 +88,12 @@ window.onload=function(){
 			return false;
 		}
 		
+		// 이름 숫자 검사
+		else if(pattern_chk_number.test(name)) {
+			alert("이름에 숫자는 들어갈 수 없습니다.");
+			return false;
+		}
+		
 		// 생년월일 검사
 		else if(year.length != 4) {
 			alert("생년은 4자리 숫자여야 합니다.");
@@ -142,15 +148,15 @@ window.onload=function(){
         $.ajax({
             type:'post',
             async:false,
-            url:'/IdCheck.do',
+            url:'IdCheck.do',
             dataType:'text',
             data:{"id":id},
             success: function(data, textStatus) {
                 if(data === 'usable') {
-                    $('#idCheckmessage').text('사용할 수 있는 ID입니다.')      
+                    $('#idCheckMessage').text('사용할 수 있는 ID입니다.')      
                     $('#authID').val("true");
                 } else {
-                    $('#idCheckmessage').text('이미 사용 중인 아이디입니다.')
+                    $('#idCheckMessage').text('이미 사용 중인 아이디입니다.')
                 }
             },
             error:function (data, textStatus) {
@@ -175,9 +181,9 @@ window.onload=function(){
             data:{"email":email},
             success: function(data, textStatus) {
                 if(data === 'connectable') {
-                    $('#emailSendmessage').text('이메일 주소 인증 메일이 전송되었습니다. 인증번호를 확인해주세요.')      
+                    $('#emailSendMessage').text('이메일 주소 인증 메일이 전송되었습니다. 인증번호를 확인해주세요.')      
                 } else {
-                    $('#emailSendmessage').text('유효하지 않은 이메일입니다.')
+                    $('#emailSendMessage').text('유효하지 않은 이메일입니다.')
                 }
             },
             error:function (data, textStatus) {
@@ -201,10 +207,10 @@ window.onload=function(){
             data:{"email_auth_num":email_auth_num},
             success: function(data, textStatus) {
                 if(data === 'authenticated') {
-                    $('#emailCheckmessage').text('이메일 인증이 완료되었습니다.')      
+                    $('#emailCheckMessage').text('이메일 인증이 완료되었습니다.')      
                     $('#authEmail').val("true");
                 } else {
-                    $('#emailCheckmessage').text('인증번호가 다릅니다.')
+                    $('#emailCheckMessage').text('인증번호가 다릅니다.')
                 }
             },
             error:function (data, textStatus) {

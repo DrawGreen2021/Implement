@@ -18,6 +18,7 @@
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!-- 내용 영역 -->
+	<form method="post" id="form">
 	<div class="content_div_findInfo">
 		<br>
 		<table align="center" class="findInfo_table">
@@ -26,7 +27,7 @@
 			</tr>
 			<tr>
 				<td>
-					<input type = "text" id="findInfo_name">
+					<input type = "text" id="findInfo_name" name="name">
 				</td>	
 			</tr>
 			<tr>
@@ -34,7 +35,7 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="text" id="findInfo_email" width="160px;" placeholder="이메일 주소를 입력하세요">
+					<input type="text" id="findInfo_email" name="email" width="160px;" placeholder="이메일 주소를 입력하세요">
 				</td>	
 			</tr>
 		</table>
@@ -43,7 +44,12 @@
 		<table align="center" class="findInfo_btn_table">
 			<tr>
 				<td>
-					<input type = "button" value="인증번호 받기" class="findInfo_btn" onclick="check_number_receive()">
+					<input type = "submit" id="emailSendBtn" value="인증번호 받기" class="findInfo_btn">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div id='emailSendmessage'></div>
 				</td>
 			</tr>
 		</table>
@@ -54,7 +60,7 @@
 			</tr>
 			<tr>
 				<td>
-					<input type = "text" id="check_number" placeholder="인증번호 6자리 숫자 입력">
+					<input type = "text" id="email_auth_num" name="email_auth_num" placeholder="인증번호 10자리 입력">
 				</td>
 			</tr>
 		</table>
@@ -63,18 +69,19 @@
 		<table align="center" class="findInfo_btn_table">
 			<tr>
 				<td>
-					<input type = "button" value="ID 찾기" class="findInfo_btn" onclick="findId_chk()">
+					<input type = "submit" id="findIdBtn" value="ID 찾기" class="findInfo_btn">
 				</td>
 			</tr>
 		</table>
 		<br>
 	</div>
+	</form>
 	
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/common.js"></script>
+	<script type="text/javascript" src="../JavaScript/findID_Check.js"></script>
 	
 </body>
 </html>
