@@ -36,7 +36,7 @@
 				</tr>
 				
 				<tr>
-					<td colspan="3"><div id='idCheckmessage'></div>
+					<td colspan="3"><div id='idCheckMessage'></div>
 					<input type="hidden" name="authId" id="authID" value="false"></td>
 				</tr>
 
@@ -126,7 +126,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3"><div id='emailSendmessage'></div></td>
+					<td colspan="3"><div id='emailSendMessage'></div></td>
 				</tr>
 				
 				<tr>
@@ -144,7 +144,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3"><div id='emailCheckmessage'></div>
+					<td colspan="3"><div id='emailCheckMessage'></div>
    					<input type="hidden" name="authEmail" id="authEmail" value="false">
 					</td>
 				</tr>
@@ -167,7 +167,6 @@
 
 
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="../JavaScript/signUpCheck.js"></script>
 </body>
 </html>
