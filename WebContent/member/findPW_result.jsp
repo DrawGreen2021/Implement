@@ -60,6 +60,6 @@
 	<c:import url='/importedFile/footer.html'></c:import>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/updatePW_check.js"></script>
+	<script type="text/javascript" src="../JavaScript/updatePW_Check.js?var=1"></script>
 </body>
 </html>
