@@ -33,13 +33,19 @@
 				</td>
 			
 				<table align="center" class="search_bar">
-					
-					<td>
-						<input type="text" id="findInfo_email" width="600px;" placeholder=" 검색어를 입력하세요"> <!-- 검색바 css,js 수정-->
-					</td>	
-					
+					<tr>
+						<td>
+							<input type="text" id="findInfo_email" width="600px;" placeholder=" 검색어를 입력하세요"> <!-- 검색바 css,js 수정-->
+						</td>	
+					</tr>
+					<tr>
+						<td>
+							<button id="greenCom">녹색 기업</button>
+						</td>
+					</tr>
 				</table>
 			</tr>
+			
 		</table>
 			<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 		</article>
