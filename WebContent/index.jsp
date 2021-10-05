@@ -30,7 +30,7 @@
 						<input class="search_bar" type="text" id="search_keyword" width="600px;" autocomplete="off" placeholder=" 검색어를 입력하세요"> <!-- 검색바 css,js 수정-->
 					</td>	
 					<td>
-						<button class = "search_btn" type=submit value="">
+						<button class = "search_btn" type=submit value="" onclick="location='/findCorp/findCorp_main.jsp'">
 						<img src="<c:url value='/images/search_logo.png'/>" alt="search" width="55px;">
 						</button>
 					</td>

@@ -35,7 +35,7 @@
 			<table width=1200px; style="text-align:center;">
 				<tr>
 					<td><button class="menu_btn">서비스 개요</button></td>
-					<td><button class="menu_btn">기업 찾기</button></td>
+					<td><button class="menu_btn" onclick="location.href='../findCorp/findCorp_main.jsp'">기업 찾기</button></td>
 					<td><button class="menu_btn">정보 나눔</button></td>
 					<td><button class="menu_btn">커뮤니티</button></td>
 					<td><button class="menu_btn" onclick="alert('로그인 후 이용 가능합니다')">마이페이지</button></td>
