@@ -10,8 +10,8 @@
 			
 			<!-- 네비게이션(메뉴) 영역-->
 			<nav class="nav">
-				<a href="<c:url value='/index.jsp'/>" style="margin-left : 10px;">CorpCollector</a>
-				<a href="." style="margin-left : 1090px;">${sessionScope.MemberDTO.name}님</a>
+				<a href="<c:url value='/index.jsp'/>" style="margin-left : 10px;"><img src="/images/logo2.png" alt="CorpCollector"></a>
+				<a href="." style="margin-left : 70%;"">${sessionScope.MemberDTO.name}님</a>
 				<form name="passBeforeUrl">
 					<input type="hidden" name="beforeUrl">
 				</form>
@@ -35,7 +35,7 @@
 			<table width=1200px; style="text-align:center;">
 				<tr>
 					<td><button class="menu_btn">서비스 개요</button></td>
-					<td><button class="menu_btn" onclick="location.href='../findCorp/findCorp_main.jsp'">기업 찾기</button></td>
+					<td><button class="menu_btn" onclick="location.href='/findCorp/findCorp_main.jsp'">기업 찾기</button></td>
 					<td><button class="menu_btn">정보 나눔</button></td>
 					<td><button class="menu_btn">커뮤니티</button></td>
 					<td><button class="menu_btn" onclick="alert('로그인 후 이용 가능합니다')">마이페이지</button></td>

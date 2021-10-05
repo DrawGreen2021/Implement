@@ -31,14 +31,6 @@
 				</td>
 			</tr>
 			<tr>
-				<td>닉네임</td>
-			</tr>
-			<tr>
-				<td>
-					<input type = "text" id="findInfo_name" name="name">
-				</td>	
-			</tr>
-			<tr>
 				<td>이메일/e-mail</td>
 			</tr>
 			<tr>

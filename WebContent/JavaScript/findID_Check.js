@@ -23,9 +23,11 @@ window.onload=function(){
 	            data:{"email":email},
 	            success: function(data, textStatus) {
 	                if(data === 'connectable') {
-	                    $('#emailSendmessage').text('이메일로 인증번호가 전송되었습니다. 인증번호를 확인해주세요.');      
+	                    //$('#emailSendmessage').text('이메일로 인증번호가 전송되었습니다. 인증번호를 확인해주세요.');  
+						alert('이메일로 인증번호가 전송되었습니다. 인증번호를 확인해주세요.');    
 	                } else {
-	                    $('#emailSendmessage').text('유효하지 않은 이메일입니다.');
+	                    //$('#emailSendmessage').text('유효하지 않은 이메일입니다.');
+						alert('유효하지 않은 이메일입니다.');
 	                }
 	            },
 	            error:function (data, textStatus) {
@@ -80,7 +82,7 @@ function validate(){
 	var pattern_chk3 = /[a-zA-Z]/;
 	var pattern_chk4 = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi;
 	
-	//이름 체크
+	//이름 체크 
 	if(findInfo_name.length == 0){
 		alert("닉네임을 입력해주십시오");
 		irregular = true;

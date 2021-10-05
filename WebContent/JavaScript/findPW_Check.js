@@ -23,9 +23,11 @@ window.onload=function(){
 	            data:{"email":email},
 	            success: function(data, textStatus) {
 	                if(data === 'connectable') {
-	                    $('#emailSendMessage').text('이메일로 인증번호가 전송되었습니다.');      
+	                    //$('#emailSendMessage').text('이메일로 인증번호가 전송되었습니다.'); 
+						alert("이메일로 인증번호가 전송되었습니다.");     
 	                } else {
-	                    $('#emailSendMessage').text('유효하지 않은 이메일입니다.');
+	                    //$('#emailSendMessage').text('유효하지 않은 이메일입니다.');
+						alert("유효하지 않은 이메일입니다.");
 	                }
 	            },
 	            error:function (data, textStatus) {
@@ -92,24 +94,6 @@ function validate(){
 	}
 	else if(pattern_chk1.test(findInfo_id)){
 		alert("아이디에 특수문자는 들어갈 수 없습니다");
-		irregular = true;
-	}
-	
-	//이름 체크
-	else if(findInfo_name.length == 0){
-		alert("닉네임을 입력해주십시오");
-		irregular = true;
-	}
-	else if(findInfo_name.search(/\s/) != -1){
-		alert("닉네임에 공백은 들어갈 수 없습니다");
-		irregular = true;
-	}
-	else if(pattern_chk1.test(findInfo_name)){
-		alert("닉네임에 특수문자는 들어갈 수 없습니다");
-		irregular = true;
-	}
-	else if(pattern_chk2.test(findInfo_name)){
-		alert("닉네임에 숫자는 들어갈 수 없습니다");
 		irregular = true;
 	}
 	
