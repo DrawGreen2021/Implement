@@ -17,31 +17,52 @@
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!-- 내용 영역 -->
-	<div width="1200px;" style="text-align:center; margin:5% auto; float:left;">
-	<aside class="sidebar">
-		<ul>
-			<li><a href="<c:url value=''/>">인재 육성형 중소 기업</a>
-			<li><a href="<c:url value=''/>">녹색 기업</a>
-			<li><a href="<c:url value=''/>">사회적 기업</a>
-			<li><a href="<c:url value=''/>">가족 친화 기업</a>
-			<li><a href="<c:url value=''/>">청년 친화 강소 기업</a>
-		</ul>
-	</aside>
-	<div width="1000px;" style="text-align:center;">
-		<form align="center">
-			
-			<input class="search_bar" type="text" id="search_keyword" autocomplete="off" placeholder=" 검색어를 입력하세요">
-			
-			<button class = "search_btn" type=submit value="" onclick="location='/findCorp/findCorp_main.jsp'">
-			<img src="<c:url value='/images/search_logo.png'/>" alt="search" width="55px;">
-			</button>
-		</form>
+	<div width="1200px;" style="text-align:center; margin:5% auto;">
+		<div style="float:left; padding-right:5px;">
+			<aside class="sidebar" style="margin: 0 0 0 5%;">
+				<ul style="list-style-type:none; text-align:left;">
+					<h3>기업 찾기</h3>
+					<p><a href="<c:url value=''/>">인재 육성형 중소 기업</a></p>
+					<p><a href="<c:url value=''/>">녹색 기업</a></p>
+					<p><a href="<c:url value=''/>">사회적 기업</a></p>
+					<p><a href="<c:url value=''/>">가족 친화 기업</a></p>
+					<p><a href="<c:url value=''/>">청년 친화 강소 기업</a></p>
+				</ul>
+			</aside>
+			<br><br><br>
+			<aside class="rankbar">
+				<h4>가장 많이 검색한 기업</h4>
+					<p>1.</p>
+			</aside>
+		</div>
 		
-		<article class="content_div_findCorp">
-			
 		
-		</article>
-	</div>
+			<table width="1000px;" style="text-align:center;">
+				<tr>
+				<table width="900px;" style="text-align: center; margin:0 auto; position:relative;">
+					<tr>
+						<form align="center">
+						<td>
+							<input class="search_bar" type="text" id="search_keyword" autocomplete="off" placeholder=" 검색어를 입력하세요">
+						</td>
+						<td>
+							<button class = "search_btn" type=submit value="" onclick="">
+							<img src="<c:url value='/images/search_logo.png'/>" alt="search" width="55px;">
+							</button>
+						</td>
+					</form>
+					</tr>
+				</table>
+				</tr>
+				<tr>
+						<article class="content_div_findCorp">
+							<p>검색결과</p>
+				
+						</article>
+				</tr>
+				
+			</table>
+		
 	</div>
 
 

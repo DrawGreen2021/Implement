@@ -18,8 +18,8 @@
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!--콘텐츠 및 섹션 영역-->
-	<div class="index_div" style="text-align: center;">
-		<table width="800px;" style="text-align: center; margin:0;">
+	<div class="index_div" style="text-align: center; ">
+		<table width="800px;" align="center;" style="margin:0 auto;">
 			<tr>
 				<td>
 					<a href="<c:url value='/index.jsp'/>"><img src="/images/logo1.png" alt="CorpCollector" class="logo1_img"></a>
@@ -30,7 +30,7 @@
 						<input class="search_bar" type="text" id="search_keyword" width="600px;" autocomplete="off" placeholder=" 검색어를 입력하세요"> <!-- 검색바 css,js 수정-->
 					</td>	
 					<td>
-						<button class = "search_btn" type=submit value="" onclick="location='/findCorp/findCorp_main.jsp'">
+						<button class = "search_btn" type=submit value="" onclick="location.href='${pageContext.request.contextPath}/findCorp/findCorp_main.jsp'">
 						<img src="<c:url value='/images/search_logo.png'/>" alt="search" width="55px;">
 						</button>
 					</td>

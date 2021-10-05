@@ -316,29 +316,32 @@
 /* 기업 찾기 */
 /* aside(좌측 사이드 바) */
 .sidebar {
-	width:100px;
+	width:200px;
 	border:1px solid gray;
 	background-color:white;
 	position:relative;
 	color:black;
 	font-size:10pt;
-	margin: 0 auto;
+	padding: 2px;
+}
+
+/* aside(좌측 사이드 순위) */
+.rankbar {
+	width:200px;
+	border:0px;
+	background-color:white;
+	position:relative;
+	color:black;
+	font-size:10pt;
+	margin: 0 0 0 68px;
 }
 
 /* 기업찾기 컨텐트 div 설정 */
 .content_div_findCorp{
 	background-color: white;
 	position: relative;
-	width:900px;
+	width: 900px;
 	height:1000px;
 	margin: 3% auto;
 	border:1px solid gray;
-}
-
-/* 타이틀 테이블 설정 */
-.signUp_table{
-	background-color: white;
-	color: gray;
-	font-size: 15pt;
-	font-weight: bold;
 }
