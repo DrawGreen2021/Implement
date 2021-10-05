@@ -122,11 +122,11 @@ window.onload=function(){
 			return false;
 		} 
 		
-		// 이메일 인증 검사
+		/*// 이메일 인증 검사
 		else if(authEmail == "false") {
 			alert("이메일을 인증해주세요.");
 			return false;
-		}
+		}*/
 		
 		else {
 			if(confirm("입력하신 정보로 가입하시겠습니까?") == true){
@@ -168,6 +168,7 @@ window.onload=function(){
         return false;
 	});
 	
+	/*
 	// 사용자 이메일로 인증번호 전송
 	$('#emailSendBtn').click(function () {
 		
@@ -225,7 +226,7 @@ window.onload=function(){
         });   //ajax
         return false;
 	});
-	
+	*/
 	
 }
 

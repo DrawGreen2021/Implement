@@ -40,7 +40,7 @@
 			</tr>
 		</table>
 		
-		<!-- 인증번호 받기 -->
+		<!-- 
 		<table align="center" class="findInfo_btn_table">
 			<tr>
 				<td>
@@ -61,7 +61,7 @@
 					<input type = "text" id="email_auth_num" name="email_auth_num" placeholder="인증번호 6자리 숫자 입력">
 				</td>
 			</tr>
-		</table>
+		</table> -->
 		
 		<!-- 비밀번호 찾기 -->
 		<table align="center" class="findInfo_btn_table">
@@ -79,7 +79,7 @@
 	<c:import url='/importedFile/footer.html'></c:import>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/findPW_Check.js"></script>
+	<script type="text/javascript" src="<c:url value='/JavaScript/findPW_Check.js'/>"></script>
 	
 </body>
 </html>
