@@ -8,7 +8,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
 
 window.onload=function(){
 	
-	// 사용자 이메일로 인증번호 전송
+	/*// 사용자 이메일로 인증번호 전송
 	$('#emailSendBtn').click(function () {
 		var irregular = validate();
 		
@@ -67,6 +67,15 @@ window.onload=function(){
 		}
 	
         return false;
+	});*/
+	
+	$('#findPwBtn').click(function() {
+		var irregular = validate();
+		
+		if(!irregular) {
+			$("form").attr("action", "FindPw.do");
+		}
+		
 	});
 }
 

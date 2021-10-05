@@ -118,7 +118,7 @@
 					<td colspan="3"><input type="text" id="email" name="email">
 					</td>
 				</tr>
-				<tr>
+				<!-- <tr>
 					<td colspan="3">이메일 인증</td>
 				</tr>
 				<tr>
@@ -147,7 +147,7 @@
 					<td colspan="3"><div id='emailCheckMessage'></div>
    					<input type="hidden" name="authEmail" id="authEmail" value="false">
 					</td>
-				</tr>
+				</tr> -->
 			</table>
 
 			<!-- 가입하기 버튼 -->
@@ -167,6 +167,6 @@
 
 
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/signUpCheck.js"></script>
+	<script type="text/javascript" src="<c:url value='/JavaScript/signUpCheck.js'/>"></script>
 </body>
 </html>

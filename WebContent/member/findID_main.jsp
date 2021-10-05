@@ -18,7 +18,7 @@
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!-- 내용 영역 -->
-	<form method="post" id="form">
+	<form method="post">
 	<div class="content_div_findInfo">
 		<br>
 		<table align="center" class="findInfo_table">
@@ -40,8 +40,8 @@
 			</tr>
 		</table>
 		
-		<!-- 인증번호 받기 -->
-		<table align="center" class="findInfo_btn_table">
+		
+		<!-- <table align="center" class="findInfo_btn_table">
 			<tr>
 				<td>
 					<input type = "submit" id="emailSendBtn" value="인증번호 받기" class="findInfo_btn">
@@ -63,7 +63,7 @@
 					<input type = "text" id="email_auth_num" name="email_auth_num" placeholder="인증번호 10자리 입력">
 				</td>
 			</tr>
-		</table>
+		</table> -->
 		
 		<!-- 아이디 찾기 -->
 		<table align="center" class="findInfo_btn_table">
@@ -81,7 +81,7 @@
 	<c:import url='/importedFile/footer.html'></c:import>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/findID_Check.js"></script>
+	<script type="text/javascript" src="<c:url value='/JavaScript/findID_Check.js'/>"></script>
 	
 </body>
 </html>
