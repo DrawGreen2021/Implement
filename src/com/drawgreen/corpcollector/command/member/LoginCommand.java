@@ -1,4 +1,4 @@
-package com.drawgreen.corpcollector.command;
+package com.drawgreen.corpcollector.command.member;
 
 
 import java.io.IOException;
@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.drawgreen.corpcollector.command.Command;
 import com.drawgreen.corpcollector.dao.MemberDAO;
 import com.drawgreen.corpcollector.dto.MemberDTO;
 
