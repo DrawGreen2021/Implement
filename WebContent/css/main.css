@@ -44,20 +44,13 @@
 }
 
 .content_div{
+	background-color: white;
 	position:relative; 
-	width:1000px; 
-	margin:0 auto;
+	width:900px; 
+	margin:0 0 0 25%;
+	border:0px;
 }
 
-.aside{
-	background-color:#FCFAED; 
-	position:absolute; 
-	top:0; 
-	right:0; 
-	width:25%; 
-	height:auto;
-	padding-left:15px;
-}
 
 .footer_div{
 	background-color: white; 
@@ -315,8 +308,19 @@
 }
 
 /* 기업 찾기 */
+/* 좌측 사이드 바 통합 div */
+.sidebar_div{
+	width:250px;
+	height:500px;
+	color:black;
+	border:0px;
+	background-color:white;
+	position:relative;
+	margin: 0 0 0 5%;
+}
+
 /* aside(좌측 사이드 바) */
-.sidebar {
+.sidebar{
 	width:200px;
 	border:1px solid gray;
 	background-color:white;
@@ -324,17 +328,17 @@
 	color:black;
 	font-size:10pt;
 	padding: 2px;
+	text-align:left;
 }
 
 /* aside(좌측 사이드 순위) */
-.rankbar {
+.rankbar{
 	width:200px;
 	border:0px;
 	background-color:white;
 	position:relative;
 	color:black;
 	font-size:10pt;
-	margin: 0 0 0 68px;
 }
 
 /* 기업찾기 컨텐트 div 설정 */

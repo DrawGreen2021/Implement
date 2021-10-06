@@ -18,9 +18,10 @@
 	
 	<!-- 내용 영역 -->
 	<div width="1200px;" style="text-align:center; margin:5% auto;">
-		<div style="float:left; padding-right:5px;">
-			<aside class="sidebar" style="margin: 0 0 0 5%;">
-				<ul style="list-style-type:none; text-align:left;">
+		<div class="sidebar_div" style="float:left;">
+		
+			<aside class="sidebar">
+				<ul style="list-style-type:none; ">
 					<h3>기업 찾기</h3>
 					<p><a href="<c:url value=''/>">인재 육성형 중소 기업</a></p>
 					<p><a href="<c:url value=''/>">녹색 기업</a></p>
@@ -29,15 +30,15 @@
 					<p><a href="<c:url value=''/>">청년 친화 강소 기업</a></p>
 				</ul>
 			</aside>
-			<br><br><br>
-			<aside class="rankbar">
+			<br>
+			<aside class="rankbar" align="left;">
 				<h4>가장 많이 검색한 기업</h4>
 					<p>1.</p>
 			</aside>
 		</div>
 		
-		
-			<table width="1000px;" style="text-align:center;">
+		<div class="content_div">
+			<table width="1000px;" style="text-align:center; float:right; background-color:gray;">
 				<tr>
 				<table width="900px;" style="text-align: center; margin:0 auto; position:relative;">
 					<tr>
@@ -55,14 +56,13 @@
 				</table>
 				</tr>
 				<tr>
-						<article class="content_div_findCorp">
-							<p>검색결과</p>
-				
-						</article>
+					<article class="content_div_findCorp">
+						<p>검색결과</p>
+					</article>
 				</tr>
 				
 			</table>
-		
+		</div>
 	</div>
 
 
