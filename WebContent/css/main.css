@@ -25,19 +25,14 @@
 	font-family:dotum; 
 }
 
-.nav_a{
-	font-size:10px; 
-	color:black; 
-	font-weight:normal; 
-	text-decoration:none; 
-	font-family:dotum; 
-	margin-right:10px;
+.nav a:hover{
+	font-weight:bold; 
 }
 
 .nav a{
 	font-size:12px; 
 	color:black; 
-	font-weight:bold; 
+	font-weight:normal; 
 	text-decoration:none; 
 	font-family:dotum; 
 	margin-left:10px;
@@ -262,7 +257,7 @@
 	height:50px;
 	position: relative;
 	background-color: white;
-	border:1px solid gray;
+	border:2px solid #21499b;
 	font-size: 15pt;
 	
 }
@@ -271,7 +266,7 @@
 .search_bar input{
 	width:600px;
 	height:50px;
-	font-size: 15pt;
+	font-size: 13pt;
 }
 
 /* 검색바 버튼 설정 */
@@ -307,6 +302,12 @@
 	font-size:12pt;
 }
 
+.menu_btn:hover{
+	color:#e1bf27;
+	font-size:12pt;
+	font-weight:bold;
+}
+
 /* 기업 찾기 */
 /* 좌측 사이드 바 통합 div */
 .sidebar_div{
@@ -322,7 +323,7 @@
 /* aside(좌측 사이드 바) */
 .sidebar{
 	width:200px;
-	border:1px solid gray;
+	border:1px solid #eeedeb;
 	background-color:white;
 	position:relative;
 	color:black;
@@ -341,6 +342,21 @@
 	font-size:10pt;
 }
 
+/* 사이드 바 메뉴 글씨, 효과 */
+.sidebar a{
+	weight:200px;
+	font-size:10pt; 
+	color:#21499b; 
+	font-weight:normal; 
+	text-decoration:none; 
+	font-family:dotum; 
+}
+
+.sidebar a:hover{
+	color:#e1bf27; 
+	font-weight:bold;
+}
+
 /* 기업찾기 컨텐트 div 설정 */
 .content_div_findCorp{
 	background-color: white;
@@ -349,4 +365,30 @@
 	height:1000px;
 	margin: 3% auto;
 	border:1px solid gray;
+}
+
+
+/* 커뮤니티 */
+/* 커뮤니티 컨텐츠 div 설정 */
+.content_div_community{
+	background-color: white;
+	color:black;
+	position: relative;
+	width: 900px;
+	height:1000px;
+	margin: 3% auto;
+	border:1px solid gray;
+	padding:0px;
+}
+
+/* 커뮤니티 컨텐츠 div 분류 텍스트 */
+.community_text{
+	height:16px;
+	background-color:#eeedeb;
+	color:black;
+	text-align:center;
+	font-size:11pt; 
+	font-weight:normal; 
+	font-family:dotum; 
+	padding:0px;
 }

@@ -22,10 +22,13 @@
 					<td><button class="menu_btn">서비스 개요</button></td>
 					<td><button class="menu_btn" onclick="location.href='${pageContext.request.contextPath}/findCorp/findCorp_main.jsp'">기업 찾기</button></td>
 					<td><button class="menu_btn">정보 나눔</button></td>
-					<td><button class="menu_btn">커뮤니티</button></td>
+					<td><button class="menu_btn" onclick="location.href='${pageContext.request.contextPath}/community/notice.jsp'">커뮤니티</button></td>
 					<td><button class="menu_btn">마이페이지</button></td>
 				</tr>
 			</table>
+			
+			<!-- https://kuzuro.blogspot.com/2018/08/htmlcss.html 드롭다운 메뉴, 현재 페이지 글씨 색 변경 필요  -->
+			
 			</header>
 			</div>	
 		</c:when>

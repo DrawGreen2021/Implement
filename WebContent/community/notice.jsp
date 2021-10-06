@@ -12,6 +12,7 @@
 	
 	<title>CorpCollector : 기업 찾기</title>
 </head>
+
 <body>
 	<!-- 헤더 파일 포함 -->
 	<c:import url='/importedFile/header.jsp'></c:import>
@@ -21,18 +22,10 @@
 		<div class="sidebar_div" style="float:left;">
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
-					<h3>기업 찾기</h3>
-					<p><a href="<c:url value=''/>">인재 육성형 중소 기업</a></p>
-					<p><a href="<c:url value=''/>">녹색 기업</a></p>
-					<p><a href="<c:url value=''/>">사회적 기업</a></p>
-					<p><a href="<c:url value=''/>">가족 친화 기업</a></p>
-					<p><a href="<c:url value=''/>">청년 친화 강소 기업</a></p>
+					<h3>커뮤니티</h3>
+					<p><a href="<c:url value=''/>">공지사항</a></p>
+					<p><a href="<c:url value=''/>">고객 후기</a></p>
 				</ul>
-			</aside>
-			<br>
-			<aside class="rankbar" align="left;">
-				<h4>가장 많이 검색한 기업</h4>
-					<p>1.</p>
 			</aside>
 		</div>
 		
@@ -55,22 +48,30 @@
 				</table>
 				</tr>
 				<tr>
-					<article class="content_div_findCorp">
-						<p>검색결과</p>
-					</article>
+					<table class="content_div_community">
+						<tr class="community_text">
+							<td width="80px">번호</td>
+							<td width="500px">제목</td>
+							<td width="150px">작성자</td>
+							<td width="150px">등록일</td>
+							<td width="80px">조회수</td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+					</table>
 				</tr>
 				
 			</table>
 		</div>
 	</div>
-
-
-
+	
+	
+	
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
 	<script type="text/javascript" src="../JavaScript/common.js"></script>
-	
 </body>
 </html>
