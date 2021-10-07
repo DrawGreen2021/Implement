@@ -17,8 +17,15 @@ public class Pager {
     
 	public int getBlockStartNum(int page) {
 		if (page % pageCount == 1 && page != 1) {
-			if (page > blockStartNum)
-				setBlockStartNum(blockStartNum + pageCount);
+			int newBlockStartNum = 0;
+			
+			if (page > blockStartNum) {
+				newBlockStartNum 
+				= (blockStartNum + pageCount)<=lastPageNum?
+						blockStartNum + pageCount:lastPageNum;
+				setBlockStartNum(newBlockStartNum);
+			}
+				
 			else if (page < blockStartNum) 
 				setBlockStartNum(blockStartNum - pageCount);
 		} else if(page == 1) 
@@ -28,9 +35,13 @@ public class Pager {
 	public void setBlockStartNum(int blockStartNum) {
 		Pager.blockStartNum = blockStartNum;
 	}
-	public int getBlockLastNum() {
-		setBlockLastNum(blockStartNum+pageCount-1);
-		return blockLastNum;
+	public int getBlockLastNum(int page) {
+		if (page == lastPageNum) return lastPageNum;
+		else {
+			setBlockLastNum(blockStartNum+pageCount-1);
+			return blockLastNum;
+		}
+		
 	}
 	public void setBlockLastNum(int blockLastNum) {
 		Pager.blockLastNum = blockLastNum;
@@ -55,23 +66,17 @@ public class Pager {
 	
 	public void setNumbers(int page, int rowCount, HttpServletRequest request, HttpServletResponse response) {
 		int blockStartNum = getBlockStartNum(page);
-		setLastPageNum(rowCount);
-		int blockLastNum = getBlockLastNum();
+		int blockLastNum = getBlockLastNum(page);
 		int lastPageNum = getLastPageNum(rowCount);
+		setLastPageNum(lastPageNum);
 		int pageCount = Pager.getPagecount();
-		numArray = new int[lastPageNum];
-		
-		for (int i = blockStartNum; i <= blockLastNum; i++) {
-			numArray[i-1] = i;
-		}
 
 		HttpSession httpSession = request.getSession();
 		httpSession.setAttribute("blockStartNum", blockStartNum);
 		httpSession.setAttribute("blockLastNum", blockLastNum);
 		httpSession.setAttribute("lastPageNum", lastPageNum);
 		httpSession.setAttribute("pageCount", pageCount);
-		
-		System.out.println("numArray: "+Arrays.toString(numArray));
+
 		System.out.println("blockStartNum: "+blockStartNum);
 		System.out.println("blockLastNum: "+blockLastNum);
 		System.out.println("lastPageNum: "+lastPageNum);
