@@ -89,7 +89,7 @@ public class GreenCorpDAO extends CorpDAO {
 		ArrayList<GreenCorpDTO> greenCorpDTOs = new ArrayList<GreenCorpDTO>();
 		String query = "SELECT * FROM( " + "SELECT * FROM 녹색기업 WHERE "+field
 				+ " LIKE ? ORDER BY 연번)search " 
-				+ "WHERE 연번 BETWEEN ? AND ?";
+				+ "LIMIT ?,?";
 
 		try {
 			connection = DriverManager.getConnection(url, userId, userPw);
