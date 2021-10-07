@@ -41,7 +41,7 @@
 .content_div{
 	background-color: white;
 	position:relative; 
-	width:900px; 
+	width:1000px; 
 	margin:0 0 0 25%;
 	border:0px;
 }
@@ -361,7 +361,7 @@
 .content_div_findCorp{
 	background-color: white;
 	position: relative;
-	width: 900px;
+	width: 1000px;
 	height:1000px;
 	margin: 3% auto;
 	border:1px solid gray;
@@ -374,7 +374,7 @@
 	background-color: white;
 	color:black;
 	position: relative;
-	width: 900px;
+	width: 1000px;
 	height:1000px;
 	margin: 3% auto;
 	border:1px solid gray;

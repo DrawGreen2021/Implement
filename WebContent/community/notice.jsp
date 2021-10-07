@@ -10,7 +10,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	
-	<title>CorpCollector : 기업 찾기</title>
+	<title>CorpCollector : 커뮤니티 - 공지사항</title>
 </head>
 
 <body>
@@ -55,6 +55,21 @@
 							<td width="150px">작성자</td>
 							<td width="150px">등록일</td>
 							<td width="80px">조회수</td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
 						</tr>
 						<tr>
 							<td></td>

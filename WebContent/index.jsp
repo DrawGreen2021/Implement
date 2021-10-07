@@ -22,7 +22,7 @@
 		<table width="800px;" align="center;" style="margin:0 auto;">
 			<tr>
 				<td>
-					<a href="<c:url value='/index.jsp'/>"><img src="/images/logo1.png" alt="CorpCollector" class="logo1_img"></a>
+					<a href="<c:url value='/index.jsp'/>"><img src="/images/logo1.png" alt="CorpCollector" class="logo1_img"/></a>
 				</td>
 			
 				<form align="center">
@@ -30,17 +30,17 @@
 						<input class="search_bar" type="text" id="search_keyword" width="600px;" autocomplete="off" placeholder=" 검색어를 입력하세요"> <!-- 검색바 css,js 수정-->
 					</td>	
 					<td>
-						<button class = "search_btn" type=submit value="" onclick="location.href='${pageContext.request.contextPath}/findCorp/findCorp_main.jsp'">
-						<img src="<c:url value='/images/search_logo.png'/>" alt="search" width="55px;">
+						<button class = "search_btn" type=submit onclick="location.href='/findCorp/findCorp_main.jsp'">
+						<img src="/images/search_logo.png" alt="search" width="55px;">
 						</button>
 					</td>
 				</form>
 			</tr>
 		</table>
 		<br>
-		<div style = "border:1px solid gray;" width="600px;"></div>	
+		<div style = "border:1px solid #eeedeb;" width="500px;"></div>	
 		<br>
-		<div class="index_keyword">
+		<div class="index_keyword" style="padding-top: 15px;">
 			<a href=".">녹색 기업 &nbsp&nbsp&nbsp&nbsp</a>
 			<a href=".">인재 육성형 중소 기업 &nbsp&nbsp&nbsp&nbsp</a>
 			<a href=".">사회적 기업 &nbsp&nbsp&nbsp&nbsp</a>

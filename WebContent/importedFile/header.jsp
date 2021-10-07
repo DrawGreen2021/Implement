@@ -49,7 +49,7 @@
 					<td><button class="menu_btn">서비스 개요</button></td>
 					<td><button class="menu_btn" onclick="location.href='${pageContext.request.contextPath}/findCorp/findCorp_main.jsp'">기업 찾기</button></td>
 					<td><button class="menu_btn">정보 나눔</button></td>
-					<td><button class="menu_btn">커뮤니티</button></td>
+					<td><button class="menu_btn" onclick="location.href='${pageContext.request.contextPath}/community/notice.jsp'">커뮤니티</button></td>
 					<td><button class="menu_btn" onclick="alert('로그인 후 이용 가능합니다')">마이페이지</button></td>
 				</tr>
 			</table>
