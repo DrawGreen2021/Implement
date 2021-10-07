@@ -1,10 +1,10 @@
 package com.drawgreen.corpcollector.frontcontroller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.drawgreen.corpcollector.command.Command;
+import com.drawgreen.corpcollector.command.findCorp.FindGreenCorpCommand;
 import com.drawgreen.corpcollector.command.member.EmailCheckCommand;
 import com.drawgreen.corpcollector.command.member.EmailSendCommand;
 import com.drawgreen.corpcollector.command.member.FindIdCommand;
@@ -68,6 +69,7 @@ public class FrontController extends HttpServlet {
 		
 		System.out.println(com);
 		
+		ServletContext context = getServletContext();
 		
 		/*----- 회원 관리 -----*/
 		if(com.equals("IdCheck.do")) {
@@ -110,7 +112,14 @@ public class FrontController extends HttpServlet {
 		}
 		
 		/*----- 기업 찾기 -----*/
-
+		else if(com.equals("FindGreenCorp.do")) {
+			command = new FindGreenCorpCommand(context);
+			command.execute(request, response);
+			response.sendRedirect("greenCorp_find.jsp");	
+		}
+		
+		
+		
 		if (viewPage != null) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 			dispatcher.forward(request, response);

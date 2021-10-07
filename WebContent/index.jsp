@@ -40,7 +40,7 @@
 					</tr>
 					<tr>
 						<td>
-							<button id="greenCom">녹색 기업</button>
+							<button id="greenCorp">녹색 기업</button>
 						</td>
 					</tr>
 				</table>
