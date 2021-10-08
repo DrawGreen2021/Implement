@@ -31,7 +31,7 @@
 					</td>	
 					<td>
 						<button class = "search_btn" type=submit onclick="location.href='/findCorp/findCorp_main.jsp'">
-						<img src="/images/search_logo.png" alt="search" width="55px;">
+						<img src="images/search_logo.PNG" alt="search" width="55px;">
 						</button>
 					</td>
 				</form>
