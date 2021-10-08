@@ -22,7 +22,7 @@
 		<table width="800px;" align="center;" style="margin:0 auto;">
 			<tr>
 				<td>
-					<a href="<c:url value='/index.jsp'/>"><img src="/images/logo1.png" alt="CorpCollector" class="logo1_img"/></a>
+					<a href="<c:url value='/index.jsp'/>"><img src="/images/logo1.PNG" alt="CorpCollector" class="logo1_img"/></a>
 				</td>
 			
 				<form align="center">

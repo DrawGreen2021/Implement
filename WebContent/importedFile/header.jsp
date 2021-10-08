@@ -40,7 +40,7 @@
 			
 			<!-- 네비게이션(메뉴) 영역-->
 			<nav class="nav">
-				<a href="<c:url value='/index.jsp'/>" style="margin-left : 10px; float:left;" ><img src="<c:url value='/images/logo2.png'/>" alt="CorpCollector"></a>
+				<a href="<c:url value='/index.jsp'/>" style="margin-left : 10px; float:left;" ><img src="/images/logo2.png" alt="CorpCollector"></a>
 				<a href="<c:url value='/member/login_main.jsp'/>" style="margin-left : 80%; float:left;">로그인</a>
 				<a href="<c:url value='/member/signUp.jsp'/>">회원가입</a>
 			</nav>
