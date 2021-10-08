@@ -24,7 +24,8 @@ public class FindGreenCorpCommand implements Command{
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 
-		String keyword = request.getParameter("keyword")==null?"":request.getParameter("keyword");  
+		String keyword = request.getParameter("keyword")==null?"":request.getParameter("keyword");
+
 		String field = request.getParameter("field")==null?"":request.getParameter("field");
 		String page_str = request.getParameter("page")==null?"1":request.getParameter("page");
 		int page = Integer.parseInt(page_str);
@@ -50,10 +51,11 @@ public class FindGreenCorpCommand implements Command{
 			corpList = dao.getCorpList(field, keyword, page);
 			rowCount = dao.getRowCount(corpType, field, keyword);
 		}
-		
 		HttpSession httpSession = request.getSession();
-		httpSession.setAttribute("GreeenCorpList", corpList);
-		httpSession.setAttribute("rowCount", rowCount);
+		httpSession.setAttribute("keyword", keyword);
+		httpSession.setAttribute("field", field);
+		
+		request.setAttribute("GreeenCorpList", corpList);
 
 		pager.setNumbers(page, rowCount, request, response);
 	}

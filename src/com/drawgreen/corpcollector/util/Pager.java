@@ -1,6 +1,5 @@
 package com.drawgreen.corpcollector.util;
 
-import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +12,6 @@ public class Pager {
     private static int blockStartNum = 1;
     private static int blockLastNum = 0;
     private static int lastPageNum = 0;
-    private static int[] numArray;
     
 	public int getBlockStartNum(int page) {
 		if (page % pageCount == 1 && page != 1) {
@@ -36,10 +34,20 @@ public class Pager {
 		Pager.blockStartNum = blockStartNum;
 	}
 	public int getBlockLastNum(int page) {
-		if (page == lastPageNum) return lastPageNum;
+		if (page == lastPageNum) {
+			setBlockLastNum(lastPageNum);
+			return lastPageNum;
+		}
 		else {
-			setBlockLastNum(blockStartNum+pageCount-1);
-			return blockLastNum;
+			int newBlockLsatNum = blockStartNum+pageCount-1;
+			if (newBlockLsatNum > lastPageNum) {
+				setBlockLastNum(lastPageNum);
+				return lastPageNum;
+			}
+			else {
+				setBlockLastNum(blockStartNum+pageCount-1);
+				return blockLastNum;
+			}
 		}
 		
 	}
@@ -65,18 +73,17 @@ public class Pager {
 	}
 	
 	public void setNumbers(int page, int rowCount, HttpServletRequest request, HttpServletResponse response) {
-		int blockStartNum = getBlockStartNum(page);
-		int blockLastNum = getBlockLastNum(page);
 		int lastPageNum = getLastPageNum(rowCount);
 		setLastPageNum(lastPageNum);
+		int blockStartNum = getBlockStartNum(page);
+		int blockLastNum = getBlockLastNum(page);
+		
 		int pageCount = Pager.getPagecount();
 
-		HttpSession httpSession = request.getSession();
-		httpSession.setAttribute("blockStartNum", blockStartNum);
-		httpSession.setAttribute("blockLastNum", blockLastNum);
-		httpSession.setAttribute("lastPageNum", lastPageNum);
-		httpSession.setAttribute("pageCount", pageCount);
-
+		request.setAttribute("blockStartNum", blockStartNum);
+		request.setAttribute("blockLastNum", blockLastNum);
+		request.setAttribute("lastPageNum", lastPageNum);
+		request.setAttribute("pageCount", pageCount);
 		System.out.println("blockStartNum: "+blockStartNum);
 		System.out.println("blockLastNum: "+blockLastNum);
 		System.out.println("lastPageNum: "+lastPageNum);

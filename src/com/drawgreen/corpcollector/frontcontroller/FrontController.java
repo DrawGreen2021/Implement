@@ -29,7 +29,7 @@ import com.drawgreen.corpcollector.command.member.UpdatePwCommand;
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private static boolean flag = true;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -113,14 +113,18 @@ public class FrontController extends HttpServlet {
 		
 		/*----- 기업 찾기 -----*/
 		else if(com.equals("FindGreenCorp.do")) {
-			command = new FindGreenCorpCommand(context);
-			command.execute(request, response);
-			response.sendRedirect("greenCorp_find.jsp");	
+			if(flag) {
+				command = new FindGreenCorpCommand(context);
+				command.execute(request, response);
+				flag = false;
+			} else {
+				flag = true;
+			}
+			viewPage = "greenCorp_find.jsp";
 		}
-		
-		
-		
+
 		if (viewPage != null) {
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 			dispatcher.forward(request, response);
 		}

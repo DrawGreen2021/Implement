@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.net.URLEncoder" %>
 <%
 	application.setAttribute("greenCorp", "녹색기업");
-%>
 
+
+%>
 
 <!DOCTYPE html>
 <html>
@@ -18,17 +20,16 @@
 <title>CorpCollector : 기업 찾기(녹색 기업)</title>
 </head>
 <body>
-	<input type="hidden" name="TOKEN_KEY"
-	value="<%=request.getAttribute("TOKEN_KEY")%>" />
 	
 	<!-- 헤더 파일 포함 -->
 	<c:import url='/importedFile/header.jsp'></c:import>
 
 	<!-- 내용 영역 -->
+	
 	<form action="FindGreenCorp.do" method="get" name="findGreenCorp"
 		id="findGreenCorp">
-		<input type="text" name="keyword"
-			value="${(param.keyword == null)?'':param.keyword}"> 
+		<input type="text" name="keyword" id="keyword"
+			value='${(sessionScope.keyword == null)? "":sessionScope.keyword}'> 
 		<input type="button" value="검색" id="search" onclick="fncSubmit()"> 
 		<select name="field">
 			<option ${(param.field == "업체명")? "selected" : ""} value="업체명">업체명</option>
@@ -50,8 +51,8 @@
 
 			<!-- 기업 리스트 출력 -->
 			<c:choose>
-				<c:when test="${not empty sessionScope.GreeenCorpList }">
-					<c:forEach items="${sessionScope.GreeenCorpList }" var="dto">
+				<c:when test="${not empty requestScope.GreeenCorpList }">
+					<c:forEach items="${requestScope.GreeenCorpList }" var="dto">
 						<tr>
 							<td>${dto.serial_number }</td>
 							<td><a>${dto.company_name }</a></td>
@@ -82,14 +83,14 @@
 	</div>
 
 	<div>
-		<c:set var="page" value="${(empty param.page)? 1 : param.page}" scope="session" />
-		<c:set var="startNum" value="${sessionScope.blockStartNum}" scope="session"/>
-		<c:set var="lastNum" value="${sessionScope.blockLastNum}" scope="session"/>
-		<c:set var="lastPageNum" value="${sessionScope.lastPageNum }" scope="session"/>
-		<c:set var="pageCount" value="${sessionScope.pageCount }" scope="session"/>
+		<c:set var="page" value="${(empty param.page)? 1 : param.page}" scope="request" />
+		<c:set var="startNum" value="${requestScope.blockStartNum}" scope="request"/>
+		<c:set var="lastNum" value="${requestScope.blockLastNum}" scope="request"/>
+		<c:set var="lastPageNum" value="${requestScope.lastPageNum }" scope="request"/>
+		<c:set var="pageCount" value="${requestScope.pageCount }" scope="request"/>
 
 		<c:if test="${startNum > 1}">
-			<span><a href="FindGreenCorp.do?page=${startNum - pageCount}&field=${pram.field }&keword=${param.keyword}&corpType=${param.corpType}">이전</a> </span>
+			<span><a href='FindGreenCorp.do?page=${startNum - pageCount}&field=${param.field }&keword=${sessionScope.keyword}' >이전</a> </span>
 		</c:if>
 		<c:if test="${startNum <= 1}">
 			<span onclick="alert('이전 페이지가 없습니다.');">이전</span>
@@ -98,14 +99,14 @@
 		<span> 
 			<c:forEach var="num" begin="${startNum }" end="${lastNum }">
 				<c:if test="${num <= lastPageNum }">
-                	<a href="FindGreenCorp.do?page=${num}&field=${pram.field }&keword=${param.keyword}&corpType=${param.corpType}" >${num}</a>
+                	<a href='FindGreenCorp.do?page=${num}&field=${param.field }&keword=${sessionScope.keyword}'>${num}</a>
                 </c:if>
 			</c:forEach>
 		</span>
 
 		<c:if test="${(startNum + pageCount -1) < lastPageNum }">
 			<span>
-				<a href="FindGreenCorp.do?page=${startNum + pageCount}&field=${pram.field }&keword=${param.keyword}&corpType=${param.corpType}">다음</a>
+				<a href='FindGreenCorp.do?page=${startNum + pageCount}&field=${param.field }&keword=${sessionScope.keyword}'>다음</a>
 			</span>
 		</c:if>
 		<c:if test="${(startNum + pageCount -1) >= lastPageNum }">
