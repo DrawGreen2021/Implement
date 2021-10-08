@@ -38,6 +38,11 @@
 	margin-left:10px;
 }
 
+.nav_logo{
+	width:385px;
+	float:left;
+}
+
 .content_div{
 	background-color: white;
 	position:relative; 
@@ -271,10 +276,10 @@
 
 /* 검색바 버튼 설정 */
 .search_btn{
-	width:60px;
+	width:57px;
 	height:60px;
 	border:0px;
-	background-color:light-gray;
+	background-color:white;
 	cursor:pointer;
 	position:relative;
 }

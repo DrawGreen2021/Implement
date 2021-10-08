@@ -10,8 +10,8 @@
 			
 			<!-- 네비게이션(메뉴) 영역-->
 			<nav class="nav">
-				<a href="<c:url value='/index.jsp'/>" style="margin-left : 10px; float:left;"><img src="../images/logo2.PNG" alt="CorpCollector"></a>
-				<a href="." style="margin-left : 80%; float:left;">${sessionScope.MemberDTO.name}님</a>
+				<a href="<c:url value='/index.jsp'/>" style="float:left;"><img src="images/logo2.PNG" alt="CorpCollector" class="nav_logo"></a>
+				<a href="." style="margin-left : 57%; float:left;">${sessionScope.MemberDTO.name}님</a> <!-- 마이페이지 -->
 				<form name="passBeforeUrl">
 					<input type="hidden" name="beforeUrl">
 				</form>
@@ -40,8 +40,8 @@
 			
 			<!-- 네비게이션(메뉴) 영역-->
 			<nav class="nav">
-				<a href="<c:url value='/index.jsp'/>" style="margin-left : 10px; float:left;" ><img src="/images/logo2.png" alt="CorpCollector"></a>
-				<a href="<c:url value='/member/login_main.jsp'/>" style="margin-left : 80%; float:left;">로그인</a>
+				<a href="<c:url value='/index.jsp'/>" style="float:left;" ><img src="images/logo2.PNG" alt="CorpCollector" class="nav_logo"></a>
+				<a href="<c:url value='/member/login_main.jsp'/>" style="margin-left : 58%; float:left;">로그인</a>
 				<a href="<c:url value='/member/signUp.jsp'/>">회원가입</a>
 			</nav>
 			<table width=1200px; style="text-align:center;">
