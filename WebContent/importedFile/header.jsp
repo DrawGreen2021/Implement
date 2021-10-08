@@ -10,7 +10,7 @@
 			
 			<!-- 네비게이션(메뉴) 영역-->
 			<nav class="nav">
-				<a href="<c:url value='/index.jsp'/>" style="margin-left : 10px; float:left;"><img src="../images/logo2.png" alt="CorpCollector"></a>
+				<a href="<c:url value='/index.jsp'/>" style="margin-left : 10px; float:left;"><img src="../images/logo2.PNG" alt="CorpCollector"></a>
 				<a href="." style="margin-left : 80%; float:left;">${sessionScope.MemberDTO.name}님</a>
 				<form name="passBeforeUrl">
 					<input type="hidden" name="beforeUrl">

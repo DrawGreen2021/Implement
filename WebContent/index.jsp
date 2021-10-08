@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta name="description" content="캡스톤_01">
 	<meta name="keywords" content="HTML5, CSS, JQUERY">
-	
+
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	
 	<title>CorpCollector</title>
@@ -22,7 +22,7 @@
 		<table width="800px;" align="center;" style="margin:0 auto;">
 			<tr>
 				<td>
-					<a href="<c:url value='/index.jsp'/>"><img src="/images/logo1.png" alt="CorpCollector" class="logo1_img"/></a>
+					<a href="<c:url value='/index.jsp'/>"><img src="images/logo1.PNG" alt="CorpCollector" class="logo1_img"/></a>
 				</td>
 			
 				<form align="center">
@@ -31,7 +31,7 @@
 					</td>	
 					<td>
 						<button class = "search_btn" type=submit onclick="location.href='/findCorp/findCorp_main.jsp'">
-						<img src="/images/search_logo.png" alt="search" width="55px;">
+						<img src="images/search_logo.png" alt="search" width="55px;">
 						</button>
 					</td>
 				</form>
