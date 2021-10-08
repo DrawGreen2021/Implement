@@ -10,7 +10,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	
-	<title>CorpCollector : 커뮤니티 - 고객후기</title>
+	<title>CorpCollector : 고객후기</title>
 </head>
 
 <body>

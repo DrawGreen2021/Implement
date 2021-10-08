@@ -10,7 +10,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	
-	<title>CorpCollector : 공지사항</title>
+	<title>CorpCollector : 공지사항 작성</title>
 </head>
 
 <body>
@@ -32,53 +32,32 @@
 		<div class="content_div">
 			<table width="1000px;" style="text-align:center; float:right;">
 				<tr>
-				<table width="900px;" style="text-align: center; margin:0 auto; position:relative;">
-					<tr>
-						<form align="center">
-						<td>
-							<input class="search_bar" type="text" id="search_keyword" autocomplete="off" placeholder=" 검색어를 입력하세요">
-						</td>
-						<td>
-							<button class = "search_btn" type=submit value="" onclick="">
-							<img src="<c:url value='/images/search_logo.PNG'/>" alt="search" width="55px;">
-							</button>
-						</td>
-					</form>
-					</tr>
-				</table>
+					<p style="font-size:16pt; color:#21499b; font-weight:bold; margin:0 82% 0 0; ">고객 후기 글쓰기</p>
 				</tr>
 				<tr>
-					<table class="content_div_community">
-						<tr class="community_text" style="background-color:#eeedeb; height:30px;">
-							<td width="80px">번호</td>
-							<td width="500px">제목</td>
-							<td width="150px">작성자</td>
-							<td width="150px">등록일</td>
-							<td width="80px">조회수</td>
+					<div style = "border:1px solid #21499b; margin:1% auto;"></div>
+				</tr>
+				<tr>
+					<table class="content_div_write">
+						<tr class="community_text" height="30px;">
+							<td width="100px" style="background-color:#eeedeb;">제목</td>
+							<td><input type="text" autocomplete="off" class="write_input" maxlength="30"></td>
+						</tr>
+						<tr class="community_text" height="30px;">
+							<td width="100px" style="background-color:#eeedeb;">작성자</td>
+							<td><input type="text" autocomplete="off" class="write_input"></td>
 						</tr>
 						<tr class="community_text">
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
+							<td style="background-color:#eeedeb;">내용</td>
+							<td><textarea class="write_input"></textarea></td>
 						</tr>
 					</table>
 				</tr>
 			</table>
-			<button class="writing_btn" style="margin:0 0 0 92%;" onclick="location.href='${pageContext.request.contextPath}/community/notice_Write.jsp'">글쓰기</button>
-			<!-- 일단 글쓰기 가능하게 설정. 이후 권한에 따라 alert로 글쓰기 막을 것 -->
+			<div style="float:right;">
+			<button class="writing_btn" onclick="writing_Check()">글쓰기</button>
+			<button class="writing_btn" style="background-color:#E7F1FD;" onclick="confirm('작성을 취소하시겠습니까?')">취소</button> <!-- 취소 선택시 뒤로가기 -->
+			</div>
 		</div>
 	</div>
 	

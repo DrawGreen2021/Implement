@@ -46,7 +46,7 @@
 .content_div{
 	background-color: white;
 	position:relative; 
-	width:900px; 
+	width:930px; 
 	margin:0 0 0 25%;
 	border:0px;
 }
@@ -366,30 +366,29 @@
 .content_div_findCorp{
 	background-color: white;
 	position: relative;
-	width: 900px;
+	width: 930px;
 	height:1000px;
-	margin: 3% auto;
+	margin: 2% auto;
 	border:1px solid gray;
 }
 
 
 /* 커뮤니티 */
-/* 커뮤니티 컨텐츠 div 설정 */
+/* 커뮤니티 컨텐츠 목록 div 설정 */
 .content_div_community{
 	background-color: white;
 	color:black;
 	position: relative;
-	width: 900px;
+	width: 930px;
 	height:1000px;
-	margin: 3% auto;
+	margin: 2% auto;
 	border:1px solid gray;
 	padding:0px;
 }
 
 /* 커뮤니티 컨텐츠 div 분류 텍스트 */
 .community_text{
-	height:16px;
-	background-color:#eeedeb;
+	background-color:white;
 	color:black;
 	text-align:center;
 	font-size:11pt; 
@@ -398,7 +397,48 @@
 	padding:0px;
 }
 
-/* 커뮤니티 */
+/* 커뮤니티 글쓰기 div 설정 */
+.content_div_write{
+	background-color: white;
+	color:black;
+	position: relative;
+	width: 930px;
+	height:500px;
+	margin: 2% auto;
+	border:1px solid gray;
+	padding:0px;
+}
+
+/* 커뮤니티 글쓰기 input 설정 */
+.write_input{
+	background-color: white;
+	color:black;
+	font-size:11pt;
+	font-weight:normal; 
+	font-family:dotum; 
+	position: relative;
+	width: 100%;
+	border:0px;
+	padding:0px;
+}
+
+.write_input textarea{
+	background-color: white;
+	color:black;
+	font-size:11pt;
+	font-weight:normal; 
+	font-family:dotum; 
+	position: relative;
+	width: 100%;
+	height:100%;
+	border:0;
+	padding:0;
+}
+
+.write_input input:focus{
+	outline:none;
+}
+
 /* 커뮤니티 글쓰기 버튼 설정 */
 .writing_btn{
 	width: 70px;
