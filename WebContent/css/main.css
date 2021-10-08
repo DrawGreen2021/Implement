@@ -397,3 +397,16 @@
 	font-family:dotum; 
 	padding:0px;
 }
+
+/* 커뮤니티 */
+/* 커뮤니티 글쓰기 버튼 설정 */
+.writing_btn{
+	width: 70px;
+	height: 30px;
+	background-color: #F1E265;
+	color: black;
+	font-size: 10pt;
+	font-weight:normal;
+	border: 0px;
+	cursor: pointer;
+}
