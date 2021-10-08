@@ -153,10 +153,12 @@ window.onload=function(){
             data:{"id":id},
             success: function(data, textStatus) {
                 if(data === 'usable') {
-                    $('#idCheckMessage').text('사용할 수 있는 ID입니다.')      
-                    $('#authID').val("true");
+                   // $('#idCheckMessage').text('사용할 수 있는 ID입니다.')    
+					$('#authID').val("true");
+					alert("사용할 수 있는 ID입니다."); 
                 } else {
-                    $('#idCheckMessage').text('이미 사용 중인 아이디입니다.')
+                    //$('#idCheckMessage').text('이미 사용 중인 ID입니다.')
+					alert("이미 사용 중인 ID입니다.");
                 }
             },
             error:function (data, textStatus) {
@@ -182,9 +184,11 @@ window.onload=function(){
             data:{"email":email},
             success: function(data, textStatus) {
                 if(data === 'connectable') {
-                    $('#emailSendMessage').text('이메일 주소 인증 메일이 전송되었습니다. 인증번호를 확인해주세요.')      
+                    //$('#emailSendMessage').text('이메일 주소 인증 메일이 전송되었습니다. 인증번호를 확인해주세요.') 
+					alert("이메일 주소 인증 메일이 전송되었습니다. 인증번호를 확인해주세요.");     
                 } else {
-                    $('#emailSendMessage').text('유효하지 않은 이메일입니다.')
+                    //$('#emailSendMessage').text('유효하지 않은 이메일입니다.')
+					alert("유효하지 않은 이메일입니다.");
                 }
             },
             error:function (data, textStatus) {
@@ -208,10 +212,12 @@ window.onload=function(){
             data:{"email_auth_num":email_auth_num},
             success: function(data, textStatus) {
                 if(data === 'authenticated') {
-                    $('#emailCheckMessage').text('이메일 인증이 완료되었습니다.')      
+                    //$('#emailCheckMessage').text('이메일 인증이 완료되었습니다.')      
                     $('#authEmail').val("true");
+					alert("이메일 인증이 완료되었습니다.");
                 } else {
-                    $('#emailCheckMessage').text('인증번호가 다릅니다.')
+                    //$('#emailCheckMessage').text('인증번호가 다릅니다.')
+					alert("인증번호가 다릅니다.");
                 }
             },
             error:function (data, textStatus) {

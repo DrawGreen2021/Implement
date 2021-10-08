@@ -15,6 +15,7 @@
 
 .nav{
 	background-color:white; 
+	width:1200px; 
 	height:70px; 
 	padding-top:10px;
 	font-size:8px; 
@@ -24,39 +25,27 @@
 	font-family:dotum; 
 }
 
-.nav_a{
-	font-size:10px; 
-	color:black; 
-	font-weight:normal; 
-	text-decoration:none; 
-	font-family:dotum; 
-	margin-right:10px;
+.nav a:hover{
+	font-weight:bold; 
 }
 
 .nav a{
 	font-size:12px; 
 	color:black; 
-	font-weight:bold; 
+	font-weight:normal; 
 	text-decoration:none; 
 	font-family:dotum; 
 	margin-left:10px;
 }
 
 .content_div{
+	background-color: white;
 	position:relative; 
-	width:1000px; 
-	margin:0 auto;
+	width:900px; 
+	margin:0 0 0 25%;
+	border:0px;
 }
 
-.aside{
-	background-color:#FCFAED; 
-	position:absolute; 
-	top:0; 
-	right:0; 
-	width:25%; 
-	height:auto;
-	padding-left:15px;
-}
 
 .footer_div{
 	background-color: white; 
@@ -80,7 +69,7 @@
 	position: relative;
 	width: 500px;
 	height: 450px;
-	margin: 50px auto;
+	margin: 5% auto;
 	border:1px solid gray;
 }
 
@@ -153,7 +142,7 @@
 	background-color: white;
 	position: relative;
 	width:500px;
-	margin: 50px auto;
+	margin: 5% auto;
 	border:1px solid gray;
 }
 
@@ -167,13 +156,13 @@
 
 /* input 태그 전체 설정 */
 .signUp_table input{
-	width: 225px;
+	width: 230px;
 	height:20px;
 }
 
 /* div 태그 전체 설정 - 오혜진 추가*/
 .signUp_table div{
-	width: 225px;
+	width: 230px;
 	height:20px;
 } 
 
@@ -182,13 +171,25 @@
 	margin-top:1%;
 }
 
+/* 회원가입 페이지 버튼 설정 */
+.signUpPage_btn{
+	width: 238px;
+	height:30px;
+	background-color:black;
+	color:white;
+	font-size: 10pt;
+	font-weight:normal;
+	border: solid 1px gray;
+	cursor: pointer;
+}
+
 /* 가입하기 버튼 설정 */
 .signUp_btn{
-	height:45px;
-	width: 234px;
-	background-color:white;
-	color:black;
-	font-size: 15pt;
+	height:30px;
+	width: 115px;
+	background-color:black;
+	color:white;
+	font-size: 10pt;
 	font-weight:bold;
 	border: solid 1px black;
 	cursor: pointer;
@@ -199,8 +200,9 @@
 .content_div_findInfo{
 	background-color: white;
 	position: relative;
-	width: 1000px;
-	margin: 10px auto;
+	width: 400px;
+	margin: 5% auto;
+	border:1px solid gray;
 }
 
 /* 테이블 설정 */
@@ -219,7 +221,7 @@
 
 /* 버튼 table 설정 */
 .findInfo_btn_table{
-	margin-top:1%;
+	margin-top:5%;
 }
 
 /* 인증번호 받기, 아이디 찾기 버튼 설정 */
@@ -234,11 +236,13 @@
 	cursor: pointer;
 }
 
-/* 인덱스 화면 로고 테이블*/
-.index_table{
+
+/* 인덱스 화면*/
+/* 인덱스 화면 테이블*/
+.index_div{
 	width: 1200px;
 	position: relative;
-	margin:0 auto;
+	margin:10% auto;
 }
 
 /* 인덱스 화면 로고 이미지*/
@@ -250,13 +254,141 @@
 /* 검색바 */
 .search_bar{
 	width:600px;
+	height:50px;
 	position: relative;
 	background-color: white;
-	font-size: 20pt;
+	border:2px solid #21499b;
+	font-size: 15pt;
+	
 }
 
 /* 검색바 안에 input 설정 */
 .search_bar input{
-	width:650px;
+	width:600px;
+	height:50px;
+	font-size: 13pt;
+}
+
+/* 검색바 버튼 설정 */
+.search_btn{
+	width:60px;
 	height:60px;
+	border:0px;
+	background-color:light-gray;
+	cursor:pointer;
+	position:relative;
+}
+
+.index_keyword a{
+	weight:800px;
+	height:60px;
+	font-size:11pt; 
+	color:#21499b; 
+	font-weight:bold; 
+	text-decoration:none; 
+	font-family:dotum; 
+	margin-left:10px;
+}
+
+/* 메뉴바 버튼 설정 */
+.menu_btn{
+	width:230px;
+	height:50px;
+	border:0px;
+	background-color:#21499b;
+	cursor:pointer;
+	position:relative;
+	color:white;
+	font-size:12pt;
+}
+
+.menu_btn:hover{
+	color:#e1bf27;
+	font-size:12pt;
+	font-weight:bold;
+}
+
+/* 기업 찾기 */
+/* 좌측 사이드 바 통합 div */
+.sidebar_div{
+	width:250px;
+	height:500px;
+	color:black;
+	border:0px;
+	background-color:white;
+	position:relative;
+	margin: 0 0 0 5%;
+}
+
+/* aside(좌측 사이드 바) */
+.sidebar{
+	width:200px;
+	border:1px solid #eeedeb;
+	background-color:white;
+	position:relative;
+	color:black;
+	font-size:10pt;
+	padding: 2px;
+	text-align:left;
+}
+
+/* aside(좌측 사이드 순위) */
+.rankbar{
+	width:200px;
+	border:0px;
+	background-color:white;
+	position:relative;
+	color:black;
+	font-size:10pt;
+}
+
+/* 사이드 바 메뉴 글씨, 효과 */
+.sidebar a{
+	weight:200px;
+	font-size:10pt; 
+	color:#21499b; 
+	font-weight:normal; 
+	text-decoration:none; 
+	font-family:dotum; 
+}
+
+.sidebar a:hover{
+	color:#e1bf27; 
+	font-weight:bold;
+}
+
+/* 기업찾기 컨텐트 div 설정 */
+.content_div_findCorp{
+	background-color: white;
+	position: relative;
+	width: 900px;
+	height:1000px;
+	margin: 3% auto;
+	border:1px solid gray;
+}
+
+
+/* 커뮤니티 */
+/* 커뮤니티 컨텐츠 div 설정 */
+.content_div_community{
+	background-color: white;
+	color:black;
+	position: relative;
+	width: 900px;
+	height:1000px;
+	margin: 3% auto;
+	border:1px solid gray;
+	padding:0px;
+}
+
+/* 커뮤니티 컨텐츠 div 분류 텍스트 */
+.community_text{
+	height:16px;
+	background-color:#eeedeb;
+	color:black;
+	text-align:center;
+	font-size:11pt; 
+	font-weight:normal; 
+	font-family:dotum; 
+	padding:0px;
 }

@@ -26,11 +26,22 @@
 		</c:when>
 		
 		<c:otherwise>
-			<div>
-				${requestScope.nickname }님의
-				아이디는 ${found_ID}입니다. <br>
-				<a href="<c:url value='/member/login_main.jsp'/>">로그인</a>
-				<a href="<c:url value='/member/findPW_main.jsp'/>">비밀번호 찾기</a>
+			<div class="content_div_findInfo">
+			<br>
+				<table align="center" class="findInfo_table">
+					<tr>
+					<td>${requestScope.nickname }님의 아이디는 ${found_ID}입니다.</td>
+					</tr>
+				</table>
+				
+				<table align="center" class="signUp_btn_table">
+				<tr>
+					<td><input type="submit" value="로그인" class="signUp_btn" onclick="location.href='${pageContext.request.contextPath}/member/login_main.jsp'"></td>
+					<td><input type="button" value="비밀번호 찾기" class="signUp_btn" onclick="location.href='${pageContext.request.contextPath}/member/findPW_main.jsp'"></td>
+				</tr>
+				<br>
+				</table>
+				<br>
 			</div>
 		</c:otherwise>
 	</c:choose>
