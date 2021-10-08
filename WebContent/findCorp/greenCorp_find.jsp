@@ -28,8 +28,7 @@
 	
 	<form action="FindGreenCorp.do" method="get" name="findGreenCorp"
 		id="findGreenCorp">
-		<input type="text" name="keyword" id="keyword"
-			value='${(sessionScope.keyword == null)? "":sessionScope.keyword}'> 
+		<input type="text" name="keyword" id="keyword"> 
 		<input type="button" value="검색" id="search" onclick="fncSubmit()"> 
 		<select name="field">
 			<option ${(param.field == "업체명")? "selected" : ""} value="업체명">업체명</option>
@@ -90,7 +89,7 @@
 		<c:set var="pageCount" value="${requestScope.pageCount }" scope="request"/>
 
 		<c:if test="${startNum > 1}">
-			<span><a href='FindGreenCorp.do?page=${startNum - pageCount}&field=${param.field }&keword=${sessionScope.keyword}' >이전</a> </span>
+			<span><a href='FindGreenCorp.do?page=${startNum - pageCount}&field=${param.field }&keword=${param.keyword}' >이전</a> </span>
 		</c:if>
 		<c:if test="${startNum <= 1}">
 			<span onclick="alert('이전 페이지가 없습니다.');">이전</span>
@@ -99,14 +98,14 @@
 		<span> 
 			<c:forEach var="num" begin="${startNum }" end="${lastNum }">
 				<c:if test="${num <= lastPageNum }">
-                	<a href='FindGreenCorp.do?page=${num}&field=${param.field }&keword=${sessionScope.keyword}'>${num}</a>
+                	<a href='FindGreenCorp.do?page=${num}&field=${param.field }&keword=${param.keyword }'>${num}</a>
                 </c:if>
 			</c:forEach>
 		</span>
 
 		<c:if test="${(startNum + pageCount -1) < lastPageNum }">
 			<span>
-				<a href='FindGreenCorp.do?page=${startNum + pageCount}&field=${param.field }&keword=${sessionScope.keyword}'>다음</a>
+				<a href='FindGreenCorp.do?page=${startNum + pageCount}&field=${param.field }&keword=${param.keyword}'>다음</a>
 			</span>
 		</c:if>
 		<c:if test="${(startNum + pageCount -1) >= lastPageNum }">

@@ -8,7 +8,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
 
 var doubleSubmitFlag = false;
 
-document.getElementsById('keyword').value = saveValue('keyword');
+document.getElementById('keyword').value = saveValue('keyword');
 
 
 function fncSubmit(){
@@ -18,6 +18,21 @@ function fncSubmit(){
     	$('#findGreenCorp').submit();
         doubleSubmitFlag = true;
     }
+}
+
+window.onload=function(){
+	function getParameterByName(name) { 
+		name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]"); 
+		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"), 
+			results = regex.exec(location.search); 
+		return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " ")); 
+	}
+
+	var keyword = getParameterByName('keyword');
+	$('#keyword').val(keyword);
+	console.log(keyword);
+	
+	
 }
 
 function saveValue(e){
