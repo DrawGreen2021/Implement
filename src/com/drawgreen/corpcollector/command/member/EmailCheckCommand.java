@@ -1,4 +1,4 @@
-package com.drawgreen.corpcollector.command;
+package com.drawgreen.corpcollector.command.member;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,6 +7,7 @@ import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.drawgreen.corpcollector.command.Command;
 import com.drawgreen.corpcollector.util.ServerLogin;
 
 public class EmailCheckCommand implements Command{

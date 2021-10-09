@@ -1,10 +1,10 @@
 package com.drawgreen.corpcollector.frontcontroller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,15 +12,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.drawgreen.corpcollector.command.Command;
-import com.drawgreen.corpcollector.command.EmailCheckCommand;
-import com.drawgreen.corpcollector.command.EmailSendCommand;
-import com.drawgreen.corpcollector.command.FindIdCommand;
-import com.drawgreen.corpcollector.command.FindPwCommand;
-import com.drawgreen.corpcollector.command.IdCheckCommand;
-import com.drawgreen.corpcollector.command.LoginCommand;
-import com.drawgreen.corpcollector.command.LogoutCommand;
-import com.drawgreen.corpcollector.command.SignUpCommand;
-import com.drawgreen.corpcollector.command.UpdatePwCommand;
+import com.drawgreen.corpcollector.command.findCorp.FindGreenCorpCommand;
+import com.drawgreen.corpcollector.command.member.EmailCheckCommand;
+import com.drawgreen.corpcollector.command.member.EmailSendCommand;
+import com.drawgreen.corpcollector.command.member.FindIdCommand;
+import com.drawgreen.corpcollector.command.member.FindPwCommand;
+import com.drawgreen.corpcollector.command.member.IdCheckCommand;
+import com.drawgreen.corpcollector.command.member.LoginCommand;
+import com.drawgreen.corpcollector.command.member.LogoutCommand;
+import com.drawgreen.corpcollector.command.member.SignUpCommand;
+import com.drawgreen.corpcollector.command.member.UpdatePwCommand;
 
 /**
  * Servlet implementation class FrontController
@@ -28,7 +29,7 @@ import com.drawgreen.corpcollector.command.UpdatePwCommand;
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private static boolean flag = true;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -68,6 +69,9 @@ public class FrontController extends HttpServlet {
 		
 		System.out.println(com);
 		
+		ServletContext context = getServletContext();
+		
+		/*----- 회원 관리 -----*/
 		if(com.equals("IdCheck.do")) {
 			command = new IdCheckCommand();
 			command.execute(request, response);
@@ -106,8 +110,21 @@ public class FrontController extends HttpServlet {
 			command = new UpdatePwCommand();
 			command.execute(request, response);
 		}
+		
+		/*----- 기업 찾기 -----*/
+		else if(com.equals("FindGreenCorp.do")) {
+			if(flag) {
+				command = new FindGreenCorpCommand(context);
+				command.execute(request, response);
+				viewPage = "find_greenCorp.jsp";
+				flag = false;
+			} else {
+				flag = true;
+			}
+		}
 
 		if (viewPage != null) {
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 			dispatcher.forward(request, response);
 		}
