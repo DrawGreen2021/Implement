@@ -10,7 +10,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	
-	<title>CorpCollector : 기업 찾기</title>
+	<title>CorpCollector : 가족 친화 기업</title>
 </head>
 <body>
 	<!-- 헤더 파일 포함 -->
@@ -25,7 +25,7 @@
 					<p><a href="<c:url value='/findCorp/talentDevelopmentCorp.jsp'/>">인재 육성형 중소 기업</a></p>
 					<p><a href="<c:url value='/findCorp/greenCorp.jsp'/>">녹색 기업</a></p>
 					<p><a href="<c:url value='/findCorp/socialCorp.jsp'/>">사회적 기업</a></p>
-					<p><a href="<c:url value='/findCorp/familyFriendlyCorp.jsp'/>">가족 친화 기업</a></p>
+					<p><a href="<c:url value='/findCorp/familyFriendlyCorp.jsp'/>" style="color:#e1bf27; font-weight:bold;">가족 친화 기업</a></p>
 					<p><a href="<c:url value='/findCorp/youthFriendlyCorp.jsp'/>">청년 친화 강소 기업</a></p>
 				</ul>
 			</aside>

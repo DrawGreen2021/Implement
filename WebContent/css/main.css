@@ -466,3 +466,16 @@
 	border: 0px;
 	cursor: pointer;
 }
+
+/* 마이페이지 */
+/* 마이페이지 개인정보관리 div 설정 */
+.content_div_write{
+	background-color: white;
+	color:black;
+	position: relative;
+	width: 930px;
+	height:150px;
+	margin: 2% auto;
+	border:1px solid gray;
+	padding:0px;
+}

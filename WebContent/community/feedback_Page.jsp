@@ -10,7 +10,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	
-	<title>CorpCollector : 고객 후기 작성</title>
+	<title>CorpCollector : 고객 후기</title>
 </head>
 
 <body>
@@ -32,7 +32,7 @@
 		<div class="content_div">
 			<table width="1000px;" style="text-align:center; float:right;">
 				<tr>
-					<p style="font-size:16pt; color:#21499b; font-weight:bold; margin:0 82% 0 0; ">고객 후기 글쓰기</p>
+					<p style="font-size:16pt; color:#21499b; font-weight:bold; margin:0 90% 0 0; ">고객 후기</p>
 				</tr>
 				<tr>
 					<div style = "border:1px solid #21499b; margin:1% auto;"></div>
@@ -41,24 +41,29 @@
 					<table class="content_div_write">
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">제목</td>
-							<td><input type="text" autocomplete="off" class="write_input" maxlength="30"></td>
-							<td width="150px"><label><input type="checkbox" name="private_Writing" value="private_Writing" style=" text-align:left;"> 글 비공개</label></td>
+							<td colspan="3"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">작성자</td>
-							<td><input type="text" autocomplete="off" class="write_input"></td>
-							<td width="150px"><label><input type="checkbox" name="private_Writer" value="private_Writer" style="text-align:left;"> 작성자 비공개</label></td>
+							<td colspan="3"></td>
+						</tr>
+						<tr class="community_text" height="30px;">
+							<td width="100px" style="background-color:#eeedeb;">등록일</td>
+							<td width="350px"></td>
+							<td width="100px" style="background-color:#eeedeb;">조회수</td>
+							<td width="200px"></td>
+							
 						</tr>
 						<tr class="community_text">
 							<td style="background-color:#eeedeb;">내용</td>
-							<td colspan="2"><textarea class="write_input" height="100%"></textarea></td>
+							<td colspan="3"><textarea class="write_input" height="100%"></textarea></td>
 						</tr>
 					</table>
 				</tr>
 			</table>
 			<div style="float:right;">
-			<button class="writing_btn" onclick="location.href='${pageContext.request.contextPath}/community/feedback_Page.jsp'">글쓰기</button>
-			<button class="writing_btn" style="background-color:#E7F1FD;" onclick="confirm('작성을 취소하시겠습니까?')">취소</button> <!-- 취소 선택시 뒤로가기 -->
+			<button class="writing_btn" onclick="">수정</button>
+			<button class="writing_btn" style="background-color:#E7F1FD;" onclick="">목록</button> <!-- 목록으로 돌아가기 -->
 			</div>
 		</div>
 	</div>
