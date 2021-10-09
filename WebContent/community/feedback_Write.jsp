@@ -10,7 +10,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	
-	<title>CorpCollector : 공지사항 작성</title>
+	<title>CorpCollector : 고객 후기 작성</title>
 </head>
 
 <body>
@@ -23,8 +23,8 @@
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
 					<h3>커뮤니티</h3>
-					<p><a href="<c:url value='/community/notice.jsp'/>" style="color:#e1bf27; font-weight:bold;">공지사항</a></p>
-					<p><a href="<c:url value='/community/feedback.jsp'/>">고객 후기</a></p>
+					<p><a href="<c:url value='/community/notice.jsp'/>">공지사항</a></p>
+					<p><a href="<c:url value='/community/feedback.jsp'/>" style="color:#e1bf27; font-weight:bold;">고객 후기</a></p>
 				</ul>
 			</aside>
 		</div>
@@ -32,7 +32,7 @@
 		<div class="content_div">
 			<table width="1000px;" style="text-align:center; float:right;">
 				<tr>
-					<p style="font-size:16pt; color:#21499b; font-weight:bold; margin:0 82% 0 0; ">공지사항 글쓰기</p>
+					<p style="font-size:16pt; color:#21499b; font-weight:bold; margin:0 82% 0 0; ">고객 후기 글쓰기</p>
 				</tr>
 				<tr>
 					<div style = "border:1px solid #21499b; margin:1% auto;"></div>

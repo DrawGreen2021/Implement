@@ -10,7 +10,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	
-	<title>CorpCollector : 고객후기</title>
+	<title>CorpCollector : 고객 후기</title>
 </head>
 
 <body>
@@ -49,14 +49,14 @@
 				</tr>
 				<tr>
 					<table class="content_div_community">
-						<tr class="community_text">
+						<tr class="community_text" style="background-color:#eeedeb; height:30px;">
 							<td width="80px">번호</td>
 							<td width="500px">제목</td>
 							<td width="150px">작성자</td>
 							<td width="150px">등록일</td>
 							<td width="80px">조회수</td>
 						</tr>
-						<tr>
+						<tr class="community_text">
 							<td></td>
 						</tr>
 						<tr>
@@ -77,8 +77,8 @@
 					</table>
 				</tr>
 			</table>
-			<button class="writing_btn" style="margin:0 0 0 92%;" onclick="writing_Check()">글쓰기</button>
-			
+			<button class="writing_btn" style="margin:0 0 0 92%;" onclick="location.href='${pageContext.request.contextPath}/community/feedback_Write.jsp'">글쓰기</button>
+			<!-- 일단 글쓰기 가능하게 설정. 이후 권한에 따라 alert로 글쓰기 막을 것 -->
 		</div>
 	</div>
 	
