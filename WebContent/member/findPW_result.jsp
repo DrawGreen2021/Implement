@@ -27,9 +27,9 @@
 		</c:when>
 		
 		<c:otherwise>
-			<div>
+			<div class="content_div_findInfo">
 				<form method="post">
-				<table>
+				<table align="center" class="findInfo_table">
 					<tr>
 						<td>비밀번호/PW</td>
 					</tr>
@@ -44,9 +44,9 @@
 					</tr>
 				</table>
 				
-				<table>
+				<table align="center" class="signUp_btn_table">
 					<tr>
-						<td><input type="submit" id="updatePWBtn" value="비밀번호 다시 설정하기"></td>
+						<td><input type="submit" id="updatePWBtn" class="signUp_btn" value="비밀번호 다시 설정하기"></td>
 					</tr>
 				</table>
 					<input type="hidden" name="id" value="${user_id }">
