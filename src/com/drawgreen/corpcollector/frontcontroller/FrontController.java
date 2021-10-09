@@ -116,13 +116,11 @@ public class FrontController extends HttpServlet {
 			if(flag) {
 				command = new FindGreenCorpCommand(context);
 				command.execute(request, response);
-				viewPage = "greenCorp_find.jsp";
+				viewPage = "find_greenCorp.jsp";
 				flag = false;
 			} else {
 				flag = true;
-				response.sendRedirect("greenCorp_find.jsp");
 			}
-			
 		}
 
 		if (viewPage != null) {
