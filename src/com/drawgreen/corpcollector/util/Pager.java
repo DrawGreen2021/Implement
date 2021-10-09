@@ -77,13 +77,11 @@ public class Pager {
 		setLastPageNum(lastPageNum);
 		int blockStartNum = getBlockStartNum(page);
 		int blockLastNum = getBlockLastNum(page);
-		
-		int pageCount = Pager.getPagecount();
 
 		request.setAttribute("blockStartNum", blockStartNum);
 		request.setAttribute("blockLastNum", blockLastNum);
 		request.setAttribute("lastPageNum", lastPageNum);
-		request.setAttribute("pageCount", pageCount);
+
 		System.out.println("blockStartNum: "+blockStartNum);
 		System.out.println("blockLastNum: "+blockLastNum);
 		System.out.println("lastPageNum: "+lastPageNum);
