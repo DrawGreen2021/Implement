@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta name="description" content="캡스톤_01">
 	<meta name="keywords" content="HTML5, CSS, JQUERY">
-	
+
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	
 	<title>CorpCollector</title>
@@ -18,37 +18,36 @@
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!--콘텐츠 및 섹션 영역-->
-	<div class="index_table">
-		<!-- <article>
-			<header>
-				<h1>CorpCollector 인덱스 페이지</h1>
-				<p>검색바</p>
-			</header> -->
-			
-		<br><br><br><br><br>
-		<table width="800px;" style="text-align: center;">
+	<div class="index_div" style="text-align: center; ">
+		<table width="800px;" align="center;" style="margin:0 auto;">
 			<tr>
 				<td>
-					<img src="images/logo1.PNG" alt="CorpCollector" class="logo1_img" onclick="logo1_click()">
+					<a href="<c:url value='/index.jsp'/>"><img src="images/logo1.PNG" alt="CorpCollector" class="logo1_img"/></a>
 				</td>
 			
-				<table align="center" class="search_bar">
-					<tr>
-						<td>
-							<input type="text" id="findInfo_email" width="600px;" placeholder=" 검색어를 입력하세요"> <!-- 검색바 css,js 수정-->
-						</td>	
-					</tr>
-					<tr>
-						<td>
-							<button id="greenCorp">녹색 기업</button>
-						</td>
-					</tr>
-				</table>
+				<form align="center">
+					<td>
+						<input class="search_bar" type="text" id="search_keyword" width="600px;" autocomplete="off" placeholder=" 검색어를 입력하세요"> <!-- 검색바 css,js 수정-->
+					</td>	
+					<td>
+						<button class = "search_btn" type=submit onclick="location.href='${pageContext.request.contextPath}/findCorp/findCorp_main.jsp'">
+						<img src="images/search_logo.PNG" alt="search" width="58px;">
+						</button>
+					</td>
+				</form>
 			</tr>
-			
 		</table>
-			<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-		</article>
+		<br>
+		<div style = "border:1px solid #eeedeb;" width="500px;"></div>	
+		<br>
+		<div class="index_keyword" style="padding-top: 15px;">
+			<a href=".">녹색 기업 &nbsp&nbsp&nbsp&nbsp</a>
+			<a href=".">인재 육성형 중소 기업 &nbsp&nbsp&nbsp&nbsp</a>
+			<a href=".">사회적 기업 &nbsp&nbsp&nbsp&nbsp</a>
+			<a href=".">가족 친화 기업 &nbsp&nbsp&nbsp&nbsp</a>
+			<a href=".">청년 친화 강소 기업 &nbsp&nbsp&nbsp&nbsp</a>
+		</div>
+		<br><br><br>
 	</div>
 	
 	<!-- 푸터 파일 포함 -->
