@@ -47,7 +47,7 @@
 			<a href=".">가족 친화 기업 &nbsp&nbsp&nbsp&nbsp</a>
 			<a href=".">청년 친화 강소 기업 &nbsp&nbsp&nbsp&nbsp</a>
 		</div>
-		<br><br>
+		<br><br><br>
 	</div>
 	
 	<!-- 푸터 파일 포함 -->

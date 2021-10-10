@@ -49,7 +49,7 @@ public class MemberDAO {
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, id);
 			
-			ResultSet resultSet = preparedStatement.executeQuery();
+			resultSet = preparedStatement.executeQuery();
 			
 			resultSet.next();
             String result = resultSet.getString(1);
@@ -119,7 +119,7 @@ public class MemberDAO {
 			preparedStatement.setString(1, id);
 			preparedStatement.setString(2, pw);
 			
-			ResultSet resultSet = preparedStatement.executeQuery();
+			resultSet = preparedStatement.executeQuery();
 			
 			if(resultSet.next()) {
 				String nickname = resultSet.getString("nickname");
@@ -161,7 +161,7 @@ public class MemberDAO {
 			preparedStatement.setString(1, name);
 			preparedStatement.setString(2, email);
 			
-			ResultSet resultSet = preparedStatement.executeQuery();
+			resultSet = preparedStatement.executeQuery();
 			if(resultSet.next())
 				user_id = resultSet.getString("id");
 			
@@ -194,7 +194,7 @@ public class MemberDAO {
 			preparedStatement.setString(2, name);
 			preparedStatement.setString(3, email);
 			
-			ResultSet resultSet = preparedStatement.executeQuery();
+			resultSet = preparedStatement.executeQuery();
 			if(resultSet.first()) {
 				passwordCheck = true;
 			}

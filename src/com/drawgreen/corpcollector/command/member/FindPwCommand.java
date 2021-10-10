@@ -1,10 +1,11 @@
-package com.drawgreen.corpcollector.command;
+package com.drawgreen.corpcollector.command.member;
 
 import java.io.UnsupportedEncodingException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.drawgreen.corpcollector.command.Command;
 import com.drawgreen.corpcollector.dao.MemberDAO;
 
 public class FindPwCommand implements Command{

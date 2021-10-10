@@ -57,7 +57,7 @@
 				</tr>
 			</table>
 			<div style="float:right;">
-			<button class="writing_btn" onclick="location.href='${pageContext.request.contextPath}/community/feedback_Page.jsp'">글쓰기</button>
+			<button class="writing_btn" onclick="writing_Check()">글쓰기</button>
 			<button class="writing_btn" style="background-color:#E7F1FD;" onclick="confirm('작성을 취소하시겠습니까?')">취소</button> <!-- 취소 선택시 뒤로가기 -->
 			</div>
 		</div>
