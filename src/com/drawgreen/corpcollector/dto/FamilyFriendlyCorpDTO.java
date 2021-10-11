@@ -6,12 +6,12 @@ public class FamilyFriendlyCorpDTO implements CorpDTO{
 	private String division;
 	private String city_state;
 	
-	public FamilyFriendlyCorpDTO(int serial_number, String company_name, String division, String city_sate) {
+	public FamilyFriendlyCorpDTO(int serial_number, String company_name, String division, String city_state) {
 		super();
 		this.serial_number = serial_number;
 		this.company_name = company_name;
 		this.division = division;
-		this.city_state = city_sate;
+		this.city_state = city_state;
 	}
 	public int getSerial_number() {
 		return serial_number;
