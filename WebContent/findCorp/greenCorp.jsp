@@ -23,8 +23,7 @@
 				<ul style="list-style-type: none;">
 					<h3>기업 찾기</h3>
 					<p>
-						<a href="<c:url value='/findCorp/talentDevelopmentCorp.jsp'/>">인재
-							육성형 중소 기업</a>
+						<a href="<c:url value='/findCorp/talentDevelopmentCorp.jsp'/>">인재 육성형 중소 기업</a>
 					</p>
 					<p>
 						<a href="<c:url value='/findCorp/greenCorp.jsp'/>"
@@ -34,12 +33,10 @@
 						<a href="<c:url value='/findCorp/socialCorp.jsp'/>">사회적 기업</a>
 					</p>
 					<p>
-						<a href="<c:url value='/findCorp/familyFriendlyCorp.jsp'/>">가족
-							친화 기업</a>
+						<a href="<c:url value='/findCorp/familyFriendlyCorp.jsp'/>">가족 친화 기업</a>
 					</p>
 					<p>
-						<a href="<c:url value='/findCorp/youthFriendlyCorp.jsp'/>">청년
-							친화 강소 기업</a>
+						<a href="<c:url value='/findCorp/youthFriendlyCorp.jsp'/>">청년 친화 강소 기업</a>
 					</p>
 				</ul>
 			</aside>
@@ -132,7 +129,7 @@
 
 								<c:if test="${startNum > 1}">
 									<span><a
-										href='FindGreenCorp.do?page=${startNum - pageCount}&keyword=${param.keyword}'>이전</a>
+										href='FindCorp.do?corpType=${param.corpType }&page=${startNum - pageCount}&keyword=${param.keyword}'>이전</a>
 									</span>
 								</c:if>
 								<c:if test="${startNum <= 1}">
@@ -144,14 +141,14 @@
 										end="${lastNum }">
 										<c:if test="${num <= lastPageNum }">
 											<a
-												href='FindGreenCorp.do?page=${num}&keyword=${param.keyword }'>${num}</a>
+												href='FindCorp.do?corpType=${param.corpType }&page=${num}&keyword=${param.keyword }'>${num}</a>
 										</c:if>
 									</c:forEach>
 								</span>
 
 								<c:if test="${(startNum + pageCount -1) < lastPageNum }">
 									<span> <a
-										href='FindGreenCorp.do?page=${startNum + pageCount}&keyword=${param.keyword}'>다음</a>
+										href='FindCorp.do?corpType=${param.corpType }&page=${startNum + pageCount}&keyword=${param.keyword}'>다음</a>
 									</span>
 								</c:if>
 								<c:if test="${(startNum + pageCount -1) >= lastPageNum }">
@@ -160,7 +157,7 @@
 
 							</c:when>
 
-							<%-- 처음에 기업 리스트의 값이 아무것도 없으면 findGreenCorp.do 액션 수행 --%>
+							<%-- 처음에 기업 리스트의 값이 아무것도 없으면 findCorp.do 액션 수행 --%>
 							<c:otherwise>
 								<script>
 								document.getElementById('findCorp').submit();
@@ -186,16 +183,6 @@
 
 	<!-- 자바 스크립트 파일 외부 참조 -->
 	<script type="text/javascript" src="../JavaScript/common.js"></script>
-	<script type="text/javascript">
-	function resetKeyword() {
-		var form = document.findCorp;
-		var noKeyword = "";
-		
-		form.keyword.value = noKeyword;
-		form.action = "FindCorp.do";
-		form.method = "get";
-		form.submit();
-	}
-	</script>
+	<script type="text/javascript" src='<c:url value="/JavaScript/findCorp_common.js"/>'></script>
 </body>
 </html>

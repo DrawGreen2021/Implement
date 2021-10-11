@@ -8,7 +8,7 @@
 <meta name="description" content="캡스톤_01">
 <meta name="keywords" content="HTML5, CSS, JQUERY">
 
-<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href='<c:url value="/css/main.css"/>'>
 
 <title>CorpCollector : 인재 육성형 중소 기업</title>
 </head>
@@ -54,10 +54,10 @@
 					<table width="900px;"
 						style="text-align: center; margin: 0 auto; position: relative;">
 						<tr>
-							<form align="center" action="FindTalentDevelopmentCorp.do"
-								method="get" name="findTalentDevelopmentCorp"
-								id="findTalentDevelopmentCorp">
-								<td><input type="hidden" name="page" value="1"> <input
+							<form align="center" action="FindCorp.do"
+								method="get" name="findCorp" id="findCorp">
+								<td><input type="hidden" name="corpType" value="talentDevelopmentCorp">
+									<input type="hidden" name="page" value="1"> <input
 									class="search_bar" type="text" id="search_keyword"
 									autocomplete="off" placeholder=" 검색어를 입력하세요" name="keyword"
 									value="${(param.keyword==undefined)?'':param.keyword}">
@@ -78,12 +78,12 @@
 						<c:choose>
 							<%-- 기업 리스트가 null이면 검색 결과가 없다고 표시 --%>
 							<c:when
-								test="${requestScope.talentDevelopmentCorpList == 'noResult' }">
+								test="${requestScope.corpList == 'noResult' }">
 								검색 결과가 없습니다.
 							</c:when>
 
 							<%-- 기업 리스트가 존재하면 출력해주는 테이블 생성 --%>
-							<c:when test="${not empty requestScope.talentDevelopmentCorpList }">
+							<c:when test="${not empty requestScope.corpList }">
 
 								<table cellpadding="0" cellspacing="0" border="1">
 
@@ -94,7 +94,7 @@
 										<td>주소</td>
 										<td>주생산품</td>
 									</tr>
-									<c:forEach items="${requestScope.talentDevelopmentCorpList }"
+									<c:forEach items="${requestScope.corpList }"
 										var="dto">
 										<tr>
 											<td>☆</td>
@@ -120,7 +120,7 @@
 
 								<c:if test="${startNum > 1}">
 									<span><a
-										href='FindTalentDevelopmentCorp.do?page=${startNum - pageCount}&keyword=${param.keyword}'>이전</a>
+										href='FindCorp.do?corpType=${param.corpType }&page=${startNum - pageCount}&keyword=${param.keyword}'>이전</a>
 									</span>
 								</c:if>
 								<c:if test="${startNum <= 1}">
@@ -132,14 +132,14 @@
 										end="${lastNum }">
 										<c:if test="${num <= lastPageNum }">
 											<a
-												href='FindTalentDevelopmentCorp.do?page=${num}&keyword=${param.keyword }'>${num}</a>
+												href='FindCorp.do?corpType=${param.corpType }&page=${num}&keyword=${param.keyword }'>${num}</a>
 										</c:if>
 									</c:forEach>
 								</span>
 
 								<c:if test="${(startNum + pageCount -1) < lastPageNum }">
 									<span> <a
-										href='FindTalentDevelopmentCorp.do?page=${startNum + pageCount}&keyword=${param.keyword}'>다음</a>
+										href='FindCorp.do?corpType=${param.corpType }&page=${startNum + pageCount}&keyword=${param.keyword}'>다음</a>
 									</span>
 								</c:if>
 								<c:if test="${(startNum + pageCount -1) >= lastPageNum }">
@@ -148,11 +148,10 @@
 
 							</c:when>
 
-							<%-- 처음에 기업 리스트의 값이 아무것도 없으면 findGreenCorp.do 액션 수행 --%>
+							<%-- 처음에 기업 리스트의 값이 아무것도 없으면 findCorp.do 액션 수행 --%>
 							<c:otherwise>
 								<script>
-									document.getElementById(
-											'findTalentDevelopmentCorp').submit();
+									document.getElementById('findCorp').submit();
 								</script>
 							</c:otherwise>
 
@@ -175,16 +174,6 @@
 
 	<!-- 자바 스크립트 파일 외부 참조 -->
 	<script type="text/javascript" src="../JavaScript/common.js"></script>
-	<script type="text/javascript">
-	function resetKeyword() {
-		var form = document.findTalentDevelopmentCorp;
-		var noKeyword = "";
-		
-		form.keyword.value = noKeyword;
-		form.action = "FindTalentDevelopmentCorp.do";
-		form.method = "get";
-		form.submit();
-	}
-	</script>
+	<script type="text/javascript" src='<c:url value="/JavaScript/findCorp_common.js"/>'></script>
 </body>
 </html>
