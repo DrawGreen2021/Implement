@@ -7,9 +7,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import com.drawgreen.corpcollector.dto.GreenCorpDTO;
+import com.drawgreen.corpcollector.dto.YouthFriendlyCorpDTO;
 
-public class GreenCorpDAO implements CorpDAO {
+public class YouthFriendlyCorpDAO implements CorpDAO{
 	private Connection connection = null;
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
@@ -23,23 +23,24 @@ public class GreenCorpDAO implements CorpDAO {
 	// 키워드 값을 저장할 변수
 	private String beforeKeyword;
 
-	private GreenCorpDAO() {
+	private YouthFriendlyCorpDAO() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			pageRowCount = 10;
-			allRowCount = getRowCount("녹색기업");
+			allRowCount = getRowCount("청년친화강소기업");
 			serialNums = new ArrayList<Integer>();
 		} catch (Exception e) {
+			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}
 
 	private static class InnerInstance_CorpDAO {
-		private static final GreenCorpDAO greenCorpDAO = new GreenCorpDAO();
+		private static final YouthFriendlyCorpDAO youthFriendlyCorpDAO = new YouthFriendlyCorpDAO();
 	}
 
-	public static GreenCorpDAO getInstance() {
-		return InnerInstance_CorpDAO.greenCorpDAO;
+	public static YouthFriendlyCorpDAO getInstance() {
+		return InnerInstance_CorpDAO.youthFriendlyCorpDAO;
 	}
 
 	public int getAllRowCount() {
@@ -86,9 +87,9 @@ public class GreenCorpDAO implements CorpDAO {
 	}
 
 	// 검색 키워드가 없다면 연번으로 행 개수만큼 불러오기
-	public ArrayList<GreenCorpDTO> getCorpList(int page) {
-		ArrayList<GreenCorpDTO> greenCorpDTOs = new ArrayList<GreenCorpDTO>();
-		String query = "SELECT * FROM 녹색기업 WHERE 연번 BETWEEN ? AND ?";
+	public ArrayList<YouthFriendlyCorpDTO> getCorpList(int page) {
+		ArrayList<YouthFriendlyCorpDTO> youthFriendlyCorpDTOs = new ArrayList<YouthFriendlyCorpDTO>();
+		String query = "SELECT * FROM 청년친화강소기업 WHERE 연번 BETWEEN ? AND ?";
 
 		try {
 			connection = DriverManager.getConnection(url, userId, userPw);
@@ -101,13 +102,16 @@ public class GreenCorpDAO implements CorpDAO {
 
 			while (resultSet.next()) {
 				int serial_number = resultSet.getInt("연번");
-				String company_name = resultSet.getString("업체명");
+				String company_name = resultSet.getString("사업장명");
 				String location = resultSet.getString("소재지");
 				String sector = resultSet.getString("업종");
-				String site = resultSet.getString("사이트주소");
-
-				GreenCorpDTO dto = new GreenCorpDTO(serial_number, company_name, location, sector, site);
-				greenCorpDTOs.add(dto);
+				String best_wage = resultSet.getString("BEST 선정 분야-임금");
+				String best_balance = resultSet.getString("BEST 선정 분야-일생활균형");
+				String best_employ = resultSet.getString("BEST 선정 분야-고용안정");
+				
+				YouthFriendlyCorpDTO dto = new YouthFriendlyCorpDTO(serial_number, company_name, location,
+						sector, best_wage, best_balance, best_employ);
+				youthFriendlyCorpDTOs.add(dto);
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -126,13 +130,13 @@ public class GreenCorpDAO implements CorpDAO {
 			}
 		}
 
-		return greenCorpDTOs;
+		return youthFriendlyCorpDTOs;
 	}
 
 	// 검색어가 있을 경우 기업 리스트 받아오기
-	public ArrayList<GreenCorpDTO> getCorpList(String keyword, int page) {
+	public ArrayList<YouthFriendlyCorpDTO> getCorpList(String keyword, int page) {
 		// TODO Auto-generated method stub
-		ArrayList<GreenCorpDTO> greenCorpDTOs = new ArrayList<GreenCorpDTO>();
+		ArrayList<YouthFriendlyCorpDTO> youthFriendlyCorpDTOs = new ArrayList<YouthFriendlyCorpDTO>();
 
 		// 검색어가 달라졌으면 해당 연번 다시 select
 		if (beforeKeyword == null) {
@@ -146,8 +150,8 @@ public class GreenCorpDAO implements CorpDAO {
 		if (serialNums.size() == 0) {
 			return null;
 		}
-
-		String getCorpListQuery = "SELECT * FROM 녹색기업 " + "WHERE 연번 IN(";
+			
+		String getCorpListQuery = "SELECT * FROM 청년친화강소기업 " + "WHERE 연번 IN(";
 		// 0~9, 10~19 ...
 		int startNum = page * pageRowCount - pageRowCount;
 		int lastNum = page * pageRowCount;
@@ -169,18 +173,21 @@ public class GreenCorpDAO implements CorpDAO {
 
 			while (resultSet.next()) {
 				int serial_number = resultSet.getInt("연번");
-				String company_name = resultSet.getString("업체명");
+				String company_name = resultSet.getString("사업장명");
 				String location = resultSet.getString("소재지");
 				String sector = resultSet.getString("업종");
-				String site = resultSet.getString("사이트주소");
+				String best_wage = resultSet.getString("BEST 선정 분야-임금");
+				String best_balance = resultSet.getString("BEST 선정 분야-일생활균형");
+				String best_employ = resultSet.getString("BEST 선정 분야-고용안정");
 
-				GreenCorpDTO dto = new GreenCorpDTO(serial_number, company_name, location, sector, site);
-				greenCorpDTOs.add(dto);
+				YouthFriendlyCorpDTO dto = new YouthFriendlyCorpDTO(serial_number, company_name, location,
+						sector, best_wage, best_balance, best_employ);
+				youthFriendlyCorpDTOs.add(dto);
 			}
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			greenCorpDTOs = null;
+			youthFriendlyCorpDTOs = null;
 		} finally {
 			try {
 				if (connection != null)
@@ -195,7 +202,7 @@ public class GreenCorpDAO implements CorpDAO {
 			}
 		}
 
-		return greenCorpDTOs;
+		return youthFriendlyCorpDTOs;
 	}
 
 	// 검색 키워드가 존재하는 행의 연번 알아오기
@@ -204,7 +211,7 @@ public class GreenCorpDAO implements CorpDAO {
 		// 키워드 공백으로 분리
 		StringTokenizer tokenizer = new StringTokenizer(keyword);
 
-		String query = "SELECT 연번 FROM greenCorp_view " + "WHERE text REGEXP('";
+		String query = "SELECT 연번 FROM youthFriendlyCorp_view " + "WHERE text REGEXP('";
 		StringBuffer buffer = new StringBuffer(query);
 		buffer.append(tokenizer.nextToken() + "'");
 		while (tokenizer.hasMoreTokens()) {

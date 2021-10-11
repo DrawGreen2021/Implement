@@ -295,6 +295,17 @@
 	margin-left:10px;
 }
 
+.index_keyword button{
+	weight:800px;
+	height:60px;
+	font-size:11pt; 
+	color:#21499b; 
+	font-weight:bold; 
+	text-decoration:none; 
+	font-family:dotum; 
+	margin-left:10px;
+}
+
 /* 메뉴바 버튼 설정 */
 .menu_btn{
 	width:230px;

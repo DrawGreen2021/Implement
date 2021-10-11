@@ -1,19 +1,24 @@
 package com.drawgreen.corpcollector.dto;
 
-public class GreenCorpDTO implements CorpDTO{
+public class YouthFriendlyCorpDTO implements CorpDTO{
 	private int serial_number;
 	private String company_name;
 	private String location;
 	private String sector;
-	private String site;
+	private String best_wage;
+	private String best_balance;
+	private String best_employ;
 	
-	public GreenCorpDTO(int serial_number, String company_name, String location, String sector, String site) {
+	public YouthFriendlyCorpDTO(int serial_number, String company_name, String location, String sector,
+			String best_wage, String best_balance, String best_employ) {
 		super();
 		this.serial_number = serial_number;
 		this.company_name = company_name;
 		this.location = location;
 		this.sector = sector;
-		this.site = site;
+		this.best_wage = best_wage;
+		this.best_balance = best_balance;
+		this.best_employ = best_employ;
 	}
 
 	public int getSerial_number() {
@@ -48,13 +53,28 @@ public class GreenCorpDTO implements CorpDTO{
 		this.sector = sector;
 	}
 
-	public String getSite() {
-		return site;
+	public String getBest_wage() {
+		return best_wage;
 	}
 
-	public void setSite(String site) {
-		this.site = site;
+	public void setBest_wage(String best_wage) {
+		this.best_wage = best_wage;
 	}
-	
+
+	public String getBest_balance() {
+		return best_balance;
+	}
+
+	public void setBest_balance(String best_balance) {
+		this.best_balance = best_balance;
+	}
+
+	public String getBest_employ() {
+		return best_employ;
+	}
+
+	public void setBest_employ(String best_employ) {
+		this.best_employ = best_employ;
+	}
 	
 }

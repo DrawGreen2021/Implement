@@ -2,16 +2,15 @@ package com.drawgreen.corpcollector.command.findCorp;
 
 import java.util.ArrayList;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.drawgreen.corpcollector.command.Command;
-import com.drawgreen.corpcollector.dao.GreenCorpDAO;
-import com.drawgreen.corpcollector.dto.GreenCorpDTO;
+import com.drawgreen.corpcollector.dao.YouthFriendlyCorpDAO;
+import com.drawgreen.corpcollector.dto.YouthFriendlyCorpDTO;
 import com.drawgreen.corpcollector.util.Pager;
 
-public class FindGreenCorpCommand implements Command{
+public class FindYouthFriendlyCorpCommand implements Command{
 	Pager pager = new Pager();
 	
 	@Override
@@ -21,8 +20,8 @@ public class FindGreenCorpCommand implements Command{
 		String page_str = request.getParameter("page");
 		int page = Integer.parseInt(page_str);
 		
-		GreenCorpDAO dao = GreenCorpDAO.getInstance();
-		ArrayList<GreenCorpDTO> corpList = null;
+		YouthFriendlyCorpDAO dao = YouthFriendlyCorpDAO.getInstance();
+		ArrayList<YouthFriendlyCorpDTO> corpList = null;
 		int rowCount = 0;
 		
 		// 키워드 없을 때
@@ -38,13 +37,12 @@ public class FindGreenCorpCommand implements Command{
 		
 		// 검색 결과가 null이 아니라면 request에 corpList 저장 후 페이지 번호 설정
 		if (corpList != null) {
-			request.setAttribute("GreeenCorpList", corpList);
+			request.setAttribute("youthFriendlyCorpList", corpList);
 			pager.setNumbers(page, rowCount, request, response);
 		}	
 		else {
-			request.setAttribute("GreeenCorpList", "noResult");
+			request.setAttribute("youthFriendlyCorpList", "noResult");
 		}
-			
 	}
-	
+
 }
