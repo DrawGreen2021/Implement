@@ -17,7 +17,7 @@
 				</form>
 				<a href="javascript:logoutDo()">로그아웃</a>
 			</nav>
-			<table width=1200px; style="text-align:center;">
+			<table style="text-align:center; width:1200px;">
 				<tr>
 					<td><button class="menu_btn" onclick="location.href='${pageContext.request.contextPath}/service/service_Summary.jsp'">서비스 소개</button></td>
 					<td><button class="menu_btn" onclick="location.href='${pageContext.request.contextPath}/findCorp/findCorp_main.jsp'">기업 찾기</button></td>
@@ -40,11 +40,11 @@
 			
 			<!-- 네비게이션(메뉴) 영역-->
 			<nav class="nav">
-				<a href="<c:url value='/index.jsp'/>" style="float:left;"></a><img src="<c:url value='/images/logo2.PNG'/>" alt="CorpCollector" class="nav_logo"></a>
+				<a href="<c:url value='/index.jsp'/>" style="float:left;"><img src="<c:url value='/images/logo2.PNG'/>" alt="CorpCollector" class="nav_logo"></a>
 				<a href="<c:url value='/member/login_main.jsp'/>" style="margin-left : 58%; float:left;">로그인</a>
 				<a href="<c:url value='/member/signUp.jsp'/>">회원가입</a>
 			</nav>
-			<table width=1200px; style="text-align:center;">
+			<table style="text-align:center; width:1200px;">
 				<tr>
 					<td><button class="menu_btn" onclick="location.href='${pageContext.request.contextPath}/service/service_Summary.jsp'">서비스 소개</button></td>
 					<td><button class="menu_btn" onclick="location.href='${pageContext.request.contextPath}/findCorp/findCorp_main.jsp'">기업 찾기</button></td>
