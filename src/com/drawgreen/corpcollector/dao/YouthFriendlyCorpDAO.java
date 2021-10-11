@@ -95,7 +95,8 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 			connection = DriverManager.getConnection(url, userId, userPw);
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, 1 + (page * pageRowCount - pageRowCount));
-			preparedStatement.setInt(2, page * pageRowCount);
+			preparedStatement.setInt(2, page*pageRowCount < allRowCount?
+					page*pageRowCount:allRowCount);
 
 			resultSet = preparedStatement.executeQuery();
 
@@ -145,7 +146,11 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 			serialNums.clear();
 			serialNums = getSerialNumQuery(keyword, serialNums);
 		}
-
+		
+		if (serialNums.size() == 0) {
+			return null;
+		}
+			
 		String getCorpListQuery = "SELECT * FROM 청년친화강소기업 " + "WHERE 연번 IN(";
 		// 0~9, 10~19 ...
 		int startNum = page * pageRowCount - pageRowCount;
@@ -153,11 +158,10 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 
 		StringBuilder builder = new StringBuilder(getCorpListQuery);
 
-		for (int i = startNum; i < lastNum && i < serialNums.size(); i++) {
-			builder.append(serialNums.get(i));
-
-			if (i < lastNum - 1)
-				builder.append(",");
+		builder.append(serialNums.get(startNum));
+		for (int i = startNum+1; i < lastNum && i < serialNums.size(); i++) {
+			builder.append(",");
+			builder.append(serialNums.get(i));	
 		}
 		builder.append(")");
 		getCorpListQuery = builder.toString();
