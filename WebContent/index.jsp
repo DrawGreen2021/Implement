@@ -27,14 +27,14 @@
 			
 				<form action="FindCorp.do" method="get" align="center">
 					<td>
+						<input type="hidden" id="corpType" name="corpType" value="all">
+						<input type="hidden" name="page" value="1">
 						<input class="search_bar" type="text" id="search_keyword" name="keyword" width="600px;" autocomplete="off" placeholder=" 검색어를 입력하세요"> <!-- 검색바 css,js 수정-->
 					</td>	
 					<td>
 						<button class = "search_btn" type="submit">
 						<img src="images/search_logo.PNG" alt="search" width="58px;">
 						</button>
-						<input type="hidden" id="corpType" name="corpType" value="all">
-						<input type="hidden" name="page" value="1">
 					</td>
 				</form>
 			</tr>
