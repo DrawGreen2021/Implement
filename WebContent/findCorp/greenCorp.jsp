@@ -57,9 +57,10 @@
 					<table width="900px;"
 						style="text-align: center; margin: 0 auto; position: relative;">
 						<tr>
-							<form align="center" action="FindGreenCorp.do" method="get"
-								name="findGreenCorp" id="findGreenCorp">
-								<td><input type="hidden" name="page" value="1">
+							<form align="center" action="FindCorp.do" method="get"
+								name="findCorp" id="findCorp">
+								<td><input type="hidden" name="corpType" value="greenCorp">
+									<input type="hidden" name="page" value="1">
 									<input class="search_bar" type="text"
 									id="search_keyword" autocomplete="off"
 									placeholder=" 검색어를 입력하세요" name="keyword"
@@ -82,12 +83,12 @@
 						<!-- 기업 리스트 출력 -->
 						<c:choose>
 							<%-- 기업 리스트가 null이면 검색 결과가 없다고 표시 --%>
-							<c:when test="${requestScope.GreeenCorpList == 'noResult' }">
+							<c:when test="${requestScope.corpList == 'noResult' }">
 								검색 결과가 없습니다.
 							</c:when>
 
 							<%-- 기업 리스트가 존재하면 출력해주는 테이블 생성 --%>
-							<c:when test="${not empty requestScope.GreeenCorpList }">
+							<c:when test="${not empty requestScope.corpList }">
 
 								<table cellpadding="0" cellspacing="0" border="1">
 
@@ -98,7 +99,7 @@
 										<td>업종</td>
 										<td>사이트주소</td>
 									</tr>
-									<c:forEach items="${requestScope.GreeenCorpList }" var="dto">
+									<c:forEach items="${requestScope.corpList }" var="dto">
 										<tr>
 											<td>☆</td>
 											<td><a>${dto.company_name }</a></td>
@@ -162,7 +163,7 @@
 							<%-- 처음에 기업 리스트의 값이 아무것도 없으면 findGreenCorp.do 액션 수행 --%>
 							<c:otherwise>
 								<script>
-								document.getElementById('findGreenCorp').submit();
+								document.getElementById('findCorp').submit();
 								</script>
 							</c:otherwise>
 
@@ -187,11 +188,11 @@
 	<script type="text/javascript" src="../JavaScript/common.js"></script>
 	<script type="text/javascript">
 	function resetKeyword() {
-		var form = document.findGreenCorp;
+		var form = document.findCorp;
 		var noKeyword = "";
 		
 		form.keyword.value = noKeyword;
-		form.action = "FindGreenCorp.do";
+		form.action = "FindCorp.do";
 		form.method = "get";
 		form.submit();
 	}

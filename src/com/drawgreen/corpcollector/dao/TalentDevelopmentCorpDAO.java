@@ -1,13 +1,22 @@
 package com.drawgreen.corpcollector.dao;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 import com.drawgreen.corpcollector.dto.TalentDevelopmentCorpDTO;
 
 
-public class TalentDevelopmentCorpDAO extends CorpDAO{
+public class TalentDevelopmentCorpDAO implements CorpDAO{
+	private Connection connection = null;
+	private PreparedStatement preparedStatement = null;
+	private ResultSet resultSet = null;
+	private String userId = "general_user_id";
+	private String userPw = "general_user_password";
+	private String url = "jdbc:mysql://corpcollector.ciqetekukvwo.ap-northeast-2.rds.amazonaws.com:3306/Corp";
 	private int allRowCount;
 	private int pageRowCount;
 	// 키워드 검색 결과에 해당하는 연번을 저장할 리스트
@@ -40,6 +49,41 @@ public class TalentDevelopmentCorpDAO extends CorpDAO{
 
 	public void setAllRowCount(int allRowCount) {
 		this.allRowCount = allRowCount;
+	}
+	
+	// 전체 테이블 행 개수 가져오기
+	@Override
+	public int getRowCount(String corpType) {
+		// TODO Auto-generated method stub
+		int rowCount = 0;
+		String query = "SELECT count(*) FROM " + corpType;
+
+		try {
+			connection = DriverManager.getConnection(url, userId, userPw);
+			preparedStatement = connection.prepareStatement(query);
+			resultSet = preparedStatement.executeQuery();
+
+			resultSet.next();
+			rowCount = resultSet.getInt(1);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (resultSet != null)
+					resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+
+		return rowCount;
 	}
 	
 	// 검색 키워드가 없다면 연번으로 행 개수만큼 불러오기
@@ -189,4 +233,5 @@ public class TalentDevelopmentCorpDAO extends CorpDAO{
 	public int getRowCount_byKeyword() {
 		return serialNums.size();
 	}
+
 }

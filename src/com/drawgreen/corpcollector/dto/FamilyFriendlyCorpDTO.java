@@ -1,6 +1,6 @@
 package com.drawgreen.corpcollector.dto;
 
-public class FamilyFriendlyCorpDTO {
+public class FamilyFriendlyCorpDTO implements CorpDTO{
 	private int serial_number;
 	private String company_name;
 	private String division;

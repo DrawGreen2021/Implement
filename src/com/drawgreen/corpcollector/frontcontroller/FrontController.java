@@ -1,6 +1,7 @@
 package com.drawgreen.corpcollector.frontcontroller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.drawgreen.corpcollector.command.Command;
+import com.drawgreen.corpcollector.command.findCorp.FindCorpCommand;
 import com.drawgreen.corpcollector.command.findCorp.FindFamilyFriendlyCorpCommand;
 import com.drawgreen.corpcollector.command.findCorp.FindGreenCorpCommand;
 import com.drawgreen.corpcollector.command.findCorp.FindTalentDevelopmentCorpCommand;
@@ -113,6 +115,28 @@ public class FrontController extends HttpServlet {
 		}
 		
 		/*----- 기업 찾기 -----*/
+		else if(com.equals("FindCorp.do")) {
+			String servletPath = request.getServletPath();
+			String url[] = request.getRequestURI().split("/");
+			String path = url[url.length-1];
+			
+			if(flag) {
+				command = new FindCorpCommand();
+				command.execute(request, response);
+				
+				if(servletPath.equals("/FindCorp.do")) {
+					viewPage = "findCorp/greenCorp.jsp";
+				} else {
+					viewPage = "greenCorp.jsp";
+				}
+				flag = false;
+			}
+			else {
+				flag = true;
+			}
+			
+		}
+		
 		else if(com.equals("FindGreenCorp.do")) {
 			if(flag) {
 				command = new FindGreenCorpCommand();

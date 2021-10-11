@@ -1,6 +1,6 @@
 package com.drawgreen.corpcollector.dto;
 
-public class TalentDevelopmentCorpDTO {
+public class TalentDevelopmentCorpDTO implements CorpDTO{
 	private int serial_number;
 	private String company_name;
 	private String representative;
