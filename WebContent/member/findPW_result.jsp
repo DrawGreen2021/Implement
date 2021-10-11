@@ -28,6 +28,7 @@
 		
 		<c:otherwise>
 			<div class="content_div_findInfo">
+			<br>
 				<form method="post">
 				<table align="center" class="findInfo_table">
 					<tr>
@@ -44,11 +45,12 @@
 					</tr>
 				</table>
 				
-				<table align="center" class="signUp_btn_table">
+				<table align="center" class="findInfo_btn_table">
 					<tr>
-						<td><input type="submit" id="updatePWBtn" class="signUp_btn" value="비밀번호 다시 설정하기"></td>
+						<td><input type="submit" id="updatePWBtn" class="findInfo_btn" value="비밀번호 다시 설정하기"></td>
 					</tr>
 				</table>
+				<br>
 					<input type="hidden" name="id" value="${user_id }">
 				</form>
 			</div>
