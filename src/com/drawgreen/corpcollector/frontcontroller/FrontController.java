@@ -1,11 +1,9 @@
 package com.drawgreen.corpcollector.frontcontroller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,7 +32,6 @@ import com.drawgreen.corpcollector.command.member.UpdatePwCommand;
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static boolean flag = true;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -117,83 +114,58 @@ public class FrontController extends HttpServlet {
 		/*----- 기업 찾기 -----*/
 		else if(com.equals("FindCorp.do")) {
 			String servletPath = request.getServletPath();
-			String url[] = request.getRequestURI().split("/");
-			String path = url[url.length-1];
+			String corpType = request.getParameter("corpType");
 			
-			if(flag) {
-				command = new FindCorpCommand();
-				command.execute(request, response);
-				
-				if(servletPath.equals("/FindCorp.do")) {
-					viewPage = "findCorp/greenCorp.jsp";
-				} else {
-					viewPage = "greenCorp.jsp";
-				}
-				flag = false;
-			}
-			else {
-				flag = true;
-			}
+			command = new FindCorpCommand();
+			command.execute(request, response);
 			
-		}
-		
-		else if(com.equals("FindGreenCorp.do")) {
-			if(flag) {
-				command = new FindGreenCorpCommand();
-				command.execute(request, response);
-				
-				String servletPath = request.getServletPath();
-				if(servletPath.equals("/FindGreenCorp.do")) {
+			if(servletPath.equals("/FindCorp.do")) {
+				switch (corpType) {
+				case "greenCorp":
 					viewPage = "findCorp/greenCorp.jsp";
-				} else {
-					viewPage = "greenCorp.jsp";
-				}
-				flag = false;
-			}
-			else flag = true;
-		}
-		
-		else if(com.equals("FindTalentDevelopmentCorp.do")) {
-			if(flag) {
-				command = new FindTalentDevelopmentCorpCommand();
-				command.execute(request, response);
-				
-				String servletPath = request.getServletPath();
-				if(servletPath.equals("/FindTalentDevelopmentCorp.do")) {
+					break;
+				case "talentDevelopmentCorp":
 					viewPage = "findCorp/talentDevelopmentCorp.jsp";
-				} else {
-					viewPage = "talentDevelopmentCorp.jsp";
+					break;
+				case "socialCorp":
+					viewPage = "findCorp/socialCorp.jsp";
+					break;
+				case "familyFriendlyCorp":
+					viewPage = "findCorp/familyFriendlyCorp.jsp";
+					break;
+				case "youthFriendlyCorp":
+					viewPage = "findCorp/youthFriendlyCorp.jsp";
+					break;
+				default:
+					viewPage = "findCorp/findCorp_main.jsp";
+					break;
 				}
-				flag = false;
 			}
 			else {
-				flag = true;
+				switch (corpType) {
+				case "greenCorp":
+					viewPage = "greenCorp.jsp";
+					break;
+				case "talentDevelopmentCorp":
+					viewPage = "talentDevelopmentCorp.jsp";
+					break;
+				case "socialCorp":
+					viewPage = "socialCorp.jsp";
+					break;
+				case "familyFriendlyCorp":
+					viewPage = "familyFriendlyCorp.jsp";
+					break;
+				case "youthFriendlyCorp":
+					viewPage = "youthFriendlyCorp.jsp";
+					break;
+				default:
+					viewPage = "findCorp_main.jsp";
+					break;
+				}
 			}
+			
 		}
 		
-		else if(com.equals("FindFamilyFriendlyCorp.do")) {
-			command = new FindFamilyFriendlyCorpCommand();
-			command.execute(request, response);
-			
-			String servletPath = request.getServletPath();
-			if(servletPath.equals("/FindFamilyFriendlyCorp.do")) {
-				viewPage = "findCorp/familyFriendlyCorp.jsp";
-			} else {
-				viewPage = "familyFriendlyCorp.jsp";
-			}
-		}
-		
-		else if(com.equals("FindYouthFriendlyCorp.do")) {
-			command = new FindYouthFriendlyCorpCommand();
-			command.execute(request, response);
-			
-			String servletPath = request.getServletPath();
-			if(servletPath.equals("/FindYouthFriendlyCorp.do")) {
-				viewPage = "findCorp/youthFriendlyCorp.jsp";
-			} else {
-				viewPage = "youthFriendlyCorp.jsp";
-			}
-		}
 
 		if (viewPage != null) {
 			
