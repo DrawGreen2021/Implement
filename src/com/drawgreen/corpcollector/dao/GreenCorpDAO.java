@@ -7,19 +7,20 @@ import java.util.StringTokenizer;
 import com.drawgreen.corpcollector.dto.GreenCorpDTO;
 
 
-public class GreenCorpDAO extends CorpDAO {
-	private boolean allSearched;
+public class GreenCorpDAO extends CorpDAO{
+	private int allRowCount;
 	private int pageRowCount;
-	//키워드 검색 결과에 해당하는 연번을 저장할 배열
-	private ArrayList<Integer> serialNums = new ArrayList<Integer>();
-	//키워드 값을 저장할 변수
+	// 키워드 검색 결과에 해당하는 연번을 저장할 리스트
+	private ArrayList<Integer> serialNums;
+	// 키워드 값을 저장할 변수
 	private String beforeKeyword;
 
 	private GreenCorpDAO() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			allSearched = false;
 			pageRowCount = 10;
+			allRowCount = getRowCount("녹색기업");
+			serialNums = new ArrayList<Integer>();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -33,12 +34,12 @@ public class GreenCorpDAO extends CorpDAO {
 		return InnerInstance_CorpDAO.greenCorpDAO;
 	}
 	
-	public boolean isAllSearched() {
-		return allSearched;
+	public int getAllRowCount() {
+		return allRowCount;
 	}
 
-	public void setAllSearched(boolean allSearched) {
-		this.allSearched = allSearched;
+	public void setAllRowCount(int allRowCount) {
+		this.allRowCount = allRowCount;
 	}
 	
 	// 검색 키워드가 없다면 연번으로 행 개수만큼 불러오기
@@ -84,11 +85,12 @@ public class GreenCorpDAO extends CorpDAO {
 		return greenCorpDTOs;
 	}
 
+	// 검색어가 있을 경우 기업 리스트 받아오기
 	public ArrayList<GreenCorpDTO> getCorpList(String keyword, int page) {
 		// TODO Auto-generated method stub
 		ArrayList<GreenCorpDTO> greenCorpDTOs = new ArrayList<GreenCorpDTO>();
 		
-		//검색어가 달라졌으면 해당 연번 다시 select
+		// 검색어가 달라졌으면 해당 연번 다시 select
 		if (beforeKeyword == null) {
 			beforeKeyword = keyword;
 			serialNums = getSerialNumQuery(keyword, serialNums);
@@ -155,7 +157,7 @@ public class GreenCorpDAO extends CorpDAO {
 	// 검색 키워드가 존재하는 행의 연번 알아오기
 	public ArrayList<Integer> getSerialNumQuery(String keyword, ArrayList<Integer> serialNums) {
 		
-		//키워드 공백으로 분리
+		// 키워드 공백으로 분리
 		StringTokenizer tokenizer = new StringTokenizer(keyword);
 		
 		String query = "SELECT 연번 FROM greenCorp_view "
