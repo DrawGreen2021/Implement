@@ -11,7 +11,7 @@
 			<!-- 네비게이션(메뉴) 영역-->
 			<nav class="nav">
 				<a href="<c:url value='/index.jsp'/>" style="float:left;"><img src="<c:url value='/images/logo2.PNG'/>" alt="CorpCollector" class="nav_logo"></a>
-				<a href="." style="margin-left : 57%; float:left;">${sessionScope.MemberDTO.name}님</a> <!-- 마이페이지 -->
+				<a href="<c:url value='/myPage/personalInformation.jsp'/>" style="margin-left : 57%; float:left;">${sessionScope.MemberDTO.name}님</a> <!-- 마이페이지 -->
 				<form name="passBeforeUrl">
 					<input type="hidden" name="beforeUrl">
 				</form>
@@ -23,7 +23,7 @@
 					<td><button class="menu_btn" onclick="location.href='${pageContext.request.contextPath}/findCorp/findCorp_main.jsp'">기업 찾기</button></td>
 					<td><button class="menu_btn">정보 나눔</button></td>
 					<td><button class="menu_btn" onclick="location.href='${pageContext.request.contextPath}/community/notice.jsp'">커뮤니티</button></td>
-					<td><button class="menu_btn">마이페이지</button></td>
+					<td><button class="menu_btn" onclick="location.href='${pageContext.request.contextPath}/myPage/personalInformation.jsp'">마이페이지</button></td>
 				</tr>
 			</table>
 			
@@ -40,7 +40,7 @@
 			
 			<!-- 네비게이션(메뉴) 영역-->
 			<nav class="nav">
-				<a href="<c:url value='/index.jsp'/>" style="float:left;" ><img src="<c:url value='/images/logo2.PNG'/>" alt="CorpCollector" class="nav_logo"></a>
+				<a href="<c:url value='/index.jsp'/>" style="float:left;"></a><img src="<c:url value='/images/logo2.PNG'/>" alt="CorpCollector" class="nav_logo"></a>
 				<a href="<c:url value='/member/login_main.jsp'/>" style="margin-left : 58%; float:left;">로그인</a>
 				<a href="<c:url value='/member/signUp.jsp'/>">회원가입</a>
 			</nav>
