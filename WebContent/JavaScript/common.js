@@ -44,3 +44,11 @@ function logout_chk(){
 function logo1_click(){
 	location.href ="/index.jsp";
 }
+
+/* ----- 기업 유형 지정 ----- */
+var corpType = document.getElementById("corpType");
+
+function setType(button) {
+	corpType.value = button.value;
+}
+
