@@ -185,14 +185,13 @@ public class MemberDAO {
 	public boolean findPw(String id, String name, String email) {
 		boolean passwordCheck = false;
 		String query = "SELECT password FROM members "
-				+ "WHERE id=? AND nickname=? AND email=?";
+				+ "WHERE id=? AND email=?";
 		
 		try {
 			connection = DriverManager.getConnection(url, userId, userPw);
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, id);
-			preparedStatement.setString(2, name);
-			preparedStatement.setString(3, email);
+			preparedStatement.setString(2, email);
 			
 			resultSet = preparedStatement.executeQuery();
 			if(resultSet.first()) {
