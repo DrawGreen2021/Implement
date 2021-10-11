@@ -12,7 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.drawgreen.corpcollector.command.Command;
+import com.drawgreen.corpcollector.command.findCorp.FindFamilyFriendlyCorpCommand;
 import com.drawgreen.corpcollector.command.findCorp.FindGreenCorpCommand;
+import com.drawgreen.corpcollector.command.findCorp.FindTalentDevelopmentCorpCommand;
+import com.drawgreen.corpcollector.command.findCorp.FindYouthFriendlyCorpCommand;
 import com.drawgreen.corpcollector.command.member.EmailCheckCommand;
 import com.drawgreen.corpcollector.command.member.EmailSendCommand;
 import com.drawgreen.corpcollector.command.member.FindIdCommand;
@@ -29,7 +32,7 @@ import com.drawgreen.corpcollector.command.member.UpdatePwCommand;
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private static boolean flag = true;
+	private static boolean flag = true;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -68,8 +71,6 @@ public class FrontController extends HttpServlet {
 			com = tokenizer.nextToken();
 		
 		System.out.println(com);
-		
-		ServletContext context = getServletContext();
 		
 		/*----- 회원 관리 -----*/
 		if(com.equals("IdCheck.do")) {
@@ -114,12 +115,59 @@ public class FrontController extends HttpServlet {
 		/*----- 기업 찾기 -----*/
 		else if(com.equals("FindGreenCorp.do")) {
 			if(flag) {
-				command = new FindGreenCorpCommand(context);
+				command = new FindGreenCorpCommand();
 				command.execute(request, response);
-				viewPage = "find_greenCorp.jsp";
+				
+				String servletPath = request.getServletPath();
+				if(servletPath.equals("/FindGreenCorp.do")) {
+					viewPage = "findCorp/greenCorp.jsp";
+				} else {
+					viewPage = "greenCorp.jsp";
+				}
 				flag = false;
-			} else {
+			}
+			else flag = true;
+		}
+		
+		else if(com.equals("FindTalentDevelopmentCorp.do")) {
+			if(flag) {
+				command = new FindTalentDevelopmentCorpCommand();
+				command.execute(request, response);
+				
+				String servletPath = request.getServletPath();
+				if(servletPath.equals("/FindTalentDevelopmentCorp.do")) {
+					viewPage = "findCorp/talentDevelopmentCorp.jsp";
+				} else {
+					viewPage = "talentDevelopmentCorp.jsp";
+				}
+				flag = false;
+			}
+			else {
 				flag = true;
+			}
+		}
+		
+		else if(com.equals("FindFamilyFriendlyCorp.do")) {
+			command = new FindFamilyFriendlyCorpCommand();
+			command.execute(request, response);
+			
+			String servletPath = request.getServletPath();
+			if(servletPath.equals("/FindFamilyFriendlyCorp.do")) {
+				viewPage = "findCorp/familyFriendlyCorp.jsp";
+			} else {
+				viewPage = "familyFriendlyCorp.jsp";
+			}
+		}
+		
+		else if(com.equals("FindYouthFriendlyCorp.do")) {
+			command = new FindYouthFriendlyCorpCommand();
+			command.execute(request, response);
+			
+			String servletPath = request.getServletPath();
+			if(servletPath.equals("/FindYouthFriendlyCorp.do")) {
+				viewPage = "findCorp/youthFriendlyCorp.jsp";
+			} else {
+				viewPage = "youthFriendlyCorp.jsp";
 			}
 		}
 
