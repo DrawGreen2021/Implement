@@ -25,6 +25,7 @@ import com.drawgreen.corpcollector.command.member.LoginCommand;
 import com.drawgreen.corpcollector.command.member.LogoutCommand;
 import com.drawgreen.corpcollector.command.member.SignUpCommand;
 import com.drawgreen.corpcollector.command.member.UpdatePwCommand;
+import com.drawgreen.corpcollector.command.mypage.AddFavoriteCorpCommand;
 
 /**
  * Servlet implementation class FrontController
@@ -164,6 +165,12 @@ public class FrontController extends HttpServlet {
 				}
 			}
 			
+		}
+		
+		/*----- 마이페이지 기능 -----*/ 
+		else if(com.equals("AddFavoriteCorp.do")) {
+			command = new AddFavoriteCorpCommand();
+			command.execute(request, response);
 		}
 		
 
