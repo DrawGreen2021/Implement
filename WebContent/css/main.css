@@ -262,7 +262,7 @@
 	height:50px;
 	position: relative;
 	background-color: white;
-	border:2px solid #21499b;
+	border:2px solid #808080;
 	font-size: 15pt;
 	
 }
@@ -297,13 +297,22 @@
 
 .index_keyword button{
 	weight:800px;
-	height:60px;
+	height:50px;
 	font-size:11pt; 
 	color:#21499b; 
+	background-color:white;
+	border:0px;
 	font-weight:bold; 
-	text-decoration:none; 
-	font-family:dotum; 
-	margin-left:10px;
+	font-family:dotum;
+	margin:0 auto;
+	padding: 0 2%;
+	cursor:pointer;
+}
+
+.index_keyword button:hover{
+	color:#e1bf27;
+	font-size:11pt;
+	font-weight:bold;
 }
 
 /* 메뉴바 버튼 설정 */

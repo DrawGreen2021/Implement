@@ -43,11 +43,11 @@
 		<div style = "border:1px solid #eeedeb;" width="500px;"></div>	
 		<br>
 		<div class="index_keyword" style="padding-top: 15px;">
-			<button id="greenCorp" value="greenCorp" onclick="setType(this)">녹색 기업 &nbsp&nbsp&nbsp&nbsp</button>
-			<button id="talentDevelopmentCorp" value="talentDevelopmentCorp" onclick="setType(this)">인재 육성형 중소 기업 &nbsp&nbsp&nbsp&nbsp</button>
-			<button id="socialCorp" value="socialCorp" onclick="setType(this)">사회적 기업 &nbsp&nbsp&nbsp&nbsp</button>
-			<button id="familyFriendlyCorp" value="familyFriendlyCorp" onclick="setType(this)">가족 친화 인증 기업 &nbsp&nbsp&nbsp&nbsp</button>
-			<button id="youthFriendlyCorp" value="youthFriendlyCorp" onclick="setType(this)">청년 친화 강소 기업 &nbsp&nbsp&nbsp&nbsp</button>
+			<button id="greenCorp" value="greenCorp" onclick="setType(this)">녹색 기업</button>
+			<button id="talentDevelopmentCorp" value="talentDevelopmentCorp" onclick="setType(this)">인재 육성형 중소 기업</button>
+			<button id="socialCorp" value="socialCorp" onclick="setType(this)">사회적 기업</button>
+			<button id="familyFriendlyCorp" value="familyFriendlyCorp" onclick="setType(this)">가족 친화 인증 기업</button>
+			<button id="youthFriendlyCorp" value="youthFriendlyCorp" onclick="setType(this)">청년 친화 강소 기업</button>
 		</div>
 		<br><br><br>
 	</div>
