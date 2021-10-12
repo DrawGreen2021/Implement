@@ -56,7 +56,7 @@
 						<tr>
 							<form align="center" action="FindCorp.do" method="get"
 								name="findCorp" id="findCorp">
-								<td><input type="hidden" name="corpType" value="socialCorp">
+								<td><input type="hidden" name="corpType" id="corpType" value="socialCorp">
 									<input type="hidden" name="page" value="1"> <input
 									class="search_bar" type="text" id="search_keyword"
 									autocomplete="off" placeholder=" 검색어를 입력하세요" name="keyword"
@@ -97,8 +97,10 @@
 									</tr>
 									<c:forEach items="${requestScope.corpList }" var="dto">
 										<tr>
-											<td>☆</td>
-											<td><a>${dto.organization_name }</a></td>
+											<td>
+												<button value="${dto.serial_number }" onclick="addFavoriteCorp(this)">☆</button>
+											</td>
+											<td><a id="corpName${dto.serial_number }">${dto.organization_name }</a></td>
 											<td>${dto.business_contents }</td>
 											<td>${dto.realization_type }</td>
 											<td>${dto.representative_number }</td>
