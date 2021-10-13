@@ -9,6 +9,7 @@ import com.drawgreen.corpcollector.command.Command;
 import com.drawgreen.corpcollector.dao.CorpDAO;
 import com.drawgreen.corpcollector.dao.FamilyFriendlyCorpDAO;
 import com.drawgreen.corpcollector.dao.GreenCorpDAO;
+import com.drawgreen.corpcollector.dao.InterCorpDAO;
 import com.drawgreen.corpcollector.dao.SocialCorpDAO;
 import com.drawgreen.corpcollector.dao.TalentDevelopmentCorpDAO;
 import com.drawgreen.corpcollector.dao.YouthFriendlyCorpDAO;
@@ -36,10 +37,12 @@ public class FindCorpCommand implements Command {
 			dao = TalentDevelopmentCorpDAO.getInstance();
 		} else if (corpType.equals("socialCorp")) {
 			dao = SocialCorpDAO.getInstance();
-		}else if (corpType.equals("familyFriendlyCorp")) {
+		} else if (corpType.equals("familyFriendlyCorp")) {
 			dao = FamilyFriendlyCorpDAO.getInstance();
 		} else if (corpType.equals("youthFriendlyCorp")) {
 			dao = YouthFriendlyCorpDAO.getInstance();
+		} else {
+			dao = InterCorpDAO.getInstance();
 		}
 
 		// 키워드 없을 때
