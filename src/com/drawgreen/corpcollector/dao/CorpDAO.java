@@ -6,7 +6,7 @@ import com.drawgreen.corpcollector.dto.CorpDTO;
 
 public interface CorpDAO {
 	int getAllRowCount();
-	void setAllRowCount(int allRowcount);
+	void setAllRowCount(int allRowCount);
 	ArrayList<? extends CorpDTO> getCorpList(int page);
 	int getRowCount(String corpType);
 	ArrayList<? extends CorpDTO> getCorpList(String keyword, int page);
