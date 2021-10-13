@@ -45,3 +45,30 @@ function addFavoriteCorp(button) {
         }
     });   //ajax
 }
+
+// 통합 검색 페이지에서 관심 기업을 등록할 경우
+function addFavoriteCorp_main(button) {
+	var serial_number = button.value;
+	var corpType = $('#corpType').val();
+	var corpName = $('#corpName'+serial_number).text();
+	
+	$.ajax({
+        type:'post',
+        async:false,
+        url:'AddFavoriteCorp_InMain.do',
+        dataType:'text',
+        data:{"corpType":corpType, "corpName":corpName},
+        success: function(data, textStatus) {
+            if(data === 'not-login') {
+                alert("로그인해주세요.");     
+            } else if(data === 'addFavoriteCorp'){
+                $(button).text('★');
+            } else {
+            	$(button).text('☆');
+            }
+        },
+        error:function (data, textStatus) {
+            console.log('error');
+        }
+    });   //ajax
+}
