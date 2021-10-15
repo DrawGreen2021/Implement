@@ -12,10 +12,10 @@ import javax.servlet.http.HttpSession;
 import com.drawgreen.corpcollector.dto.MemberDTO;
 
 public class MemberDAO {
-	Connection connection = null;
-	Connection rootConnection = null;
-	PreparedStatement preparedStatement = null;
-	ResultSet resultSet = null;
+	private Connection connection = null;
+	private Connection rootConnection = null;
+	private PreparedStatement preparedStatement = null;
+	private ResultSet resultSet = null;
 	private String userId = "general_user_id";
 	private String userPw = "general_user_password"; 
 	private String rootId = "drawgreen";

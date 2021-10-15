@@ -96,8 +96,10 @@
 									</tr>
 									<c:forEach items="${requestScope.corpList }" var="dto">
 										<tr>
-											<td>☆</td>
-											<td><a>${dto.company_name }</a></td>
+											<td>
+												<button value="${dto.serial_number }" onclick="addFavoriteCorp(this)">☆</button>
+											</td>
+											<td><a id="corpName${dto.serial_number }">${dto.company_name }</a></td>
 											<td>${dto.division }</td>
 											<td>${dto.city_state }</td>
 										</tr>
