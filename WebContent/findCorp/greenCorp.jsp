@@ -86,18 +86,16 @@
 
 							<%-- 기업 리스트가 존재하면 출력해주는 테이블 생성 --%>
 							<c:when test="${not empty requestScope.corpList }">
-
-								<table cellpadding="0" cellspacing="0" border="1">
-
-									<tr>
-										<td></td>
-										<td>업체명</td>
-										<td>소재지</td>
-										<td>업종</td>
-										<td>사이트주소</td>
+								<table class="content_div_findCorpList">
+									<tr class="community_text" style="background-color:#eeedeb; height:30px;">
+										<td width="30px"></td>
+										<td width="250px">업체명</td>
+										<td width="500px">소재지</td>
+										<td width="150px">업종</td>
+										<td width="80px">사이트 주소</td>
 									</tr>
 									<c:forEach items="${requestScope.corpList }" var="dto">
-										<tr>
+										<tr class="community_text">
 											<td>
 												<button value="${dto.serial_number }" onclick="addFavoriteCorp(this)">☆</button>
 											</td>
@@ -112,11 +110,10 @@
 													<td><a href="http://${dto.site }" target="_blank">${dto.site }</a></td>
 												</c:otherwise>
 											</c:choose>
-
 										</tr>
-
 									</c:forEach>
 								</table>
+								<br>
 
 								<%-- 페이지 번호, 페이지 표시 블록의 시작&끝 번호, 페이지 가장 끝 번호, 한 번에 표시할 페이지 개수 정의 --%>
 								<c:set var="page" value="${(empty param.page)? 1 : param.page}"

@@ -383,13 +383,24 @@
 }
 
 /* 기업찾기 컨텐트 div 설정 */
-.content_div_findCorp{
+.contend_div_findCorp{
 	background-color: white;
 	position: relative;
 	width: 930px;
-	height:1000px;
+	height:100%;
 	margin: 2% auto;
+	border:0;
+}
+
+/* 기업찾기 컨텐츠 목록 div 설정 */
+.content_div_findCorpList{
+	background-color: white;
+	color:black;
+	position: relative;
+	width: 930px;
+	margin: auto;
 	border:1px solid gray;
+	padding:0px;
 }
 
 
@@ -400,7 +411,7 @@
 	color:black;
 	position: relative;
 	width: 930px;
-	height:1000px;
+	height:100%;
 	margin: 2% auto;
 	border:1px solid gray;
 	padding:0px;
