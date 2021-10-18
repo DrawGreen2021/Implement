@@ -25,8 +25,8 @@
 					<h3>마이페이지</h3>
 					<p><a href="<c:url value='/myPage/personalInformation.jsp'/>">개인 정보 관리</a></p>
 					<p><a href="<c:url value='/myPage/favoriteCorp.jsp'/>" style="color:#e1bf27; font-weight:bold;">관심 기업</a></p>
-					<p><a href="<c:url value=''/>">최근 검색 기업</a></p>
-					<p><a href="<c:url value=''/>">내가 쓴 글</a></p>
+					<p><a href="<c:url value='/myPage/recentSearch.jsp'/>">최근 검색 기업</a></p>
+					<p><a href="<c:url value='/myPage/myFeedback.jsp'/>">내가 쓴 글</a></p>
 				</ul>
 			</aside>
 		</div>
@@ -72,7 +72,7 @@
 			</table>
 			
 			<div>
-				<input type="checkbox" name="favCorp_select" value="favCorp_selectAll" style="float:left;">
+				<label class="community_text" style="float:left;"><input type="checkbox" name="favCorp_select" value="favCorp_selectAll" > 전체 선택</label>
 				<button class="writing_btn" style="float:right;" onclick="">삭제</button>
 			</div>
 		</div>

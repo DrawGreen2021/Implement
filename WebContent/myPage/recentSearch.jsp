@@ -10,7 +10,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	
-	<title>CorpCollector : 개인 정보 수정</title>
+	<title>CorpCollector : 최근 검색 기업</title>
 </head>
 
 <body>
@@ -23,9 +23,9 @@
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
 					<h3>마이페이지</h3>
-					<p><a href="<c:url value='/myPage/personalInformation.jsp'/>" style="color:#e1bf27; font-weight:bold;">개인 정보 관리</a></p>
+					<p><a href="<c:url value='/myPage/personalInformation.jsp'/>">개인 정보 관리</a></p>
 					<p><a href="<c:url value='/myPage/favoriteCorp.jsp'/>">관심 기업</a></p>
-					<p><a href="<c:url value='/myPage/recentSearch.jsp'/>">최근 검색 기업</a></p>
+					<p><a href="<c:url value='/myPage/recentSearch.jsp'/>" style="color:#e1bf27; font-weight:bold;">최근 검색 기업</a></p>
 					<p><a href="<c:url value='/myPage/myFeedback.jsp'/>">내가 쓴 글</a></p>
 				</ul>
 			</aside>
@@ -34,40 +34,36 @@
 		<div class="content_div">
 			<table width="1000px;" style="text-align:center; float:right;">
 				<tr>
-					<p style="font-size:16pt; color:#21499b; font-weight:bold; margin:0 83% 0 0; ">개인 정보 관리</p>
+					<p style="font-size:16pt; color:#21499b; font-weight:bold; margin:0 83% 0 0; ">최근 검색 기업</p>
 				</tr>
 				<tr>
 					<div style = "border:1px solid #21499b; margin:1% auto;"></div>
 				</tr>
 				<tr>
-					<table class="content_div_write">
-						<tr class="community_text" height="30px;">
-							<td width="100px" style="background-color:#eeedeb;">아이디/ID</td>
-							<td colspan="3"><input type="text" autocomplete="off" class="write_input"></td>
-						</tr>
-						<tr class="community_text" height="30px;">
-							<td width="100px" style="background-color:#eeedeb;">비밀번호/PW</td>
-							<td colspan="3"></td>
-						</tr>
-						<tr class="community_text" height="30px;">
-							<td width="100px" style="background-color:#eeedeb;">닉네임</td>
-							<td colspan="3"></td>
-						</tr>
-						<tr class="community_text" height="30px;">
-							<td width="100px" style="background-color:#eeedeb;">이메일</td>
-							<td colspan="3"></td>
-						</tr>
-						<tr class="community_text" height="30px;">
-							<td width="100px" style="background-color:#eeedeb;">생년월일</td>
-							<td width="350px"></td>
-							<td width="100px" style="background-color:#eeedeb;">성별</td>
-							<td width="200px"></td>
-						</tr>
+					<table class="content_div_findCorpList" style="word-break: break-all;">
+							<tr class="community_text" style="background-color:#eeedeb; height:32px;">
+									<td width="5%">번호</td>
+									<td width="28%">업체명</td>
+									<td width="37%x">소재지</td>
+									<td width="8%">업종</td>
+									<td width="22%">사이트 주소</td>
+							</tr>
+							<tr class="community_text" style="height:35px; cursor:pointer;">
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+							</tr>
 					</table>
+								
+					
 				</tr>
 			</table>
-			<div style="float:right;">
-			<button class="writing_btn" onclick="">수정</button>
+			
+			<div>
+				<label class="community_text" style="float:left;"><input type="checkbox" name="favCorp_select" value="favCorp_selectAll" > 전체 선택</label>
+				<button class="writing_btn" style="float:right;" onclick="">삭제</button>
 			</div>
 		</div>
 	</div>

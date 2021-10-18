@@ -25,8 +25,8 @@
 					<h3>마이페이지</h3>
 					<p><a href="<c:url value='/myPage/personalInformation.jsp'/>" style="color:#e1bf27; font-weight:bold;">개인 정보 관리</a></p>
 					<p><a href="<c:url value='/myPage/favoriteCorp.jsp'/>">관심 기업</a></p>
-					<p><a href="<c:url value=''/>">최근 검색 기업</a></p>
-					<p><a href="<c:url value=''/>">내가 쓴 글</a></p>
+					<p><a href="<c:url value='/myPage/recentSearch.jsp'/>">최근 검색 기업</a></p>
+					<p><a href="<c:url value='/myPage/myFeedback.jsp'/>">내가 쓴 글</a></p>
 				</ul>
 			</aside>
 		</div>
