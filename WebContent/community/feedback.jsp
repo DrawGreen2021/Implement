@@ -56,7 +56,7 @@
 							<td width="150px">등록일</td>
 							<td width="80px">조회수</td>
 						</tr>
-						<tr class="community_text">
+						<tr class="community_text" style="cursor:pointer;">
 							<td></td>
 						</tr>
 						<tr>

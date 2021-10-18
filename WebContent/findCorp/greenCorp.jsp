@@ -87,17 +87,18 @@
 							<%-- 기업 리스트가 존재하면 출력해주는 테이블 생성 --%>
 							<c:when test="${not empty requestScope.corpList }">
 								<table class="content_div_findCorpList" style="word-break: break-all;">
-									<tr class="community_text" style="background-color:#eeedeb; height:32px; cursor:default;">
+									<tr class="community_text" style="background-color:#eeedeb; height:32px;">
 										<td width="3%"> </td>
-										<td width="27%">업체명</td>
-										<td width="40%x">소재지</td>
+										<td width="28%">업체명</td>
+										<td width="39%x">소재지</td>
 										<td width="8%">업종</td>
 										<td width="22%">사이트 주소</td>
 									</tr>
 									<c:forEach items="${requestScope.corpList }" var="dto">
-										<tr class="community_text">
+										<tr class="community_text" style="height:35px; cursor:pointer;">
 											<td>
-												<button value="${dto.serial_number }" onclick="addFavoriteCorp(this)" class="favoriteCorp_btn">☆</button>
+												<button value="${dto.serial_number }" onclick="addFavoriteCorp(this)" 
+												class="favoriteCorp_btn" >☆</button>
 											</td>
 											<td><a id="corpName${dto.serial_number }">${dto.company_name }</a></td>
 											<td>${dto.location }</td>
@@ -131,8 +132,8 @@
 								<c:set var="pageCount" value="${5 }" scope="request" />
 
 								<c:if test="${startNum > 1}">
-									<span><a
-										href='FindCorp.do?corpType=${param.corpType }&page=${startNum - pageCount}&keyword=${param.keyword}'>이전</a>
+									<span>
+										<a href='FindCorp.do?corpType=${param.corpType }&page=${startNum - pageCount}&keyword=${param.keyword}'>이전</a>
 									</span>
 								</c:if>
 								<c:if test="${startNum <= 1}">
@@ -143,8 +144,7 @@
 								<span> <c:forEach var="num" begin="${startNum }"
 										end="${lastNum }">
 										<c:if test="${num <= lastPageNum }">
-											<a
-												href='FindCorp.do?corpType=${param.corpType }&page=${num}&keyword=${param.keyword }'>${num}</a>
+											<a href='FindCorp.do?corpType=${param.corpType }&page=${num}&keyword=${param.keyword }'>${num}</a>
 										</c:if>
 									</c:forEach>
 								</span>

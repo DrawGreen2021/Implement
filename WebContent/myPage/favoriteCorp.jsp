@@ -10,7 +10,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	
-	<title>CorpCollector : 개인 정보 관리</title>
+	<title>CorpCollector : 관심 기업</title>
 </head>
 
 <body>
@@ -23,8 +23,8 @@
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
 					<h3>마이페이지</h3>
-					<p><a href="<c:url value='/myPage/personalInformation.jsp'/>" style="color:#e1bf27; font-weight:bold;">개인 정보 관리</a></p>
-					<p><a href="<c:url value='/myPage/favoriteCorp.jsp'/>">관심 기업</a></p>
+					<p><a href="<c:url value='/myPage/personalInformation.jsp'/>">개인 정보 관리</a></p>
+					<p><a href="<c:url value='/myPage/favoriteCorp.jsp'/>" style="color:#e1bf27; font-weight:bold;">관심 기업</a></p>
 					<p><a href="<c:url value=''/>">최근 검색 기업</a></p>
 					<p><a href="<c:url value=''/>">내가 쓴 글</a></p>
 				</ul>
@@ -34,7 +34,7 @@
 		<div class="content_div">
 			<table width="1000px;" style="text-align:center; float:right;">
 				<tr>
-					<p style="font-size:16pt; color:#21499b; font-weight:bold; margin:0 83% 0 0; ">개인 정보 관리</p>
+					<p style="font-size:16pt; color:#21499b; font-weight:bold; margin:0 88% 0 0; ">관심 기업</p>
 				</tr>
 				<tr>
 					<div style = "border:1px solid #21499b; margin:1% auto;"></div>
@@ -42,32 +42,38 @@
 				<tr>
 					<table class="content_div_write">
 						<tr class="community_text" height="30px;">
-							<td width="100px" style="background-color:#eeedeb;">아이디/ID</td>
-							<td colspan="3"></td>
+							<td width="20%" style="background-color:#eeedeb;">인재 육성형 중소 기업</td>
+							<td></td>
+							<td width="5%"><input type="checkbox" name="favCorp_select" value="favCorp_select" style=" text-align:left;"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
-							<td width="100px" style="background-color:#eeedeb;">비밀번호/PW</td>
-							<td colspan="3"></td>
+							<td style="background-color:#eeedeb;">녹색기업</td>
+							<td></td>
+							<td><input type="checkbox" name="favCorp_select" value="favCorp_select" style=" text-align:left;"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
-							<td width="100px" style="background-color:#eeedeb;">닉네임</td>
-							<td colspan="3"></td>
+							<td style="background-color:#eeedeb;">사회적 기업</td>
+							<td></td>
+							<td><input type="checkbox" name="favCorp_select" value="favCorp_select" style=" text-align:left;"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
-							<td width="100px" style="background-color:#eeedeb;">이메일</td>
-							<td colspan="3"></td>
+							<td style="background-color:#eeedeb;">가족 친화 기업</td>
+							<td></td>
+							<td><input type="checkbox" name="favCorp_select" value="favCorp_select" style=" text-align:left;"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
-							<td width="100px" style="background-color:#eeedeb;">생년월일</td>
-							<td width="350px"></td>
-							<td width="100px" style="background-color:#eeedeb;">성별</td>
-							<td width="200px"></td>
+							<td style="background-color:#eeedeb;">청년 친화 강소 기업</td>
+							<td></td>
+							<td><input type="checkbox" name="favCorp_select" value="favCorp_select" style=" text-align:left;"></td>
+							
 						</tr>
 					</table>
 				</tr>
 			</table>
-			<div style="float:right;">
-			<button class="writing_btn" onclick="location.href='${pageContext.request.contextPath}/myPage/personalInformation_write.jsp'">수정</button>
+			
+			<div>
+				<input type="checkbox" name="favCorp_select" value="favCorp_selectAll" style="float:left;">
+				<button class="writing_btn" style="float:right;" onclick="">삭제</button>
 			</div>
 		</div>
 	</div>

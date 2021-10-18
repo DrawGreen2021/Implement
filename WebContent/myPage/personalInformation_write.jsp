@@ -10,7 +10,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	
-	<title>CorpCollector : 개인 정보 관리</title>
+	<title>CorpCollector : 개인 정보 수정</title>
 </head>
 
 <body>
@@ -43,7 +43,7 @@
 					<table class="content_div_write">
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">아이디/ID</td>
-							<td colspan="3"></td>
+							<td colspan="3"><input type="text" autocomplete="off" class="write_input"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">비밀번호/PW</td>
@@ -67,7 +67,7 @@
 				</tr>
 			</table>
 			<div style="float:right;">
-			<button class="writing_btn" onclick="location.href='${pageContext.request.contextPath}/myPage/personalInformation_write.jsp'">수정</button>
+			<button class="writing_btn" onclick="">수정</button>
 			</div>
 		</div>
 	</div>
