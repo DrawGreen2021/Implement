@@ -86,18 +86,18 @@
 
 							<%-- 기업 리스트가 존재하면 출력해주는 테이블 생성 --%>
 							<c:when test="${not empty requestScope.corpList }">
-								<table class="content_div_findCorpList">
-									<tr class="community_text" style="background-color:#eeedeb; height:30px;">
-										<td width="30px"></td>
-										<td width="250px">업체명</td>
-										<td width="500px">소재지</td>
-										<td width="150px">업종</td>
-										<td width="80px">사이트 주소</td>
+								<table class="content_div_findCorpList" style="word-break: break-all;">
+									<tr class="community_text" style="background-color:#eeedeb; height:32px; cursor:default;">
+										<td width="3%"> </td>
+										<td width="27%">업체명</td>
+										<td width="40%x">소재지</td>
+										<td width="8%">업종</td>
+										<td width="22%">사이트 주소</td>
 									</tr>
 									<c:forEach items="${requestScope.corpList }" var="dto">
 										<tr class="community_text">
 											<td>
-												<button value="${dto.serial_number }" onclick="addFavoriteCorp(this)">☆</button>
+												<button value="${dto.serial_number }" onclick="addFavoriteCorp(this)" class="favoriteCorp_btn">☆</button>
 											</td>
 											<td><a id="corpName${dto.serial_number }">${dto.company_name }</a></td>
 											<td>${dto.location }</td>
@@ -113,8 +113,12 @@
 										</tr>
 									</c:forEach>
 								</table>
-								<br>
-
+								
+							
+								<%-- 검색 후 초기 화면으로 되돌아가기 --%>
+								<button class="findCorp_list_btn" style="margin:0 0 0 89%;" onclick="resetKeyword()">전체 목록보기</button>
+								<br><br>
+								
 								<%-- 페이지 번호, 페이지 표시 블록의 시작&끝 번호, 페이지 가장 끝 번호, 한 번에 표시할 페이지 개수 정의 --%>
 								<c:set var="page" value="${(empty param.page)? 1 : param.page}"
 									scope="request" />
@@ -162,12 +166,9 @@
 								document.getElementById('findCorp').submit();
 								</script>
 							</c:otherwise>
-
+							
 						</c:choose>
-
-						<%-- 검색 후 초기 화면으로 되돌아가기 --%>
-						<button onclick="resetKeyword()">전체 목록보기</button>
-
+						
 					</article>
 				</tr>
 
