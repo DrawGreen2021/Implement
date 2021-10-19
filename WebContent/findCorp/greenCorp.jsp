@@ -56,7 +56,7 @@
 						<tr>
 							<form align="center" action="FindCorp.do" method="get"
 								name="findCorp" id="findCorp">
-								<td><input type="hidden" name="corpType" value="greenCorp">
+								<td><input type="hidden" name="corpType" id="corpType" value="greenCorp">
 									<input type="hidden" name="page" value="1">
 									<input class="search_bar" type="text"
 									id="search_keyword" autocomplete="off"
@@ -83,7 +83,7 @@
 							<c:when test="${requestScope.corpList == 'noResult' }">
 								검색 결과가 없습니다.
 							</c:when>
-
+							
 							<%-- 기업 리스트가 존재하면 출력해주는 테이블 생성 --%>
 							<c:when test="${not empty requestScope.corpList }">
 
@@ -96,26 +96,64 @@
 										<td>업종</td>
 										<td>사이트주소</td>
 									</tr>
-									<c:forEach items="${requestScope.corpList }" var="dto">
-										<tr>
-											<td>
-												<button value="${dto.serial_number }" onclick="addFavoriteCorp(this)">☆</button>
-											</td>
-											<td><a id="corpName${dto.serial_number }">${dto.company_name }</a></td>
-											<td>${dto.location }</td>
-											<td>${dto.sector }</td>
-											<c:choose>
-												<c:when test="${dto.site eq '없음'}">
-													<td>${dto.site }</td>
-												</c:when>
-												<c:otherwise>
-													<td><a href="http://${dto.site }" target="_blank">${dto.site }</a></td>
-												</c:otherwise>
-											</c:choose>
+									<c:choose>
+										<c:when test="${not empty requestScope.favoriteNums && not empty sessionScope.MemberDTO}">
+											<c:forEach var="dto" items="${requestScope.corpList }" varStatus="status">
+												<tr>
+													<c:choose>
+														<c:when test="${dto.serial_number eq favoriteNums[status.index] }">
+															<td><button value="${dto.serial_number }"
+															onclick="addFavoriteCorp(this)">★</button></td>
+														</c:when>
+														<c:otherwise>
+															<td><button value="${dto.serial_number }"
+															onclick="addFavoriteCorp(this)">☆</button></td>
+														</c:otherwise>
+													</c:choose>
 
-										</tr>
+													<td><a id="corpName${dto.serial_number }">${dto.company_name }</a></td>
+													<td>${dto.location }</td>
+													<td>${dto.sector }</td>
+													<c:choose>
+														<c:when test="${dto.site eq '없음'}">
+															<td>${dto.site }</td>
+														</c:when>
+														<c:otherwise>
+															<td><a href="http://${dto.site }" target="_blank">${dto.site }</a></td>
+														</c:otherwise>
+													</c:choose>
 
-									</c:forEach>
+												</tr>
+
+											</c:forEach>
+										</c:when>
+
+
+										<c:otherwise>
+											<c:forEach items="${requestScope.corpList }" var="dto">
+												<tr>
+													<td>
+														<button value="${dto.serial_number }"
+															onclick="addFavoriteCorp(this)">☆</button>
+													</td>
+													<td><a id="corpName${dto.serial_number }">${dto.company_name }</a></td>
+													<td>${dto.location }</td>
+													<td>${dto.sector }</td>
+													<c:choose>
+														<c:when test="${dto.site eq '없음'}">
+															<td>${dto.site }</td>
+														</c:when>
+														<c:otherwise>
+															<td><a href="http://${dto.site }" target="_blank">${dto.site }</a></td>
+														</c:otherwise>
+													</c:choose>
+
+												</tr>
+
+											</c:forEach>
+										</c:otherwise>
+									</c:choose>
+									
 								</table>
 
 								<%-- 페이지 번호, 페이지 표시 블록의 시작&끝 번호, 페이지 가장 끝 번호, 한 번에 표시할 페이지 개수 정의 --%>
