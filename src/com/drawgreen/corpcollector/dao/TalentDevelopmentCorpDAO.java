@@ -237,4 +237,11 @@ public class TalentDevelopmentCorpDAO implements CorpDAO{
 		return serialNums.size();
 	}
 
+	@Override
+	public ArrayList<Integer> getSerialNums() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 }

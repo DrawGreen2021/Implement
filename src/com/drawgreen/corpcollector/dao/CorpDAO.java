@@ -12,4 +12,5 @@ public interface CorpDAO {
 	ArrayList<? extends CorpDTO> getCorpList(String keyword, int page);
 	ArrayList<Integer> getSerialNumQuery(String keyword, ArrayList<Integer> serialNums);
 	int getRowCount_byKeyword();
+	ArrayList<Integer> getSerialNums();
 }

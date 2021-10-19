@@ -233,4 +233,8 @@ public class GreenCorpDAO implements CorpDAO {
 		return serialNums.size();
 	}
 
+	public ArrayList<Integer> getSerialNums() {
+		return serialNums;
+	}
+	
 }
