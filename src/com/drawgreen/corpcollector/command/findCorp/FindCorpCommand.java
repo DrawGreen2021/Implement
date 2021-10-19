@@ -4,16 +4,19 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.drawgreen.corpcollector.command.Command;
 import com.drawgreen.corpcollector.dao.CorpDAO;
 import com.drawgreen.corpcollector.dao.FamilyFriendlyCorpDAO;
+import com.drawgreen.corpcollector.dao.FavoriteCorpDAO;
 import com.drawgreen.corpcollector.dao.GreenCorpDAO;
 import com.drawgreen.corpcollector.dao.InterCorpDAO;
 import com.drawgreen.corpcollector.dao.SocialCorpDAO;
 import com.drawgreen.corpcollector.dao.TalentDevelopmentCorpDAO;
 import com.drawgreen.corpcollector.dao.YouthFriendlyCorpDAO;
 import com.drawgreen.corpcollector.dto.CorpDTO;
+import com.drawgreen.corpcollector.dto.MemberDTO;
 import com.drawgreen.corpcollector.util.Pager;
 
 public class FindCorpCommand implements Command {
@@ -44,21 +47,37 @@ public class FindCorpCommand implements Command {
 		} else {
 			dao = InterCorpDAO.getInstance();
 		}
+		
+		// 로그인 체크
+		FavoriteCorpDAO favoriteCorpDAO = FavoriteCorpDAO.getInstance();
+		HttpSession httpSession = request.getSession();
+		boolean loginOk = false;
+		int[] favoriteNums = null;
+		MemberDTO user = (MemberDTO) httpSession.getAttribute("MemberDTO");
+		if (user != null)
+			loginOk = true;
 
 		// 키워드 없을 때
 		if (keyword.equals("")) {
 			corpList = dao.getCorpList(page);
 			rowCount = dao.getAllRowCount();
+			if (loginOk)
+				favoriteNums = favoriteCorpDAO.getFavoirteSerialNums(page, corpType, user.getId(), rowCount);
 		}
 		// 키워드가 있을 때
 		else {
 			corpList = dao.getCorpList(keyword, page);
 			rowCount = dao.getRowCount_byKeyword();
+			if (loginOk)
+				favoriteNums = favoriteCorpDAO.getFavoirteSerialNums(page, corpType, user.getId(), dao.getSerialNums());
 		}
 
 		// 검색 결과가 null이 아니라면 request에 corpList 저장 후 페이지 번호 설정
 		if (corpList != null) {
 			request.setAttribute("corpList", corpList);
+			if (loginOk)
+				request.setAttribute("favoriteNums", favoriteNums);
+			else request.setAttribute("favoriteNums", null);
 			pager.setNumbers(page, rowCount, request, response);
 		} else {
 			request.setAttribute("corpList", "noResult");
