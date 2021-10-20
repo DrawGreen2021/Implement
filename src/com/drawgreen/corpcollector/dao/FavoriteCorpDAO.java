@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import com.drawgreen.corpcollector.dto.InterCorpDTO;
+
 public class FavoriteCorpDAO {
 	private Connection connection = null;
 	private Connection rootConnection = null;
@@ -222,31 +224,80 @@ public class FavoriteCorpDAO {
 		
 		return favoriteSerialNums;
 	}
-	
+
 	// 기업 테이블명 가져오기
-	public String getTableName(String corpType) {
-		String tableName = "";
+	public String getCorpType(String tableName) {
+		String corpType = "";
 		
-		switch (corpType) {
-		case "greenCorp":
-			tableName = "녹색기업";
+		switch (tableName) {
+		case "녹색기업":
+			corpType = "greenCorp";
 			break;
-		case "talentDevelopmentCorp":
-			tableName = "인재육성형중소기업";
+		case "인재육성형중소기업":
+			corpType = "talentDevelopmentCorp";
 			break;
-		case "socialCorp":
-			tableName = "사회적기업";
+		case "사회적기업":
+			corpType = "socialCorp";
 			break;
-		case "familyFriendlyCorp":
-			tableName = "가족친화인증기업";
+		case "가족친화인증기업":
+			corpType = "familyFriendlyCorp";
 			break;
-		case "youthFriendlyCorp":
-			tableName = "청년친화강소기업";
+		case "청년친화강소기업":
+			corpType = "youthFriendlyCorp";
 			break;
 		default:
 			break;
 		}
 		
-		return tableName;
+		return corpType;
+	}
+	
+	// 통합 검색일 경우, 관심 기업 불러오기
+	public int[] getFavoriteSerialNums(String user_id, ArrayList<InterCorpDTO> corpList) {
+		int[] favoriteSerialNums = new int[pageRowCount];
+		
+		String corpType = null;
+		try {
+			connection = DriverManager.getConnection(url, userId, userPw);
+			
+			for (int i = 0; i < corpList.size(); i++) {
+				InterCorpDTO dto = corpList.get(i);
+				corpType = getCorpType(dto.getCorpType());
+				String query = "select i.연번 from " + 
+						"(select 업체명, 소재지, 업종 from Corp."+dto.getCorpType()+" sub" + 
+						" where 업체명 = ? and 소재지 = ? and 업종 = ? and 연번 IN" + 
+						" (select IFNULL("+corpType+"_id,0) from 관심기업 where user_id = ? and sub.연번 = "+corpType+"_id))origin, " + 
+						"Corp.Inter_corp i where i.업체명 = origin.업체명 and i.소재지 = origin.소재지 and i.업종 = origin.업종;";
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, dto.getCompany_name());
+				preparedStatement.setString(2, dto.getLocation());
+				preparedStatement.setString(3, dto.getSector());
+				preparedStatement.setString(4, user_id);
+				
+				resultSet = preparedStatement.executeQuery();
+				
+				if (resultSet.next())
+					favoriteSerialNums[i] = resultSet.getInt(1);
+				else continue;
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (resultSet != null)
+					resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+		
+		return favoriteSerialNums;
 	}
 }

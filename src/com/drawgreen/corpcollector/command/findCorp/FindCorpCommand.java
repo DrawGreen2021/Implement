@@ -16,12 +16,15 @@ import com.drawgreen.corpcollector.dao.SocialCorpDAO;
 import com.drawgreen.corpcollector.dao.TalentDevelopmentCorpDAO;
 import com.drawgreen.corpcollector.dao.YouthFriendlyCorpDAO;
 import com.drawgreen.corpcollector.dto.CorpDTO;
+import com.drawgreen.corpcollector.dto.InterCorpDTO;
 import com.drawgreen.corpcollector.dto.MemberDTO;
 import com.drawgreen.corpcollector.util.Pager;
 
 public class FindCorpCommand implements Command {
 	Pager pager = new Pager();
+	boolean isUnifiedSearch = false;
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
@@ -46,10 +49,12 @@ public class FindCorpCommand implements Command {
 			dao = YouthFriendlyCorpDAO.getInstance();
 		} else {
 			dao = InterCorpDAO.getInstance();
+			isUnifiedSearch = true;
 		}
 		
-		// 로그인 체크
 		FavoriteCorpDAO favoriteCorpDAO = FavoriteCorpDAO.getInstance();
+		
+		// 로그인 체크
 		HttpSession httpSession = request.getSession();
 		boolean loginOk = false;
 		int[] favoriteNums = null;
@@ -61,14 +66,22 @@ public class FindCorpCommand implements Command {
 		if (keyword.equals("")) {
 			corpList = dao.getCorpList(page);
 			rowCount = dao.getAllRowCount();
-			if (loginOk)
+			if (isUnifiedSearch && loginOk) {
+				// 통합 검색 시 관심 기업 불러오기
+				favoriteNums = favoriteCorpDAO.getFavoriteSerialNums(user.getId(), (ArrayList<InterCorpDTO>)corpList);
+			}
+			else if (loginOk)
 				favoriteNums = favoriteCorpDAO.getFavoirteSerialNums(page, corpType, user.getId(), rowCount);
 		}
 		// 키워드가 있을 때
 		else {
 			corpList = dao.getCorpList(keyword, page);
 			rowCount = dao.getRowCount_byKeyword();
-			if (loginOk)
+			if (isUnifiedSearch && loginOk) {
+				// 통합 검색 시 관심 기업 불러오기
+				favoriteNums = favoriteCorpDAO.getFavoriteSerialNums(user.getId(), (ArrayList<InterCorpDTO>)corpList);
+			}
+			else if (loginOk)
 				favoriteNums = favoriteCorpDAO.getFavoirteSerialNums(page, corpType, user.getId(), dao.getSerialNums());
 		}
 
