@@ -102,10 +102,10 @@ public class TalentDevelopmentCorpDAO implements CorpDAO{
 
 			while (resultSet.next()) {
 				int serial_number = resultSet.getInt("연번");
-				String company_name = resultSet.getString("상호");
+				String company_name = resultSet.getString("업체명");
 				String representative = resultSet.getString("대표자명");
-				String address = resultSet.getString("주소");
-				String main_product = resultSet.getString("주생산품");
+				String address = resultSet.getString("소재지");
+				String main_product = resultSet.getString("업종");
 
 				TalentDevelopmentCorpDTO dto = new TalentDevelopmentCorpDTO(serial_number, company_name, representative, address, main_product);
 				talentDevelopmentCorpDTOs.add(dto);
@@ -172,10 +172,10 @@ public class TalentDevelopmentCorpDAO implements CorpDAO{
 			
 			while (resultSet.next()) {
 				int serial_number = resultSet.getInt("연번");
-				String company_name = resultSet.getString("상호");
+				String company_name = resultSet.getString("업체명");
 				String representative = resultSet.getString("대표자명");
-				String address = resultSet.getString("주소");
-				String main_product = resultSet.getString("주생산품");
+				String address = resultSet.getString("소재지");
+				String main_product = resultSet.getString("업종");
 
 				TalentDevelopmentCorpDTO dto = new TalentDevelopmentCorpDTO(serial_number, company_name, representative, address, main_product);
 				talentDevelopmentCorpDTOs.add(dto);

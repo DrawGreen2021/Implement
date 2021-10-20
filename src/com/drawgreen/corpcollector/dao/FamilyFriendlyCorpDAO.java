@@ -99,9 +99,9 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 
 			while (resultSet.next()) {
 				int serial_number = resultSet.getInt("연번");
-				String company_name = resultSet.getString("기업명");
+				String company_name = resultSet.getString("업체명");
 				String division = resultSet.getString("분류");
-				String city_state = resultSet.getString("시도");
+				String city_state = resultSet.getString("소재지");
 
 				FamilyFriendlyCorpDTO dto = new FamilyFriendlyCorpDTO(serial_number, company_name, division, city_state);
 				familyFriendlyCorpDTOs.add(dto);
@@ -167,9 +167,9 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 
 			while (resultSet.next()) {
 				int serial_number = resultSet.getInt("연번");
-				String company_name = resultSet.getString("기업명");
+				String company_name = resultSet.getString("업체명");
 				String division = resultSet.getString("분류");
-				String city_state = resultSet.getString("시도");
+				String city_state = resultSet.getString("소재지");
 
 				FamilyFriendlyCorpDTO dto = new FamilyFriendlyCorpDTO(serial_number, company_name, division, city_state);
 				familyFriendlyCorpDTOs.add(dto);

@@ -102,7 +102,7 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 
 			while (resultSet.next()) {
 				int serial_number = resultSet.getInt("연번");
-				String company_name = resultSet.getString("사업장명");
+				String company_name = resultSet.getString("업체명");
 				String location = resultSet.getString("소재지");
 				String sector = resultSet.getString("업종");
 				String best_wage = resultSet.getString("BEST 선정 분야-임금");
@@ -173,7 +173,7 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 
 			while (resultSet.next()) {
 				int serial_number = resultSet.getInt("연번");
-				String company_name = resultSet.getString("사업장명");
+				String company_name = resultSet.getString("업체명");
 				String location = resultSet.getString("소재지");
 				String sector = resultSet.getString("업종");
 				String best_wage = resultSet.getString("BEST 선정 분야-임금");

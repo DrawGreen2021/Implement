@@ -107,7 +107,7 @@ public class SocialCorpDAO implements CorpDAO {
 
 			while (resultSet.next()) {
 				int serial_number = resultSet.getInt("연번");
-				String organization_name = resultSet.getString("기관명");
+				String organization_name = resultSet.getString("업체명");
 				String business_contents = resultSet.getString("사업내용");
 				String realization_type = resultSet.getString("사회적목적실현유형");
 				String representative_number = resultSet.getString("대표전화번호");
@@ -179,7 +179,7 @@ public class SocialCorpDAO implements CorpDAO {
 
 			while (resultSet.next()) {
 				int serial_number = resultSet.getInt("연번");
-				String organization_name = resultSet.getString("기관명");
+				String organization_name = resultSet.getString("업체명");
 				String business_contents = resultSet.getString("사업내용");
 				String realization_type = resultSet.getString("사회적목적실현유형");
 				String representative_number = resultSet.getString("대표전화번호");
