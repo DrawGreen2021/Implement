@@ -17,7 +17,7 @@ public class InterCorpDAO implements CorpDAO {
 	private ResultSet resultSet = null;
 	private String userId = "general_user_id";
 	private String userPw = "general_user_password";
-	private String corpUrl = "jdbc:mysql://corpcollector.ciqetekukvwo.ap-northeast-2.rds.amazonaws.com:3306/Corp";
+	private String url = "jdbc:mysql://corpcollector.ciqetekukvwo.ap-northeast-2.rds.amazonaws.com:3306/Corp";
 	private int allRowCount;
 	private int pageRowCount;
 	// 키워드 검색 결과에 해당하는 연번을 저장할 리스트
@@ -62,7 +62,7 @@ public class InterCorpDAO implements CorpDAO {
 		String query = "SELECT count(*) FROM " + corpType;
 
 		try {
-			connection = DriverManager.getConnection(corpUrl, userId, userPw);
+			connection = DriverManager.getConnection(url, userId, userPw);
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 
@@ -96,7 +96,7 @@ public class InterCorpDAO implements CorpDAO {
 		String query = "SELECT * FROM Inter_corp " + "LIMIT ?, ?";
 
 		try {
-			connection = DriverManager.getConnection(corpUrl, userId, userPw);
+			connection = DriverManager.getConnection(url, userId, userPw);
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, page * pageRowCount - pageRowCount);
 			preparedStatement.setInt(2, pageRowCount);
@@ -166,7 +166,7 @@ public class InterCorpDAO implements CorpDAO {
 		getCorpListQuery = builder.toString();
 
 		try {
-			connection = DriverManager.getConnection(corpUrl, userId, userPw);
+			connection = DriverManager.getConnection(url, userId, userPw);
 			preparedStatement = connection.prepareStatement(getCorpListQuery);
 			resultSet = preparedStatement.executeQuery();
 
@@ -215,7 +215,7 @@ public class InterCorpDAO implements CorpDAO {
 		query = buffer.toString();
 
 		try {
-			connection = DriverManager.getConnection(corpUrl, userId, userPw);
+			connection = DriverManager.getConnection(url, userId, userPw);
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 
@@ -254,6 +254,40 @@ public class InterCorpDAO implements CorpDAO {
 		return null;
 	}
 	
-	
-	
+	// 통합 검색의 경우, 기존 테이블의 연번 가져오기
+	public int getOriginalSerialNum(String corpName, String location, String sector, String tableName) {
+
+		String query = "SELECT 연번 FROM " + tableName + " WHERE 업체명 = ? AND 소재지 = ? AND 업종 = ?";
+		int original_serial_num = 0;
+		try {
+			connection = DriverManager.getConnection(url, userId, userPw);
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, corpName);
+			preparedStatement.setString(2, location);
+			preparedStatement.setString(3, sector);
+
+			resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			original_serial_num = resultSet.getInt(1);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (resultSet != null)
+					resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+
+		return original_serial_num;
+	}
+
 }
