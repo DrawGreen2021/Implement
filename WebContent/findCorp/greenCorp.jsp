@@ -110,8 +110,11 @@
 															onclick="addFavoriteCorp(this)">☆</button></td>
 														</c:otherwise>
 													</c:choose>
-
-													<td><a id="corpName${dto.serial_number }">${dto.company_name }</a></td>
+													<td>
+														<a id="corpName${dto.serial_number }" 
+															href="DetailView.do?corpType=${param.corpType }&serial_num=${dto.serial_number }&beforeUrl=<%= (String)request.getAttribute("javax.servlet.forward.request_uri")+"?"+request.getQueryString()%>">
+															${dto.company_name }</a>
+													</td>
 													<td>${dto.location }</td>
 													<td>${dto.sector }</td>
 													<c:choose>
@@ -136,7 +139,11 @@
 														<button value="${dto.serial_number }"
 															onclick="addFavoriteCorp(this)">☆</button>
 													</td>
-													<td><a id="corpName${dto.serial_number }">${dto.company_name }</a></td>
+													<td>
+														<a id="corpName${dto.serial_number }" 
+															href="DetailView.do?corpType=${param.corpType }&serial_num=${dto.serial_number }&beforeUrl=<%= (String)request.getAttribute("javax.servlet.forward.request_uri")+"?"+request.getQueryString()%>">
+															${dto.company_name }</a>
+													</td>
 													<td>${dto.location }</td>
 													<td>${dto.sector }</td>
 													<c:choose>
@@ -223,6 +230,6 @@
 
 	<!-- 자바 스크립트 파일 외부 참조 -->
 	<script type="text/javascript" src="../JavaScript/common.js"></script>
-	<script type="text/javascript" src='<c:url value="/JavaScript/findCorp_common.js"/>'></script>
+	<script type="text/javascript" src='<c:url value="/JavaScript/findCorp_common.js?v=<%=System.currentTimeMillis() %>"/>'></script>
 </body>
 </html>
