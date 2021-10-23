@@ -52,12 +52,16 @@ function addFavoriteCorp_main(button) {
 	var corpType = $('#corpType').val();
 	var corpName = $('#corpName'+serial_number).text();
 	
+	var location = $('#location'+serial_number).val();
+	var sector = $('#sector'+serial_number).val();
+	var tableName = $('#tableName'+serial_number).val();
+	
 	$.ajax({
         type:'post',
         async:false,
         url:'AddFavoriteCorp_InMain.do',
         dataType:'text',
-        data:{"corpType":corpType, "corpName":corpName},
+        data:{"corpName":corpName, "location":location, "sector":sector, "tableName":tableName},
         success: function(data, textStatus) {
             if(data === 'not-login') {
                 alert("로그인해주세요.");     
@@ -71,4 +75,35 @@ function addFavoriteCorp_main(button) {
             console.log('error');
         }
     });   //ajax
+}
+
+// 상세 기업 페이지에서 관심기업을 등록한 경우
+function addFavoriteCorp_detail(button) {
+	var serial_number = $('#serial_num').val();
+	var corpName = $('#corpName').val();
+	var corpType = $('#corpType').val();
+	
+	$.ajax({
+        type:'post',
+        async:false,
+        url:'AddFavoriteCorp.do',
+        dataType:'text',
+        data:{"serial_number":serial_number, "corpType":corpType, "corpName":corpName},
+        success: function(data, textStatus) {
+            if(data === 'not-login') {
+                alert("로그인해주세요.");     
+            } else if(data === 'addFavoriteCorp'){
+                $(button).text("관심기업 삭제");
+            } else {
+            	$(button).text("관심기업 등록");
+            }
+        },
+        error:function (data, textStatus) {
+            console.log('error');
+        }
+    });   //ajax
+}
+
+function backSpace() {
+	location.href = document.referrer;
 }

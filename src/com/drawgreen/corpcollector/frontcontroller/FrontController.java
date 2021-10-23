@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.drawgreen.corpcollector.command.Command;
+import com.drawgreen.corpcollector.command.findCorp.DetailViewCommand;
 import com.drawgreen.corpcollector.command.findCorp.FindCorpCommand;
 import com.drawgreen.corpcollector.command.findCorp.FindFamilyFriendlyCorpCommand;
 import com.drawgreen.corpcollector.command.findCorp.FindGreenCorpCommand;
@@ -26,6 +27,7 @@ import com.drawgreen.corpcollector.command.member.LogoutCommand;
 import com.drawgreen.corpcollector.command.member.SignUpCommand;
 import com.drawgreen.corpcollector.command.member.UpdatePwCommand;
 import com.drawgreen.corpcollector.command.mypage.AddFavoriteCorpCommand;
+import com.drawgreen.corpcollector.command.mypage.AddFavoriteCorpInMainCommand;
 
 /**
  * Servlet implementation class FrontController
@@ -167,9 +169,19 @@ public class FrontController extends HttpServlet {
 			
 		}
 		
+		else if(com.equals("DetailView.do")) {
+			command = new DetailViewCommand();
+			command.execute(request, response);
+			viewPage = "detailedCorpInfo.jsp";
+		}
+		
 		/*----- 마이페이지 기능 -----*/ 
 		else if(com.equals("AddFavoriteCorp.do")) {
 			command = new AddFavoriteCorpCommand();
+			command.execute(request, response);
+		}
+		else if(com.equals("AddFavoriteCorp_InMain.do")) {
+			command = new AddFavoriteCorpInMainCommand();
 			command.execute(request, response);
 		}
 		

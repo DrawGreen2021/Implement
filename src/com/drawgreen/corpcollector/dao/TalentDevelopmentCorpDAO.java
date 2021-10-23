@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
 import com.drawgreen.corpcollector.dto.TalentDevelopmentCorpDTO;
@@ -102,10 +103,10 @@ public class TalentDevelopmentCorpDAO implements CorpDAO{
 
 			while (resultSet.next()) {
 				int serial_number = resultSet.getInt("연번");
-				String company_name = resultSet.getString("상호");
+				String company_name = resultSet.getString("업체명");
 				String representative = resultSet.getString("대표자명");
-				String address = resultSet.getString("주소");
-				String main_product = resultSet.getString("주생산품");
+				String address = resultSet.getString("소재지");
+				String main_product = resultSet.getString("업종");
 
 				TalentDevelopmentCorpDTO dto = new TalentDevelopmentCorpDTO(serial_number, company_name, representative, address, main_product);
 				talentDevelopmentCorpDTOs.add(dto);
@@ -172,10 +173,10 @@ public class TalentDevelopmentCorpDAO implements CorpDAO{
 			
 			while (resultSet.next()) {
 				int serial_number = resultSet.getInt("연번");
-				String company_name = resultSet.getString("상호");
+				String company_name = resultSet.getString("업체명");
 				String representative = resultSet.getString("대표자명");
-				String address = resultSet.getString("주소");
-				String main_product = resultSet.getString("주생산품");
+				String address = resultSet.getString("소재지");
+				String main_product = resultSet.getString("업종");
 
 				TalentDevelopmentCorpDTO dto = new TalentDevelopmentCorpDTO(serial_number, company_name, representative, address, main_product);
 				talentDevelopmentCorpDTOs.add(dto);
@@ -228,6 +229,18 @@ public class TalentDevelopmentCorpDAO implements CorpDAO{
 			
 		} catch (Exception e) {
 			// TODO: handle exception
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (resultSet != null)
+					resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
 		}
 		
 		return serialNums;
@@ -237,4 +250,54 @@ public class TalentDevelopmentCorpDAO implements CorpDAO{
 		return serialNums.size();
 	}
 
+	@Override
+	public ArrayList<Integer> getSerialNums() {
+		// TODO Auto-generated method stub
+		return serialNums;
+	}
+
+	@Override
+	public HashMap<String, Object> getInfo(int serial_num) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> corpInfo = new HashMap<String, Object>();
+		
+		String query = "SELECT * FROM 인재육성형중소기업 WHERE 연번 = ?";
+		
+		try {
+			connection = DriverManager.getConnection(url, userId, userPw);
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, serial_num);
+			
+			resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			corpInfo.put("연번", resultSet.getInt("연번"));
+			corpInfo.put("사업자번호", resultSet.getString("사업자번호"));
+			corpInfo.put("업체명", resultSet.getString("업체명"));
+			corpInfo.put("대표자명", resultSet.getString("대표자명"));
+			corpInfo.put("소재지", resultSet.getString("소재지"));
+			corpInfo.put("업종", resultSet.getString("업종"));
+			corpInfo.put("선정일", resultSet.getTimestamp("선정일"));
+			corpInfo.put("유효기간 종료일", resultSet.getTimestamp("유효기간 종료일"));
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (resultSet != null)
+					resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+		
+		return corpInfo;
+	}
+	
+	
 }

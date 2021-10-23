@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
 import com.drawgreen.corpcollector.dto.YouthFriendlyCorpDTO;
@@ -102,7 +103,7 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 
 			while (resultSet.next()) {
 				int serial_number = resultSet.getInt("연번");
-				String company_name = resultSet.getString("사업장명");
+				String company_name = resultSet.getString("업체명");
 				String location = resultSet.getString("소재지");
 				String sector = resultSet.getString("업종");
 				String best_wage = resultSet.getString("BEST 선정 분야-임금");
@@ -173,7 +174,7 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 
 			while (resultSet.next()) {
 				int serial_number = resultSet.getInt("연번");
-				String company_name = resultSet.getString("사업장명");
+				String company_name = resultSet.getString("업체명");
 				String location = resultSet.getString("소재지");
 				String sector = resultSet.getString("업종");
 				String best_wage = resultSet.getString("BEST 선정 분야-임금");
@@ -231,6 +232,18 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 
 		} catch (Exception e) {
 			// TODO: handle exception
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (resultSet != null)
+					resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
 		}
 
 		return serialNums;
@@ -240,4 +253,53 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 		return serialNums.size();
 	}
 
+	@Override
+	public ArrayList<Integer> getSerialNums() {
+		// TODO Auto-generated method stub
+		return serialNums;
+	}
+
+	@Override
+	public HashMap<String, Object> getInfo(int serial_num) {
+HashMap<String, Object> corpInfo = new HashMap<String, Object>();
+		
+		String query = "SELECT * FROM 청년친화강소기업 WHERE 연번 = ?";
+		
+		try {
+			connection = DriverManager.getConnection(url, userId, userPw);
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, serial_num);
+			
+			resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			corpInfo.put("연번", resultSet.getInt("연번"));
+			corpInfo.put("업체명", resultSet.getString("업체명"));
+			corpInfo.put("사업자등록번호", resultSet.getString("사업자등록번호"));
+			corpInfo.put("소재지", resultSet.getString("소재지"));
+			corpInfo.put("업종", resultSet.getString("업종"));
+			corpInfo.put("BEST 선정 분야-임금", resultSet.getString("BEST 선정 분야-임금"));
+			corpInfo.put("BEST 선정 분야-일생활균형", resultSet.getString("BEST 선정 분야-일생활균형"));
+			corpInfo.put("BEST 선정 분야-고용안정", resultSet.getString("BEST 선정 분야-고용안정"));
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (resultSet != null)
+					resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+		
+		return corpInfo;
+	}
+	
+	
 }
