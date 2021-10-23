@@ -22,11 +22,21 @@
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
 					<h3>기업 찾기</h3>
-					<p><a href="<c:url value=''/>">인재 육성형 중소 기업</a></p>
-					<p><a href="<c:url value=''/>">녹색 기업</a></p>
-					<p><a href="<c:url value=''/>">사회적 기업</a></p>
-					<p><a href="<c:url value=''/>">가족 친화 기업</a></p>
-					<p><a href="<c:url value=''/>">청년 친화 강소 기업</a></p>
+					<p>
+						<a href="<c:url value='/findCorp/talentDevelopmentCorp.jsp'/>">인재 육성형 중소 기업</a>
+					</p>
+					<p>
+						<a href="<c:url value='/findCorp/greenCorp.jsp'/>">녹색 기업</a>
+					</p>
+					<p>
+						<a href="<c:url value='/findCorp/socialCorp.jsp'/>">사회적 기업</a>
+					</p>
+					<p>
+						<a href="<c:url value='/findCorp/familyFriendlyCorp.jsp'/>">가족 친화 기업</a>
+					</p>
+					<p>
+						<a href="<c:url value='/findCorp/youthFriendlyCorp.jsp'/>">청년 친화 강소 기업</a>
+					</p>
 				</ul>
 			</aside>
 			<br>
@@ -80,54 +90,31 @@
 										<td>업종</td>
 										<td>기업유형</td>
 									</tr>
-									<c:choose>
-										<c:when test="${not empty requestScope.favoriteNums && not empty sessionScope.MemberDTO}">
-											<c:forEach var="dto" items="${requestScope.corpList }" varStatus="status">
-												<tr>
-													<c:choose>
-														<c:when test="${dto.serial_number eq favoriteNums[status.index] }">
-															<td><button value="${dto.serial_number }"
+									<c:forEach var="dto" items="${requestScope.corpList }" varStatus="status">
+										<tr>
+											<c:choose>
+												<c:when
+													test="${dto.serial_number eq favoriteNums[status.index] 
+														&& requestScope.favoriteNums != null && not empty sessionScope.MemberDTO}">
+													<td><button value="${dto.serial_number }"
 															onclick="addFavoriteCorp_main(this)">★</button></td>
-														</c:when>
-														<c:otherwise>
-															<td><button value="${dto.serial_number }"
+												</c:when>
+												<c:otherwise>
+													<td><button value="${dto.serial_number }"
 															onclick="addFavoriteCorp_main(this)">☆</button></td>
-														</c:otherwise>
-													</c:choose>
-
-													<td><a id="corpName${dto.serial_number }">${dto.company_name }</a></td>
-													<td>${dto.location }<input type="hidden"
-														id="location${dto.serial_number }"
-														value="${dto.location }"></td>
-													<td>${dto.sector }<input type="hidden"
-														id="sector${dto.serial_number }" value="${dto.sector }"></td>
-													<td>${dto.corpType }<input type="hidden"
-														id="tableName${dto.serial_number }"
-														value="${dto.corpType }"></td>
-												</tr>
-											</c:forEach>
-										</c:when>
-										
-										<c:otherwise>
-											<c:forEach items="${requestScope.corpList }" var="dto">
-												<tr>
-													<td>
-														<button value="${dto.serial_number }"
-															onclick="addFavoriteCorp_main(this)">☆</button>
-													</td>
-													<td><a id="corpName${dto.serial_number }">${dto.company_name }</a></td>
-													<td>${dto.location }<input type="hidden"
-														id="location${dto.serial_number }"
-														value="${dto.location }"></td>
-													<td>${dto.sector }<input type="hidden"
-														id="sector${dto.serial_number }" value="${dto.sector }"></td>
-													<td>${dto.corpType }<input type="hidden"
-														id="tableName${dto.serial_number }"
-														value="${dto.corpType }"></td>
-												</tr>
-											</c:forEach>
-										</c:otherwise>
-									</c:choose>
+												</c:otherwise>
+											</c:choose>
+											<td><a id="corpName${dto.serial_number }"
+												href='DetailView.do?corpType=${param.corpType }&serial_num=${dto.serial_number }&tableName=${dto.corpType }'>
+												${dto.company_name }</a></td>
+											<td>${dto.location }<input type="hidden"
+												id="location${dto.serial_number }" value="${dto.location }"></td>
+											<td>${dto.sector }<input type="hidden"
+												id="sector${dto.serial_number }" value="${dto.sector }"></td>
+											<td>${dto.corpType }<input type="hidden"
+												id="tableName${dto.serial_number }" value="${dto.corpType }"></td>
+										</tr>
+									</c:forEach>
 
 								</table>
 

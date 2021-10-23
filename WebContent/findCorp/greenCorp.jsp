@@ -57,7 +57,7 @@
 							<form align="center" action="FindCorp.do" method="get"
 								name="findCorp" id="findCorp">
 								<td><input type="hidden" name="corpType" id="corpType" value="greenCorp">
-									<input type="hidden" name="page" value="1">
+									<input type="hidden" name="page" id="page" value="1">
 									<input class="search_bar" type="text"
 									id="search_keyword" autocomplete="off"
 									placeholder=" 검색어를 입력하세요" name="keyword"
@@ -96,71 +96,40 @@
 										<td>업종</td>
 										<td>사이트주소</td>
 									</tr>
-									<c:choose>
-										<c:when test="${not empty requestScope.favoriteNums && not empty sessionScope.MemberDTO}">
-											<c:forEach var="dto" items="${requestScope.corpList }" varStatus="status">
-												<tr>
-													<c:choose>
-														<c:when test="${dto.serial_number eq favoriteNums[status.index] }">
-															<td><button value="${dto.serial_number }"
+									<c:forEach var="dto" items="${requestScope.corpList }"
+										varStatus="status">
+										<tr>
+											<c:choose>
+												<c:when
+													test="${dto.serial_number eq favoriteNums[status.index] 
+															&& requestScope.favoriteNums != null && not empty sessionScope.MemberDTO}">
+													<td><button value="${dto.serial_number }"
 															onclick="addFavoriteCorp(this)">★</button></td>
-														</c:when>
-														<c:otherwise>
-															<td><button value="${dto.serial_number }"
+												</c:when>
+												<c:otherwise>
+													<td><button value="${dto.serial_number }"
 															onclick="addFavoriteCorp(this)">☆</button></td>
-														</c:otherwise>
-													</c:choose>
-													<td>
-														<a id="corpName${dto.serial_number }" 
-															href="DetailView.do?corpType=${param.corpType }&serial_num=${dto.serial_number }&beforeUrl=<%= (String)request.getAttribute("javax.servlet.forward.request_uri")+"?"+request.getQueryString()%>">
-															${dto.company_name }</a>
-													</td>
-													<td>${dto.location }</td>
-													<td>${dto.sector }</td>
-													<c:choose>
-														<c:when test="${dto.site eq '없음'}">
-															<td>${dto.site }</td>
-														</c:when>
-														<c:otherwise>
-															<td><a href="http://${dto.site }" target="_blank">${dto.site }</a></td>
-														</c:otherwise>
-													</c:choose>
+												</c:otherwise>
+											</c:choose>
+											<td>
+												<a id="corpName${dto.serial_number }"
+												href='DetailView.do?corpType=${param.corpType }&serial_num=${dto.serial_number }'> 
+													${dto.company_name }</a></td>
+											<td>${dto.location }</td>
+											<td>${dto.sector }</td>
+											<c:choose>
+												<c:when test="${dto.site eq '없음'}">
+													<td>${dto.site }</td>
+												</c:when>
+												<c:otherwise>
+													<td><a href="http://${dto.site }" target="_blank">${dto.site }</a></td>
+												</c:otherwise>
+											</c:choose>
 
-												</tr>
+										</tr>
 
-											</c:forEach>
-										</c:when>
+									</c:forEach>
 
-
-										<c:otherwise>
-											<c:forEach items="${requestScope.corpList }" var="dto">
-												<tr>
-													<td>
-														<button value="${dto.serial_number }"
-															onclick="addFavoriteCorp(this)">☆</button>
-													</td>
-													<td>
-														<a id="corpName${dto.serial_number }" 
-															href="DetailView.do?corpType=${param.corpType }&serial_num=${dto.serial_number }&beforeUrl=<%= (String)request.getAttribute("javax.servlet.forward.request_uri")+"?"+request.getQueryString()%>">
-															${dto.company_name }</a>
-													</td>
-													<td>${dto.location }</td>
-													<td>${dto.sector }</td>
-													<c:choose>
-														<c:when test="${dto.site eq '없음'}">
-															<td>${dto.site }</td>
-														</c:when>
-														<c:otherwise>
-															<td><a href="http://${dto.site }" target="_blank">${dto.site }</a></td>
-														</c:otherwise>
-													</c:choose>
-
-												</tr>
-
-											</c:forEach>
-										</c:otherwise>
-									</c:choose>
-									
 								</table>
 
 								<%-- 페이지 번호, 페이지 표시 블록의 시작&끝 번호, 페이지 가장 끝 번호, 한 번에 표시할 페이지 개수 정의 --%>
@@ -223,13 +192,11 @@
 		</div>
 	</div>
 
-
-
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
 
 	<!-- 자바 스크립트 파일 외부 참조 -->
 	<script type="text/javascript" src="../JavaScript/common.js"></script>
-	<script type="text/javascript" src='<c:url value="/JavaScript/findCorp_common.js?v=<%=System.currentTimeMillis() %>"/>'></script>
+	<script type="text/javascript" src='<c:url value="/JavaScript/findCorp_common.js"/>'></script>
 </body>
 </html>
