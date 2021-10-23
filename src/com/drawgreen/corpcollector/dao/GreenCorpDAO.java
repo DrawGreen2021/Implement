@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
 import com.drawgreen.corpcollector.dto.GreenCorpDTO;
@@ -224,6 +225,18 @@ public class GreenCorpDAO implements CorpDAO {
 
 		} catch (Exception e) {
 			// TODO: handle exception
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (resultSet != null)
+					resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
 		}
 
 		return serialNums;
@@ -235,6 +248,50 @@ public class GreenCorpDAO implements CorpDAO {
 
 	public ArrayList<Integer> getSerialNums() {
 		return serialNums;
+	}
+
+	@Override
+	public HashMap<String, Object> getInfo(int serial_num) {
+		HashMap<String, Object> corpInfo = new HashMap<String, Object>();
+		
+		String query = "SELECT * FROM 녹색기업 WHERE 연번 = ?";
+		
+		try {
+			connection = DriverManager.getConnection(url, userId, userPw);
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, serial_num);
+			
+			resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			corpInfo.put("연번", resultSet.getInt("연번"));
+			corpInfo.put("업체명", resultSet.getString("업체명"));
+			corpInfo.put("소재지", resultSet.getString("소재지"));
+			corpInfo.put("업종", resultSet.getString("업종"));
+			corpInfo.put("최초지정", resultSet.getTimestamp("최초지정"));
+			corpInfo.put("현지정시작일자", resultSet.getTimestamp("현지정시작일자"));
+			corpInfo.put("현지정종료일자", resultSet.getTimestamp("현지정종료일자"));
+			corpInfo.put("비고", resultSet.getString("비고"));
+			corpInfo.put("지역구분", resultSet.getString("지역구분"));
+			corpInfo.put("사이트주소", resultSet.getString("사이트주소"));
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (resultSet != null)
+					resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+		
+		return corpInfo;
 	}
 	
 }

@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
 import com.drawgreen.corpcollector.dto.FamilyFriendlyCorpDTO;
@@ -221,6 +222,18 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 
 		} catch (Exception e) {
 			// TODO: handle exception
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (resultSet != null)
+					resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
 		}
 
 		return serialNums;
@@ -233,7 +246,46 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 	@Override
 	public ArrayList<Integer> getSerialNums() {
 		// TODO Auto-generated method stub
-		return null;
+		return serialNums;
+	}
+
+	@Override
+	public HashMap<String, Object> getInfo(int serial_num) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> corpInfo = new HashMap<String, Object>();
+		
+		String query = "SELECT * FROM 가족친화인증기업 WHERE 연번 = ?";
+		
+		try {
+			connection = DriverManager.getConnection(url, userId, userPw);
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, serial_num);
+			
+			resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			corpInfo.put("연번", resultSet.getInt("연번"));
+			corpInfo.put("업체명", resultSet.getString("업체명"));
+			corpInfo.put("분류", resultSet.getString("분류"));
+			corpInfo.put("소재지", resultSet.getString("소재지"));
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (resultSet != null)
+					resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+		
+		return corpInfo;
 	}
 	
 }

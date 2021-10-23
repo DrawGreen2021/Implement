@@ -5,9 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.StringTokenizer;
-
-import javax.servlet.http.HttpSession;
 
 import com.drawgreen.corpcollector.dto.InterCorpDTO;
 
@@ -290,4 +289,89 @@ public class InterCorpDAO implements CorpDAO {
 		return original_serial_num;
 	}
 
+	@Override
+	public HashMap<String, Object> getInfo(int serial_num) {
+		HashMap<String, Object> corpInfo = new HashMap<String, Object>();
+		
+		String query = "SELECT 업체명, 소재지, 업종, 기업유형 FROM Inter_corp WHERE 연번 = ?";
+		String corpName = "";
+		String location ="";
+		String sector="";
+		String tableName = "";
+		try {
+			connection = DriverManager.getConnection(url, userId, userPw);
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, serial_num);
+			
+			resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			corpName = resultSet.getString("업체명");
+			location = resultSet.getString("소재지");
+			sector = resultSet.getString("업종");
+			tableName = resultSet.getString("기업유형");
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (resultSet != null)
+					resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+		
+		int original_serial_num = getOriginalSerialNum(corpName, location, sector, tableName);
+		String corpType = getCorpType(tableName);
+		CorpDAO dao = null;
+		
+		if (corpType.equals("greenCorp")) {
+			dao = GreenCorpDAO.getInstance();
+		} else if (corpType.equals("talentDevelopmentCorp")) {
+			dao = TalentDevelopmentCorpDAO.getInstance();
+		} else if (corpType.equals("socialCorp")) {
+			dao = SocialCorpDAO.getInstance();
+		} else if (corpType.equals("familyFriendlyCorp")) {
+			dao = FamilyFriendlyCorpDAO.getInstance();
+		} else if (corpType.equals("youthFriendlyCorp")) {
+			dao = YouthFriendlyCorpDAO.getInstance();
+		}
+		
+		corpInfo = dao.getInfo(original_serial_num);
+		
+		return corpInfo;
+	}
+	
+	// 기업 테이블명 가져오기
+	public String getCorpType(String tableName) {
+		String corpType = "";
+
+		switch (tableName) {
+		case "녹색기업":
+			corpType = "greenCorp";
+			break;
+		case "인재육성형중소기업":
+			corpType = "talentDevelopmentCorp";
+			break;
+		case "사회적기업":
+			corpType = "socialCorp";
+			break;
+		case "가족친화인증기업":
+			corpType = "familyFriendlyCorp";
+			break;
+		case "청년친화강소기업":
+			corpType = "youthFriendlyCorp";
+			break;
+		default:
+			break;
+		}
+
+		return corpType;
+	}
 }
