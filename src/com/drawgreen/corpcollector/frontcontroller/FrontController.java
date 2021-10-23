@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.drawgreen.corpcollector.command.Command;
+import com.drawgreen.corpcollector.command.findCorp.DetailViewCommand;
 import com.drawgreen.corpcollector.command.findCorp.FindCorpCommand;
 import com.drawgreen.corpcollector.command.findCorp.FindFamilyFriendlyCorpCommand;
 import com.drawgreen.corpcollector.command.findCorp.FindGreenCorpCommand;
@@ -166,6 +167,12 @@ public class FrontController extends HttpServlet {
 				}
 			}
 			
+		}
+		
+		else if(com.equals("DetailView.do")) {
+			command = new DetailViewCommand();
+			command.execute(request, response);
+			viewPage = "detailedCorpInfo.jsp";
 		}
 		
 		/*----- 마이페이지 기능 -----*/ 
