@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
 import com.drawgreen.corpcollector.dto.SocialCorpDTO;
@@ -107,7 +108,7 @@ public class SocialCorpDAO implements CorpDAO {
 
 			while (resultSet.next()) {
 				int serial_number = resultSet.getInt("연번");
-				String organization_name = resultSet.getString("기관명");
+				String organization_name = resultSet.getString("업체명");
 				String business_contents = resultSet.getString("사업내용");
 				String realization_type = resultSet.getString("사회적목적실현유형");
 				String representative_number = resultSet.getString("대표전화번호");
@@ -179,7 +180,7 @@ public class SocialCorpDAO implements CorpDAO {
 
 			while (resultSet.next()) {
 				int serial_number = resultSet.getInt("연번");
-				String organization_name = resultSet.getString("기관명");
+				String organization_name = resultSet.getString("업체명");
 				String business_contents = resultSet.getString("사업내용");
 				String realization_type = resultSet.getString("사회적목적실현유형");
 				String representative_number = resultSet.getString("대표전화번호");
@@ -238,6 +239,18 @@ public class SocialCorpDAO implements CorpDAO {
 
 		} catch (Exception e) {
 			// TODO: handle exception
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (resultSet != null)
+					resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
 		}
 
 		return serialNums;
@@ -249,4 +262,58 @@ public class SocialCorpDAO implements CorpDAO {
 		return serialNums.size();
 	}
 
+	@Override
+	public ArrayList<Integer> getSerialNums() {
+		// TODO Auto-generated method stub
+		return serialNums;
+	}
+
+	@Override
+	public HashMap<String, Object> getInfo(int serial_num) {
+		HashMap<String, Object> corpInfo = new HashMap<String, Object>();
+		
+		String query = "SELECT * FROM 사회적기업 WHERE 연번 = ?";
+		
+		try {
+			connection = DriverManager.getConnection(url, userId, userPw);
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, serial_num);
+			
+			resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			corpInfo.put("연번", resultSet.getInt("연번"));
+			corpInfo.put("지역", resultSet.getString("지역"));
+			corpInfo.put("인증번호", resultSet.getString("인증번호"));
+			corpInfo.put("업체명", resultSet.getString("업체명"));
+			corpInfo.put("사업내용", resultSet.getString("사업내용"));
+			corpInfo.put("사회적목적실현유형", resultSet.getString("사회적목적실현유형"));
+			corpInfo.put("업종", resultSet.getString("업종"));
+			corpInfo.put("대표자", resultSet.getString("대표자"));
+			corpInfo.put("대표전화번호", resultSet.getString("대표전화번호"));
+			corpInfo.put("소재지", resultSet.getString("소재지"));
+			corpInfo.put("홈페이지", resultSet.getString("홈페이지"));
+			corpInfo.put("인증회차", resultSet.getString("인증회차"));
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (resultSet != null)
+					resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+		
+		return corpInfo;
+	}
+	
+	
+	
 }

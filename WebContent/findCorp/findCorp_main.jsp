@@ -22,11 +22,21 @@
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
 					<h3>기업 찾기</h3>
-					<p><a href="<c:url value=''/>">인재 육성형 중소 기업</a></p>
-					<p><a href="<c:url value=''/>">녹색 기업</a></p>
-					<p><a href="<c:url value=''/>">사회적 기업</a></p>
-					<p><a href="<c:url value=''/>">가족 친화 기업</a></p>
-					<p><a href="<c:url value=''/>">청년 친화 강소 기업</a></p>
+					<p>
+						<a href="<c:url value='/findCorp/talentDevelopmentCorp.jsp'/>">인재 육성형 중소 기업</a>
+					</p>
+					<p>
+						<a href="<c:url value='/findCorp/greenCorp.jsp'/>">녹색 기업</a>
+					</p>
+					<p>
+						<a href="<c:url value='/findCorp/socialCorp.jsp'/>">사회적 기업</a>
+					</p>
+					<p>
+						<a href="<c:url value='/findCorp/familyFriendlyCorp.jsp'/>">가족 친화 기업</a>
+					</p>
+					<p>
+						<a href="<c:url value='/findCorp/youthFriendlyCorp.jsp'/>">청년 친화 강소 기업</a>
+					</p>
 				</ul>
 			</aside>
 			<br>
@@ -80,19 +90,32 @@
 										<td>업종</td>
 										<td>기업유형</td>
 									</tr>
-									<c:forEach items="${requestScope.corpList }" var="dto">
+									<c:forEach var="dto" items="${requestScope.corpList }" varStatus="status">
 										<tr>
-											<td>
-												<button value="${dto.serial_number }" onclick="addFavoriteCorp_main(this)">☆</button>
-											</td>
-											<td><a id="corpName${dto.serial_number }">${dto.company_name }</a></td>
-											<td>${dto.location }</td>
-											<td>${dto.sector }</td>
-											<td>${dto.corpType }</td>
-						
+											<c:choose>
+												<c:when
+													test="${dto.serial_number eq favoriteNums[status.index] 
+														&& requestScope.favoriteNums != null && not empty sessionScope.MemberDTO}">
+													<td><button value="${dto.serial_number }"
+															onclick="addFavoriteCorp_main(this)">★</button></td>
+												</c:when>
+												<c:otherwise>
+													<td><button value="${dto.serial_number }"
+															onclick="addFavoriteCorp_main(this)">☆</button></td>
+												</c:otherwise>
+											</c:choose>
+											<td><a id="corpName${dto.serial_number }"
+												href='DetailView.do?corpType=${param.corpType }&serial_num=${dto.serial_number }&tableName=${dto.corpType }'>
+												${dto.company_name }</a></td>
+											<td>${dto.location }<input type="hidden"
+												id="location${dto.serial_number }" value="${dto.location }"></td>
+											<td>${dto.sector }<input type="hidden"
+												id="sector${dto.serial_number }" value="${dto.sector }"></td>
+											<td>${dto.corpType }<input type="hidden"
+												id="tableName${dto.serial_number }" value="${dto.corpType }"></td>
 										</tr>
-
 									</c:forEach>
+
 								</table>
 
 								<%-- 페이지 번호, 페이지 표시 블록의 시작&끝 번호, 페이지 가장 끝 번호, 한 번에 표시할 페이지 개수 정의 --%>
@@ -137,6 +160,8 @@
 							</c:when>
 
 							<%-- 처음에 기업 리스트의 값이 아무것도 없으면 findCorp.do 액션 수행 --%>
+							<%-- 기업 찾기 메인 페이지의 경우, 관심 기업 표시 및 출력값 보는 용도 
+								추후 아래 코드 삭제할 것 --%>
 							<c:otherwise>
 								<script>
 								document.getElementById('findCorp').submit();
