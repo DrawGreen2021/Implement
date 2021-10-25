@@ -49,7 +49,6 @@
 			<button id="familyFriendlyCorp" value="familyFriendlyCorp" onclick="setType(this)">가족 친화 인증 기업</button>
 			<button id="youthFriendlyCorp" value="youthFriendlyCorp" onclick="setType(this)">청년 친화 강소 기업</button>
 		</div>
-		<br><br><br>
 	</div>
 	
 	<!-- 푸터 파일 포함 -->

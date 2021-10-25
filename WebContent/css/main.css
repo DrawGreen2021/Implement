@@ -56,9 +56,8 @@
 	background-color: white; 
 	position:relative; 
 	width:1200px; 
-	margin:10% auto;
-	padding-top:10px;
-	padding-left:5px;
+	margin:auto;
+	margin-top:6%;
 }
 
 .img{
@@ -284,8 +283,20 @@
 	position:relative;
 }
 
+.index_keyword{
+	width:1200px;
+	height:60px;
+	font-size:11pt; 
+	background-color:white;
+	color:#21499b; 
+	font-weight:bold; 
+	text-decoration:none; 
+	font-family:dotum; 
+	margin:0 auto;
+}
+
 .index_keyword a{
-	weight:800px;
+	width:800px;
 	height:60px;
 	font-size:11pt; 
 	color:#21499b; 
@@ -296,16 +307,15 @@
 }
 
 .index_keyword button{
-	weight:800px;
-	height:50px;
+	width:220px;
 	font-size:11pt; 
 	color:#21499b; 
 	background-color:white;
 	border:0px;
 	font-weight:bold; 
 	font-family:dotum;
-	margin:0 auto;
 	padding: 0 2%;
+	margin: 0 auto;
 	cursor:pointer;
 }
 
@@ -369,7 +379,7 @@
 
 /* 사이드 바 메뉴 글씨, 효과 */
 .sidebar a{
-	weight:200px;
+	width:200px;
 	font-size:10pt; 
 	color:#21499b; 
 	font-weight:normal; 
@@ -409,12 +419,11 @@
 .favoriteCorp_btn{
 	background-color:white;
 	color:#e1bf27;
-	width:12px;
-	height:15px;
+	width:20px;
+	height:20px;
 	border:0;
 	cursor:pointer;
-	font-size:11pt;
-	align:center;
+	font-size:10pt;
 }
 
 /* 기업찾기 전체 목록으로 돌아가기 버튼 */
@@ -439,6 +448,55 @@
 	cursor: pointer;
 }
 
+/* 컨텐츠 페이지 번호 텍스트 */
+.pagelist_text{
+	background-color:white;
+	color:black;
+	text-align:center;
+	font-size:11pt; 
+	font-weight:normal; 
+	font-family:dotum; 
+	text-decoration:none;
+	padding:3px;
+}
+
+.pagelist_text a{
+	color:black;
+	text-align:center;
+	font-size:11pt; 
+	font-weight:normal; 
+	font-family:dotum; 
+	text-decoration:none;
+	padding:3px;
+}
+
+.pagelist_text a:hover{
+	color:black;
+	font-weight:bold;
+}
+
+/* 기업찾기 상세 정보 테이블 설정 */
+.table_detailedFindCorp{
+	background-color: white;
+	color:black;
+	position: relative;
+	width: 930px;
+	height:100%;
+	margin: 0 auto;
+	border:1px solid gray;
+	padding:5;
+	text-align:center;
+}
+
+.table_detailedFindCorp a{
+	background-color:white;
+	color:black;
+	text-align:center;
+	font-size:11pt; 
+	font-weight:normal; 
+	font-family:dotum; 
+	padding:3px;
+}
 
 /* 커뮤니티 */
 /* 커뮤니티 컨텐츠 목록 div 설정 */

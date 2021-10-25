@@ -17,7 +17,7 @@
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!-- 내용 영역 -->
-	<div width="1200px;" style="text-align:center; margin:5% auto;">
+	<div width="1200px;" style="text-align:center; margin:5% auto; height:100%;">
 		<div class="sidebar_div" style="float:left;">
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
@@ -74,34 +74,38 @@
 						<!-- 기업 리스트 출력 -->
 						<c:choose>
 							<%-- 기업 리스트가 null이면 검색 결과가 없다고 표시 --%>
-							<c:when test="${requestScope.corpList == 'noResult' }">
-								검색 결과가 없습니다.
-							</c:when>
-
+							
+								<c:when test="${requestScope.corpList == 'noResult' }">
+									<br><br><br><br><br>
+									검색 결과가 없습니다.
+									<br><br><br><br><br><br><br>
+								</c:when>
+							
+		
+		
 							<%-- 기업 리스트가 존재하면 출력해주는 테이블 생성 --%>
 							<c:when test="${not empty requestScope.corpList }">
 
-								<table cellpadding="0" cellspacing="0" border="1">
-
-									<tr>
-										<td></td>
-										<td>업체명</td>
-										<td>소재지</td>
-										<td>업종</td>
-										<td>기업유형</td>
+								<table class="content_div_findCorpList" style="word-break: break-all;">
+									<tr class="community_text" style="background-color:#eeedeb; height:32px;">
+										<td width="3%"> </td>
+										<td width="28%">업체명</td>
+										<td width="39%x">소재지</td>
+										<td width="8%">업종</td>
+										<td width="22%">사이트 주소</td>
 									</tr>
 									<c:forEach var="dto" items="${requestScope.corpList }" varStatus="status">
-										<tr>
+										<tr class="community_text" style="height:35px; cursor:pointer;">
 											<c:choose>
 												<c:when
 													test="${dto.serial_number eq favoriteNums[status.index] 
 														&& requestScope.favoriteNums != null && not empty sessionScope.MemberDTO}">
-													<td><button value="${dto.serial_number }"
-															onclick="addFavoriteCorp_main(this)">★</button></td>
+													<td style="text-align:center;"><button value="${dto.serial_number }"
+															onclick="addFavoriteCorp_main(this)" class="favoriteCorp_btn">★</button></td>
 												</c:when>
 												<c:otherwise>
-													<td><button value="${dto.serial_number }"
-															onclick="addFavoriteCorp_main(this)">☆</button></td>
+													<td style="text-align:center;"><button value="${dto.serial_number }"
+															onclick="addFavoriteCorp_main(this)" class="favoriteCorp_btn">☆</button></td>
 												</c:otherwise>
 											</c:choose>
 											<td><a id="corpName${dto.serial_number }"
@@ -118,6 +122,14 @@
 
 								</table>
 
+
+								<%-- 검색 후 초기 화면으로 되돌아가기 --%>
+									<button class="findCorp_list_btn" style="margin:0 0 0 89%;" onclick="resetKeyword()">전체 목록보기</button>
+								
+								
+								<!-- 페이지 번호 div -->
+								<div class="pagelist_text" style="margin:3% auto;">
+								
 								<%-- 페이지 번호, 페이지 표시 블록의 시작&끝 번호, 페이지 가장 끝 번호, 한 번에 표시할 페이지 개수 정의 --%>
 								<c:set var="page" value="${(empty param.page)? 1 : param.page}"
 									scope="request" />
@@ -130,7 +142,7 @@
 								<c:set var="pageCount" value="${5 }" scope="request" />
 
 								<c:if test="${startNum > 1}">
-									<span><a
+									<span><a 
 										href='FindCorp.do?corpType=${param.corpType }&page=${startNum - pageCount}&keyword=${param.keyword}'>이전</a>
 									</span>
 								</c:if>
@@ -142,21 +154,22 @@
 								<span> <c:forEach var="num" begin="${startNum }"
 										end="${lastNum }">
 										<c:if test="${num <= lastPageNum }">
-											<a
+											<a style="color:gray;"
 												href='FindCorp.do?corpType=${param.corpType }&page=${num}&keyword=${param.keyword }'>${num}</a>
 										</c:if>
 									</c:forEach>
 								</span>
 
 								<c:if test="${(startNum + pageCount -1) < lastPageNum }">
-									<span> <a
+									<span> <a 
 										href='FindCorp.do?corpType=${param.corpType }&page=${startNum + pageCount}&keyword=${param.keyword}'>다음</a>
 									</span>
 								</c:if>
 								<c:if test="${(startNum + pageCount -1) >= lastPageNum }">
 									<span onclick="alert('다음 페이지가 없습니다.');">다음</span>
 								</c:if>
-
+								</div>
+								
 							</c:when>
 
 							<%-- 처음에 기업 리스트의 값이 아무것도 없으면 findCorp.do 액션 수행 --%>
@@ -170,8 +183,6 @@
 
 						</c:choose>
 
-						<%-- 검색 후 초기 화면으로 되돌아가기 --%>
-						<button onclick="resetKeyword()">전체 목록보기</button>
 					</article>
 				</tr>
 				

@@ -17,7 +17,7 @@
 	<c:import url='/importedFile/header.jsp'></c:import>
 
 	<!-- 내용 영역 -->
-	<div width="1200px;" style="text-align: center; margin: 5% auto;">
+	<div width="1200px;" style="text-align: center; margin: 5% auto; height:100%;">
 		<div class="sidebar_div" style="float: left;">
 			<aside class="sidebar">
 				<ul style="list-style-type: none;">
@@ -80,16 +80,15 @@
 						<!-- 기업 리스트 출력 -->
 						<c:choose>
 							<%-- 기업 리스트가 null이면 검색 결과가 없다고 표시 --%>
-							<div class="content_div_findCorpList">
-							<c:when test="${requestScope.corpList == 'noResult' }">
-								검색 결과가 없습니다.
-							</c:when>
-<<<<<<< HEAD
-							</div>
-
-=======
 							
->>>>>>> 5881d9e636244d8fb563de338dc3d1497569bf2d
+								<c:when test="${requestScope.corpList == 'noResult' }">
+									<br><br><br><br><br>
+									검색 결과가 없습니다.
+									<br><br><br><br><br><br><br>
+								</c:when>
+							
+
+
 							<%-- 기업 리스트가 존재하면 출력해주는 테이블 생성 --%>
 							<c:when test="${not empty requestScope.corpList }">
 								<table class="content_div_findCorpList" style="word-break: break-all;">
@@ -100,8 +99,7 @@
 										<td width="8%">업종</td>
 										<td width="22%">사이트 주소</td>
 									</tr>
-									<c:forEach var="dto" items="${requestScope.corpList }"
-										varStatus="status">
+									<c:forEach var="dto" items="${requestScope.corpList }" varStatus="status">
 										<tr class="community_text" style="height:35px; cursor:pointer;">
 											<c:choose>
 												<c:when
@@ -112,7 +110,7 @@
 												</c:when>
 												<c:otherwise>
 													<td><button value="${dto.serial_number }"
-															onclick="addFavoriteCorp(this)">☆</button></td>
+															onclick="addFavoriteCorp(this)" class="favoriteCorp_btn">☆</button></td>
 												</c:otherwise>
 											</c:choose>
 											<td>
@@ -139,6 +137,10 @@
 								<button class="findCorp_list_btn" style="margin:0 0 0 89%;" onclick="resetKeyword()">전체 목록보기</button>
 								<br><br>
 								
+								
+								<!-- 페이지 번호 div -->
+								<div class="pagelist_text" style="margin:3% auto;">
+								
 								<%-- 페이지 번호, 페이지 표시 블록의 시작&끝 번호, 페이지 가장 끝 번호, 한 번에 표시할 페이지 개수 정의 --%>
 								<c:set var="page" value="${(empty param.page)? 1 : param.page}"
 									scope="request" />
@@ -163,7 +165,7 @@
 								<span> <c:forEach var="num" begin="${startNum }"
 										end="${lastNum }">
 										<c:if test="${num <= lastPageNum }">
-											<a href='FindCorp.do?corpType=${param.corpType }&page=${num}&keyword=${param.keyword }'>${num}</a>
+											<a style="color:gray;" href='FindCorp.do?corpType=${param.corpType }&page=${num}&keyword=${param.keyword }'>${num}</a>
 										</c:if>
 									</c:forEach>
 								</span>
@@ -176,6 +178,7 @@
 								<c:if test="${(startNum + pageCount -1) >= lastPageNum }">
 									<span onclick="alert('다음 페이지가 없습니다.');">다음</span>
 								</c:if>
+								</div>
 
 							</c:when>
 
