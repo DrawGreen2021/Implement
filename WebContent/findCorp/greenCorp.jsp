@@ -80,9 +80,11 @@
 						<!-- 기업 리스트 출력 -->
 						<c:choose>
 							<%-- 기업 리스트가 null이면 검색 결과가 없다고 표시 --%>
+							<div class="content_div_findCorpList">
 							<c:when test="${requestScope.corpList == 'noResult' }">
 								검색 결과가 없습니다.
 							</c:when>
+							</div>
 
 							<%-- 기업 리스트가 존재하면 출력해주는 테이블 생성 --%>
 							<c:when test="${not empty requestScope.corpList }">
