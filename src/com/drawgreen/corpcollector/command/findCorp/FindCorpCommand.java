@@ -73,7 +73,7 @@ public class FindCorpCommand implements Command {
 			else if (loginOk)
 				favoriteNums = favoriteCorpDAO.getFavoirteSerialNums(page, corpType, user.getId(), rowCount);
 		}
-		// 키워드가 있을 때
+		// 키워드 있을 때
 		else {
 			corpList = dao.getCorpList(keyword, page);
 			rowCount = dao.getRowCount_byKeyword();
@@ -82,7 +82,7 @@ public class FindCorpCommand implements Command {
 				favoriteNums = favoriteCorpDAO.getFavoriteSerialNums(user.getId(), (ArrayList<InterCorpDTO>)corpList);
 			}
 			else if (loginOk)
-				favoriteNums = favoriteCorpDAO.getFavoirteSerialNums(page, corpType, user.getId(), dao.getSerialNums());
+				favoriteNums = favoriteCorpDAO.getFavoirteSerialNums(page, corpType, user.getId(), dao.getAllRowCount());
 		}
 
 		// 검색 결과가 null이 아니라면 request에 corpList 저장 후 페이지 번호 설정
