@@ -11,6 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.drawgreen.corpcollector.command.Command;
+import com.drawgreen.corpcollector.command.community.LoadPostCommand;
+import com.drawgreen.corpcollector.command.community.PostViewCommand;
+import com.drawgreen.corpcollector.command.community.WriteRightCheckCommand;
+import com.drawgreen.corpcollector.command.community.SearchPostCommand;
+import com.drawgreen.corpcollector.command.community.UpdatePostCommand;
+import com.drawgreen.corpcollector.command.community.UpdateRightCheckCommand;
+import com.drawgreen.corpcollector.command.community.WritePostCommand;
 import com.drawgreen.corpcollector.command.findCorp.DetailViewCommand;
 import com.drawgreen.corpcollector.command.findCorp.FindCorpCommand;
 import com.drawgreen.corpcollector.command.findCorp.FindFamilyFriendlyCorpCommand;
@@ -173,6 +180,60 @@ public class FrontController extends HttpServlet {
 			command = new DetailViewCommand();
 			command.execute(request, response);
 			viewPage = "detailedCorpInfo.jsp";
+		}
+		
+		/*----- 커뮤니티 기능 -----*/
+		else if(com.equals("WriteRightCheck.do")) {
+			command = new WriteRightCheckCommand();
+			command.execute(request, response);
+		}
+		else if(com.equals("UpdateRightCheck.do")) {
+			command = new UpdateRightCheckCommand();
+			command.execute(request, response);
+		}
+		else if(com.equals("WritePost.do")) {
+			command = new WritePostCommand();
+			command.execute(request, response);
+		}
+		else if(com.equals("UpdatePost.do")) {
+			command = new UpdatePostCommand();
+			command.execute(request, response);
+		}
+		else if(com.equals("SearchPost.do")) {
+			command = new SearchPostCommand();
+			command.execute(request, response);
+			String boardName = request.getParameter("boardName");
+			switch (boardName) {
+			case "공지사항":
+				viewPage = "notice.jsp";
+				break;
+			case "feedback":
+				break;
+			}
+		}
+		else if(com.equals("PostView.do")) {
+			command = new PostViewCommand();
+			command.execute(request, response);
+			String boardName = request.getParameter("boardName");
+			switch (boardName) {
+			case "공지사항":
+				viewPage = "notice_Page.jsp";
+				break;
+			case "feedback":
+				break;
+			}
+		}
+		else if(com.equals("LoadPost.do")) {
+			command = new LoadPostCommand();
+			command.execute(request, response);
+			String boardName = request.getParameter("boardName");
+			switch (boardName) {
+			case "공지사항":
+				viewPage = "notice_Write.jsp";
+				break;
+			case "feedback":
+				break;
+			}
 		}
 		
 		/*----- 마이페이지 기능 -----*/ 
