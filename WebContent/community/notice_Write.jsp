@@ -30,6 +30,7 @@
 		</div>
 		
 		<div class="content_div">
+			<form id="postForm" method="post">
 			<table width="1000px;" style="text-align:center; float:right;">
 				<tr>
 					<p style="font-size:16pt; color:#21499b; font-weight:bold; margin:0 82% 0 0; ">공지사항 글쓰기</p>
@@ -41,25 +42,42 @@
 					<table class="content_div_write">
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">제목</td>
-							<td><input type="text" autocomplete="off" class="write_input" maxlength="30"></td>
-							<td width="150px"><label><input type="checkbox" name="private_Writing" value="private_Writing" style=" text-align:left;"> 글 비공개</label></td>
+							<td><input type="text" name="title" autocomplete="off" class="write_input" maxlength="30" 
+								value="${requestScope.post==null?'':requestScope.post['title'] }"></td>
+							<td width="150px"><label><input type="checkbox" name="private_Writing" value="private_Writing" style=" text-align:left;" 
+								${(requestScope.post==null || requestScope.post['is_private_writing']==false)?'':'checked' }> 글 비공개</label></td>
 						</tr>
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">작성자</td>
-							<td><input type="text" autocomplete="off" class="write_input"></td>
-							<td width="150px"><label><input type="checkbox" name="private_Writer" value="private_Writer" style="text-align:left;"> 작성자 비공개</label></td>
+							<td><input type="text" name="writer" value="${sessionScope.MemberDTO.name }" autocomplete="off" class="write_input" readonly>
+								<input type="hidden" name="writer_id" value="${sessionScope.MemberDTO.id }"></td>
+							<td width="150px"><label><input type="checkbox" name="private_Writer" value="private_Writer" style="text-align:left;"
+								${(requestScope.post==null || requestScope.post['is_private_writer']==false)?'':'checked' }> 작성자 비공개</label></td>
 						</tr>
 						<tr class="community_text">
 							<td style="background-color:#eeedeb;">내용</td>
-							<td colspan="2"><textarea class="write_input" height="100%"></textarea></td>
+							<td colspan="2"><textarea name="content" class="write_input" height="100%">
+								${requestScope.post==null?'':requestScope.post['content'] }</textarea></td>
 						</tr>
 					</table>
 				</tr>
 			</table>
 			<div style="float:right;">
-			<button class="writing_btn" onclick="writing_Check()">글쓰기</button>
-			<button class="writing_btn" style="background-color:#E7F1FD;" onclick="confirm('작성을 취소하시겠습니까?')">취소</button> <!-- 취소 선택시 뒤로가기 -->
+			<c:choose>
+				<c:when test="${requestScope.post != null }">
+					<button class="writing_btn" onclick="updatePost()">수정</button>
+				</c:when>
+				<c:otherwise>
+					<button class="writing_btn" onclick="writePost()">글쓰기</button>
+				</c:otherwise>
+			</c:choose>
+			
+			<button class="writing_btn" style="background-color:#E7F1FD;" 
+				value="notice.jsp" onclick="cancelWriting(this)">취소</button> <!-- 취소 선택시 뒤로가기 -->
+			<input type="hidden" name="board_number" value="${requestScope.post==null?'':requestScope.post['board_number'] }">
+			<input type="hidden" name="boardName" value="공지사항">
 			</div>
+			</form>
 		</div>
 	</div>
 	
@@ -70,6 +88,6 @@
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
 	<script type="text/javascript" src="../JavaScript/common.js"></script>
-	<script type="text/javascript" src="../JavaScript/right_Check.js"></script>
+	<script type="text/javascript" src="../JavaScript/right_Check.js?ver=7"></script>
 </body>
 </html>
