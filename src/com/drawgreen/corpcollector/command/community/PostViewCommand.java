@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.drawgreen.corpcollector.command.Command;
+import com.drawgreen.corpcollector.dao.FeedbackPostDAO;
 import com.drawgreen.corpcollector.dao.MemberDAO;
 import com.drawgreen.corpcollector.dao.NoticePostDAO;
 import com.drawgreen.corpcollector.dao.PostDAO;
@@ -26,7 +27,7 @@ public class PostViewCommand implements Command{
 		if (boardName.equals("공지사항")) {
 			dao = NoticePostDAO.getInstance();
 		} else {
-			
+			dao = FeedbackPostDAO.getInstance();
 		}
 		
 		// 비공개 글이라면 작성자 또는 관리자만 볼 수 있음
@@ -39,8 +40,11 @@ public class PostViewCommand implements Command{
 			dao.updateHits(board_number);
 			post = dao.getPost(board_number);
 			request.setAttribute("post", post);
-		} else if (user != null) {
-			if(dao.isSeen(user.getId()) || MemberDAO.getInstance().isAdmin(user.getId())) {
+		} 
+		// 글 비공개 설정이 되어 있으나 관리자 또는 글을 쓴 사람 본인일 경우
+		else if (user != null) {
+			if(dao.isWriter(user.getId(), board_number) 
+						|| MemberDAO.getInstance().isAdmin(user.getId())) {
 				// 조회수 증가
 				dao.updateHits(board_number);
 				post = dao.getPost(board_number);
