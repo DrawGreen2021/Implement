@@ -101,6 +101,6 @@
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
 	<script type="text/javascript" src="../JavaScript/common.js"></script>
-	<script type="text/javascript" src="../JavaScript/right_Check.js?ver=1"></script>
+	<script type="text/javascript" src="../JavaScript/community_common.js"></script>
 </body>
 </html>

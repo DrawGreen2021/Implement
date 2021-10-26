@@ -38,7 +38,7 @@
 						<td>
 							<input class="search_bar" type="text" id="search_keyword" name="keyword" autocomplete="off" placeholder=" 검색어를 입력하세요">
 							<input type="hidden" name="page" value="1">
-							<input type="hidden" name="boardName" value="공지사항">
+							<input type="hidden" name="boardName" id="boardName" value="공지사항">
 						</td>
 						<td>
 							<button class = "search_btn" type=submit value="" onclick="">
@@ -53,14 +53,12 @@
 					<c:choose>
 						<%-- 공지사항 글이 없을 경우 --%>
 						<c:when test="${requestScope.postList == 'noResult' }">
-							<tr>
-								<td colspan="5">공지사항이 없습니다.</td>
-							</tr>
+							공지사항이 없습니다.
 						</c:when>
 
 						<%-- 공지사항 글 목록이 있다면 리스트 출력 --%>
 						<c:when test="${not empty requestScope.postList }">
-						<c:set var="boardName" value="notice" scope="request"></c:set>
+
 							<table class="content_div_community">
 								<tr class="community_text"
 									style="background-color: #eeedeb; height: 30px;">
@@ -132,7 +130,7 @@
 
 				</tr>
 			</table>
-			<button class="writing_btn" style="margin:0 0 0 92%;" onclick="writing_Check()">글쓰기</button>
+			<button class="writing_btn" style="margin:0 0 0 92%;" value="notice_Write.jsp" onclick="writing_Check(this)">글쓰기</button>
 		</div>
 	</div>
 	
@@ -143,6 +141,6 @@
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
 	<script type="text/javascript" src="../JavaScript/common.js"></script>
-	<script type="text/javascript" src="../JavaScript/right_Check.js?ver=1"></script>
+	<script type="text/javascript" src="../JavaScript/community_common.js"></script>
 </body>
 </html>
