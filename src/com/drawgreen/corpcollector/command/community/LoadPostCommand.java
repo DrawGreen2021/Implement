@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.drawgreen.corpcollector.command.Command;
+import com.drawgreen.corpcollector.dao.FeedbackPostDAO;
 import com.drawgreen.corpcollector.dao.NoticePostDAO;
 import com.drawgreen.corpcollector.dao.PostDAO;
 
@@ -23,7 +24,7 @@ public class LoadPostCommand implements Command{
 		if (boardName.equals("공지사항")) {
 			dao = NoticePostDAO.getInstance();
 		} else {
-			
+			dao = FeedbackPostDAO.getInstance();
 		}
 		
 		post = dao.getPost(board_number);

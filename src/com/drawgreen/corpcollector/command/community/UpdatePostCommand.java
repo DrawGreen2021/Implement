@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.drawgreen.corpcollector.command.Command;
+import com.drawgreen.corpcollector.dao.FeedbackPostDAO;
 import com.drawgreen.corpcollector.dao.NoticePostDAO;
 import com.drawgreen.corpcollector.dao.PostDAO;
 
@@ -29,7 +30,7 @@ public class UpdatePostCommand implements Command{
 			dao = NoticePostDAO.getInstance();
 		}
 		else {
-			
+			dao = FeedbackPostDAO.getInstance();
 		}
 		
 		boolean updateOk = dao.updatePost(board_number, title, private_Writing, private_Writer, content);
