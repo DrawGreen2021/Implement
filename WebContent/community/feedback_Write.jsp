@@ -42,22 +42,22 @@
 					<table class="content_div_write">
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">제목</td>
-							<td><input type="text" name="title" autocomplete="off" class="write_input" maxlength="30" 
+							<td style="text-align:left; padding-left:12px;"><input type="text" name="title" autocomplete="off" class="write_input" maxlength="30" 
 								value="${requestScope.post==null?'':requestScope.post['title'] }"></td>
-							<td width="150px"><label><input type="checkbox" name="private_Writing" value="private_Writing" style=" text-align:left;" 
+							<td width="150px" style="text-align:left;"><label><input type="checkbox" name="private_Writing" value="private_Writing" style=" text-align:left;" 
 								${(requestScope.post==null || requestScope.post['is_private_writing']==false)?'':'checked' }> 글 비공개</label></td>
 						</tr>
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">작성자</td>
-							<td><input type="text" name="writer" value="${sessionScope.MemberDTO.name }" autocomplete="off" class="write_input" readonly>
+							<td style="text-align:left; padding-left:12px;"><input type="text" name="writer" value="${sessionScope.MemberDTO.name }" autocomplete="off" class="write_input" readonly>
 								<input type="hidden" name="writer_id" value="${sessionScope.MemberDTO.id }"></td>
-							<td width="150px"><label><input type="checkbox" name="private_Writer" value="private_Writer" style="text-align:left;"
+							<td width="150px" style="text-align:left;"><label><input type="checkbox" name="private_Writer" value="private_Writer" style="text-align:left;"
 								${(requestScope.post==null || requestScope.post['is_private_writer']==false)?'':'checked' }> 작성자 비공개</label></td>
 						</tr>
-						<tr class="community_text">
+						<tr class="community_text" height="300px">
 							<td style="background-color:#eeedeb;">내용</td>
-							<td colspan="2"><textarea name="content" class="write_input" height="100%">
-								${requestScope.post==null?'':requestScope.post['content'] }</textarea></td>
+							<td colspan="2" class="write_input">
+							<textarea name="content" style="resize:none;" width="100%">${requestScope.post==null?'':requestScope.post['content'] }</textarea></td>
 						</tr>
 					</table>
 				</tr>
