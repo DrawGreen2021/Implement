@@ -71,7 +71,8 @@
 								<c:forEach items="${requestScope.postList }" var="dto">
 									<tr class="community_text" style="cursor: pointer;">
 										<td>${dto.board_number }</td>
-										<td><a href="PostView.do?board_number=${dto.board_number }&boardName=${param.boardName}">${dto.title }</a></td>
+										<td style="font-decoration:none;"><a
+										href="PostView.do?board_number=${dto.board_number }&boardName=${param.boardName}">${dto.title }</a></td>
 										<c:choose>
 											<c:when
 												test="${dto.is_private_writer == true}">
@@ -89,6 +90,11 @@
 
 							</table>
 							
+							<button class="writing_btn" style="margin:0 0 0 92%;" value="notice_Write.jsp" onclick="writing_Check(this)">글쓰기</button>
+							
+							<!-- 페이지 번호 div -->
+							<div class="pagelist_text" style="margin:3% auto;">
+							
 							<%-- 페이징 변수 파일 포함 --%>
 							<c:import url='/importedFile/pagingVariables.jsp'></c:import>
 							<c:if test="${startNum > 1}">
@@ -104,7 +110,7 @@
 							<span> <c:forEach var="num" begin="${startNum }"
 									end="${lastNum }">
 									<c:if test="${num <= lastPageNum }">
-										<a
+										<a style="color:gray;"
 											href='SearchPost.do?boardName=${param.boardName }&page=${num}&keyword=${param.keyword }'>${num}</a>
 									</c:if>
 								</c:forEach>
@@ -118,6 +124,7 @@
 							<c:if test="${(startNum + pageCount -1) >= lastPageNum }">
 								<span onclick="alert('다음 페이지가 없습니다.');">다음</span>
 							</c:if>
+							</div>
 						</c:when>
 
 						<%-- 그 외의 경우 --%>
@@ -130,7 +137,7 @@
 
 				</tr>
 			</table>
-			<button class="writing_btn" style="margin:0 0 0 92%;" value="notice_Write.jsp" onclick="writing_Check(this)">글쓰기</button>
+			
 		</div>
 	</div>
 	
