@@ -43,32 +43,31 @@
 						<tr>
 							<table class="content_div_write">
 								<tr class="community_text" height="30px;">
-									<td width="100px" style="background-color: #eeedeb;">제목</td>
-									<td colspan="3">${requestScope.post['title']}</td>
+									<td width="100px" style="background-color: #eeedeb; text-align:center;">제목</td>
+									<td colspan="3" style="text-align:left; padding-left:15px; ">${requestScope.post['title']}</td>
 								</tr>
 								<tr class="community_text" height="30px;">
 									<td width="100px" style="background-color: #eeedeb;">작성자</td>
 									<c:choose>
 										<c:when test="${requestScope.post['is_private_writer'] == true}">
-											<td colspan="3">비공개</td>
+											<td colspan="3" style="text-align:left; padding-left:15px; ">비공개</td>
 										</c:when>
 										<c:otherwise>
-											<td colspan="3">${requestScope.post['writer_name'] }</td>
+											<td colspan="3" style="text-align:left; padding-left:15px; ">${requestScope.post['writer_name'] }</td>
 										</c:otherwise>
 									</c:choose>
 
 								</tr>
 								<tr class="community_text" height="30px;">
 									<td width="100px" style="background-color: #eeedeb;">등록일</td>
-									<td width="350px">${requestScope.post['registration_date'] }</td>
+									<td width="350px" style="text-align:left; padding-left:15px; ">${requestScope.post['registration_date'] }</td>
 									<td width="100px" style="background-color: #eeedeb;">조회수</td>
-									<td width="200px">${requestScope.post['hits'] }</td>
+									<td width="200px" >${requestScope.post['hits'] }</td>
 
 								</tr>
-								<tr class="community_text">
-									<td style="background-color: #eeedeb;">내용</td>
-									<td colspan="3"><textarea class="write_input"
-											height="100%" readonly="readonly">${requestScope.post['content'] }</textarea></td>
+								<tr class="community_text" height="100%;">
+									<td style="background-color: #eeedeb; padding:6px;">내용</td>
+									<td colspan="3" style="text-align:left; padding-left:15px;">${requestScope.post['content'] }</td>
 								</tr>
 							</table>
 
