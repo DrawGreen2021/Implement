@@ -23,7 +23,7 @@
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
 					<h3>마이페이지</h3>
-					<p><a href="<c:url value='/myPage/personalInformation.jsp'/>" style="color:#e1bf27; font-weight:bold;">개인 정보 관리</a></p>
+					<p><a href="<c:url value='/myPage/PersonalInfoView.do'/>" style="color:#e1bf27; font-weight:bold;">개인 정보 관리</a></p>
 					<p><a href="<c:url value='/myPage/favoriteCorp.jsp'/>">관심 기업</a></p>
 					<p><a href="<c:url value='/myPage/recentSearch.jsp'/>">최근 검색 기업</a></p>
 					<p><a href="<c:url value='/myPage/myFeedback.jsp'/>">내가 쓴 글</a></p>
@@ -31,6 +31,7 @@
 			</aside>
 		</div>
 		
+		<form action="PersonalInfoWriteView.do" method="post">
 		<div class="content_div">
 			<table width="1000px;" style="text-align:center; float:right;">
 				<tr>
@@ -43,33 +44,42 @@
 					<table class="content_div_write">
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">아이디/ID</td>
-							<td colspan="3"></td>
+							<td colspan="3">${requestScope.personalInfo['id'] }
+								<input type="hidden" name="id" value="${requestScope.personalInfo['id'] }"></td>
 						</tr>
-						<tr class="community_text" height="30px;">
+						<!-- <tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">비밀번호/PW</td>
 							<td colspan="3"></td>
-						</tr>
+						</tr> -->
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">닉네임</td>
-							<td colspan="3"></td>
+							<td colspan="3">${requestScope.personalInfo['nickname'] }
+								<input type="hidden" name="nickname" value="${requestScope.personalInfo['nickname'] }"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">이메일</td>
-							<td colspan="3"></td>
+							<td colspan="3">${requestScope.personalInfo['email'] }
+								<input type="hidden" name="email" value="${requestScope.personalInfo['email'] }"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">생년월일</td>
-							<td width="350px"></td>
+							<td width="350px">${requestScope.personalInfo['birth'] }
+								<input type="hidden" name="birth" value="${requestScope.personalInfo['birth'] }"></td>
 							<td width="100px" style="background-color:#eeedeb;">성별</td>
-							<td width="200px"></td>
+							<td width="200px">${requestScope.personalInfo['gender'] }
+								<input type="hidden" name="gender" value="${requestScope.personalInfo['gender'] }"></td>
 						</tr>
 					</table>
+					
 				</tr>
 			</table>
 			<div style="float:right;">
-			<button class="writing_btn" onclick="location.href='${pageContext.request.contextPath}/myPage/personalInformation_write.jsp'">수정</button>
+			<input type="submit" value="수정" class="writing_btn">
+			<%-- <button class="writing_btn" onclick="location.href='${pageContext.request.contextPath}/myPage/UpdatePersonalInfo.do'">수정</button> --%>
 			</div>
+			
 		</div>
+		</form>
 	</div>
 	<br><br><br><br><br>
 	
