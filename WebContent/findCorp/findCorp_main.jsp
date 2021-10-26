@@ -51,21 +51,20 @@
 				<tr>
 				<table width="900px;" style="text-align: center; margin:0 auto; position:relative;">
 					<tr>
-						<form align="center" action="FindCorp.do" method="get"
-								name="findCorp" id="findCorp">
-								<td><input type="hidden" name="corpType" id="corpType" value="interCorp">
-									<input type="hidden" name="page" value="1"> <input
+						<form align="center" action="FindCorp.do" method="get" name="findCorp" id="findCorp">
+							<td>
+								<input type="hidden" name="corpType" id="corpType" value="interCorp">
+								<input type="hidden" name="page" value="1"> <input
 									class="search_bar" type="text" id="search_keyword"
 									autocomplete="off" placeholder=" 검색어를 입력하세요" name="keyword"
 									value="${(param.keyword==undefined)?'':param.keyword}">
-								</td>
+							</td>
 							<td>
 								<button class="search_btn" type=submit value="" onclick="">
-									<img src="<c:url value='/images/search_logo.PNG'/>"
-										alt="search" width="55px;">
+									<img src="<c:url value='/images/search_logo.PNG'/>" alt="search" width="55px;">
 								</button>
 							</td>
-					</form>
+						</form>
 					</tr>
 				</table>
 				</tr>
@@ -92,7 +91,7 @@
 										<td width="28%">업체명</td>
 										<td width="39%x">소재지</td>
 										<td width="8%">업종</td>
-										<td width="22%">사이트 주소</td>
+										<td width="22%">홈페이지</td>
 									</tr>
 									<c:forEach var="dto" items="${requestScope.corpList }" varStatus="status">
 										<tr class="community_text" style="height:35px; cursor:pointer;">
@@ -123,7 +122,7 @@
 								</table>
 
 								<%-- 검색 후 초기 화면으로 되돌아가기 --%>
-									<button class="findCorp_list_btn" style="margin:0 0 0 89%;" onclick="resetKeyword()">전체 목록보기</button>
+								<button class="findCorp_list_btn" style="margin:0 0 0 89%;" onclick="resetKeyword()">전체 목록보기</button>
 								
 								
 								<!-- 페이지 번호 div -->
