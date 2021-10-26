@@ -11,12 +11,11 @@ public interface PostDAO {
 	int getRowCount(String boardName);
 	ArrayList<PostDTO> getPostList(int page);
 	ArrayList<PostDTO> getPostList(String keyword, int page);
-	void setPostListWriterName(ArrayList<PostDTO> postList);
 	ArrayList<Integer> setboardNums(String keyword, ArrayList<Integer> serialNums);
 	int getAllRowCount();
 	int getRowCount_byKeyword();
 	HashMap<String, Object> getPost(int board_num);
 	void updateHits(int board_num);
 	boolean isAccessible(int board_num);
-	boolean isSeen(String user_id);
+	boolean isWriter(String user_id, int board_id);
 }

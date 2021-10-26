@@ -183,7 +183,9 @@ public class NoticePostDAO implements PostDAO{
 			
 			resultSet = preparedStatement.executeQuery();
 			
-			while(resultSet.next()) {
+			if (!resultSet.next())
+				return null;
+			do {
 				int board_number = resultSet.getInt("board_id");
 				String writer_id = resultSet.getString("id");
 				String writer_name = resultSet.getString("nickname");
@@ -196,7 +198,8 @@ public class NoticePostDAO implements PostDAO{
 				
 				PostDTO post = new PostDTO(board_number, writer_id, writer_name, title, content, registration_date, hits, is_private_writing, is_private_writer);
 				postList.add(post);
-			}
+			} while (resultSet.next());
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -222,7 +225,7 @@ public class NoticePostDAO implements PostDAO{
 	public ArrayList<PostDTO> getPostList(String keyword, int page) {
 		ArrayList<PostDTO> postList = new ArrayList<PostDTO>();
 		
-		// 검색어가 달라졌으면 해당 연번 다시 select
+		// 검색어가 달라졌으면 해당 게시글 번호 다시 select
 		if (beforeKeyword == null) {
 			beforeKeyword = keyword;
 			boardNums = setboardNums(keyword, boardNums);
@@ -291,44 +294,6 @@ public class NoticePostDAO implements PostDAO{
 		
 		
 		return postList;
-	}
-
-	@Override
-	public void setPostListWriterName(ArrayList<PostDTO> postList) {
-		String query = "SELECT nickname FROM Member.members WHERE id = ?";
-		
-		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
-			preparedStatement = connection.prepareStatement(query);
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-		
-		for (int i = 0; i < postList.size(); i++) {
-			try {
-				preparedStatement.setString(1, postList.get(i).getWriter_id());
-				resultSet = preparedStatement.executeQuery();
-				resultSet.next();
-				String name = resultSet.getString(1);
-				postList.get(i).setWriter_name(name);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-		try {
-			if (connection != null)
-				connection.close();
-			if (preparedStatement != null)
-				preparedStatement.close();
-			if (resultSet != null)
-				resultSet.close();
-		} catch (Exception e2) {
-			// TODO: handle exception
-			e2.printStackTrace();
-		}
 	}
 	
 	@Override
@@ -496,25 +461,26 @@ public class NoticePostDAO implements PostDAO{
 	}
 	
 	@Override
-	public boolean isSeen(String user_id) {
+	public boolean isWriter(String user_id, int board_id) {
 		// TODO Auto-generated method stub
-		boolean isSeen = false;
-		String query = "SELECT IF(count(*)=1, 'true', 'false') AS result FROM 공지사항 n, Member.관리자 a "
-				+ "WHERE n.id = ? AND n.id IN (SELECT id FROM a)";
+		boolean isWriter = false;
+		String query = "SELECT IF(count(*)=1, 'true', 'false') AS result FROM 공지사항 "
+				+ "WHERE id = ? AND board_id = ?";
 		
 		try {
 			connection = DriverManager.getConnection(url, rootId, rootPw);
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
+			preparedStatement.setInt(2, board_id);
 			preparedStatement.executeUpdate();
 			
 			resultSet = preparedStatement.executeQuery();
 			resultSet.next();
-			isSeen = Boolean.getBoolean(resultSet.getString(1));
+			isWriter = Boolean.getBoolean(resultSet.getString(1));
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			isSeen = false;
+			isWriter = false;
 		} finally {
 			try {
 				if (connection != null)
@@ -529,7 +495,7 @@ public class NoticePostDAO implements PostDAO{
 			}
 		}
 		
-		return isSeen;
+		return isWriter;
 	}
 	
 }
