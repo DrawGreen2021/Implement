@@ -244,4 +244,64 @@ public class MemberDAO {
 		
 		return updateCheck;
 	}
+	
+	public boolean isAdmin(String id) {
+		boolean isAdmin = false;
+		String query = "SELECT level FROM 관리자 WHERE id = ?";
+		
+		try {
+			connection = DriverManager.getConnection(url, rootId, rootPw);
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, id);
+			
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next() && resultSet.getInt(1) == 1) {
+				isAdmin = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedStatement != null) preparedStatement.close();
+				if (resultSet!=null) resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+		
+		return isAdmin;
+	}
+	
+	public boolean updateRightCheck(String id, int board_num, String boardName) {
+		boolean isAdmin = false;
+		String query = "SELECT IF(count(id)=1, 'true', 'false') AS result FROM members "
+				+ "WHERE id = ? AND EXISTS (SELECT id FROM Community."+boardName+" WHERE board_id = ?)";
+		
+		try {
+			connection = DriverManager.getConnection(url, rootId, rootPw);
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, id);
+			preparedStatement.setInt(2, board_num);
+			
+			resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			String result = resultSet.getString(1);
+			isAdmin = Boolean.parseBoolean(result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedStatement != null) preparedStatement.close();
+				if (resultSet!=null) resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+		
+		return isAdmin;
+	}
 }

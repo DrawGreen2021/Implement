@@ -95,12 +95,23 @@
 										<td>주생산품</td>
 									</tr>
 									<c:forEach items="${requestScope.corpList }"
-										var="dto">
+										var="dto" varStatus="status">
 										<tr>
-											<td>
-												<button value="${dto.serial_number }" onclick="addFavoriteCorp(this)">☆</button>
-											</td>
-											<td><a id="corpName${dto.serial_number }">${dto.company_name }</a></td>
+											<c:choose>
+												<c:when
+													test="${dto.serial_number eq favoriteNums[status.index] 
+															&& requestScope.favoriteNums != null && not empty sessionScope.MemberDTO}">
+													<td><button value="${dto.serial_number }"
+															onclick="addFavoriteCorp(this)" class="favoriteCorp_btn">★</button></td>
+												</c:when>
+												<c:otherwise>
+													<td><button value="${dto.serial_number }"
+															onclick="addFavoriteCorp(this)">☆</button></td>
+												</c:otherwise>
+											</c:choose>
+											<td><a id="corpName${dto.serial_number }"
+											href='DetailView.do?corpType=${param.corpType }&serial_num=${dto.serial_number }'>
+												${dto.company_name }</a></td>
 											<td>${dto.representative }</td>
 											<td>${dto.address }</td>
 											<td>${dto.main_product }</td>
@@ -109,16 +120,8 @@
 									</c:forEach>
 								</table>
 
-								<%-- 페이지 번호, 페이지 표시 블록의 시작&끝 번호, 페이지 가장 끝 번호, 한 번에 표시할 페이지 개수 정의 --%>
-								<c:set var="page" value="${(empty param.page)? 1 : param.page}"
-									scope="request" />
-								<c:set var="startNum" value="${requestScope.blockStartNum}"
-									scope="request" />
-								<c:set var="lastNum" value="${requestScope.blockLastNum}"
-									scope="request" />
-								<c:set var="lastPageNum" value="${requestScope.lastPageNum }"
-									scope="request" />
-								<c:set var="pageCount" value="${5 }" scope="request" />
+								<%-- 페이징 변수 파일 포함 --%>
+								<c:import url='/importedFile/pagingVariables.jsp'></c:import>
 
 								<c:if test="${startNum > 1}">
 									<span><a

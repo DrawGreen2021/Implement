@@ -59,8 +59,8 @@
 							<form align="center" action="FindCorp.do"
 								method="get" name="findCorp" id="findCorp">
 							<td><input type="hidden" name="corpType" value="familyFriendlyCorp">
-								<input type="hidden" name="page" value="1"> <input
-								class="search_bar" type="text" id="search_keyword"
+								<input type="hidden" name="page" value="1"> 
+								<input class="search_bar" type="text" id="search_keyword"
 								autocomplete="off" placeholder=" 검색어를 입력하세요" name="keyword"
 								value="${(param.keyword==undefined)?'':param.keyword}">
 							</td>
@@ -94,12 +94,23 @@
 										<td>분류</td>
 										<td>시도</td>
 									</tr>
-									<c:forEach items="${requestScope.corpList }" var="dto">
+									<c:forEach items="${requestScope.corpList }" var="dto" varStatus="status">
 										<tr>
-											<td>
-												<button value="${dto.serial_number }" onclick="addFavoriteCorp(this)">☆</button>
-											</td>
-											<td><a id="corpName${dto.serial_number }">${dto.company_name }</a></td>
+											<c:choose>
+												<c:when
+													test="${dto.serial_number eq favoriteNums[status.index] 
+															&& requestScope.favoriteNums != null && not empty sessionScope.MemberDTO}">
+													<td><button value="${dto.serial_number }"
+															onclick="addFavoriteCorp(this)" class="favoriteCorp_btn">★</button></td>
+												</c:when>
+												<c:otherwise>
+													<td><button value="${dto.serial_number }"
+															onclick="addFavoriteCorp(this)">☆</button></td>
+												</c:otherwise>
+											</c:choose>
+											<td><a id="corpName${dto.serial_number }"
+											href='DetailView.do?corpType=${param.corpType }&serial_num=${dto.serial_number }'>
+												${dto.company_name }</a></td>
 											<td>${dto.division }</td>
 											<td>${dto.city_state }</td>
 										</tr>
@@ -107,16 +118,8 @@
 									</c:forEach>
 								</table>
 
-								<%-- 페이지 번호, 페이지 표시 블록의 시작&끝 번호, 페이지 가장 끝 번호, 한 번에 표시할 페이지 개수 정의 --%>
-								<c:set var="page" value="${(empty param.page)? 1 : param.page}"
-									scope="request" />
-								<c:set var="startNum" value="${requestScope.blockStartNum}"
-									scope="request" />
-								<c:set var="lastNum" value="${requestScope.blockLastNum}"
-									scope="request" />
-								<c:set var="lastPageNum" value="${requestScope.lastPageNum }"
-									scope="request" />
-								<c:set var="pageCount" value="${5 }" scope="request" />
+								<%-- 페이징 변수 파일 포함 --%>
+								<c:import url='/importedFile/pagingVariables.jsp'></c:import>
 
 								<c:if test="${startNum > 1}">
 									<span><a
@@ -132,14 +135,14 @@
 										end="${lastNum }">
 										<c:if test="${num <= lastPageNum }">
 											<a
-												href='FindCorp.do.do?corpType=${param.corpType }&page=${num}&keyword=${param.keyword }'>${num}</a>
+												href='FindCorp.do?corpType=${param.corpType }&page=${num}&keyword=${param.keyword }'>${num}</a>
 										</c:if>
 									</c:forEach>
 								</span>
 
 								<c:if test="${(startNum + pageCount -1) < lastPageNum }">
 									<span> <a
-										href='FindCorp.do.do?corpType=${param.corpType }&page=${startNum + pageCount}&keyword=${param.keyword}'>다음</a>
+										href='FindCorp.do?corpType=${param.corpType }&page=${startNum + pageCount}&keyword=${param.keyword}'>다음</a>
 									</span>
 								</c:if>
 								<c:if test="${(startNum + pageCount -1) >= lastPageNum }">

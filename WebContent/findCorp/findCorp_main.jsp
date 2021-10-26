@@ -122,7 +122,6 @@
 
 								</table>
 
-
 								<%-- 검색 후 초기 화면으로 되돌아가기 --%>
 									<button class="findCorp_list_btn" style="margin:0 0 0 89%;" onclick="resetKeyword()">전체 목록보기</button>
 								
@@ -130,16 +129,8 @@
 								<!-- 페이지 번호 div -->
 								<div class="pagelist_text" style="margin:3% auto;">
 								
-								<%-- 페이지 번호, 페이지 표시 블록의 시작&끝 번호, 페이지 가장 끝 번호, 한 번에 표시할 페이지 개수 정의 --%>
-								<c:set var="page" value="${(empty param.page)? 1 : param.page}"
-									scope="request" />
-								<c:set var="startNum" value="${requestScope.blockStartNum}"
-									scope="request" />
-								<c:set var="lastNum" value="${requestScope.blockLastNum}"
-									scope="request" />
-								<c:set var="lastPageNum" value="${requestScope.lastPageNum }"
-									scope="request" />
-								<c:set var="pageCount" value="${5 }" scope="request" />
+								<%-- 페이징 변수 파일 포함 --%>
+								<c:import url='/importedFile/pagingVariables.jsp'></c:import>
 
 								<c:if test="${startNum > 1}">
 									<span><a 
