@@ -26,18 +26,19 @@ public class WriteRightCheckCommand implements Command{
 			e.printStackTrace();
 		}
 		
-		boolean isAdmin = false;
-		
-		if (user == null) {
+		String boardName = request.getParameter("boardName");
+		if (user == null)
 			out.print("not-login");
-		} else {
+		if (boardName.equals("공지사항")) {
 			MemberDAO dao = MemberDAO.getInstance();
-			isAdmin = dao.isAdmin(user.getId());
-			
+			boolean isAdmin = dao.isAdmin(user.getId());
 			if (isAdmin) {
 				out.print("accessible");
 			} else out.print("inaccessible");
+		} else {
+			out.print("accessible");
 		}
+		
 	}
 
 }
