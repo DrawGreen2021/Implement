@@ -80,32 +80,33 @@
 						<c:choose>
 							<%-- 기업 리스트가 null이면 검색 결과가 없다고 표시 --%>
 							<c:when test="${requestScope.corpList == 'noResult' }">
+								<br><br><br><br><br>
 								검색 결과가 없습니다.
+								<br><br><br><br><br><br><br>
 							</c:when>
 
 							<%-- 기업 리스트가 존재하면 출력해주는 테이블 생성 --%>
 							<c:when test="${not empty requestScope.corpList }">
 
-								<table cellpadding="0" cellspacing="0" border="1">
-
-									<tr>
-										<td></td>
-										<td>기업명</td>
-										<td>분류</td>
-										<td>시도</td>
+								<table class="content_div_findCorpList" style="word-break: break-all;">
+									<tr class="community_text" style="background-color:#eeedeb; height:32px;">
+										<td width="3%"> </td>
+										<td width="50%">기업명</td>
+										<td width="20%x">분류</td>
+										<td width="27%">시도</td>
 									</tr>
 									<c:forEach items="${requestScope.corpList }" var="dto" varStatus="status">
-										<tr>
+										<tr class="community_text" style="height:35px; cursor:pointer;">
 											<c:choose>
 												<c:when
 													test="${dto.serial_number eq favoriteNums[status.index] 
 															&& requestScope.favoriteNums != null && not empty sessionScope.MemberDTO}">
-													<td><button value="${dto.serial_number }"
+													<td style="text-align:center;"><button value="${dto.serial_number }"
 															onclick="addFavoriteCorp(this)" class="favoriteCorp_btn">★</button></td>
 												</c:when>
 												<c:otherwise>
-													<td><button value="${dto.serial_number }"
-															onclick="addFavoriteCorp(this)">☆</button></td>
+													<td style="text-align:center;"><button value="${dto.serial_number }"
+															onclick="addFavoriteCorp(this)" class="favoriteCorp_btn">☆</button></td>
 												</c:otherwise>
 											</c:choose>
 											<td><a id="corpName${dto.serial_number }"
@@ -117,7 +118,15 @@
 
 									</c:forEach>
 								</table>
-
+								
+								
+								<%-- 검색 후 초기 화면으로 되돌아가기 --%>
+								<button class="findCorp_list_btn" style="margin:0 0 0 89%;" onclick="resetKeyword()">전체 목록보기</button>
+								
+								
+								<!-- 페이지 번호 div -->
+								<div class="pagelist_text" style="margin:3% auto;">
+								
 								<%-- 페이징 변수 파일 포함 --%>
 								<c:import url='/importedFile/pagingVariables.jsp'></c:import>
 
@@ -134,7 +143,7 @@
 								<span> <c:forEach var="num" begin="${startNum }"
 										end="${lastNum }">
 										<c:if test="${num <= lastPageNum }">
-											<a
+											<a style="color:gray;"
 												href='FindCorp.do?corpType=${param.corpType }&page=${num}&keyword=${param.keyword }'>${num}</a>
 										</c:if>
 									</c:forEach>
@@ -148,7 +157,7 @@
 								<c:if test="${(startNum + pageCount -1) >= lastPageNum }">
 									<span onclick="alert('다음 페이지가 없습니다.');">다음</span>
 								</c:if>
-
+								</div>
 							</c:when>
 
 							<%-- 처음에 기업 리스트의 값이 아무것도 없으면 findCorp.do 액션 수행 --%>
@@ -159,10 +168,6 @@
 							</c:otherwise>
 
 						</c:choose>
-
-						<%-- 검색 후 초기 화면으로 되돌아가기 --%>
-						<button onclick="resetKeyword()">전체 목록보기</button>
-
 					</article>
 				</tr>
 
