@@ -6,17 +6,19 @@ script.src = 'https://code.jquery.com/jquery-3.4.1.min.js';
 script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 
-function writing_Check(){
+function writing_Check(button){
+	var nextPage = button.value;
+	var boardName = $('#boardName').val();
 	
 	$.ajax({
         type:'post',
         async:false,
         url:'WriteRightCheck.do',
         dataType:'text',
-        data:{},
+        data:{"boardName":boardName},
         success: function(data, textStatus) {
             if(data === 'accessible') {   
-				location.href = "notice_Write.jsp";
+				location.href = nextPage;
             } else {
 				alert("접근 권한이 없습니다.");
             }
@@ -67,10 +69,17 @@ function goListPage(button) {
 	location.href = nextPage;
 }
 
-function cancelWriting(button) {
+function cancelWriting() {
+	
+	if(confirm('작성을 취소하시겠습니까?') == true) {
+		history.go(-1);
+	}
+}
+
+/*function cancelWriting(button) {
 	var nextPage = button.value;
 	
 	if(confirm('작성을 취소하시겠습니까?') == true) {
 		location.href = nextPage;
 	}
-}
+}*/
