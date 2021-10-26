@@ -207,7 +207,8 @@ public class FrontController extends HttpServlet {
 			case "공지사항":
 				viewPage = "notice.jsp";
 				break;
-			case "feedback":
+			case "고객후기":
+				viewPage = "feedback.jsp";
 				break;
 			}
 		}
@@ -219,7 +220,8 @@ public class FrontController extends HttpServlet {
 			case "공지사항":
 				viewPage = "notice_Page.jsp";
 				break;
-			case "feedback":
+			case "고객후기":
+				viewPage = "feedback_Page.jsp";
 				break;
 			}
 		}
@@ -231,7 +233,8 @@ public class FrontController extends HttpServlet {
 			case "공지사항":
 				viewPage = "notice_Write.jsp";
 				break;
-			case "feedback":
+			case "고객후기":
+				viewPage = "feedback_Write.jsp";
 				break;
 			}
 		}
