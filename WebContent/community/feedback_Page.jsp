@@ -29,43 +29,72 @@
 			</aside>
 		</div>
 		
-		<div class="content_div">
-			<table width="1000px;" style="text-align:center; float:right;">
-				<tr>
-					<p style="font-size:16pt; color:#21499b; font-weight:bold; margin:0 90% 0 0; ">고객 후기</p>
-				</tr>
-				<tr>
-					<div style = "border:1px solid #21499b; margin:1% auto;"></div>
-				</tr>
-				<tr>
-					<table class="content_div_write">
-						<tr class="community_text" height="30px;">
-							<td width="100px" style="background-color:#eeedeb;">제목</td>
-							<td colspan="3"></td>
+		<c:choose>
+			<c:when test="${requestScope.post != null }">
+				<div class="content_div">
+					<table width="1000px;" style="text-align: center; float: right;">
+						<tr>
+							<p
+								style="font-size: 16pt; color: #21499b; font-weight: bold; margin: 0 90% 0 0;">고객
+								후기</p>
 						</tr>
-						<tr class="community_text" height="30px;">
-							<td width="100px" style="background-color:#eeedeb;">작성자</td>
-							<td colspan="3"></td>
+						<tr>
+							<div style="border: 1px solid #21499b; margin: 1% auto;"></div>
 						</tr>
-						<tr class="community_text" height="30px;">
-							<td width="100px" style="background-color:#eeedeb;">등록일</td>
-							<td width="350px"></td>
-							<td width="100px" style="background-color:#eeedeb;">조회수</td>
-							<td width="200px"></td>
+						<tr>
+							<table class="content_div_write">
+								<tr class="community_text" height="30px;">
+									<td width="100px" style="background-color: #eeedeb;">제목</td>
+									<td colspan="3">${requestScope.post['title']}</td>
+								</tr>
+								<tr class="community_text" height="30px;">
+									<td width="100px" style="background-color: #eeedeb;">작성자</td>
+									<c:choose>
+										<c:when
+											test="${requestScope.post['is_private_writer'] == true}">
+											<td colspan="3">비공개</td>
+										</c:when>
+										<c:otherwise>
+											<td colspan="3">${requestScope.post['writer_name'] }</td>
+										</c:otherwise>
+									</c:choose>
+
+								</tr>
+								<tr class="community_text" height="30px;">
+									<td width="100px" style="background-color: #eeedeb;">등록일</td>
+									<td width="350px">${requestScope.post['registration_date'] }</td>
+									<td width="100px" style="background-color: #eeedeb;">조회수</td>
+									<td width="200px">${requestScope.post['hits'] }</td>
+
+								</tr>
+								<tr class="community_text">
+									<td style="background-color: #eeedeb;">내용</td>
+									<td colspan="3"><textarea class="write_input"
+											height="100%" readonly="readonly">${requestScope.post['content'] }</textarea></td>
+								</tr>
+							</table>
 							
 						</tr>
-						<tr class="community_text">
-							<td style="background-color:#eeedeb;">내용</td>
-							<td colspan="3"><textarea class="write_input" height="100%"></textarea></td>
-						</tr>
 					</table>
-				</tr>
-			</table>
-			<div style="float:right;">
-			<button class="writing_btn" onclick="">수정</button>
-			<button class="writing_btn" style="background-color:#E7F1FD;" onclick="">목록</button> <!-- 목록으로 돌아가기 -->
-			</div>
-		</div>
+					<div style="float: right;">
+						<input type="hidden" id="boardName" value="고객후기">
+						<button class="writing_btn" onclick="updating_Check(this)"
+							value="${requestScope.post['board_number'] }">수정</button>
+						<button class="writing_btn" style="background-color: #E7F1FD;"
+							value="feedback.jsp" onclick="goListPage(this)">목록</button>
+						<!-- 목록으로 돌아가기 -->
+					</div>
+				</div>
+			</c:when>
+			
+			<c:otherwise>
+				<script type="text/javascript">
+					alert("비공개 글입니다.");
+					history.go(-1);
+				</script>
+			</c:otherwise>
+		</c:choose>
+		
 	</div>
 	
 	
@@ -75,6 +104,6 @@
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
 	<script type="text/javascript" src="../JavaScript/common.js"></script>
-	<script type="text/javascript" src="../JavaScript/right_Check.js"></script>
+	<script type="text/javascript" src="../JavaScript/community_common.js"></script>
 </body>
 </html>
