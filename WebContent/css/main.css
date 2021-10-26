@@ -567,11 +567,11 @@
 	font-weight:normal; 
 	font-family:dotum; 
 	position: relative;
-	width: 800px;
+	width: 820px;
 	height:280px;
 	border:none;
 	resize:none;
-	padding:1%;
+	padding:0;
 }
 
 .write_input input:focus{

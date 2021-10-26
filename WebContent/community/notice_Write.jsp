@@ -56,8 +56,8 @@
 						</tr>
 						<tr class="community_text" height="300px">
 							<td style="background-color:#eeedeb;">내용</td>
-							<td colspan="2" class="write_input"><textarea name="content" style="resize:none;">
-								${requestScope.post==null?'':requestScope.post['content'] }</textarea></td>
+							<td colspan="2" class="write_input">
+							<textarea name="content" style="resize:none;" width="100%">${requestScope.post==null?'':requestScope.post['content'] }</textarea></td>
 						</tr>
 					</table>
 				</tr>
