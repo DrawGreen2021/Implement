@@ -31,12 +31,11 @@ public class FamilyFriendlyCorpDTO implements CorpDTO{
 	public void setDivision(String division) {
 		this.division = division;
 	}
-	public String getCity_sate() {
+	public String getCity_state() {
 		return city_state;
 	}
-	public void setCity_sate(String city_sate) {
-		this.city_state = city_sate;
+	public void setCity_state(String city_state) {
+		this.city_state = city_state;
 	}
-	
 	
 }
