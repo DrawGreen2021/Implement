@@ -374,4 +374,5 @@ public class InterCorpDAO implements CorpDAO {
 
 		return corpType;
 	}
+
 }

@@ -287,5 +287,5 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 		
 		return corpInfo;
 	}
-	
+
 }
