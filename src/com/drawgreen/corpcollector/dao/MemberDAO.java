@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -303,5 +304,70 @@ public class MemberDAO {
 		}
 		
 		return isAdmin;
+	}
+	
+	public HashMap<String, Object> getPersonalInfo(String id) {
+		HashMap<String, Object> personalInfo = new HashMap<String, Object>();
+		
+		String query = "SELECT * FROM members WHERE id = ?";
+		
+		try {
+			connection = DriverManager.getConnection(url, userId, userPw);
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, id);
+			
+			resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			personalInfo.put("id", resultSet.getString("id"));
+			personalInfo.put("nickname", resultSet.getString("nickname"));
+			personalInfo.put("email", resultSet.getString("email"));
+			personalInfo.put("birth", resultSet.getDate("birth"));
+			personalInfo.put("gender", resultSet.getString("gender"));
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedStatement != null) preparedStatement.close();
+				if (resultSet!=null) resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+		
+		return personalInfo;
+	}
+	
+	public void updatePersonalInfo(String origin_id, String id, String name, String email, String birth, String gender) {
+		String query = "UPDATE members SET id=?, nickname=?, email=?, birth=?, gender=? "
+				+ "WHERE id=?";
+
+		try {
+			rootConnection = DriverManager.getConnection(url, rootId, rootPw);
+			PreparedStatement preparedStatement = rootConnection.prepareStatement(query);
+			preparedStatement.setString(1, id);
+			preparedStatement.setString(2, name);
+			preparedStatement.setString(3, email);
+			preparedStatement.setDate(4, java.sql.Date.valueOf(birth));
+			preparedStatement.setString(5, gender);
+			preparedStatement.setString(6, origin_id);
+			
+			preparedStatement.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rootConnection != null) rootConnection.close();
+				if (preparedStatement != null) preparedStatement.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
 	}
 }

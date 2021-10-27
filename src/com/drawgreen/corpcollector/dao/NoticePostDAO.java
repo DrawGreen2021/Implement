@@ -34,6 +34,7 @@ public class NoticePostDAO implements PostDAO{
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			pageRowCount = 10;
 			allRowCount = getRowCount("공지사항");
+			boardNums = new ArrayList<Integer>();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -297,7 +298,7 @@ public class NoticePostDAO implements PostDAO{
 	}
 	
 	@Override
-	public ArrayList<Integer> setboardNums(String keyword, ArrayList<Integer> serialNums) {
+	public ArrayList<Integer> setboardNums(String keyword, ArrayList<Integer> boardNums) {
 		// TODO Auto-generated method stub
 		// 키워드 공백으로 분리
 		StringTokenizer tokenizer = new StringTokenizer(keyword);

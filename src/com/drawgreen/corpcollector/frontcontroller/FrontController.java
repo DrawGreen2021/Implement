@@ -35,6 +35,9 @@ import com.drawgreen.corpcollector.command.member.SignUpCommand;
 import com.drawgreen.corpcollector.command.member.UpdatePwCommand;
 import com.drawgreen.corpcollector.command.mypage.AddFavoriteCorpCommand;
 import com.drawgreen.corpcollector.command.mypage.AddFavoriteCorpInMainCommand;
+import com.drawgreen.corpcollector.command.mypage.PersonalInfoViewCommand;
+import com.drawgreen.corpcollector.command.mypage.PersonalInfoWriteViewCommand;
+import com.drawgreen.corpcollector.command.mypage.UpdatePersonalInfoCommand;
 
 /**
  * Servlet implementation class FrontController
@@ -248,7 +251,21 @@ public class FrontController extends HttpServlet {
 			command = new AddFavoriteCorpInMainCommand();
 			command.execute(request, response);
 		}
-		
+		else if(com.equals("PersonalInfoView.do")) {
+			command = new PersonalInfoViewCommand();
+			command.execute(request, response);
+			viewPage = "personalInformation.jsp";
+		}
+		else if(com.equals("PersonalInfoWriteView.do")) {
+			command = new PersonalInfoWriteViewCommand();
+			command.execute(request, response);
+			viewPage = "personalInformation_write.jsp";
+		}
+		else if(com.equals("UpdatePersonalInfo.do")) {
+			command = new UpdatePersonalInfoCommand();
+			command.execute(request, response);
+			viewPage = "PersonalInfoView.do";
+		}
 
 		if (viewPage != null) {
 			
