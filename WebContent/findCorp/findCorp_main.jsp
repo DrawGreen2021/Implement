@@ -91,7 +91,7 @@
 										<td width="28%">업체명</td>
 										<td width="39%x">소재지</td>
 										<td width="8%">업종</td>
-										<td width="22%">홈페이지</td>
+										<td width="22%">기업유형</td>
 									</tr>
 									<c:forEach var="dto" items="${requestScope.corpList }" varStatus="status">
 										<tr class="community_text" style="height:35px; cursor:pointer;">
