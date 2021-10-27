@@ -179,7 +179,7 @@ public class NoticePostDAO implements PostDAO{
 		try {
 			connection = DriverManager.getConnection(url, userId, userPw);
 			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setInt(1, page-1);
+			preparedStatement.setInt(1, (page-1)*pageRowCount);
 			preparedStatement.setInt(2, pageRowCount);
 			
 			resultSet = preparedStatement.executeQuery();
