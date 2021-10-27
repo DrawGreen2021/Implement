@@ -8,7 +8,7 @@
 	<meta name="description" content="캡스톤_01">
 	<meta name="keywords" content="HTML5, CSS, JQUERY">
 	
-	<link rel="stylesheet" type="text/css" href="../css/main.css">
+	<link rel="stylesheet" type="text/css" href='<c:url value="/css/main.css"/>'>
 	
 	<title>CorpCollector : 기업 찾기</title>
 </head>
@@ -92,7 +92,7 @@
 										<td width="28%">업체명</td>
 										<td width="39%x">소재지</td>
 										<td width="8%">업종</td>
-										<td width="22%">사이트 주소</td>
+										<td width="22%">기업유형</td>
 									</tr>
 									<c:forEach var="dto" items="${requestScope.corpList }" varStatus="status">
 										<tr class="community_text" style="height:35px; cursor:pointer;">
