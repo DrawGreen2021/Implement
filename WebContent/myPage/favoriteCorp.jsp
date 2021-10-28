@@ -32,7 +32,7 @@
 			</aside>
 		</div>
 		
-		<form action="DeleteFavoriteCorp.do" method="post">
+		<form action="DeleteFavoriteCorp.do" method="post" id="deleteForm">
 		<div class="content_div">
 			<table width="1000px;" style="text-align:center; float:right;">
 				<tr>
@@ -42,8 +42,12 @@
 					<div style = "border:1px solid #21499b; margin:1% auto;"></div>
 				</tr>
 				<tr>
-					
 					<table class="content_div_write">
+						<c:if test="${empty favCorpMap }">
+							<br><br><br><br><br>
+							관심 기업이 없습니다.
+							<br><br><br><br><br><br><br>
+						</c:if>
 						<c:if test="${not empty favCorpMap['talentDevelopmentCorp']}">
 							<c:forEach items="${favCorpMap['talentDevelopmentCorp'] }"
 									var="favCorp" varStatus="status">
@@ -201,7 +205,7 @@
 			<div>
 				<label class="community_text" style="float:left;">
 					<input type="checkbox" name="favCorp_select" value="favCorp_selectAll" onclick="selectAll(this)"> 전체 선택</label>
-				<input type="submit" value="삭제" class="writing_btn" style="float:right;">
+				<input type="button" value="삭제" class="writing_btn" style="float:right;" onclick="deleteFavCorp()">
 			</div>
 		</div>
 		</form>
