@@ -41,8 +41,8 @@
 			</aside>
 			<br>
 			<aside class="rankbar" align="left;">
-				<h4>가장 많이 검색한 기업</h4>
-					<p>1.</p>
+				<%-- 가장 많이 검색한 기업 순위 --%>
+				<c:import url="/importedFile/corpRank.jsp"></c:import>
 			</aside>
 		</div>
 		
