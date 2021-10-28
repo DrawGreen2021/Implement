@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import com.drawgreen.corpcollector.dto.RecentSearchDTO;
@@ -23,11 +24,13 @@ public class RecentSearchCorpDAO {
 	private String rootPw = "drawgreen2021"; 
 	private String url = "jdbc:mysql://corpcollector.ciqetekukvwo.ap-northeast-2.rds.amazonaws.com:3306/Member";
 	private int pageRowCount;
+	private int rankCount;
 	
 	private RecentSearchCorpDAO() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			pageRowCount = 10;
+			rankCount = 5;
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -162,6 +165,7 @@ public class RecentSearchCorpDAO {
 		return recentRecords;
 	}
 	
+	// 한 페이지에 들어가는 행의 개수만큼 DTO 개수를 조정
 	public ArrayList<RecentSearchDTO> setCorpCount(int page, List<RecentSearchDTO> corpList) {
 		ArrayList<RecentSearchDTO> corpListFor1page = new ArrayList<RecentSearchDTO>();
 		
@@ -173,6 +177,37 @@ public class RecentSearchCorpDAO {
 		}
 		
 		return corpListFor1page;
+	}
+	
+	// 가장 많이 검색한 기업 순위를 구해오기
+	public LinkedHashMap<Integer, String> getRecentSearchRank() {
+		LinkedHashMap<Integer, String> recentSearchRank = new LinkedHashMap<Integer, String>();
+		
+		String query = "SELECT corpName, count(*) as searchCount FROM 최근검색기업 GROUP BY corpName ORDER BY count(corpName) DESC;";
+		
+		try {
+			connection = DriverManager.getConnection(url, userId, userPw);
+			preparedStatement = connection.prepareStatement(query);
+			resultSet = preparedStatement.executeQuery();
+			
+			for (int i = 1; i <= rankCount && resultSet.next(); i++) {
+				recentSearchRank.put(i, resultSet.getString("corpName"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedStatement != null) preparedStatement.close();
+				if (resultSet!=null) resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+		
+		return recentSearchRank;
 	}
 	
 	// ArrayList 정렬 용도 - 최근 검색 날짜 순으로 정렬
