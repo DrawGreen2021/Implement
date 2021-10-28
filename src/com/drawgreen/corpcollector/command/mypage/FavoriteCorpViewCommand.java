@@ -1,6 +1,6 @@
 package com.drawgreen.corpcollector.command.mypage;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +23,7 @@ public class FavoriteCorpViewCommand implements Command{
 		int page = Integer.parseInt(page_str);
 		
 		FavoriteCorpDAO dao = FavoriteCorpDAO.getInstance();
-		HashMap<String, HashMap<Integer, String>> favCorpMap = dao.getFavoriteSerialNums_forMyPage(user.getId(), page);
+		LinkedHashMap<String, LinkedHashMap<Integer, String>> favCorpMap = dao.getFavoriteSerialNums_forMyPage(user.getId(), page);
 		int rowCount = dao.getRowCount(user.getId(), page);
 		
 		request.setAttribute("favCorpMap", favCorpMap);

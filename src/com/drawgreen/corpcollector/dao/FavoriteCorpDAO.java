@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Set;
 import java.util.Map.Entry;
 
@@ -306,15 +307,16 @@ public class FavoriteCorpDAO {
 	}
 	
 	// 마이페이지 - 관심기업에 표시할 관심기업 연번 및 업체명 얻어오기
-	public HashMap<String, HashMap<Integer, String>> getFavoriteSerialNums_forMyPage(String user_id, int page) {
+	public LinkedHashMap<String, LinkedHashMap<Integer, String>> getFavoriteSerialNums_forMyPage(String user_id, int page) {
 		
-		HashMap<String, HashMap<Integer, String>> favCorpMap = new HashMap<String, HashMap<Integer, String>>();
+		LinkedHashMap<String, LinkedHashMap<Integer, String>> favCorpMap 
+			= new LinkedHashMap<String, LinkedHashMap<Integer, String>>();
 		
-		HashMap<Integer, String> familyFriendlyCorp = new HashMap<Integer, String>();
-		HashMap<Integer, String> greenCorp = new HashMap<Integer, String>();
-		HashMap<Integer, String> socialCorp = new HashMap<Integer, String>();
-		HashMap<Integer, String> talentDevelopmentCorp = new HashMap<Integer, String>();
-		HashMap<Integer, String> youthFriendlyCorp = new HashMap<Integer, String>();
+		LinkedHashMap<Integer, String> familyFriendlyCorp = new LinkedHashMap<Integer, String>();
+		LinkedHashMap<Integer, String> greenCorp = new LinkedHashMap<Integer, String>();
+		LinkedHashMap<Integer, String> socialCorp = new LinkedHashMap<Integer, String>();
+		LinkedHashMap<Integer, String> talentDevelopmentCorp = new LinkedHashMap<Integer, String>();
+		LinkedHashMap<Integer, String> youthFriendlyCorp = new LinkedHashMap<Integer, String>();
 		
 		String query = "SELECT * FROM 관심기업 WHERE user_id = ? LIMIT ?,?";
 		

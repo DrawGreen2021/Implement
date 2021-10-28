@@ -1,9 +1,10 @@
 package com.drawgreen.corpcollector.dao;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import com.drawgreen.corpcollector.dto.CorpDTO;
+import com.drawgreen.corpcollector.dto.RecentSearchDTO;
 
 public interface CorpDAO {
 	int getRowCount(String corpType); // 전체 테이블(키워드x) 튜플 개수 가져오기
@@ -23,5 +24,7 @@ public interface CorpDAO {
 	// -----------------------------------------------------------------------------
 	
 	// 상세 기업 페이지에서 관련 정보를 가져올 때, 해당 레코드 정보 반환
-	HashMap<String, Object> getInfo(int serial_num);
+	LinkedHashMap<String, Object> getInfo(int serial_num);
+	// 최근 검색 기업과 연관된 정보 가져오기
+	ArrayList<RecentSearchDTO> getRecentRecords(String user_id);
 }
