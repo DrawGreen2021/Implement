@@ -476,11 +476,10 @@ public class FeedbackPostDAO implements PostDAO{
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
 			preparedStatement.setInt(2, board_id);
-			preparedStatement.executeUpdate();
 			
 			resultSet = preparedStatement.executeQuery();
 			resultSet.next();
-			isWriter = Boolean.getBoolean(resultSet.getString(1));
+			isWriter = Boolean.parseBoolean(resultSet.getString(1));
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -502,4 +501,119 @@ public class FeedbackPostDAO implements PostDAO{
 		return isWriter;
 	}
 
+	public ArrayList<PostDTO> getPostList_forMyPage(String user_id, int page) {
+		// TODO Auto-generated method stub
+		
+		ArrayList<PostDTO> postList = new ArrayList<PostDTO>();
+		
+		String query = "SELECT f.*, m.nickname FROM 고객후기 f, Member.members m "
+				+ "WHERE f.id = ? AND f.id = m.id LIMIT ?, ?";
+		
+		try {
+			connection = DriverManager.getConnection(url, userId, userPw);
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, user_id);
+			preparedStatement.setInt(2, (page-1)*pageRowCount);
+			preparedStatement.setInt(3, pageRowCount);
+			
+			resultSet = preparedStatement.executeQuery();
+			
+			if (!resultSet.next())
+				return null;
+			do {
+				int board_number = resultSet.getInt("board_id");
+				String writer_id = resultSet.getString("id");
+				String writer_name = resultSet.getString("nickname");
+				String title = resultSet.getString("title");
+				String content = resultSet.getString("content");
+				Timestamp registration_date = resultSet.getTimestamp("등록일시");
+				int hits = resultSet.getInt("조회수");
+				boolean is_private_writing = resultSet.getBoolean("글_비공개");
+				boolean is_private_writer = resultSet.getBoolean("작성자_비공개");
+				
+				PostDTO post = new PostDTO(board_number, writer_id, writer_name, title, content, registration_date, hits, is_private_writing, is_private_writer);
+				postList.add(post);
+			} while (resultSet.next());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (resultSet != null)
+					resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+		
+		return postList;
+	}
+
+	public int getRowCount_forMyPage(String user_id) {
+		// TODO Auto-generated method stub
+		String query = "SELECT count(*) FROM 고객후기 WHERE id = ?";
+		int rowcount = 0;
+		
+		try {
+			connection = DriverManager.getConnection(url, userId, userPw);
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, user_id);
+			
+			resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			rowcount = resultSet.getInt(1);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (resultSet != null)
+					resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+		
+		return rowcount;
+	}
+	
+	public void deleteMyFeedback(int[] board_numbers) {
+		String query = "DELETE FROM 고객후기 WHERE board_id IN(";
+		StringBuilder builder = new StringBuilder(query);
+		
+		builder.append(board_numbers[0]);
+		for (int i = 1; i < board_numbers.length; i++) {
+			builder.append(","+board_numbers[i]);
+		}
+		builder.append(")");
+		query = builder.toString();
+		
+		try {
+			rootConnection = DriverManager.getConnection(url, rootId, rootPw);
+			preparedStatement = rootConnection.prepareStatement(query);
+			preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+	}
 }
