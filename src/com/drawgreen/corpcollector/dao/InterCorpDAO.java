@@ -5,10 +5,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.StringTokenizer;
 
 import com.drawgreen.corpcollector.dto.InterCorpDTO;
+import com.drawgreen.corpcollector.dto.RecentSearchDTO;
 
 public class InterCorpDAO implements CorpDAO {
 	private Connection connection = null;
@@ -290,8 +291,8 @@ public class InterCorpDAO implements CorpDAO {
 	}
 
 	@Override
-	public HashMap<String, Object> getInfo(int serial_num) {
-		HashMap<String, Object> corpInfo = new HashMap<String, Object>();
+	public LinkedHashMap<String, Object> getInfo(int serial_num) {
+		LinkedHashMap<String, Object> corpInfo = new LinkedHashMap<String, Object>();
 		
 		String query = "SELECT 업체명, 소재지, 업종, 기업유형 FROM Inter_corp WHERE 연번 = ?";
 		String corpName = "";
@@ -373,6 +374,12 @@ public class InterCorpDAO implements CorpDAO {
 		}
 
 		return corpType;
+	}
+
+	@Override
+	public ArrayList<RecentSearchDTO> getRecentRecords(String user_id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

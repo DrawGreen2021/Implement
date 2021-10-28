@@ -4,10 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.StringTokenizer;
 
+import com.drawgreen.corpcollector.dto.RecentSearchDTO;
 import com.drawgreen.corpcollector.dto.SocialCorpDTO;
 
 public class SocialCorpDAO implements CorpDAO {
@@ -40,7 +42,7 @@ public class SocialCorpDAO implements CorpDAO {
 		private static final SocialCorpDAO socialCorpDAO = new SocialCorpDAO();
 	}
 
-	public static CorpDAO getInstance() {
+	public static SocialCorpDAO getInstance() {
 		return InnerInstance_CorpDAO.socialCorpDAO;
 	}
 
@@ -269,8 +271,8 @@ public class SocialCorpDAO implements CorpDAO {
 	}
 
 	@Override
-	public HashMap<String, Object> getInfo(int serial_num) {
-		HashMap<String, Object> corpInfo = new HashMap<String, Object>();
+	public LinkedHashMap<String, Object> getInfo(int serial_num) {
+		LinkedHashMap<String, Object> corpInfo = new LinkedHashMap<String, Object>();
 		
 		String query = "SELECT * FROM 사회적기업 WHERE 연번 = ?";
 		
@@ -312,6 +314,51 @@ public class SocialCorpDAO implements CorpDAO {
 		}
 		
 		return corpInfo;
+	}
+
+	@Override
+	public ArrayList<RecentSearchDTO> getRecentRecords(String user_id) {
+		// TODO Auto-generated method stub
+		ArrayList<RecentSearchDTO> recentRecords = new ArrayList<RecentSearchDTO>();
+		
+		String query = "SELECT s.연번, s.업체명, s.소재지, s.업종, r.search_date FROM 사회적기업 s, Member.최근검색기업 r " + 
+				" WHERE s.연번 IN (SELECT socialCorp_id FROM Member.최근검색기업 " + 
+				" WHERE user_id = ? AND socialCorp_id IS NOT NULL) AND r.socialCorp_id = s.연번";
+		
+		try {
+			connection = DriverManager.getConnection(url, userId, userPw);
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, user_id);
+			
+			resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				int serial_number = resultSet.getInt("연번");
+				String company_name = resultSet.getString("업체명");
+				String location = resultSet.getString("소재지");
+				String sector = resultSet.getString("업종");
+				Timestamp search_date = resultSet.getTimestamp("search_date");
+				
+				RecentSearchDTO dto = new RecentSearchDTO(serial_number, company_name, location, sector, "socialCorp", "사회적기업", search_date);
+				recentRecords.add(dto);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			return recentRecords;
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (resultSet != null)
+					resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+		
+		return recentRecords;
 	}
 
 	
