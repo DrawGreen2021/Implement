@@ -27,7 +27,7 @@
 					<p><a href="<c:url value='/myPage/PersonalInfoView.do'/>">개인 정보 관리</a></p>
 					<p><a href="<c:url value='/myPage/FavoriteCorpView.do?page=1'/>" style="color:#e1bf27; font-weight:bold;">관심 기업</a></p>
 					<p><a href="<c:url value='/myPage/RecentSearchView.do?page=1'/>">최근 검색 기업</a></p>
-					<p><a href="<c:url value='/myPage/myFeedback.jsp'/>">내가 쓴 글</a></p>
+					<p><a href="<c:url value='/myPage/MyFeedbackView.do?page=1'/>">내가 쓴 글</a></p>
 				</ul>
 			</aside>
 		</div>
@@ -251,6 +251,6 @@
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
 	<script type="text/javascript" src="../JavaScript/common.js"></script>
-	<script type="text/javascript" src="../JavaScript/favoriteCoprFunc.js"></script>
+	<script type="text/javascript" src="../JavaScript/myPage_common.js"></script>
 </body>
 </html>

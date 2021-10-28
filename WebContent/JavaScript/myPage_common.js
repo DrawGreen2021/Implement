@@ -10,3 +10,13 @@ function selectAll(selectAll) {
 		checkbox.checked = selectAll.checked
 	})
 }
+
+function deleteFeedback() {
+	var myfeedback_select_length = $('input:checkbox[name="myfeedback_select"]:checked').length
+	
+	if (myfeedback_select_length == 0) {
+		alert("삭제할 고객 후기가 없습니다.");
+	} else {
+		$('#deleteForm').submit();
+	}
+}
