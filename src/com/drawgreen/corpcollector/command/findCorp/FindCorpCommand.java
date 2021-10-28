@@ -1,6 +1,7 @@
 package com.drawgreen.corpcollector.command.findCorp;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,7 @@ import com.drawgreen.corpcollector.dao.FamilyFriendlyCorpDAO;
 import com.drawgreen.corpcollector.dao.FavoriteCorpDAO;
 import com.drawgreen.corpcollector.dao.GreenCorpDAO;
 import com.drawgreen.corpcollector.dao.InterCorpDAO;
+import com.drawgreen.corpcollector.dao.RecentSearchCorpDAO;
 import com.drawgreen.corpcollector.dao.SocialCorpDAO;
 import com.drawgreen.corpcollector.dao.TalentDevelopmentCorpDAO;
 import com.drawgreen.corpcollector.dao.YouthFriendlyCorpDAO;
@@ -95,7 +97,11 @@ public class FindCorpCommand implements Command {
 		} else {
 			request.setAttribute("corpList", "noResult");
 		}
-
+		
+		// 가장 많이 검색한 기업 순위 구하기
+		RecentSearchCorpDAO recentSearchCorpDAO = RecentSearchCorpDAO.getInstance();
+		LinkedHashMap<Integer, String> searchRank = recentSearchCorpDAO.getRecentSearchRank();
+		request.setAttribute("searchRank", searchRank);
 	}
 
 }
