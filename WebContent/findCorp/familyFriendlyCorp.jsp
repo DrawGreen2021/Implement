@@ -119,11 +119,6 @@
 									</c:forEach>
 								</table>
 								
-								
-								<%-- 검색 후 초기 화면으로 되돌아가기 --%>
-								<button class="findCorp_list_btn" style="margin:0 0 0 89%;" onclick="resetKeyword()">전체 목록보기</button>
-								
-								
 								<!-- 페이지 번호 div -->
 								<div class="pagelist_text" style="margin:3% auto;">
 								
@@ -168,6 +163,10 @@
 							</c:otherwise>
 
 						</c:choose>
+						
+						<%-- 검색 후 초기 화면으로 되돌아가기 --%>
+						<button class="findCorp_list_btn" style="margin:0 0 0 89%;" onclick="resetKeyword()">전체 목록보기</button>
+						
 					</article>
 				</tr>
 

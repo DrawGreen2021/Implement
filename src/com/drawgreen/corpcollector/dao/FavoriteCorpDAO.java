@@ -5,8 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import com.drawgreen.corpcollector.dto.InterCorpDTO;
 
@@ -151,11 +155,12 @@ public class FavoriteCorpDAO {
 			// 관심 기업 아이디를 배열에 저장
 			while(resultSet.next()) {
 				int corp_id = resultSet.getInt(corpType+"_id");
-				favoriteSerialNums[corp_id % pageRowCount - 1] = corp_id;
+				favoriteSerialNums[(corp_id - 1) % pageRowCount] = corp_id;
 			}
 		
 		} catch (Exception e) {
 			// TODO: handle exception
+			//e.printStackTrace();
 			favoriteSerialNums = null;
 		} finally {
 			try {
@@ -300,4 +305,162 @@ public class FavoriteCorpDAO {
 		
 		return favoriteSerialNums;
 	}
+	
+	// 마이페이지 - 관심기업에 표시할 관심기업 연번 및 업체명 얻어오기
+	public LinkedHashMap<String, LinkedHashMap<Integer, String>> getFavoriteSerialNums_forMyPage(String user_id, int page) {
+		
+		LinkedHashMap<String, LinkedHashMap<Integer, String>> favCorpMap 
+			= new LinkedHashMap<String, LinkedHashMap<Integer, String>>();
+		
+		LinkedHashMap<Integer, String> familyFriendlyCorp = new LinkedHashMap<Integer, String>();
+		LinkedHashMap<Integer, String> greenCorp = new LinkedHashMap<Integer, String>();
+		LinkedHashMap<Integer, String> socialCorp = new LinkedHashMap<Integer, String>();
+		LinkedHashMap<Integer, String> talentDevelopmentCorp = new LinkedHashMap<Integer, String>();
+		LinkedHashMap<Integer, String> youthFriendlyCorp = new LinkedHashMap<Integer, String>();
+		
+		String query = "SELECT * FROM 관심기업 WHERE user_id = ? LIMIT ?,?";
+		
+		try {
+			connection = DriverManager.getConnection(url, userId, userPw);
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, user_id);
+			preparedStatement.setInt(2, (page-1)*pageRowCount);
+			preparedStatement.setInt(3, pageRowCount);
+			
+			resultSet = preparedStatement.executeQuery();
+			
+			if (!resultSet.next())
+				return null;
+			do {
+				if (resultSet.getInt("familyFriendlyCorp_id")!=0)
+					familyFriendlyCorp.put(resultSet.getInt("familyFriendlyCorp_id"), resultSet.getString("corpName"));
+				else if (resultSet.getInt("greenCorp_id")!=0)
+					greenCorp.put(resultSet.getInt("greenCorp_id"), resultSet.getString("corpName"));
+				else if (resultSet.getInt("socialCorp_id")!=0)
+					socialCorp.put(resultSet.getInt("socialCorp_id"), resultSet.getString("corpName"));
+				else if (resultSet.getInt("talentDevelopmentCorp_id")!=0)
+					talentDevelopmentCorp.put(resultSet.getInt("talentDevelopmentCorp_id"), resultSet.getString("corpName"));
+				else if (resultSet.getInt("youthFriendlyCorp_id")!=0)
+					youthFriendlyCorp.put(resultSet.getInt("youthFriendlyCorp_id"), resultSet.getString("corpName"));
+					
+			} while (resultSet.next());
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (resultSet != null)
+					resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+		
+		favCorpMap.put("familyFriendlyCorp", familyFriendlyCorp);
+		favCorpMap.put("greenCorp", greenCorp);
+		favCorpMap.put("socialCorp", socialCorp);
+		favCorpMap.put("talentDevelopmentCorp", talentDevelopmentCorp);
+		favCorpMap.put("youthFriendlyCorp", youthFriendlyCorp);
+		
+		return favCorpMap;
+	}
+	
+	// 사용자가 등록한 관심기업 개수 가져오기
+	public int getRowCount(String user_id, int page) {
+		String query = "SELECT count(*) FROM 관심기업 WHERE user_id = ?";
+		int count = 0;
+		
+		try {
+			connection = DriverManager.getConnection(url, userId, userPw);
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, user_id);
+			
+			resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			count = resultSet.getInt(1);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (resultSet != null)
+					resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+		
+		return count;
+	}
+	
+	// 관심 기업 테이블에서 기업 정보 삭제
+	public void deleteFavCorp(String user_id, HashMap<String, int[]> idMap) {
+		
+		String query = "DELETE FROM 관심기업 "
+				+ "WHERE user_id = ? AND (";
+		String[] inQuery = new String[5];
+		Arrays.fill(inQuery, "");
+		StringBuilder builder = null;
+		
+		Set<Entry<String, int[]>> set = idMap.entrySet();
+		Iterator<Entry<String, int[]>> iterator = set.iterator();
+		for (int i = 0; i < idMap.size(); i++) {
+			Entry<String, int[]> entry = iterator.next();
+			if (entry.getValue() != null) {
+				builder = new StringBuilder(inQuery[i]);
+				builder.append(entry.getKey()+" IN("+entry.getValue()[0]);
+				for (int j = 1; j < entry.getValue().length; j++) {
+					builder.append(","+entry.getValue()[j]);
+				}
+				builder.append(")");
+				inQuery[i] = builder.toString();
+			}
+		}
+		
+		builder = new StringBuilder(query);
+		if (!inQuery[0].equals("")) {
+			builder.append(inQuery[0]);
+		}
+		for (int i = 1; i < inQuery.length; i++) {
+			if (!inQuery[i].equals("")) {
+				builder.append(" OR "+inQuery[i]);
+			}
+		}
+		builder.append(")");
+		query = builder.toString();
+		
+		try {
+			connection = DriverManager.getConnection(url, rootId, rootPw);
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, user_id);
+			
+			preparedStatement.executeLargeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedStatement != null) preparedStatement.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	
 }

@@ -1,6 +1,6 @@
 package com.drawgreen.corpcollector.command.findCorp;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,7 +42,7 @@ public class DetailViewCommand implements Command{
 			dao = InterCorpDAO.getInstance();
 		}
 		
-		HashMap<String, Object> corpInfo = dao.getInfo(serial_num);
+		LinkedHashMap<String, Object> corpInfo = dao.getInfo(serial_num);
 		FavoriteCorpDAO favoriteCorpDAO = FavoriteCorpDAO.getInstance();
 		if (corpType.equals("interCorp"))
 			corpType = favoriteCorpDAO.getCorpType(request.getParameter("tableName"));

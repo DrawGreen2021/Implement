@@ -34,9 +34,7 @@
 				<div class="content_div">
 					<table width="1000px;" style="text-align: center; float: right;">
 						<tr>
-							<p
-								style="font-size: 16pt; color: #21499b; font-weight: bold; margin: 0 90% 0 0;">고객
-								후기</p>
+							<p style="font-size: 16pt; color: #21499b; font-weight: bold; margin: 0 90% 0 0;">고객 후기</p>
 						</tr>
 						<tr>
 							<div style="border: 1px solid #21499b; margin: 1% auto;"></div>
@@ -84,7 +82,7 @@
 						<button class="writing_btn" onclick="updating_Check(this)"
 							value="${requestScope.post['board_number'] }">수정</button>
 						<button class="writing_btn" style="background-color: #E7F1FD;"
-							value="feedback.jsp" onclick="goListPage(this)">목록</button>
+							onclick="history.go(-1);">목록</button>
 						<!-- 목록으로 돌아가기 -->
 					</div>
 				</div>

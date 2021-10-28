@@ -78,7 +78,7 @@
 						<button class="writing_btn" onclick="updating_Check(this)"
 							value="${requestScope.post['board_number'] }">수정</button>
 						<button class="writing_btn" style="background-color: #E7F1FD;"
-							value="notice.jsp" onclick="goListPage(this)">목록</button>
+							onclick="history.go(-1);">목록</button>
 						<!-- 목록으로 돌아가기 -->
 					</div>
 				</div>

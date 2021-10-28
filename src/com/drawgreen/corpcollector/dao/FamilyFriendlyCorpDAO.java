@@ -4,11 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.StringTokenizer;
 
 import com.drawgreen.corpcollector.dto.FamilyFriendlyCorpDTO;
+import com.drawgreen.corpcollector.dto.RecentSearchDTO;
 
 public class FamilyFriendlyCorpDAO implements CorpDAO {
 	private Connection connection = null;
@@ -222,6 +224,7 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
 			try {
 				if (connection != null)
@@ -250,9 +253,9 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 	}
 
 	@Override
-	public HashMap<String, Object> getInfo(int serial_num) {
+	public LinkedHashMap<String, Object> getInfo(int serial_num) {
 		// TODO Auto-generated method stub
-		HashMap<String, Object> corpInfo = new HashMap<String, Object>();
+		LinkedHashMap<String, Object> corpInfo = new LinkedHashMap<String, Object>();
 		
 		String query = "SELECT * FROM 가족친화인증기업 WHERE 연번 = ?";
 		
@@ -287,5 +290,50 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 		
 		return corpInfo;
 	}
-	
+
+	@Override
+	public ArrayList<RecentSearchDTO> getRecentRecords(String user_id) {
+		// TODO Auto-generated method stub
+		ArrayList<RecentSearchDTO> recentRecords = new ArrayList<RecentSearchDTO>();
+		
+		String query = "SELECT f.연번, f.업체명, f.소재지, f.업종, r.search_date FROM 가족친화인증기업 f, Member.최근검색기업 r " + 
+				" WHERE f.연번 IN (SELECT familyFriendlyCorp_id FROM Member.최근검색기업 " + 
+				" WHERE user_id = ? AND familyFriendlyCorp_id IS NOT NULL) AND r.familyFriendlyCorp_id = f.연번";
+		
+		try {
+			connection = DriverManager.getConnection(url, userId, userPw);
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, user_id);
+			
+			resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				int serial_number = resultSet.getInt("연번");
+				String company_name = resultSet.getString("업체명");
+				String location = resultSet.getString("소재지");
+				String sector = resultSet.getString("업종");
+				Timestamp search_date = resultSet.getTimestamp("search_date");
+				
+				RecentSearchDTO dto = new RecentSearchDTO(serial_number, company_name, location, sector, "FamilyFriendlyCorp", "가족친화인증기업", search_date);
+				recentRecords.add(dto);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			return recentRecords;
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (resultSet != null)
+					resultSet.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+		
+		return recentRecords;
+	}
+
 }
