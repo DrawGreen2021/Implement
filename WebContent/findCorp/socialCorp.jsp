@@ -129,7 +129,10 @@
 
 									</c:forEach>
 								</table>
-
+								
+								<!-- 페이지 번호 div -->
+								<div class="pagelist_text" style="margin:3% auto;">
+								
 								<%-- 페이징 변수 파일 포함 --%>
 								<c:import url='/importedFile/pagingVariables.jsp'></c:import>
 
@@ -160,6 +163,7 @@
 								<c:if test="${(startNum + pageCount -1) >= lastPageNum }">
 									<span onclick="alert('다음 페이지가 없습니다.');">다음</span>
 								</c:if>
+								</div>
 
 							</c:when>
 
