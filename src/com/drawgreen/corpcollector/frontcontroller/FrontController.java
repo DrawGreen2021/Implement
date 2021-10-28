@@ -36,7 +36,9 @@ import com.drawgreen.corpcollector.command.member.UpdatePwCommand;
 import com.drawgreen.corpcollector.command.mypage.AddFavoriteCorpCommand;
 import com.drawgreen.corpcollector.command.mypage.AddFavoriteCorpInMainCommand;
 import com.drawgreen.corpcollector.command.mypage.DeleteFavoriteCorpCommand;
+import com.drawgreen.corpcollector.command.mypage.DeleteMyFeedbackCommand;
 import com.drawgreen.corpcollector.command.mypage.FavoriteCorpViewCommand;
+import com.drawgreen.corpcollector.command.mypage.MyFeedbackViewCommand;
 import com.drawgreen.corpcollector.command.mypage.PersonalInfoViewCommand;
 import com.drawgreen.corpcollector.command.mypage.PersonalInfoWriteViewCommand;
 import com.drawgreen.corpcollector.command.mypage.RecentSearchViewCommand;
@@ -283,6 +285,16 @@ public class FrontController extends HttpServlet {
 			command = new RecentSearchViewCommand();
 			command.execute(request, response);
 			viewPage = "recentSearch.jsp";
+		}
+		else if(com.equals("MyFeedbackView.do")) {
+			command = new MyFeedbackViewCommand();
+			command.execute(request, response);
+			viewPage = "myFeedback.jsp";
+		}
+		else if(com.equals("DeleteMyFeedBack.do")) {
+			command = new DeleteMyFeedbackCommand();
+			command.execute(request, response);
+			viewPage = "myFeedback.jsp";
 		}
 
 		if (viewPage != null) {
