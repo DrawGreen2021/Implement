@@ -39,6 +39,7 @@ import com.drawgreen.corpcollector.command.mypage.DeleteFavoriteCorpCommand;
 import com.drawgreen.corpcollector.command.mypage.FavoriteCorpViewCommand;
 import com.drawgreen.corpcollector.command.mypage.PersonalInfoViewCommand;
 import com.drawgreen.corpcollector.command.mypage.PersonalInfoWriteViewCommand;
+import com.drawgreen.corpcollector.command.mypage.RecentSearchViewCommand;
 import com.drawgreen.corpcollector.command.mypage.UpdatePersonalInfoCommand;
 
 /**
@@ -277,6 +278,11 @@ public class FrontController extends HttpServlet {
 			command = new DeleteFavoriteCorpCommand();
 			command.execute(request, response);
 			viewPage = "FavoriteCorpView.do?page=1";
+		}
+		else if(com.equals("RecentSearchView.do")) {
+			command = new RecentSearchViewCommand();
+			command.execute(request, response);
+			viewPage = "recentSearch.jsp";
 		}
 
 		if (viewPage != null) {
