@@ -8,7 +8,7 @@
 	<meta name="description" content="캡스톤_01">
 	<meta name="keywords" content="HTML5, CSS, JQUERY">
 	
-	<link rel="stylesheet" type="text/css" href="../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/main.css?after">
 	
 	<title>CorpCollector : 아이디 찾기</title>
 </head>
