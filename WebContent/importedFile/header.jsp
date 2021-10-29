@@ -137,12 +137,12 @@
 						</ul>
 					</li>
 					<li>
-						<a href="<c:url value='/myPage/personalInformation.jsp'/>">마이페이지</a>
+						<a href=""  onclick="alert('로그인 후 이용 가능합니다')">마이페이지</a>
 						<ul class="sub_Menu">
-							<li><a href="<c:url value='/myPage/personalInformation.jsp'/>">개인 정보 관리</a></li>
-							<li><a href="<c:url value='/myPage/favoriteCorp.jsp'/>">관심 기업</a></li>
-							<li><a href="<c:url value='/myPage/recentSearch.jsp'/>">최근 검색 기업</a></li>
-							<li><a href="<c:url value='/myPage/myFeedback.jsp'/>">내가 쓴 글</a></li>
+							<li><a href="" onclick="alert('로그인 후 이용 가능합니다')">개인 정보 관리</a></li>
+							<li><a href="" onclick="alert('로그인 후 이용 가능합니다')">관심 기업</a></li>
+							<li><a href="" onclick="alert('로그인 후 이용 가능합니다')">최근 검색 기업</a></li>
+							<li><a href="" onclick="alert('로그인 후 이용 가능합니다')">내가 쓴 글</a></li>
 						</ul>
 					</li>
 				</ul>
