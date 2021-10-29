@@ -4,5 +4,5 @@
 
 <h4>가장 많이 검색한 기업</h4>
 <c:forEach items="${requestScope.searchRank }" var="entry">
-	<p>${entry.key }.${entry.value }</p>
+	<p style="text-align:left; font-size:10pt; font-family:dotum;">${entry.key }.${entry.value }</p>
 </c:forEach>
