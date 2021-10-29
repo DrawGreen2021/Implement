@@ -9,7 +9,7 @@
 	background-color:#21499b; 
 	position:relative; 
 	width:1200px; 
-	height: 140px;
+	height: 130px;
 	margin:0 auto;
 }
 
@@ -342,6 +342,86 @@
 	font-size:12pt;
 	font-weight:bold;
 }
+
+/* 메뉴바 ul */
+.my_Menu{
+	float:left;
+	list-style:none;
+	margin:0 auto;
+	padding:0;
+	-webkit-padding-start:0px;
+}
+
+.my_Menu a{
+	color:white;
+	font-size:13pt;
+	text-decoration:none;
+	cursor:pointer;
+	margin:0 auto;
+	text-align:center;
+	vertical-align:middle;
+}
+
+.my_Menu > li{
+	display:inline-block;
+	width:234px;
+	background-color:#21499b;
+	cursor:pointer;
+	padding-top:10px;
+	margin:0 auto;
+	list-style:none;
+	text-align:center;
+	vertical-align:middle;
+}
+
+.my_Menu a:hover{
+	color:#e1bf27;
+}
+
+.my_Menu > li:hover .sub_Menu{
+	opacity: 1;
+ 	visibility: visible;
+ 	background-color:#E7F1FD;
+ 	margin-top:16px;
+}
+
+/* 메뉴 서브메뉴 */
+.sub_Menu{
+	z-index: 2;
+  	list-style:none;
+  	-webkit-padding-start: 0px;
+	position:absolute;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.15s ease-in;
+	margin:0 auto;
+	margin-top:2%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.sub_Menu a{
+	color:black;
+	font-size:10pt;
+	text-decoration:none;
+	cursor:pointer;
+	margin:0 auto;
+	text-align:center;
+	vertical-align:middle;
+	font-weight:normal;
+	font-family:dotum;
+}
+
+.sub_Menu > li{
+	padding:10px 10px;
+}
+
+.sub_Menu > li > a{
+	color:black;
+	text-decoration:none;
+}
+
+
 
 /* 기업 찾기 */
 /* 좌측 사이드 바 통합 div */

@@ -17,6 +17,8 @@
 				</form>
 				<a href="javascript:logoutDo()">로그아웃</a>
 			</nav>
+			
+			<!-- 
 			<table style="text-align:center; width:1200px;">
 				<tr>
 					<td><button class="menu_btn" onclick="location.href='${pageContext.request.contextPath}/service/service_Summary.jsp'">서비스 소개</button></td>
@@ -25,13 +27,58 @@
 					<td><button class="menu_btn" onclick="location.href='${pageContext.request.contextPath}/community/notice.jsp'">커뮤니티</button></td>
 					<td><button class="menu_btn" onclick="location.href='${pageContext.request.contextPath}/myPage/personalInformation.jsp'">마이페이지</button></td>
 				</tr>
-			</table>
+			</table> -->
+			<!-- https://kuzuro.blogspot.com/2018/08/htmlcss.html 드롭다운 메뉴  -->
 			
-			<!-- https://kuzuro.blogspot.com/2018/08/htmlcss.html 드롭다운 메뉴, 현재 페이지 글씨 색 변경 필요  -->
+			<div style="width:1200px; ">
+				<ul class="my_Menu">
+					<li>
+						<a href="<c:url value='/service/service_Summary.jsp'/>">서비스 개요</a>
+						<ul class="sub_Menu">
+							<li><a href="<c:url value='/service/service_Summary.jsp'/>">서비스 개요</a></li>
+							<li><a href="<c:url value='/service/developmentProcess.jsp'/>">개발 과정</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="<c:url value='/findCorp/findCorp_main.jsp'/>">기업 찾기</a>
+						<ul class="sub_Menu">
+							<li><a href="<c:url value='/findCorp/talentDevelopmentCorp.jsp'/>">인재 육성형 중소 기업</a></li>
+							<li><a href="<c:url value='/findCorp/greenCorp.jsp'/>">녹색 기업</a></li>
+							<li><a href="<c:url value='/findCorp/socialCorp.jsp'/>">사회적 기업</a></li>
+							<li><a href="<c:url value='/findCorp/familyFriendlyCorp.jsp'/>">가족 친화 기업</a></li>
+							<li><a href="<c:url value='/findCorp/youthFriendlyCorp.jsp'/>">청년 친화 강소 기업</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="<c:url value='/information/corp_Analysis.jsp'/>">정보 나눔</a>
+						<ul class="sub_Menu">
+							<li><a href="<c:url value='/information/corp_Analysis.jsp'/>">기업 데이터 분석</a></li>
+							<li><a href="<c:url value='/information/corp_News.jsp'/>">기업 기사 모음</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="<c:url value='/community/notice.jsp'/>">커뮤니티</a>
+						<ul class="sub_Menu">
+							<li><a href="<c:url value='/community/notice.jsp'/>">공지사항</a></li>
+							<li><a href="<c:url value='/community/feedback.jsp'/>">고객 후기</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="<c:url value='/myPage/personalInformation.jsp'/>">마이페이지</a>
+						<ul class="sub_Menu">
+							<li><a href="<c:url value='/myPage/personalInformation.jsp'/>">개인 정보 관리</a></li>
+							<li><a href="<c:url value='/myPage/favoriteCorp.jsp'/>">관심 기업</a></li>
+							<li><a href="<c:url value='/myPage/recentSearch.jsp'/>">최근 검색 기업</a></li>
+							<li><a href="<c:url value='/myPage/myFeedback.jsp'/>">내가 쓴 글</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
 			
 			</header>
 			</div>	
 		</c:when>
+		
 		
 		<c:otherwise>
 			<div>
@@ -44,6 +91,8 @@
 				<a href="<c:url value='/member/login_main.jsp'/>" style="margin-left : 58%; float:left;">로그인</a>
 				<a href="<c:url value='/member/signUp.jsp'/>">회원가입</a>
 			</nav>
+			
+			<!-- 
 			<table style="text-align:center; width:1200px;">
 				<tr>
 					<td><button class="menu_btn" onclick="location.href='${pageContext.request.contextPath}/service/service_Summary.jsp'">서비스 소개</button></td>
@@ -52,7 +101,53 @@
 					<td><button class="menu_btn" onclick="location.href='${pageContext.request.contextPath}/community/notice.jsp'">커뮤니티</button></td>
 					<td><button class="menu_btn" onclick="alert('로그인 후 이용 가능합니다')">마이페이지</button></td>
 				</tr>
-			</table>
+			</table>  -->
+			
+			<div style="width:1200px; ">
+				<ul class="my_Menu">
+					<li>
+						<a href="<c:url value='/service/service_Summary.jsp'/>">서비스 개요</a>
+						<ul class="sub_Menu">
+							<li><a href="<c:url value='/service/service_Summary.jsp'/>">서비스 개요</a></li>
+							<li><a href="<c:url value='/service/developmentProcess.jsp'/>">개발 과정</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="<c:url value='/findCorp/findCorp_main.jsp'/>">기업 찾기</a>
+						<ul class="sub_Menu">
+							<li><a href="<c:url value='/findCorp/talentDevelopmentCorp.jsp'/>">인재 육성형 중소 기업</a></li>
+							<li><a href="<c:url value='/findCorp/greenCorp.jsp'/>">녹색 기업</a></li>
+							<li><a href="<c:url value='/findCorp/socialCorp.jsp'/>">사회적 기업</a></li>
+							<li><a href="<c:url value='/findCorp/familyFriendlyCorp.jsp'/>">가족 친화 기업</a></li>
+							<li><a href="<c:url value='/findCorp/youthFriendlyCorp.jsp'/>">청년 친화 강소 기업</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="<c:url value='/information/corp_Analysis.jsp'/>">정보 나눔</a>
+						<ul class="sub_Menu">
+							<li><a href="<c:url value='/information/corp_Analysis.jsp'/>">기업 데이터 분석</a></li>
+							<li><a href="<c:url value='/information/corp_News.jsp'/>">기업 기사 모음</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="<c:url value='/community/notice.jsp'/>">커뮤니티</a>
+						<ul class="sub_Menu">
+							<li><a href="<c:url value='/community/notice.jsp'/>">공지사항</a></li>
+							<li><a href="<c:url value='/community/feedback.jsp'/>">고객 후기</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href=""  onclick="alert('로그인 후 이용 가능합니다')">마이페이지</a>
+						<ul class="sub_Menu">
+							<li><a href="" onclick="alert('로그인 후 이용 가능합니다')">개인 정보 관리</a></li>
+							<li><a href="" onclick="alert('로그인 후 이용 가능합니다')">관심 기업</a></li>
+							<li><a href="" onclick="alert('로그인 후 이용 가능합니다')">최근 검색 기업</a></li>
+							<li><a href="" onclick="alert('로그인 후 이용 가능합니다')">내가 쓴 글</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			
 			</header>
 			</div>
 		</c:otherwise>
