@@ -53,7 +53,7 @@
 						<a href="<c:url value='/information/corp_Analysis.jsp'/>">정보 나눔</a>
 						<ul class="sub_Menu">
 							<li><a href="<c:url value='/information/corp_Analysis.jsp'/>">기업 데이터 분석</a></li>
-							<li><a href="<c:url value='/information/corp_News.jsp'/>">기업 기사 모음</a></li>
+							<li><a href="<c:url value='/information/CorpNewsView.do?page=1'/>">기업 기사 모음</a></li>
 						</ul>
 					</li>
 					<li>
@@ -64,12 +64,12 @@
 						</ul>
 					</li>
 					<li>
-						<a href="<c:url value='/myPage/personalInformation.jsp'/>">마이페이지</a>
+						<a href="<c:url value='/myPage/PersonalInfoView.do'/>">마이페이지</a>
 						<ul class="sub_Menu">
-							<li><a href="<c:url value='/myPage/personalInformation.jsp'/>">개인 정보 관리</a></li>
-							<li><a href="<c:url value='/myPage/favoriteCorp.jsp'/>">관심 기업</a></li>
-							<li><a href="<c:url value='/myPage/recentSearch.jsp'/>">최근 검색 기업</a></li>
-							<li><a href="<c:url value='/myPage/myFeedback.jsp'/>">내가 쓴 글</a></li>
+							<li><a href="<c:url value='/myPage/PersonalInfoView.do'/>">개인 정보 관리</a></li>
+							<li><a href="<c:url value='/myPage/FavoriteCorpView.do?page=1'/>">관심 기업</a></li>
+							<li><a href="<c:url value='/myPage/RecentSearchView.do?page=1'/>">최근 검색 기업</a></li>
+							<li><a href="<c:url value='/myPage/MyFeedbackView.do?page=1'/>">내가 쓴 글</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -126,7 +126,7 @@
 						<a href="<c:url value='/information/corp_Analysis.jsp'/>">정보 나눔</a>
 						<ul class="sub_Menu">
 							<li><a href="<c:url value='/information/corp_Analysis.jsp'/>">기업 데이터 분석</a></li>
-							<li><a href="<c:url value='/information/corp_News.jsp'/>">기업 기사 모음</a></li>
+							<li><a href="<c:url value='/information/CorpNewsView.do?page=1'/>">기업 기사 모음</a></li>
 						</ul>
 					</li>
 					<li>
