@@ -20,6 +20,7 @@ import com.drawgreen.corpcollector.command.community.UpdateRightCheckCommand;
 import com.drawgreen.corpcollector.command.community.WritePostCommand;
 import com.drawgreen.corpcollector.command.findCorp.DetailViewCommand;
 import com.drawgreen.corpcollector.command.findCorp.FindCorpCommand;
+import com.drawgreen.corpcollector.command.information.CorpNewsViewCommand;
 import com.drawgreen.corpcollector.command.member.EmailCheckCommand;
 import com.drawgreen.corpcollector.command.member.EmailSendCommand;
 import com.drawgreen.corpcollector.command.member.FindIdCommand;
@@ -184,6 +185,13 @@ public class FrontController extends HttpServlet {
 			command = new DetailViewCommand();
 			command.execute(request, response);
 			viewPage = "detailedCorpInfo.jsp";
+		}
+		
+		/*----- 정보나눔 기능 -----*/
+		else if(com.equals("CorpNewsView.do")) {
+			command = new CorpNewsViewCommand();
+			command.execute(request, response);
+			viewPage = "corp_News.jsp";
 		}
 		
 		/*----- 커뮤니티 기능 -----*/
