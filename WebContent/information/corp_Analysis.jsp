@@ -8,7 +8,7 @@
 	<meta name="description" content="캡스톤_01">
 	<meta name="keywords" content="HTML5, CSS, JQUERY">
 	
-	<link rel="stylesheet" type="text/css" href="../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/main.css?after">
 	
 	<title>CorpCollector : 기업 데이터 분석</title>
 </head>
@@ -34,7 +34,7 @@
 				<h2 style="color:#180E5A;">기업 데이터 분석</h2>
 				<br>
 				<p class="information_text" style="font-weight:bold;">- 가족 친화 인증 기업 데이터 시각화</p>
-				<div class='tableauPlaceholder' id='viz1635245619566' style='position: relative;' width="930px;" margin="5% auto;">
+				<div class='tableauPlaceholder' id='viz1635245619566' style='position: relative;' margin="5% auto;" width="930px;">
 					<noscript><a href='#'>
 					<img alt='대시보드 2 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;__&#47;____16348770981730&#47;2_1&#47;1_rss.png' style='border: none'  />
 					</a></noscript>

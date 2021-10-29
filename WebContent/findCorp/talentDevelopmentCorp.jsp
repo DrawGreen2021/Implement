@@ -8,7 +8,7 @@
 <meta name="description" content="캡스톤_01">
 <meta name="keywords" content="HTML5, CSS, JQUERY">
 
-<link rel="stylesheet" type="text/css" href='<c:url value="/css/main.css"/>'>
+<link rel="stylesheet" type="text/css" href='<c:url value="/css/main.css?after"/>'>
 
 <title>CorpCollector : 인재 육성형 중소 기업</title>
 </head>
