@@ -105,11 +105,11 @@
 												<c:when
 													test="${dto.serial_number eq favoriteNums[status.index] 
 															&& requestScope.favoriteNums != null && not empty sessionScope.MemberDTO}">
-													<td><button value="${dto.serial_number }"
+													<td style="text-align:center;"><button value="${dto.serial_number }"
 															onclick="addFavoriteCorp(this)" class="favoriteCorp_btn">★</button></td>
 												</c:when>
 												<c:otherwise>
-													<td><button value="${dto.serial_number }"
+													<td style="text-align:center;"><button value="${dto.serial_number }"
 															onclick="addFavoriteCorp(this)" class="favoriteCorp_btn">☆</button></td>
 												</c:otherwise>
 											</c:choose>
@@ -132,6 +132,11 @@
 
 								</table>
 								
+								
+								<%-- 검색 후 초기 화면으로 되돌아가기 --%>
+								<button class="findCorp_list_btn" style="margin:0 0 0 89%;" onclick="resetKeyword()">전체 목록보기</button>
+						
+						
 								<!-- 페이지 번호 div -->
 								<div class="pagelist_text" style="margin:3% auto;">
 
@@ -176,9 +181,6 @@
 							</c:otherwise>
 							
 						</c:choose>
-						
-						<%-- 검색 후 초기 화면으로 되돌아가기 --%>
-						<button class="findCorp_list_btn" style="margin:0 0 0 89%;" onclick="resetKeyword()">전체 목록보기</button>
 						
 					</article>
 				</tr>
