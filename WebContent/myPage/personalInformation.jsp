@@ -18,7 +18,7 @@
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!-- 내용 영역 -->
-	<div width="1200px;" style="text-align:center; margin:5% auto;">
+	<div width="1200px;" style="text-align:center; margin:5% auto; margin-bottom:18%;">
 		<div class="sidebar_div" style="float:left;">
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
@@ -81,7 +81,6 @@
 		</div>
 		</form>
 	</div>
-	<br><br><br><br><br>
 	
 	
 	<!-- 푸터 파일 포함 -->

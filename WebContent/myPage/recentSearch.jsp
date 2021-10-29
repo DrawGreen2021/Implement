@@ -114,8 +114,7 @@
 			</div> -->
 		</div>
 	</div>
-	<br><br><br><br><br>
-	
+	<br><br><br><br>
 	
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>

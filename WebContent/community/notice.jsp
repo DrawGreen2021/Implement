@@ -53,7 +53,9 @@
 					<c:choose>
 						<%-- 공지사항 글이 없을 경우 --%>
 						<c:when test="${requestScope.postList == 'noResult' }">
-							공지사항이 없습니다.
+							<br><br><br><br><br>
+								공지사항이 없습니다.
+								<br><br><br><br><br><br><br>
 						</c:when>
 
 						<%-- 공지사항 글 목록이 있다면 리스트 출력 --%>

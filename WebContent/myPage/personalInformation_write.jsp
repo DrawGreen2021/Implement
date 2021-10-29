@@ -18,7 +18,7 @@
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!-- 내용 영역 -->
-	<div width="1200px;" style="text-align:center; margin:5% auto;">
+	<div width="1200px;" style="text-align:center; margin:5% auto; margin-bottom:10%">
 		<div class="sidebar_div" style="float:left;">
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
@@ -119,7 +119,7 @@
 	<p>12월: ${(requestScope.personalInfo['birth_month'] == 12)?'':requestScope.personalInfo['birth_month'] }</p>
 	<p>선택안함: ${(requestScope.personalInfo['gender'] == 'none')?'':'selected' }</p>
 	<p>여성: ${(requestScope.personalInfo['gender'] == 'woman')?'':requestScope.personalInfo['gender'] }</p> --%>
-	<br><br><br><br><br>
+	
 	
 	
 	<!-- 푸터 파일 포함 -->

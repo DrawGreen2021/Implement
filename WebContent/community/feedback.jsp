@@ -53,7 +53,9 @@
 					<c:choose>
 						<%-- 고객후기 글이 없을 경우 --%>
 						<c:when test="${requestScope.postList == 'noResult' }">
+							<br><br><br><br><br>
 							고객 후기가 없습니다.
+							<br><br><br><br><br><br><br>
 						</c:when>
 
 						<%-- 고객후기 글 목록이 있다면 리스트 출력 --%>
