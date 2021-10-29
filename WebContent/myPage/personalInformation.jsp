@@ -44,7 +44,7 @@
 					<table class="content_div_write">
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">아이디/ID</td>
-							<td colspan="3">${requestScope.personalInfo['id'] }
+							<td colspan="3" style="text-align:left; padding-left:15px; ">${requestScope.personalInfo['id'] }
 								<input type="hidden" name="id" value="${requestScope.personalInfo['id'] }"></td>
 						</tr>
 						<!-- <tr class="community_text" height="30px;">
@@ -53,17 +53,17 @@
 						</tr> -->
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">닉네임</td>
-							<td colspan="3">${requestScope.personalInfo['nickname'] }
+							<td colspan="3" style="text-align:left; padding-left:15px; ">${requestScope.personalInfo['nickname'] }
 								<input type="hidden" name="nickname" value="${requestScope.personalInfo['nickname'] }"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">이메일</td>
-							<td colspan="3">${requestScope.personalInfo['email'] }
+							<td colspan="3" style="text-align:left; padding-left:15px; ">${requestScope.personalInfo['email'] }
 								<input type="hidden" name="email" value="${requestScope.personalInfo['email'] }"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">생년월일</td>
-							<td width="350px">${requestScope.personalInfo['birth'] }
+							<td width="350px" style="text-align:left; padding-left:15px; ">${requestScope.personalInfo['birth'] }
 								<input type="hidden" name="birth" value="${requestScope.personalInfo['birth'] }"></td>
 							<td width="100px" style="background-color:#eeedeb;">성별</td>
 							<td width="200px">${requestScope.personalInfo['gender'] }

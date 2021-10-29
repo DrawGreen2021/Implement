@@ -58,7 +58,8 @@
 								</tr>
 								<c:forEach items="${requestScope.corpList }" var="dto">
 									<tr class="community_text" style="height:35px; cursor:pointer;">
-										<td><a href="../findCorp/DetailView.do?corpType=${dto.engCorpType }&serial_num=${dto.serial_number }">${dto.company_name }</a></td>
+										<td><a style="color:black; text-decoration:none;"
+										href="../findCorp/DetailView.do?corpType=${dto.engCorpType }&serial_num=${dto.serial_number }">${dto.company_name }</a></td>
 										<td>${dto.location }</td>
 										<td>${dto.sector }</td>
 										<td>${dto.korCorpType }</td>
@@ -71,7 +72,7 @@
 					</table>
 
 					<!-- 페이지 번호 div -->
-					<div class="pagelist_text" style="margin: 3% auto;">
+					<div class="pagelist_text" style="margin: 6% auto;">
 
 						<%-- 페이징 변수 파일 포함 --%>
 						<c:import url='/importedFile/pagingVariables.jsp'></c:import>

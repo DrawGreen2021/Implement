@@ -114,7 +114,7 @@
 												</c:otherwise>
 											</c:choose>
 											<td>
-												<a id="corpName${dto.serial_number }"
+												<a id="corpName${dto.serial_number }" style="color:black; text-decoration:none;"
 												href='DetailView.do?corpType=${param.corpType }&serial_num=${dto.serial_number }'> 
 													${dto.company_name }</a></td>
 											<td>${dto.location }</td>
@@ -124,7 +124,7 @@
 													<td>${dto.site }</td>
 												</c:when>
 												<c:otherwise>
-													<td><a href="http://${dto.site }" target="_blank">${dto.site }</a></td>
+													<td><a href="http://${dto.site }" target="_blank" style="color:black; text-decoration:none;">${dto.site }</a></td>
 												</c:otherwise>
 											</c:choose>
 										</tr>

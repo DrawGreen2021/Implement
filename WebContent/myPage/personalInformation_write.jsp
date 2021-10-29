@@ -44,38 +44,39 @@
 					<table class="content_div_write">
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">아이디/ID</td>
-							<td colspan="3"><input type="text" autocomplete="off" class="write_input" 
+							<td colspan="3" style="text-align:left; padding-left:12px;"><input type="text" autocomplete="off" class="write_input" 
 								name="id" value="${requestScope.personalInfo['id'] }"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">아이디/ID 중복 확인</td>
-							<td colspan="3"><input type="submit" id="idCheckBtn" value="아이디 중복 확인" class="writing_btn">
+							<td colspan="3" style="text-align:left; padding-left:12px;">
+								<input type="submit" id="idCheckBtn" value="아이디 중복 확인" class="writing_btn" style="width:120px;">
 								<input type="hidden" name="authId" id="authID" value="not-changed"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">비밀번호/PW</td>
-							<td colspan="3"><input type="password" name="pw" id="pw" autocomplete="off" class="write_input"></td>
+							<td colspan="3" style="text-align:left; padding-left:12px;"><input type="password" name="pw" id="pw" autocomplete="off" class="write_input"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">비밀번호/PW 확인</td>
-							<td colspan="3"><input type="password" name="pw_chk" id="pw_chk" autocomplete="off" class="write_input"></td>
+							<td colspan="3" style="text-align:left; padding-left:12px;"><input type="password" name="pw_chk" id="pw_chk" autocomplete="off" class="write_input"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">닉네임</td>
-							<td colspan="3"><input type="text" name="name" autocomplete="off" class="write_input"
+							<td colspan="3" style="text-align:left; padding-left:12px;"><input type="text" name="name" autocomplete="off" class="write_input"
 								value="${requestScope.personalInfo['nickname'] }"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">이메일</td>
-							<td colspan="3"><input type="text" name="email" autocomplete="off" class="write_input"
+							<td colspan="3" style="text-align:left; padding-left:12px;"><input type="text" name="email" autocomplete="off" class="write_input"
 								value="${requestScope.personalInfo['email'] }"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">생년월일</td>
-							<td colspan="3"><input type="number" name="year" id="year"
+							<td colspan="3" style="text-align:left; padding-left:12px;"><input type="number" name="year" id="year"
 								value="${requestScope.personalInfo['birth_year'] }"
 								style="width: 100px; height: 20px; margin: 0 auto;"> 
-								<select id="month" name="month">
+								<select id="month" name="month" style="height:25px;">
 									<option value="">월</option>
 									<option value="01" ${(requestScope.personalInfo['birth_month']==1)?'selected':'' }>01</option>
 									<option value="02" ${(requestScope.personalInfo['birth_month']==2)?'selected':'' }>02</option>
@@ -96,8 +97,8 @@
 						</tr>
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color: #eeedeb;">성별</td>
-							<td colspan="3">
-								<select id="gender" name="gender">
+							<td colspan="3" style="text-align:left; padding-left:12px;">
+								<select id="gender" name="gender" style="height:25px;">
 									<option value="">성별</option>
 									<option value="man" ${(requestScope.personalInfo['gender']=='man')?'selected':'' }>남</option>
 									<option value="woman" ${(requestScope.personalInfo['gender']=='woman')?'selected':'' }>여</option>

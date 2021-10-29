@@ -111,7 +111,7 @@
 															onclick="addFavoriteCorp(this)" class="favoriteCorp_btn">☆</button></td>
 												</c:otherwise>
 											</c:choose>
-											<td><a id="corpName${dto.serial_number }"
+											<td><a id="corpName${dto.serial_number }" style="color:black; text-decoration:none;"
 											href='DetailView.do?corpType=${param.corpType }&serial_num=${dto.serial_number }'>
 												${dto.organization_name }</a></td>
 											<td>${dto.business_contents }</td>
@@ -123,7 +123,7 @@
 													<td>${dto.homepage }</td>
 												</c:when>
 												<c:otherwise>
-													<td><a href="http://${dto.homepage }" target="_blank">${dto.homepage }</a></td>
+													<td><a href="http://${dto.homepage }" target="_blank" style="color:black; text-decoration:none;">${dto.homepage }</a></td>
 												</c:otherwise>
 											</c:choose>
 

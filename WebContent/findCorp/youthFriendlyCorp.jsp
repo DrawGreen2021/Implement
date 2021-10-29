@@ -114,7 +114,7 @@
 															onclick="addFavoriteCorp(this)" class="favoriteCorp_btn">☆</button></td>
 												</c:otherwise>
 											</c:choose>
-											<td><a id="corpName${dto.serial_number }"
+											<td><a id="corpName${dto.serial_number }" style="color:black; text-decoration:none;"
 											href='DetailView.do?corpType=${param.corpType }&serial_num=${dto.serial_number }'>
 												${dto.company_name }</a></td>
 											<td>${dto.location }</td>

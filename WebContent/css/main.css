@@ -596,10 +596,12 @@
 	background-color:white;
 	color:black;
 	text-align:center;
+	text-decoration:none;
 	font-size:11pt; 
 	font-weight:normal; 
 	font-family:dotum; 
 	padding:3px;
+	border:0;
 }
 
 /* 커뮤니티 글쓰기 div 설정 */

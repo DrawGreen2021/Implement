@@ -96,7 +96,7 @@
 		</form>
 		
 		<!-- 페이지 번호 div -->
-		<div class="pagelist_text" style="margin: 3% auto;">
+		<div class="pagelist_text" style="margin: 6% auto;">
 
 			<%-- 페이징 변수 파일 포함 --%>
 			<c:import url='/importedFile/pagingVariables.jsp'></c:import>
@@ -112,7 +112,7 @@
 			<span> <c:forEach var="num" begin="${startNum }"
 					end="${lastNum }">
 					<c:if test="${num <= lastPageNum }">
-						<a href='MyFeedbackView.do?page=${num}'>${num}</a>
+						<a href='MyFeedbackView.do?page=${num}' style="color:gray;">${num}</a>
 					</c:if>
 				</c:forEach>
 			</span>
