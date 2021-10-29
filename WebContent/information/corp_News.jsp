@@ -22,9 +22,9 @@
 		<div class="sidebar_div" style="float:left;">
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
-					<h3>서비스 소개</h3>
+					<h3>정보 나눔</h3>
 					<p><a href="<c:url value='/information/corp_Analysis.jsp'/>">기업 데이터 분석</a></p>
-					<p><a href="<c:url value='/information/corp_News.jsp'/>" style="color:#e1bf27; font-weight:bold;">기업 기사 모음</a></p>
+					<p><a href="<c:url value='/information/CorpNewsView.do?page=1'/>" style="color:#e1bf27; font-weight:bold;">기업 기사 모음</a></p>
 				</ul>
 			</aside>
 		</div>
@@ -47,29 +47,53 @@
 						</tr>
 						
 						
-					<!-- 뉴스 정보 리스트 들어갈 수정할 파트(지금은 복붙해둔 상태) -->
-						<c:forEach items="${requestScope.postList }" var="dto">
+						<!-- 뉴스 정보 리스트 -->
+						<c:forEach items="${requestScope.newsList }" var="dto">
 						<tr class="community_text" style="cursor: pointer;">
-							<td>${dto.board_number }</td>
-							<td><a
-								href="PostView.do?board_number=${dto.board_number }&boardName=${param.boardName}">${dto.title }</a></td>
-							<c:choose>
-							<c:when test="${dto.is_private_writer == true}">
-								<td>비공개</td>
-							</c:when>
-							<c:otherwise>
-								<td>${dto.writer_name }</td>
-							</c:otherwise>
-							</c:choose>
-
-							<td>${dto.registration_date }</td>
-							<td>${dto.hits }</td>
+							<td>${dto.subTitle }</td>
+							<td>${dto.title }</td>
+							<td>${dto.source }</td>
+							<td><a href="${dto.link }">${dto.link }</a></td>
 						</tr>
 						</c:forEach>
 								
 					</table>
 			</table>
-			
+
+			<!-- 페이지 번호 div -->
+			<div class="pagelist_text" style="margin: 3% auto;">
+
+				<%-- 페이징 변수 파일 포함 --%>
+				<c:import url='/importedFile/pagingVariables.jsp'></c:import>
+				<c:if test="${startNum > 1}">
+					<span><a
+						href='CorpNewsView.do?page=${startNum - pageCount}'>이전</a>
+					</span>
+				</c:if>
+				<c:if test="${startNum <= 1}">
+					<span onclick="alert('이전 페이지가 없습니다.');">이전</span>
+				</c:if>
+
+				<%-- 페이지의 가장 끝 번호까지만 표시 --%>
+				<span> <c:forEach var="num" begin="${startNum }"
+						end="${lastNum }">
+						<c:if test="${num <= lastPageNum }">
+							<a style="color: gray;"
+								href='CorpNewsView.do?page=${num}'>${num}</a>
+						</c:if>
+					</c:forEach>
+				</span>
+
+				<c:if test="${(startNum + pageCount -1) < lastPageNum }">
+					<span> <a
+						href='CorpNewsView.do?page=${startNum + pageCount}'>다음</a>
+					</span>
+				</c:if>
+				<c:if test="${(startNum + pageCount -1) >= lastPageNum }">
+					<span onclick="alert('다음 페이지가 없습니다.');">다음</span>
+				</c:if>
+			</div>
+
 		</div>
 	</div>
 	
@@ -79,6 +103,5 @@
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
 	<script type="text/javascript" src="../JavaScript/common.js"></script>
-	<script type="text/javascript" src="../JavaScript/right_Check.js"></script>
 </body>
 </html>

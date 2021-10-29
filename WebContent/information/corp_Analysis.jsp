@@ -22,9 +22,9 @@
 		<div class="sidebar_div" style="float:left;">
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
-					<h3>서비스 소개</h3>
+					<h3>정보 나눔</h3>
 					<p><a href="<c:url value='/information/corp_Analysis.jsp'/>" style="color:#e1bf27; font-weight:bold;">기업 데이터 분석</a></p>
-					<p><a href="<c:url value='/information/corp_News.jsp'/>">기업 기사 모음</a></p>
+					<p><a href="<c:url value='/information/CorpNewsView.do?page=1'/>">기업 기사 모음</a></p>
 				</ul>
 			</aside>
 		</div>
