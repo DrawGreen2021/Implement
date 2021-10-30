@@ -199,10 +199,10 @@
 							</c:forEach>
 						</c:if>
 						
-						<tr class="community_text" height="30px;">
+						<!-- <tr class="community_text" height="30px;">
 							<td width="20%" style="background-color:#eeedeb;">인재 육성형 중소 기업</td>
 							<td>
-								<table> <!-- 여기에 기업이름 추가하기 -->
+								<table> 여기에 기업이름 추가하기
 									<tr><td></td></tr>
 								</table>
 							</td>
@@ -211,7 +211,7 @@
 						<tr class="community_text" height="30px;">
 							<td style="background-color:#eeedeb;">녹색기업</td>
 							<td>
-								<table> <!-- 여기에 기업이름 추가하기 -->
+								<table> 여기에 기업이름 추가하기
 									<tr><td></td></tr>
 								</table>
 							</td>
@@ -220,7 +220,7 @@
 						<tr class="community_text" height="30px;">
 							<td style="background-color:#eeedeb;">사회적 기업</td>
 							<td>
-								<table> <!-- 여기에 기업이름 추가하기 -->
+								<table> 여기에 기업이름 추가하기
 									<tr><td></td></tr>
 								</table>
 							</td>
@@ -229,7 +229,7 @@
 						<tr class="community_text" height="30px;">
 							<td style="background-color:#eeedeb;">가족 친화 기업</td>
 							<td>
-								<table> <!-- 여기에 기업이름 추가하기 -->
+								<table> 여기에 기업이름 추가하기
 									<tr><td></td></tr>
 								</table>
 							</td>
@@ -238,13 +238,13 @@
 						<tr class="community_text" height="30px;">
 							<td style="background-color:#eeedeb;">청년 친화 강소 기업</td>
 							<td>
-								<table> <!-- 여기에 기업이름 추가하기 -->
+								<table> 여기에 기업이름 추가하기
 									<tr><td></td></tr>
 								</table>
 							</td>
 							<td><input type="checkbox" name="favCorp_select" value="favCorp_select" style=" text-align:left;"></td>
 							
-						</tr>
+						</tr> -->
 
 					</table>
 				</tr>

@@ -63,6 +63,7 @@
 							<table class="content_div_community">
 								<tr class="community_text"
 									style="background-color: #eeedeb; height: 30px;">
+									<td width="30px"> </td>
 									<td width="80px">번호</td>
 									<td width="500px">제목</td>
 									<td width="150px">작성자</td>
@@ -71,6 +72,14 @@
 								</tr>
 								<c:forEach items="${requestScope.postList }" var="dto">
 									<tr class="community_text" style="cursor: pointer;">
+										<c:choose>
+											<c:when test="${dto.is_private_writing }">
+												<td>■</td>
+											</c:when>
+											<c:otherwise>
+												<td> </td>
+											</c:otherwise>
+										</c:choose>
 										<td>${dto.board_number }</td>
 										<td><a style="font-decoration:none;"
 											href="PostView.do?board_number=${dto.board_number }&boardName=${param.boardName}">${dto.title }</a></td>
