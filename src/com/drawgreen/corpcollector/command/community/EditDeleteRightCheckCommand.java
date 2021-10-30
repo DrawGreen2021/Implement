@@ -8,10 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.drawgreen.corpcollector.command.Command;
+import com.drawgreen.corpcollector.dao.FeedbackPostDAO;
 import com.drawgreen.corpcollector.dao.MemberDAO;
+import com.drawgreen.corpcollector.dao.NoticePostDAO;
+import com.drawgreen.corpcollector.dao.PostDAO;
 import com.drawgreen.corpcollector.dto.MemberDTO;
 
-public class UpdateRightCheckCommand implements Command{
+public class EditDeleteRightCheckCommand implements Command{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
@@ -30,16 +33,23 @@ public class UpdateRightCheckCommand implements Command{
 			e.printStackTrace();
 		}
 		
-		boolean isAdmin = false;
+		PostDAO dao = null;
+		if (boardName.equals("공지사항")) {
+			dao = NoticePostDAO.getInstance();
+		}
+		else {
+			dao = FeedbackPostDAO.getInstance();
+		}
+		
+		boolean isWriter = false;
 		
 		
 		if (user == null) {
 			out.print("not-login");
 		} else {
-			MemberDAO dao = MemberDAO.getInstance();
-			isAdmin = dao.updateRightCheck(user.getId(), board_number, boardName);
+			isWriter = dao.isWriter(user.getId(), board_number);
 			
-			if (isAdmin) {
+			if (isWriter) {
 				out.print("accessible");
 			} else out.print("inaccessible");
 		}

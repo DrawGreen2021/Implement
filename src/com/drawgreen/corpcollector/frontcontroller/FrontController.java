@@ -16,7 +16,8 @@ import com.drawgreen.corpcollector.command.community.PostViewCommand;
 import com.drawgreen.corpcollector.command.community.WriteRightCheckCommand;
 import com.drawgreen.corpcollector.command.community.SearchPostCommand;
 import com.drawgreen.corpcollector.command.community.UpdatePostCommand;
-import com.drawgreen.corpcollector.command.community.UpdateRightCheckCommand;
+import com.drawgreen.corpcollector.command.community.DeleteCommand;
+import com.drawgreen.corpcollector.command.community.EditDeleteRightCheckCommand;
 import com.drawgreen.corpcollector.command.community.WritePostCommand;
 import com.drawgreen.corpcollector.command.findCorp.DetailViewCommand;
 import com.drawgreen.corpcollector.command.findCorp.FindCorpCommand;
@@ -199,8 +200,8 @@ public class FrontController extends HttpServlet {
 			command = new WriteRightCheckCommand();
 			command.execute(request, response);
 		}
-		else if(com.equals("UpdateRightCheck.do")) {
-			command = new UpdateRightCheckCommand();
+		else if(com.equals("EditDeleteRightCheck.do")) {
+			command = new EditDeleteRightCheckCommand();
 			command.execute(request, response);
 		}
 		else if(com.equals("WritePost.do")) {
@@ -209,6 +210,10 @@ public class FrontController extends HttpServlet {
 		}
 		else if(com.equals("UpdatePost.do")) {
 			command = new UpdatePostCommand();
+			command.execute(request, response);
+		}
+		else if(com.equals("DeletePost.do")) {
+			command = new DeleteCommand();
 			command.execute(request, response);
 		}
 		else if(com.equals("SearchPost.do")) {

@@ -138,6 +138,38 @@ public class FeedbackPostDAO implements PostDAO{
 		
 		return updateOk;
 	}
+	
+	@Override
+	public boolean deletePost(int board_number, String writer) {
+		// TODO Auto-generated method stub
+		
+		boolean deleteOk = false;
+		String query = "DELETE FROM 고객후기 WHERE board_id = ? AND id = ?";
+		
+		try {
+			rootConnection = DriverManager.getConnection(url, rootId, rootPw);
+			preparedStatement = rootConnection.prepareStatement(query);
+			preparedStatement.setInt(1, board_number);
+			preparedStatement.setString(2, writer);
+			
+			int resultNum = preparedStatement.executeUpdate();
+			if (resultNum > 0)
+				deleteOk = true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rootConnection != null) rootConnection.close();
+				if (preparedStatement != null) preparedStatement.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+		
+		return deleteOk;
+	}
 
 	@Override
 	public int getRowCount(String boardName) {
@@ -438,7 +470,6 @@ public class FeedbackPostDAO implements PostDAO{
 			connection = DriverManager.getConnection(url, rootId, rootPw);
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, board_num);
-			preparedStatement.executeQuery();
 			
 			resultSet = preparedStatement.executeQuery();
 			resultSet.next();
@@ -616,4 +647,6 @@ public class FeedbackPostDAO implements PostDAO{
 			}
 		}
 	}
+
+
 }

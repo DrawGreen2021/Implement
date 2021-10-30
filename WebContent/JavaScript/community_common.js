@@ -36,12 +36,35 @@ function updating_Check(button) {
 	$.ajax({
         type:'post',
         async:false,
-        url:'UpdateRightCheck.do',
+        url:'EditDeleteRightCheck.do',
         dataType:'text',
         data:{"board_number":board_number, "boardName":boardName},
         success: function(data, textStatus) {
             if(data === 'accessible') {   
 				location.href = "LoadPost.do?board_number="+board_number+"&boardName="+boardName;
+            } else {
+				alert("접근 권한이 없습니다.");
+            }
+        },
+        error:function (data, textStatus) {
+            console.log('error');
+        }
+    });   //ajax
+}
+
+function deleting_Check(button) {
+	var board_number = button.value;
+	var boardName = $('#boardName').val();
+	
+	$.ajax({
+        type:'post',
+        async:false,
+        url:'EditDeleteRightCheck.do',
+        dataType:'text',
+        data:{"board_number":board_number, "boardName":boardName},
+        success: function(data, textStatus) {
+            if(data === 'accessible') {   
+				location.href = "DeletePost.do?board_number="+board_number+"&boardName="+boardName;
             } else {
 				alert("접근 권한이 없습니다.");
             }

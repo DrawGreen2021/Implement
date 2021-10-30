@@ -275,37 +275,6 @@ public class MemberDAO {
 		return isAdmin;
 	}
 	
-	public boolean updateRightCheck(String id, int board_num, String boardName) {
-		boolean isAdmin = false;
-		String query = "SELECT IF(count(id)=1, 'true', 'false') AS result FROM members "
-				+ "WHERE id = ? AND EXISTS (SELECT id FROM Community."+boardName+" WHERE board_id = ?)";
-		
-		try {
-			connection = DriverManager.getConnection(url, rootId, rootPw);
-			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, id);
-			preparedStatement.setInt(2, board_num);
-			
-			resultSet = preparedStatement.executeQuery();
-			resultSet.next();
-			String result = resultSet.getString(1);
-			isAdmin = Boolean.parseBoolean(result);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-				if (resultSet!=null) resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
-		}
-		
-		return isAdmin;
-	}
-	
 	public HashMap<String, Object> getPersonalInfo(String id) {
 		HashMap<String, Object> personalInfo = new HashMap<String, Object>();
 		

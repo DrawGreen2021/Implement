@@ -137,6 +137,36 @@ public class NoticePostDAO implements PostDAO{
 		return updateOk;
 	}
 	
+	@Override
+	public boolean deletePost(int board_number, String writer) {
+		boolean deleteOk = false;
+		String query = "DELETE FROM 공지사항 WHERE board_id = ? AND id = ?";
+		
+		try {
+			rootConnection = DriverManager.getConnection(url, rootId, rootPw);
+			preparedStatement = rootConnection.prepareStatement(query);
+			preparedStatement.setInt(1, board_number);
+			preparedStatement.setString(2, writer);
+			
+			int resultNum = preparedStatement.executeUpdate();
+			if (resultNum > 0)
+				deleteOk = true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rootConnection != null) rootConnection.close();
+				if (preparedStatement != null) preparedStatement.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+		
+		return deleteOk;
+	}
+	
 	public int getRowCount(String boardName) {
 		// TODO Auto-generated method stub
 		int rowCount = 0;
@@ -434,7 +464,6 @@ public class NoticePostDAO implements PostDAO{
 			connection = DriverManager.getConnection(url, rootId, rootPw);
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, board_num);
-			preparedStatement.executeQuery();
 			
 			resultSet = preparedStatement.executeQuery();
 			resultSet.next();
@@ -473,14 +502,14 @@ public class NoticePostDAO implements PostDAO{
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
 			preparedStatement.setInt(2, board_id);
-			preparedStatement.executeUpdate();
 			
 			resultSet = preparedStatement.executeQuery();
 			resultSet.next();
-			isWriter = Boolean.getBoolean(resultSet.getString(1));
+			isWriter = Boolean.parseBoolean(resultSet.getString(1));
 
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			isWriter = false;
 		} finally {
 			try {
@@ -498,5 +527,6 @@ public class NoticePostDAO implements PostDAO{
 		
 		return isWriter;
 	}
+
 	
 }
