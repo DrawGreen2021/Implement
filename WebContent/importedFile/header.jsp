@@ -14,6 +14,8 @@
 				<a href="<c:url value='/myPage/personalInformation.jsp'/>" style="margin-left : 57%; float:left;">${sessionScope.MemberDTO.name}님</a> <!-- 마이페이지 -->
 				<form name="passBeforeUrl">
 					<input type="hidden" name="beforeUrl">
+					<input type="hidden" name="URI" value="${pageContext.request.requestURI }">
+					<input type="hidden" name="contextPath" value="${pageContext.request.contextPath }">
 				</form>
 				<a href="javascript:logoutDo()">로그아웃</a>
 			</nav>
