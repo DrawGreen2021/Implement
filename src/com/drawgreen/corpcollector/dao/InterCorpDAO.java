@@ -140,10 +140,10 @@ public class InterCorpDAO implements CorpDAO {
 		// 검색어가 달라졌으면 해당 연번 다시 select
 		if (beforeKeyword == null) {
 			beforeKeyword = keyword;
-			serialNums = getSerialNumQuery(keyword, serialNums);
+			serialNums = setSerialNum(keyword, serialNums);
 		} else if (!beforeKeyword.equals(keyword)) {
 			serialNums.clear();
-			serialNums = getSerialNumQuery(keyword, serialNums);
+			serialNums = setSerialNum(keyword, serialNums);
 		}
 
 		if (serialNums.size() == 0) {
@@ -200,7 +200,7 @@ public class InterCorpDAO implements CorpDAO {
 
 	// 검색 키워드가 존재하는 행의 기업명 알아오기
 	@Override
-	public ArrayList<Integer> getSerialNumQuery(String keyword, ArrayList<Integer> serialNums) {
+	public ArrayList<Integer> setSerialNum(String keyword, ArrayList<Integer> serialNums) {
 		// 키워드 공백으로 분리
 		StringTokenizer tokenizer = new StringTokenizer(keyword);
 

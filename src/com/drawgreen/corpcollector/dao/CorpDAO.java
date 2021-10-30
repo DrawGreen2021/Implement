@@ -17,7 +17,7 @@ public interface CorpDAO {
 	// 키워드 있을 때 기업리스트 가져오기
 	ArrayList<? extends CorpDTO> getCorpList(String keyword, int page); 
 	// 검색 키워드가 존재하는 행의 연번 알아오기
-	ArrayList<Integer> getSerialNumQuery(String keyword, ArrayList<Integer> serialNums);
+	ArrayList<Integer> setSerialNum(String keyword, ArrayList<Integer> serialNums);
 	int getRowCount_byKeyword(); // 키워드가 있을 때 전체 튜플 개수 가져오기
 	ArrayList<Integer> getSerialNums(); // 키워드가 있을 때 저장한 연번 리스트 반환(getter)
 	
