@@ -11,7 +11,7 @@ public interface PostDAO {
 	int getRowCount(String boardName);
 	ArrayList<PostDTO> getPostList(int page);
 	ArrayList<PostDTO> getPostList(String keyword, int page);
-	ArrayList<Integer> setboardNums(String keyword, ArrayList<Integer> serialNums);
+	ArrayList<Integer> setBoardNums(String keyword, ArrayList<Integer> serialNums);
 	int getAllRowCount();
 	int getRowCount_byKeyword();
 	HashMap<String, Object> getPost(int board_num);

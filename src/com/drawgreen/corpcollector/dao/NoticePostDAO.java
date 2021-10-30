@@ -229,10 +229,10 @@ public class NoticePostDAO implements PostDAO{
 		// 검색어가 달라졌으면 해당 게시글 번호 다시 select
 		if (beforeKeyword == null) {
 			beforeKeyword = keyword;
-			boardNums = setboardNums(keyword, boardNums);
+			boardNums = setBoardNums(keyword, boardNums);
 		} else if (!beforeKeyword.equals(keyword)) {
 			boardNums.clear();
-			boardNums = setboardNums(keyword, boardNums);
+			boardNums = setBoardNums(keyword, boardNums);
 		}
 
 		if (boardNums.size() == 0) {
@@ -298,7 +298,7 @@ public class NoticePostDAO implements PostDAO{
 	}
 	
 	@Override
-	public ArrayList<Integer> setboardNums(String keyword, ArrayList<Integer> boardNums) {
+	public ArrayList<Integer> setBoardNums(String keyword, ArrayList<Integer> boardNums) {
 		// TODO Auto-generated method stub
 		// 키워드 공백으로 분리
 		StringTokenizer tokenizer = new StringTokenizer(keyword);
