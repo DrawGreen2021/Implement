@@ -38,22 +38,22 @@
 					<div style="border: 1px solid #21499b; margin: 1% auto;"></div>
 				</tr>
 				<tr>
-					<table class="content_div_community">
-						<tr class="community_text" style="background-color: #eeedeb; height: 30px; font-size:11pt;">
-							<td width="120px">키워드</td>
-							<td width="500px">제목</td>
-							<td width="150px">출처</td>
-							<td width="150px">사이트 주소</td>
+					<table class="content_div_community" style="word-break: break-all; font-weight:10pt;">
+						<tr class="community_text" style="background-color: #eeedeb; height: 32px; font-weight:10pt;">
+							<td width="15%">키워드</td>
+							<td width="45%">제목</td>
+							<td width="10%">출처</td>
+							<td width="30%">사이트 주소</td>
 						</tr>
 						
 						
 						<!-- 뉴스 정보 리스트 -->
 						<c:forEach items="${requestScope.newsList }" var="dto">
-						<tr class="community_text" style="cursor: pointer;">
+						<tr class="community_text" style="height:35px; cursor:pointer; font-weight:10pt;">
 							<td>${dto.subTitle }</td>
 							<td>${dto.title }</td>
 							<td>${dto.source }</td>
-							<td><a href="${dto.link }">${dto.link }</a></td>
+							<td><a href="${dto.link }" style="color:black; text-decoration:none; font-weight:10pt;">${dto.link }</a></td>
 						</tr>
 						</c:forEach>
 								

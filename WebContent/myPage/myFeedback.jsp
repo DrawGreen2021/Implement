@@ -65,7 +65,8 @@
 										<td><input type="checkbox" name="myfeedback_select"
 											value="${dto.board_number }" style="text-align: left;"></td>
 										<td>${dto.board_number }</td>
-										<td><a href="../community/PostView.do?board_number=${dto.board_number }&boardName=고객후기">${dto.title }</a></td>
+										<td><a style="color:black; text-decoration:none;"
+										href="../community/PostView.do?board_number=${dto.board_number }&boardName=고객후기">${dto.title }</a></td>
 										<c:choose>
 											<c:when test="${dto.is_private_writer == true}">
 												<td>비공개</td>

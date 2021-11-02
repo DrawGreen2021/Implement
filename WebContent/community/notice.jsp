@@ -53,9 +53,13 @@
 					<c:choose>
 						<%-- 공지사항 글이 없을 경우 --%>
 						<c:when test="${requestScope.postList == 'noResult' }">
-							<br><br><br><br><br>
-								공지사항이 없습니다.
+							<div class="content_div_findCorpList" style="border:0;">
 								<br><br><br><br><br><br><br>
+								공지사항이 없습니다.
+								<br><br><br><br><br><br><br><br><br>
+								
+								<button class="writing_btn" style="margin:0 0 0 92%;" value="notice_Write.jsp" onclick="writing_Check(this)">글쓰기</button>
+							</div>
 						</c:when>
 
 						<%-- 공지사항 글 목록이 있다면 리스트 출력 --%>
@@ -76,14 +80,14 @@
 										<%-- 글 비공개일 경우 앞 부분에 자물쇠 표시 --%>
 										<c:choose>
 											<c:when test="${dto.is_private_writing }">
-												<td>■</td>
+												<td>🔒</td>
 											</c:when>
 											<c:otherwise>
 												<td> </td>
 											</c:otherwise>
 										</c:choose>
 										<td>${dto.board_number }</td>
-										<td style="font-decoration:none;"><a
+										<td><a style="color:black; text-decoration:none;"
 										href="PostView.do?board_number=${dto.board_number }&boardName=${param.boardName}">${dto.title }</a></td>
 										<%-- 작성자 비공개일 경우 닉네임 대신 비공개라고 표시 --%>
 										<c:choose>

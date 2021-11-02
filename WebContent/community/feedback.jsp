@@ -53,9 +53,12 @@
 					<c:choose>
 						<%-- 고객후기 글이 없을 경우 --%>
 						<c:when test="${requestScope.postList == 'noResult' }">
-							<br><br><br><br><br>
-							고객 후기가 없습니다.
+							<div class="content_div_findCorpList" style="border:0;">
 							<br><br><br><br><br><br><br>
+							고객 후기가 없습니다.
+							<br><br><br><br><br><br><br><br><br>
+							<button class="writing_btn" style="margin:0 0 0 92%;" value="feedback_Write.jsp" onclick="writing_Check(this)">글쓰기</button>
+							</div>
 						</c:when>
 
 						<%-- 고객후기 글 목록이 있다면 리스트 출력 --%>
@@ -74,14 +77,14 @@
 									<tr class="community_text" style="cursor: pointer;">
 										<c:choose>
 											<c:when test="${dto.is_private_writing }">
-												<td>■</td>
+												<td>🔒</td>
 											</c:when>
 											<c:otherwise>
 												<td> </td>
 											</c:otherwise>
 										</c:choose>
 										<td>${dto.board_number }</td>
-										<td><a style="font-decoration:none;"
+										<td><a style="color:black; text-decoration:none;"
 											href="PostView.do?board_number=${dto.board_number }&boardName=${param.boardName}">${dto.title }</a></td>
 										<c:choose>
 											<c:when test="${dto.is_private_writer == true}">
