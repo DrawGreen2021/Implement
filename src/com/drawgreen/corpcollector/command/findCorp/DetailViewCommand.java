@@ -60,6 +60,10 @@ public class DetailViewCommand implements Command{
 			
 		} else request.setAttribute("isRegistered", false);
 		
+		// 가장 많이 검색한 기업 순위 구하기
+		RecentSearchCorpDAO recentSearchCorpDAO = RecentSearchCorpDAO.getInstance();
+		LinkedHashMap<Integer, String> searchRank = recentSearchCorpDAO.getRecentSearchRank();
+		request.setAttribute("searchRank", searchRank);
 	}
 
 }
