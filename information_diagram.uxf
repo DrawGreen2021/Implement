@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>420</y>
+      <w>266</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+FrontController
+Package::frontcontroller
+--
+- serialVersionUID: long
+--
++ FrontController()
+# doGet(HttpServletRequest, HttpServletResponse):void
+# doPost(HttpServletRequest, HttpServletResponse):void
+- actionDo(HttpServletRequest, HttpServletResponse):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>168</x>
+      <y>224</y>
+      <w>266</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Interface&gt;&gt;
+Command
+Package::command
+--
+--
++ execute(HttpServletRequest, HttpServletResponse):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>490</x>
+      <y>224</y>
+      <w>245</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+CorpNewsViewCommand
+Package::command.information
+--
+--
++ execute(HttpServletRequest, HttpServletResponse)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>819</x>
+      <y>189</y>
+      <w>210</w>
+      <h>196</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+NewsDAO
+Package::dao
+--
+- connection:Connection
+- preparedStatement:PreparedStatement
+- resultSet:ResultSet
+- allRowCount:int
+- pageRowCount:int
+--
+- NewsDAO()
++ getInstance():NewsDAO
++ getAllRowCount():int
++ setAllRowCount(int):void
++ getRowCount(String):int
++ getNewsList(int):ArrayList&lt;NewsDTO&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>259</x>
+      <y>287</y>
+      <w>91</w>
+      <h>203</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+m1=0..*
+</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>427</x>
+      <y>259</y>
+      <w>77</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>728</x>
+      <y>259</y>
+      <w>105</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1092</x>
+      <y>182</y>
+      <w>196</w>
+      <h>203</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+NewsDTO
+Package::dto
+--
+- title:String
+- source:String
+- link:String
+- subTitle:String
+--
++ NewsDTO(String, String, String, String)
++ getTitle():String
++ setTitle(String):void
++ getSource():String
++ setSource(String):void
++ getLink():String
++ setLink(String):void
++ getSubTitlel():String
++ setSubTitle(String):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1022</x>
+      <y>294</y>
+      <w>84</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>980</x>
+      <y>357</y>
+      <w>98</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..1</panel_attributes>
+    <additional_attributes>70.0;10.0;120.0;60.0;60.0;80.0;10.0;40.0</additional_attributes>
+  </element>
+</diagram>

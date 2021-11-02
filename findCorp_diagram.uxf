@@ -1,0 +1,1007 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>4</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>-4</x>
+      <y>572</y>
+      <w>152</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+FrontController
+Package::frontcontroller
+--
+- serialVersionUID: long
+--
++ FrontController()
+# doGet(HttpServletRequest, HttpServletResponse):void
+# doPost(HttpServletRequest, HttpServletResponse):void
+- actionDo(HttpServletRequest, HttpServletResponse):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>92</x>
+      <y>460</y>
+      <w>152</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Interface&gt;&gt;
+Command
+Package::command
+--
+--
++ execute(HttpServletRequest, HttpServletResponse):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>288</x>
+      <y>420</y>
+      <w>140</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+FindCorpCommand
+Package::command.findCorp
+--
+- pager:Pager
+- isUnifiedSearch:boolean
+--
++ execute(HttpServletRequest, HttpServletResponse)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>288</x>
+      <y>484</y>
+      <w>140</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+DetailViewCommand
+Package::command.findCorp
+--
+--
++ execute(HttpServletRequest, HttpServletResponse)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>704</x>
+      <y>0</y>
+      <w>188</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+FamilyFriendlyCorpDAO
+Package::dao
+--
+- connection:Connection
+- preparedStatement:PreparedStatement
+- resultSet:ResultSet
+- allRowCount:int
+- pageRowcount:int
+- serialNums:ArrayList&lt;Integer&gt;
+- beforeKeyword:String
+--
+- FamilyFriendlyCorpDAO()
++ getInstance():FamilyFriendlyCorpDAO
++ getRowCount(String):int
++ getAllRowCount():int
++ setAllRowCount(int):void
++ getCorpList(int):ArrayList&lt;? extends CorpDTO&gt;
++ getCorpList(String, int):ArrayList&lt;? extends CorpDTO&gt;
++ getRowCount_byKeyword():int
++ getSerialNums():ArrayList&lt;Integer&gt;
++ getInfo(int):LinkedHashMap&lt;String, Object&gt;
++ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>144</x>
+      <y>496</y>
+      <w>52</w>
+      <h>116</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+m1=0..*
+</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>444</y>
+      <w>56</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;80.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>472</y>
+      <w>56</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>424</x>
+      <y>440</y>
+      <w>40</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>80.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>424</x>
+      <y>488</y>
+      <w>40</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>868</x>
+      <y>108</y>
+      <w>44</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..1</panel_attributes>
+    <additional_attributes>60.0;10.0;90.0;100.0;30.0;120.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>456</x>
+      <y>424</y>
+      <w>156</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Interface&gt;&gt;
+CorpDAO
+Package::dao
+--
+--
++ getRowCount(String):int
++ getAllRowCount():int
++ setAllRowCount(int):void
++ getCorpList(int):ArrayList&lt;? extends CorpDTO&gt;
++ getCorpList(String, int):ArrayList&lt;? extends CorpDTO&gt;
++ getRowCount_byKeyword():int
++ getSerialNums():ArrayList&lt;Integer&gt;
++ getInfo(int):LinkedHashMap&lt;String, Object&gt;
++ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>272</y>
+      <w>52</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..1</panel_attributes>
+    <additional_attributes>80.0;10.0;110.0;80.0;50.0;120.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>704</x>
+      <y>164</y>
+      <w>188</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+GreenCorpDAO
+Package::dao
+--
+- connection:Connection
+- preparedStatement:PreparedStatement
+- resultSet:ResultSet
+- allRowCount:int
+- pageRowcount:int
+- serialNums:ArrayList&lt;Integer&gt;
+- beforeKeyword:String
+--
+- GreenCorpDAO()
++ getInstance():GreenCorpDAO
++ getRowCount(String):int
++ getAllRowCount():int
++ setAllRowCount(int):void
++ getCorpList(int):ArrayList&lt;? extends CorpDTO&gt;
++ getCorpList(String, int):ArrayList&lt;? extends CorpDTO&gt;
++ getRowCount_byKeyword():int
++ getSerialNums():ArrayList&lt;Integer&gt;
++ getInfo(int):LinkedHashMap&lt;String, Object&gt;
++ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>440</y>
+      <w>52</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..1</panel_attributes>
+    <additional_attributes>80.0;10.0;110.0;70.0;50.0;110.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>704</x>
+      <y>328</y>
+      <w>188</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+SocialCorpDAO
+Package::dao
+--
+- connection:Connection
+- preparedStatement:PreparedStatement
+- resultSet:ResultSet
+- allRowCount:int
+- pageRowcount:int
+- serialNums:ArrayList&lt;Integer&gt;
+- beforeKeyword:String
+--
+- SocialCorpDAO()
++ getInstance():SocialCorpDAO
++ getRowCount(String):int
++ getAllRowCount():int
++ setAllRowCount(int):void
++ getCorpList(int):ArrayList&lt;? extends CorpDTO&gt;
++ getCorpList(String, int):ArrayList&lt;? extends CorpDTO&gt;
++ getRowCount_byKeyword():int
++ getSerialNums():ArrayList&lt;Integer&gt;
++ getInfo(int):LinkedHashMap&lt;String, Object&gt;
++ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>600</y>
+      <w>52</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..1</panel_attributes>
+    <additional_attributes>80.0;10.0;110.0;90.0;50.0;130.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>768</y>
+      <w>52</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..1</panel_attributes>
+    <additional_attributes>80.0;10.0;110.0;90.0;50.0;120.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>704</x>
+      <y>660</y>
+      <w>188</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+YouthFriendlyCorpDAO
+Package::dao
+--
+- connection:Connection
+- preparedStatement:PreparedStatement
+- resultSet:ResultSet
+- allRowCount:int
+- pageRowcount:int
+- serialNums:ArrayList&lt;Integer&gt;
+- beforeKeyword:String
+--
+- YouthFriendlyCorpDAO()
++ getInstance():YouthFriendlyCorpDAO
++ getRowCount(String):int
++ getAllRowCount():int
++ setAllRowCount(int):void
++ getCorpList(int):ArrayList&lt;? extends CorpDTO&gt;
++ getCorpList(String, int):ArrayList&lt;? extends CorpDTO&gt;
++ getRowCount_byKeyword():int
++ getSerialNums():ArrayList&lt;Integer&gt;
++ getInfo(int):LinkedHashMap&lt;String, Object&gt;
++ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1168</x>
+      <y>316</y>
+      <w>164</w>
+      <h>172</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+SocialCorpDTO
+Package::dto
+--
+- serial_number:int
+- organization_name:String
+- business_contents:String
+- realization_type:String
+- representative_number:String
+- location:String
+- homepage:String
+--
++ SocialCorpDTO(int, String, String, String, String, String, String)
++ getSerial_number():int
++ setSerial_number(int):void
++ getOrganization_name():String
++ setOrganization_name(String):void
++ getBusiness_contents():String
++ setBusiness_contents(String):void
++ getRealization_type():String
++ setRealization_type(String):void
++ getRepresentative_number():String
++ setRepresentative_number(String):void
++ getLocation():String
++ setLocation(String):void
++ getHomepage():String
++ setHomepage(String):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>704</x>
+      <y>492</y>
+      <w>188</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+TalentDevelopmentCorpDAO
+Package::dao
+--
+- connection:Connection
+- preparedStatement:PreparedStatement
+- resultSet:ResultSet
+- allRowCount:int
+- pageRowcount:int
+- serialNums:ArrayList&lt;Integer&gt;
+- beforeKeyword:String
+--
+- TalentDevelopmentCorpDAO()
++ getInstance():TalentDevelopmentCorpDAO
++ getRowCount(String):int
++ getAllRowCount():int
++ setAllRowCount(int):void
++ getCorpList(int):ArrayList&lt;? extends CorpDTO&gt;
++ getCorpList(String, int):ArrayList&lt;? extends CorpDTO&gt;
++ getRowCount_byKeyword():int
++ getSerialNums():ArrayList&lt;Integer&gt;
++ getInfo(int):LinkedHashMap&lt;String, Object&gt;
++ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>704</x>
+      <y>820</y>
+      <w>188</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+InterCorpDAO
+Package::dao
+--
+- connection:Connection
+- preparedStatement:PreparedStatement
+- resultSet:ResultSet
+- allRowCount:int
+- pageRowcount:int
+- serialNums:ArrayList&lt;Integer&gt;
+- beforeKeyword:String
+--
+- InterCorpDAO()
++ getInstance():InterCorpDAO
++ getRowCount(String):int
++ getAllRowCount():int
++ setAllRowCount(int):void
++ getCorpList(int):ArrayList&lt;? extends CorpDTO&gt;
++ getCorpList(String, int):ArrayList&lt;? extends CorpDTO&gt;
++ getRowCount_byKeyword():int
++ getSerialNums():ArrayList&lt;Integer&gt;
++ getInfo(int):LinkedHashMap&lt;String, Object&gt;
++ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>940</y>
+      <w>52</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..1</panel_attributes>
+    <additional_attributes>80.0;10.0;110.0;70.0;50.0;100.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>968</x>
+      <y>464</y>
+      <w>104</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Interface&gt;&gt;
+CorpDTO
+Package::dto
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1176</x>
+      <y>164</y>
+      <w>152</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+GreenCorpDTO
+Package::dto
+--
+- serial_number:int
+- company_name:String
+- location:String
+- sector:String
+- site:String
+--
++ GreenCorpDTO(int, String, String, String, String)
++ getSerial_number():int
++ setSerial_number(int):void
++ getCompany_name():String
++ setCompany_name(String):void
++ getLocation():String
++ setLocation(String):void
++ getSector():String
++ setSector(String):void
++ getSite():String
++ setSite(String):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1176</x>
+      <y>32</y>
+      <w>152</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+FamilyFriendlyCorpDTO
+Package::dto
+--
+- serial_number:int
+- company_name:String
+- division:String
+- city_state:String
+--
++ FamilyFriendlyCorpDTO(int, String, String, String)
++ getSerial_number():int
++ setSerial_number(int):void
++ getCompany_name():String
++ setCompany_name(String):void
++ getDivision():String
++ setDivision(String):void
++ getCity_state():String
++ setCity_state(String):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1176</x>
+      <y>504</y>
+      <w>152</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+TalentDevelopmentCorpDTO
+Package::dto
+--
+- serial_number:int
+- company_name:String
+- representative:String
+- address:String
+- main_product:String
+--
++ TalentDevelopmentCorpDTO(int, String, String, String, String)
++ getSerial_number():int
++ setSerial_number(int):void
++ getCompany_name():String
++ setCompany_name(String):void
++ getRepresentative():String
++ setRepresentative(String):void
++ getAddress():String
++ setAddress(String):void
++ getMain_product():String
++ setMain_product(String):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1176</x>
+      <y>656</y>
+      <w>152</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+YouthFriendlyCorpDTO
+package::dto
+--
+- serial_number:int
+- company_name:String
+- location:String
+- sector:String
+- best_wage:String
+- best_balance:String
+- best_employ:String
+--
++ YouthFriendlyCorpDTO(int, String, String, String, 
+String, String, String)
++ getSerial_number():int
++ setSerial_number(int):void
++ getCompany_name():String
++ setCompany_name(String):void
++ getLocation():String
++ setLocation(String):void
++ getSector():String
++ setSector(String):void
++ getBest_wage():String
++ setBest_wage(String):void
++ getBest_balance():String
++ setBest_balance(String):void
++ getBest_employ():String
++ setBest_employ(String):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1176</x>
+      <y>856</y>
+      <w>152</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+InterCorpDTO
+package::dto
+--
+- serial_number:int
+- company_name:String
+- location:String
+- sector:String
+- corpType:String
+--
++ InterCorpDTO(int, String, String, String, String)
++ getSerial_number():int
++ setSerial_number(int):void
++ getCompany_name():String
++ setCompany_name(String):void
++ getLocation():String
++ setLocation(String):void
++ getSector():String
++ setSector(String):void
++ getCorpType():String
++ setCorpType(String):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>608</x>
+      <y>72</y>
+      <w>104</w>
+      <h>368</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;900.0;240.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>608</x>
+      <y>240</y>
+      <w>104</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;520.0;240.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>608</x>
+      <y>392</y>
+      <w>104</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;160.0;240.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>608</x>
+      <y>472</y>
+      <w>104</w>
+      <h>264</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;240.0;640.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>608</x>
+      <y>460</y>
+      <w>104</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;240.0;240.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>608</x>
+      <y>504</y>
+      <w>104</w>
+      <h>400</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;240.0;980.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>888</x>
+      <y>56</y>
+      <w>128</w>
+      <h>416</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>300.0;1020.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>888</x>
+      <y>224</y>
+      <w>116</w>
+      <h>248</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>270.0;600.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>888</x>
+      <y>396</y>
+      <w>104</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>240.0;170.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>888</x>
+      <y>484</y>
+      <w>104</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>240.0;10.0;10.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>888</x>
+      <y>484</y>
+      <w>112</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>260.0;10.0;10.0;610.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>888</x>
+      <y>484</y>
+      <w>128</w>
+      <h>420</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>300.0;10.0;10.0;1030.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1060</x>
+      <y>228</y>
+      <w>124</w>
+      <h>244</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;590.0;290.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1068</x>
+      <y>392</y>
+      <w>108</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;200.0;250.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1068</x>
+      <y>476</y>
+      <w>116</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;270.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1064</x>
+      <y>484</y>
+      <w>120</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;280.0;580.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1056</x>
+      <y>484</y>
+      <w>128</w>
+      <h>444</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;300.0;1090.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1052</x>
+      <y>88</y>
+      <w>128</w>
+      <h>384</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;940.0;300.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>296</x>
+      <y>244</y>
+      <w>124</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+Pager
+package::util
+--
+- pageCount:int
+- rowCount:int
+- blockStartNum:int
+- blockLastNum:int
+- lastPageNum:int
+--
++ getBlockStartNum(int):int
++ setBlockStartNum(int):void
++ getBlockLastNum(int):int
++ setBlockLastNum(int):void
++ getLastPageNum(int):int
++ setLastPageNum(int):void
++ getPagecount():int
++ getRowCount():int
++ setNumbers(int, int, 
+HttpServletRequest, HttpServletResponse):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>352</x>
+      <y>368</y>
+      <w>20</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=0..1</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>400</x>
+      <y>576</y>
+      <w>172</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+FavoriteCorpDAO
+Package::dao
+--
+- connection:Connection
+- preparedStatement:PreparedStatement
+- resultSet:ResultSet
+- pageRowCount:int
+--
+- FavoriteCorpDAO()
++ getInstance():FavoriteCorpDAO
++ isRegistered(String, int, String):boolean
++ addFavoriteCorp(String, int, String, String):void
++ deleteFavoriteCorp(String, int, String):void
++ getFavoirteSerialNums(int, String, String, int):int[]
++ getFavoirteSerialNums(int, String, String, ArrayList&lt;Integer&gt;):int[]
++ getCorpType(String):String
++ getFavoriteSerialNums(String, ArrayList&lt;InterCorpDTO&gt;):int[]
++ getFavoriteSerialNums_forMyPage(String, int)
+:LinkedHashMap&lt;String, LinkedHashMap&lt;Integer, String&gt;&gt;
++ getRowCount(String, int):int
++ deleteFavCorp(String, HashMap&lt;String, int[]&gt;):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>544</x>
+      <y>684</y>
+      <w>48</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..1</panel_attributes>
+    <additional_attributes>70.0;10.0;100.0;70.0;50.0;110.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>424</x>
+      <y>452</y>
+      <w>48</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>100.0;310.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>404</x>
+      <y>516</y>
+      <w>48</w>
+      <h>68</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>100.0;150.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>192</x>
+      <y>576</y>
+      <w>180</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+RecentSearchCorpDAO
+Package::dao
+--
+- connection:Connection
+- preparedStatement:PreparedStatement
+- resultSet:ResultSet
+- pageRowCount:int
+- rankCount:int
+--
+- RecentSearchCorpDAO()
++ getInstance():RecentSearchCorpDAO
++ insertSearchCorp(int, String, String, String):void
++ isDuplicated(int, String, String):boolean
++ deleteRecord(int, String, String):void
++ getCorpList(String):List&lt;RecentSearchDTO&gt;
++ setCorpCount(int, List&lt;RecentSearchDTO&gt;)
+:ArrayList&lt;RecentSearchDTO&gt;
++ getRecentSearchRank():LinkedHashMap&lt;Integer, String&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>348</x>
+      <y>684</y>
+      <w>48</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..1</panel_attributes>
+    <additional_attributes>60.0;10.0;100.0;60.0;40.0;100.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>468</y>
+      <w>36</w>
+      <h>116</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>10.0;270.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>304</x>
+      <y>516</y>
+      <w>44</w>
+      <h>68</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>10.0;150.0;90.0;10.0</additional_attributes>
+  </element>
+</diagram>
