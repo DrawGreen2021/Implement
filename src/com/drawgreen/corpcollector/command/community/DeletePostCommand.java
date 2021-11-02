@@ -13,7 +13,7 @@ import com.drawgreen.corpcollector.dao.NoticePostDAO;
 import com.drawgreen.corpcollector.dao.PostDAO;
 import com.drawgreen.corpcollector.dto.MemberDTO;
 
-public class DeleteCommand implements Command{
+public class DeletePostCommand implements Command{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {

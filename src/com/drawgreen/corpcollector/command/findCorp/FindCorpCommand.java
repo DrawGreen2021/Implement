@@ -23,8 +23,8 @@ import com.drawgreen.corpcollector.dto.MemberDTO;
 import com.drawgreen.corpcollector.util.Pager;
 
 public class FindCorpCommand implements Command {
-	Pager pager = new Pager();
-	boolean isUnifiedSearch = false;
+	private Pager pager = new Pager();
+	private boolean isUnifiedSearch = false;
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -84,7 +84,7 @@ public class FindCorpCommand implements Command {
 				favoriteNums = favoriteCorpDAO.getFavoriteSerialNums(user.getId(), (ArrayList<InterCorpDTO>)corpList);
 			}
 			else if (loginOk)
-				favoriteNums = favoriteCorpDAO.getFavoirteSerialNums(page, corpType, user.getId(), dao.getAllRowCount());
+				favoriteNums = favoriteCorpDAO.getFavoirteSerialNums(page, corpType, user.getId(), dao.getSerialNums());
 		}
 
 		// 검색 결과가 null이 아니라면 request에 corpList 저장 후 페이지 번호 설정
