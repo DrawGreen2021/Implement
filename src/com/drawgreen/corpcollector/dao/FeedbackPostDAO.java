@@ -209,7 +209,8 @@ public class FeedbackPostDAO implements PostDAO{
 	@Override
 	public ArrayList<PostDTO> getPostList(int page) {
 		ArrayList<PostDTO> postList = new ArrayList<PostDTO>();
-		String query = "SELECT f.*, m.nickname FROM 고객후기 f, Member.members m WHERE m.id = f.id LIMIT ?, ?";
+		String query = "SELECT f.*, m.nickname FROM 고객후기 f, Member.members m WHERE m.id = f.id "
+				+ "ORDER BY f.등록일시 DESC LIMIT ?, ?";
 		
 		try {
 			connection = DriverManager.getConnection(url, userId, userPw);
@@ -256,7 +257,7 @@ public class FeedbackPostDAO implements PostDAO{
 		return postList;
 	}
 	
-	// 키워드가 있을 때 공지사항 글 목록 얻어오기
+	// 키워드가 있을 때 고객후기 글 목록 얻어오기
 	@Override
 	public ArrayList<PostDTO> getPostList(String keyword, int page) {
 		ArrayList<PostDTO> postList = new ArrayList<PostDTO>();
@@ -287,7 +288,7 @@ public class FeedbackPostDAO implements PostDAO{
 			builder.append(",");
 			builder.append(boardNums.get(i));	
 		}
-		builder.append(")");
+		builder.append(") ORDER BY f.등록일시 DESC");
 		query = builder.toString();
 		
 		try {
@@ -538,7 +539,7 @@ public class FeedbackPostDAO implements PostDAO{
 		ArrayList<PostDTO> postList = new ArrayList<PostDTO>();
 		
 		String query = "SELECT f.*, m.nickname FROM 고객후기 f, Member.members m "
-				+ "WHERE f.id = ? AND f.id = m.id LIMIT ?, ?";
+				+ "WHERE f.id = ? AND f.id = m.id ORDER BY f.등록일시 DESC LIMIT ?, ?";
 		
 		try {
 			connection = DriverManager.getConnection(url, userId, userPw);

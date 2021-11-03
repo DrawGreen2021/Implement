@@ -204,7 +204,8 @@ public class NoticePostDAO implements PostDAO{
 	@Override
 	public ArrayList<PostDTO> getPostList(int page) {
 		ArrayList<PostDTO> postList = new ArrayList<PostDTO>();
-		String query = "SELECT n.*, m.nickname FROM 공지사항 n, Member.members m WHERE m.id = n.id LIMIT ?, ?";
+		String query = "SELECT n.*, m.nickname FROM 공지사항 n, Member.members m WHERE m.id = n.id "
+				+ "ORDER BY n.등록일시 DESC LIMIT ?, ?";
 		
 		try {
 			connection = DriverManager.getConnection(url, userId, userPw);
@@ -282,7 +283,7 @@ public class NoticePostDAO implements PostDAO{
 			builder.append(",");
 			builder.append(boardNums.get(i));	
 		}
-		builder.append(")");
+		builder.append(") ORDER BY n.등록일시 DESC");
 		query = builder.toString();
 		
 		try {
