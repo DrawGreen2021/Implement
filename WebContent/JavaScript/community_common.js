@@ -87,10 +87,10 @@ function updatePost() {
 	form.submit();
 }
 
-/*function goListPage(button) {
+function goListPage(button) {
 	var nextPage = button.value;
 	location.href = nextPage;
-}*/
+}
 
 function cancelWriting() {
 	

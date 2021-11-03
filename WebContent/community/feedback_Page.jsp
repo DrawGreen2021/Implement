@@ -84,7 +84,7 @@
 						<button class="writing_btn" onclick="deleting_Check(this)"
 							value="${requestScope.post['board_number'] }">삭제</button>
 						<button class="writing_btn" style="background-color: #E7F1FD;"
-							onclick="history.go(-1);">목록</button>
+							onclick="goListPage(this)" value="feedback.jsp">목록</button>
 						<!-- 목록으로 돌아가기 -->
 					</div>
 				</div>
