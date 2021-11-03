@@ -33,10 +33,10 @@ function deleteFavCorp() {
 	var favCorp_select_youth_length
 		= $('input:checkbox[name="favCorp_select_youth"]:checked').length;
 	
-	if (favCorp_select_family_length == 0 ||
-		favCorp_select_green_length == 0 ||
-		favCorp_select_social_length == 0 ||
-		favCorp_select_talent_length == 0 ||
+	if (favCorp_select_family_length == 0 &&
+		favCorp_select_green_length == 0 &&
+		favCorp_select_social_length == 0 &&
+		favCorp_select_talent_length == 0 &&
 		favCorp_select_youth_length == 0) {
 		alert("삭제할 관심 기업이 없습니다.");
 	} else {

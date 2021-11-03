@@ -302,6 +302,6 @@
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
 	<script type="text/javascript" src="../JavaScript/common.js"></script>
-	<script type="text/javascript" src="../JavaScript/myPage_common.js"></script>
+	<script type="text/javascript" src="../JavaScript/myPage_common.js?after"></script>
 </body>
 </html>
