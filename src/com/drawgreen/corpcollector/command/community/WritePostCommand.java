@@ -38,6 +38,7 @@ public class WritePostCommand implements Command{
 		boolean writeOk = dao.writePost(title, private_Writing, writer, writer_id, private_Writer, content);
 		
 		if (writeOk) {
+			dao.resetBoardId();
 			PrintWriter out;
 			try {
 				out = response.getWriter();

@@ -39,6 +39,7 @@ public class DeletePostCommand implements Command{
 		boolean deleteOk = dao.deletePost(board_number, user.getId());
 		
 		if (deleteOk) {
+			dao.resetBoardId();
 			PrintWriter out;
 			try {
 				out = response.getWriter();

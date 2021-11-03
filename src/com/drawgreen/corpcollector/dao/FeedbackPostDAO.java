@@ -10,11 +10,12 @@ import java.util.HashMap;
 import java.util.StringTokenizer;
 
 import com.drawgreen.corpcollector.dto.PostDTO;
+import com.mysql.cj.jdbc.CallableStatement;
 
 public class FeedbackPostDAO implements PostDAO{
 	private Connection connection = null;
-	private Connection rootConnection = null;
 	private PreparedStatement preparedStatement = null;
+	private CallableStatement callableStatement = null;
 	private ResultSet resultSet = null;
 	private String userId = "general_user_id";
 	private String userPw = "general_user_password"; 
@@ -83,7 +84,7 @@ public class FeedbackPostDAO implements PostDAO{
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rootConnection != null) rootConnection.close();
+				if (connection != null) connection.close();
 				if (preparedStatement != null) preparedStatement.close();
 			} catch (Exception e2) {
 				// TODO: handle exception
@@ -128,7 +129,7 @@ public class FeedbackPostDAO implements PostDAO{
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rootConnection != null) rootConnection.close();
+				if (connection != null) connection.close();
 				if (preparedStatement != null) preparedStatement.close();
 			} catch (Exception e2) {
 				// TODO: handle exception
@@ -147,8 +148,8 @@ public class FeedbackPostDAO implements PostDAO{
 		String query = "DELETE FROM 고객후기 WHERE board_id = ? AND id = ?";
 		
 		try {
-			rootConnection = DriverManager.getConnection(url, rootId, rootPw);
-			preparedStatement = rootConnection.prepareStatement(query);
+			connection = DriverManager.getConnection(url, rootId, rootPw);
+			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, board_number);
 			preparedStatement.setString(2, writer);
 			
@@ -160,7 +161,7 @@ public class FeedbackPostDAO implements PostDAO{
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rootConnection != null) rootConnection.close();
+				if (connection != null) connection.close();
 				if (preparedStatement != null) preparedStatement.close();
 			} catch (Exception e2) {
 				// TODO: handle exception
@@ -169,6 +170,31 @@ public class FeedbackPostDAO implements PostDAO{
 		}
 		
 		return deleteOk;
+	}
+	
+	@Override
+	public void resetBoardId() {
+		// TODO Auto-generated method stub
+		String query = "{ CALL reset_feedback_id() }";
+		
+		try {
+			connection = DriverManager.getConnection(url, rootId, rootPw);
+			callableStatement = (CallableStatement) connection.prepareCall(query);
+			callableStatement.executeQuery();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection!=null)
+					connection.close();
+				if (callableStatement!=null)
+					callableStatement.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
 	}
 
 	@Override
@@ -630,8 +656,8 @@ public class FeedbackPostDAO implements PostDAO{
 		query = builder.toString();
 		
 		try {
-			rootConnection = DriverManager.getConnection(url, rootId, rootPw);
-			preparedStatement = rootConnection.prepareStatement(query);
+			connection = DriverManager.getConnection(url, rootId, rootPw);
+			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -648,6 +674,5 @@ public class FeedbackPostDAO implements PostDAO{
 			}
 		}
 	}
-
 
 }

@@ -9,6 +9,7 @@ public interface PostDAO {
 	boolean writePost(String title, String private_Writing, String writer, String writer_id, String private_Writer, String content);
 	boolean updatePost(int board_number, String title, String private_Writing, String private_Writer, String content);
 	boolean deletePost(int board_number, String writer);
+	void resetBoardId();
 	int getRowCount(String boardName);
 	ArrayList<PostDTO> getPostList(int page);
 	ArrayList<PostDTO> getPostList(String keyword, int page);
