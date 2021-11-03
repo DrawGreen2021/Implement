@@ -31,7 +31,7 @@
 			</aside>
 		</div>
 		
-		<form action="DeleteMyFeedBack.do" method="post" id="deleteForm">
+		<form action="DeleteMyFeedback.do" method="post" id="deleteForm">
 		<div class="content_div">
 			<table width="1000px;" style="text-align:center; float:right;">
 				<tr>

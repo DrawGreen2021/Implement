@@ -300,10 +300,10 @@ public class FrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "myFeedback.jsp";
 		}
-		else if(com.equals("DeleteMyFeedBack.do")) {
+		else if(com.equals("DeleteMyFeedback.do")) {
 			command = new DeleteMyFeedbackCommand();
 			command.execute(request, response);
-			viewPage = "myFeedback.jsp";
+			viewPage = "MyFeedbackView.do?page=1";
 		}
 
 		if (viewPage != null) {
