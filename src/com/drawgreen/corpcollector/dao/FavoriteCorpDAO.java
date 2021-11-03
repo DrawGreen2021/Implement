@@ -431,11 +431,13 @@ public class FavoriteCorpDAO {
 		}
 		
 		builder = new StringBuilder(query);
-		if (!inQuery[0].equals("")) {
-			builder.append(inQuery[0]);
-		}
+		boolean isFirst = true;
+
 		for (int i = 1; i < inQuery.length; i++) {
-			if (!inQuery[i].equals("")) {
+			if (!inQuery[i].equals("") && isFirst) {
+				builder.append(inQuery[i]);
+				isFirst = false;
+			} else if (!inQuery[i].equals("")) {
 				builder.append(" OR "+inQuery[i]);
 			}
 		}

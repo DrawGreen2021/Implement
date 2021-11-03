@@ -22,7 +22,7 @@ public class DeleteFavoriteCorpCommand implements Command{
 		
 		String[] green_ids_str = request.getParameterValues("favCorp_select_green");
 		int[] green_ids = green_ids_str== null?
-				null:Arrays.stream(talent_ids_str).mapToInt(Integer::parseInt).toArray();
+				null:Arrays.stream(green_ids_str).mapToInt(Integer::parseInt).toArray();
 		
 		String[] social_ids_str = request.getParameterValues("favCorp_select_social");
 		int[] social_ids = social_ids_str == null?
