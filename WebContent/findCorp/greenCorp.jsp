@@ -124,7 +124,8 @@
 													<td>${dto.site }</td>
 												</c:when>
 												<c:otherwise>
-													<td><a href="http://${dto.site }" target="_blank" style="color:black; text-decoration:none;">${dto.site }</a></td>
+													<td><a href="http://${dto.site }" target="_blank" 
+													style="color:black; text-decoration:none; font-size:10pt;">${dto.site }</a></td>
 												</c:otherwise>
 											</c:choose>
 										</tr>

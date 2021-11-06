@@ -35,7 +35,7 @@
 			<div style="width:1200px; ">
 				<ul class="my_Menu">
 					<li>
-						<a href="<c:url value='/service/service_Summary.jsp'/>">서비스 개요</a>
+						<a href="<c:url value='/service/service_Summary.jsp'/>">서비스 소개</a>
 						<ul class="sub_Menu">
 							<li><a href="<c:url value='/service/service_Summary.jsp'/>">서비스 개요</a></li>
 							<li><a href="<c:url value='/service/developmentProcess.jsp'/>">개발 과정</a></li>
@@ -108,7 +108,7 @@
 			<div style="width:1200px; ">
 				<ul class="my_Menu">
 					<li>
-						<a href="<c:url value='/service/service_Summary.jsp'/>">서비스 개요</a>
+						<a href="<c:url value='/service/service_Summary.jsp'/>">서비스 소개</a>
 						<ul class="sub_Menu">
 							<li><a href="<c:url value='/service/service_Summary.jsp'/>">서비스 개요</a></li>
 							<li><a href="<c:url value='/service/developmentProcess.jsp'/>">개발 과정</a></li>
