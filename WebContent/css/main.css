@@ -687,3 +687,26 @@
 	font-size:11pt; 
 	font-family:dotum; 
 }
+
+/* 정보 나눔 위치 이동 텍스트 */
+.information_move_text{
+	color:black;
+	font-size:11pt;
+	font-weight:bold;
+	text-decoration:none;
+	padding:0 4%;
+	cursor:pointer;
+}
+
+.information_move_text a{
+	color:black;
+	font-size:11pt;
+	font-weight:bold;
+	text-decoration:none;
+	padding:0 3% 0 3%;
+	cursor:pointer;
+}
+
+.information_move_text a:hover{
+	color:#e1bf27;
+}
