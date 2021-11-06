@@ -123,7 +123,8 @@
 													<td>${dto.homepage }</td>
 												</c:when>
 												<c:otherwise>
-													<td><a href="http://${dto.homepage }" target="_blank" style="color:black; text-decoration:none;">${dto.homepage }</a></td>
+													<td><a href="http://${dto.homepage }" target="_blank" 
+													style="color:black; text-decoration:none; font-size:10pt;">${dto.homepage }</a></td>
 												</c:otherwise>
 											</c:choose>
 

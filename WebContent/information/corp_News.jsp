@@ -53,7 +53,8 @@
 							<td>${dto.subTitle }</td>
 							<td>${dto.title }</td>
 							<td>${dto.source }</td>
-							<td><a href="${dto.link }" style="color:black; text-decoration:none; font-weight:10pt;">${dto.link }</a></td>
+							<td><a href="${dto.link }" target="_blank"
+							style="color:black; text-decoration:none; font-size:10pt;">${dto.link }</a></td>
 						</tr>
 						</c:forEach>
 								
