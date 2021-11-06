@@ -11,7 +11,7 @@
 			<!-- 네비게이션(메뉴) 영역-->
 			<nav class="nav">
 				<a href="<c:url value='/index.jsp'/>" style="float:left;"><img src="<c:url value='/images/logo2.PNG'/>" alt="CorpCollector" class="nav_logo"></a>
-				<a href="<c:url value='/myPage/personalInformation.jsp'/>" style="margin-left : 57%; float:left;">${sessionScope.MemberDTO.name}님</a> <!-- 마이페이지 -->
+				<a href="<c:url value='/myPage/PersonalInfoView.do'/>" style="margin-left : 57%; float:left;">${sessionScope.MemberDTO.name}님</a> <!-- 마이페이지 -->
 				<form name="passBeforeUrl">
 					<input type="hidden" name="beforeUrl">
 					<input type="hidden" name="URI" value="${pageContext.request.requestURI }">
