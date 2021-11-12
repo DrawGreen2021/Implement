@@ -76,7 +76,7 @@
 									<td width="80px">조회수</td>
 								</tr>
 								<c:forEach items="${requestScope.postList }" var="dto">
-									<tr class="community_text" style="cursor: pointer;">
+									<tr class="community_text" style="height:35px; cursor: pointer;">
 										<%-- 글 비공개일 경우 앞 부분에 자물쇠 표시 --%>
 										<c:choose>
 											<c:when test="${dto.is_private_writing }">
@@ -100,7 +100,7 @@
 											</c:otherwise>
 										</c:choose>
 										
-										<td>${dto.registration_date }</td>
+										<td style="font-size:10pt;">${dto.registration_date }</td>
 										<td>${dto.hits }</td>
 									</tr>
 								</c:forEach>
