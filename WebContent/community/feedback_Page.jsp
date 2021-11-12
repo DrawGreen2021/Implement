@@ -68,7 +68,7 @@
 								<tr class="community_text" height="100%">
 									<td style="background-color: #eeedeb; padding:6px;">내용</td>
 									<td colspan="3" style="text-align:left; padding-left:15px;" >
-									<pre>${requestScope.post['content'] }</pre></td>
+									<pre style="font-family:dotum;">${requestScope.post['content'] }</pre></td>
 											
 									<!-- <textarea class="write_input"
 											height="100%" readonly="readonly">${requestScope.post['content'] }</textarea> -->
