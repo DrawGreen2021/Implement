@@ -1,7 +1,6 @@
 package com.drawgreen.corpcollector.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
@@ -9,16 +8,18 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.StringTokenizer;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 import com.drawgreen.corpcollector.dto.RecentSearchDTO;
 import com.drawgreen.corpcollector.dto.YouthFriendlyCorpDTO;
 
 public class YouthFriendlyCorpDAO implements CorpDAO{
+	private DataSource dataSource = null;
 	private Connection connection = null;
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
-	private String userId = "general_user_id";
-	private String userPw = "general_user_password";
-	private String url = "jdbc:mysql://corpcollector.ciqetekukvwo.ap-northeast-2.rds.amazonaws.com:3306/Corp";
 	private int allRowCount;
 	private int pageRowCount;
 	// 키워드 검색 결과에 해당하는 연번을 저장할 리스트
@@ -28,7 +29,8 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 
 	private YouthFriendlyCorpDAO() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Context context = new InitialContext();
+			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/DrawGreen");
 			pageRowCount = 10;
 			allRowCount = getRowCount("청년친화강소기업");
 			serialNums = new ArrayList<Integer>();
@@ -62,7 +64,7 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 		String query = "SELECT count(*) FROM " + corpType;
 
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 
@@ -73,17 +75,7 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 
 		return rowCount;
@@ -95,7 +87,7 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 		String query = "SELECT * FROM 청년친화강소기업 WHERE 연번 BETWEEN ? AND ?";
 
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, 1 + (page * pageRowCount - pageRowCount));
 			preparedStatement.setInt(2, page*pageRowCount < allRowCount?
@@ -120,17 +112,7 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 
 		return youthFriendlyCorpDTOs;
@@ -170,7 +152,7 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 		getCorpListQuery = builder.toString();
 
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(getCorpListQuery);
 			resultSet = preparedStatement.executeQuery();
 
@@ -192,17 +174,7 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 			// TODO: handle exception
 			youthFriendlyCorpDTOs = null;
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 
 		return youthFriendlyCorpDTOs;
@@ -225,7 +197,7 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 		query = buffer.toString();
 
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 
@@ -235,17 +207,7 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 		} catch (Exception e) {
 			// TODO: handle exception
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 
 		return serialNums;
@@ -268,7 +230,7 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 		String query = "SELECT * FROM 청년친화강소기업 WHERE 연번 = ?";
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, serial_num);
 			
@@ -287,17 +249,7 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return corpInfo;
@@ -313,7 +265,7 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 				" WHERE user_id = ? AND youthFriendlyCorp_id IS NOT NULL) r.youthFriendlyCorp_id = y.연번";
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
 			
@@ -332,20 +284,22 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 			// TODO: handle exception
 			return recentRecords;
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return recentRecords;
+	}
+
+	@Override
+	public void closing() {
+		try {
+			if (connection != null) connection.close();
+			if (preparedStatement != null) preparedStatement.close();
+			if (resultSet!=null) resultSet.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 	}
 	
 	

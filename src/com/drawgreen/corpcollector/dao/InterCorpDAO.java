@@ -1,23 +1,24 @@
 package com.drawgreen.corpcollector.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.StringTokenizer;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 import com.drawgreen.corpcollector.dto.InterCorpDTO;
 import com.drawgreen.corpcollector.dto.RecentSearchDTO;
 
 public class InterCorpDAO implements CorpDAO {
+	private DataSource dataSource = null;
 	private Connection connection = null;
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
-	private String userId = "general_user_id";
-	private String userPw = "general_user_password";
-	private String url = "jdbc:mysql://corpcollector.ciqetekukvwo.ap-northeast-2.rds.amazonaws.com:3306/Corp";
 	private int allRowCount;
 	private int pageRowCount;
 	// 키워드 검색 결과에 해당하는 연번을 저장할 리스트
@@ -27,7 +28,8 @@ public class InterCorpDAO implements CorpDAO {
 
 	private InterCorpDAO() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Context context = new InitialContext();
+			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/DrawGreen");
 			pageRowCount = 10;
 			allRowCount = getRowCount("Inter_corp");
 			serialNums = new ArrayList<Integer>();
@@ -62,7 +64,7 @@ public class InterCorpDAO implements CorpDAO {
 		String query = "SELECT count(*) FROM " + corpType;
 
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 
@@ -73,17 +75,7 @@ public class InterCorpDAO implements CorpDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 
 		return rowCount;
@@ -96,7 +88,7 @@ public class InterCorpDAO implements CorpDAO {
 		String query = "SELECT * FROM Inter_corp " + "LIMIT ?, ?";
 
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, page * pageRowCount - pageRowCount);
 			preparedStatement.setInt(2, pageRowCount);
@@ -117,17 +109,7 @@ public class InterCorpDAO implements CorpDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		return interCorpDTOs;
 	}
@@ -166,7 +148,7 @@ public class InterCorpDAO implements CorpDAO {
 		getCorpListQuery = builder.toString();
 
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(getCorpListQuery);
 			resultSet = preparedStatement.executeQuery();
 
@@ -183,17 +165,7 @@ public class InterCorpDAO implements CorpDAO {
 		} catch (Exception e) {
 			interCorpDTOs = null;
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		return interCorpDTOs;
 	}
@@ -215,7 +187,7 @@ public class InterCorpDAO implements CorpDAO {
 		query = buffer.toString();
 
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 
@@ -226,17 +198,7 @@ public class InterCorpDAO implements CorpDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 
 		return serialNums;
@@ -260,7 +222,7 @@ public class InterCorpDAO implements CorpDAO {
 		String query = "SELECT 연번 FROM " + tableName + " WHERE 업체명 = ? AND 소재지 = ? AND 업종 = ?";
 		int original_serial_num = 0;
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, corpName);
 			preparedStatement.setString(2, location);
@@ -274,17 +236,7 @@ public class InterCorpDAO implements CorpDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 
 		return original_serial_num;
@@ -300,7 +252,7 @@ public class InterCorpDAO implements CorpDAO {
 		String sector="";
 		String tableName = "";
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, serial_num);
 			
@@ -315,17 +267,7 @@ public class InterCorpDAO implements CorpDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		int original_serial_num = getOriginalSerialNum(corpName, location, sector, tableName);
@@ -380,6 +322,18 @@ public class InterCorpDAO implements CorpDAO {
 	public ArrayList<RecentSearchDTO> getRecentRecords(String user_id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void closing() {
+		try {
+			if (connection != null) connection.close();
+			if (preparedStatement != null) preparedStatement.close();
+			if (resultSet!=null) resultSet.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -1,31 +1,30 @@
 package com.drawgreen.corpcollector.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import javax.sql.DataSource;
+
 import com.drawgreen.corpcollector.dto.MemberDTO;
 
 public class MemberDAO {
+	private DataSource dataSource = null;
 	private Connection connection = null;
-	private Connection rootConnection = null;
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
-	private String userId = "general_user_id";
-	private String userPw = "general_user_password"; 
-	private String rootId = "drawgreen";
-	private String rootPw = "drawgreen2021"; 
-	private String url = "jdbc:mysql://corpcollector.ciqetekukvwo.ap-northeast-2.rds.amazonaws.com:3306/Member";
 	
 	private MemberDAO() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Context context = new InitialContext();
+			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/DrawGreen");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -46,7 +45,7 @@ public class MemberDAO {
                 + " FROM members"
                 + " WHERE id = ?";
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, id);
 			
@@ -61,14 +60,7 @@ public class MemberDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-				if (resultSet!=null) resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return false;
@@ -79,8 +71,8 @@ public class MemberDAO {
 		String query = "INSERT INTO members values (?, ?, ?, ?, ?, ?)";
 		boolean singUpCheck = false;
 		try {
-			rootConnection = DriverManager.getConnection(url, rootId, rootPw);
-			PreparedStatement preparedStatement = rootConnection.prepareStatement(query);
+			connection = dataSource.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, id);
 			preparedStatement.setString(2, pw);
 			preparedStatement.setString(3, name);
@@ -97,13 +89,7 @@ public class MemberDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (rootConnection != null) rootConnection.close();
-				if (preparedStatement != null) preparedStatement.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		return singUpCheck;
 	}
@@ -115,7 +101,7 @@ public class MemberDAO {
 		String query = "SELECT * FROM members WHERE id=? AND password=?";
 		boolean loginCheck = false;
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, id);
 			preparedStatement.setString(2, pw);
@@ -139,14 +125,7 @@ public class MemberDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-				if (resultSet!=null) resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return loginCheck;
@@ -157,7 +136,7 @@ public class MemberDAO {
 		String query = "SELECT id FROM members WHERE nickname=? AND email=?";
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, name);
 			preparedStatement.setString(2, email);
@@ -170,14 +149,7 @@ public class MemberDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-				if (resultSet!=null) resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return user_id;
@@ -189,7 +161,7 @@ public class MemberDAO {
 				+ "WHERE id=? AND email=?";
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, id);
 			preparedStatement.setString(2, email);
@@ -202,14 +174,7 @@ public class MemberDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-				if (resultSet!=null) resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return passwordCheck;
@@ -221,7 +186,7 @@ public class MemberDAO {
 				+ "WHERE id=?";
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, pw);
 			preparedStatement.setString(2, id);
@@ -233,14 +198,7 @@ public class MemberDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-				if (resultSet!=null) resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return updateCheck;
@@ -251,7 +209,7 @@ public class MemberDAO {
 		String query = "SELECT level FROM 관리자 WHERE id = ?";
 		
 		try {
-			connection = DriverManager.getConnection(url, rootId, rootPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, id);
 			
@@ -262,14 +220,7 @@ public class MemberDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-				if (resultSet!=null) resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return isAdmin;
@@ -281,7 +232,7 @@ public class MemberDAO {
 		String query = "SELECT * FROM members WHERE id = ?";
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, id);
 			
@@ -297,14 +248,7 @@ public class MemberDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-				if (resultSet!=null) resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return personalInfo;
@@ -315,8 +259,8 @@ public class MemberDAO {
 				+ "WHERE id=?";
 
 		try {
-			rootConnection = DriverManager.getConnection(url, rootId, rootPw);
-			PreparedStatement preparedStatement = rootConnection.prepareStatement(query);
+			connection = dataSource.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, id);
 			preparedStatement.setString(2, name);
 			preparedStatement.setString(3, email);
@@ -330,13 +274,18 @@ public class MemberDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (rootConnection != null) rootConnection.close();
-				if (preparedStatement != null) preparedStatement.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
+		}
+	}
+	
+	public void closing() {
+		try {
+			if (connection != null) connection.close();
+			if (preparedStatement != null) preparedStatement.close();
+			if (resultSet!=null) resultSet.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 }

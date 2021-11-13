@@ -1,7 +1,6 @@
 package com.drawgreen.corpcollector.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
@@ -11,24 +10,24 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 import com.drawgreen.corpcollector.dto.RecentSearchDTO;
 
 public class RecentSearchCorpDAO {
+	private DataSource dataSource = null;
 	private Connection connection = null;
-	private Connection rootConnection = null;
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
-	private String userId = "general_user_id";
-	private String userPw = "general_user_password"; 
-	private String rootId = "drawgreen";
-	private String rootPw = "drawgreen2021"; 
-	private String url = "jdbc:mysql://corpcollector.ciqetekukvwo.ap-northeast-2.rds.amazonaws.com:3306/Member";
 	private int pageRowCount;
 	private int rankCount;
 	
 	private RecentSearchCorpDAO() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Context context = new InitialContext();
+			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/DrawGreen");
 			pageRowCount = 10;
 			rankCount = 5;
 		} catch (Exception e) {
@@ -57,8 +56,8 @@ public class RecentSearchCorpDAO {
 				+ "VALUES(?,?,?,?)";
 		
 		try {
-			rootConnection = DriverManager.getConnection(url, rootId, rootPw);
-			preparedStatement = rootConnection.prepareStatement(select_query);
+			connection = dataSource.getConnection();
+			preparedStatement = connection.prepareStatement(select_query);
 			preparedStatement.setString(1, user_id);
 			preparedStatement.setInt(2, serial_num);
 			preparedStatement.setString(3, corpName);
@@ -69,13 +68,7 @@ public class RecentSearchCorpDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 	}
 	
@@ -85,7 +78,7 @@ public class RecentSearchCorpDAO {
 				+ "WHERE user_id = ? AND "+corpType+"_id = ?";
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
 			preparedStatement.setInt(2, serial_num);
@@ -100,14 +93,7 @@ public class RecentSearchCorpDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-				if (resultSet!=null) resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return false;
@@ -118,8 +104,8 @@ public class RecentSearchCorpDAO {
 		String query = "DELETE FROM 최근검색기업 WHERE user_id = ? AND "+corpType+"_id = ?";
 		
 		try {
-			rootConnection = DriverManager.getConnection(url, rootId, rootPw);
-			preparedStatement = rootConnection.prepareStatement(query);
+			connection = dataSource.getConnection();
+			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
 			preparedStatement.setInt(2, serial_num);
 			
@@ -128,13 +114,7 @@ public class RecentSearchCorpDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 	}
 	
@@ -186,7 +166,7 @@ public class RecentSearchCorpDAO {
 		String query = "SELECT corpName, count(*) as searchCount FROM 최근검색기업 GROUP BY corpName ORDER BY count(corpName) DESC;";
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 			
@@ -197,17 +177,21 @@ public class RecentSearchCorpDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-				if (resultSet!=null) resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return recentSearchRank;
+	}
+	
+	public void closing() {
+		try {
+			if (connection != null) connection.close();
+			if (preparedStatement != null) preparedStatement.close();
+			if (resultSet!=null) resultSet.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 	}
 	
 	// ArrayList 정렬 용도 - 최근 검색 날짜 순으로 정렬

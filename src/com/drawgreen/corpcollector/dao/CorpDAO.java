@@ -27,4 +27,9 @@ public interface CorpDAO {
 	LinkedHashMap<String, Object> getInfo(int serial_num);
 	// 최근 검색 기업과 연관된 정보 가져오기
 	ArrayList<RecentSearchDTO> getRecentRecords(String user_id);
+	
+	// -----------------------------------------------------------------------------
+	
+	// 자원 해제
+	void closing();
 }

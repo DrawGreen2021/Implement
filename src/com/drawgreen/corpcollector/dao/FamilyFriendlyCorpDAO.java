@@ -1,7 +1,6 @@
 package com.drawgreen.corpcollector.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
@@ -9,16 +8,18 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.StringTokenizer;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 import com.drawgreen.corpcollector.dto.FamilyFriendlyCorpDTO;
 import com.drawgreen.corpcollector.dto.RecentSearchDTO;
 
 public class FamilyFriendlyCorpDAO implements CorpDAO {
+	private DataSource dataSource = null;
 	private Connection connection = null;
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
-	private String userId = "general_user_id";
-	private String userPw = "general_user_password"; 
-	private String url = "jdbc:mysql://corpcollector.ciqetekukvwo.ap-northeast-2.rds.amazonaws.com:3306/Corp";
 	private int allRowCount;
 	private int pageRowCount;
 	// 키워드 검색 결과에 해당하는 연번을 저장할 리스트
@@ -28,7 +29,8 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 
 	private FamilyFriendlyCorpDAO() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Context context = new InitialContext();
+			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/DrawGreen");
 			pageRowCount = 10;
 			allRowCount = getRowCount("가족친화인증기업");
 			serialNums = new ArrayList<Integer>();
@@ -62,7 +64,7 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 		String query = "SELECT count(*) FROM "+corpType;
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 			
@@ -73,14 +75,7 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if(connection!=null) connection.close();
-				if(preparedStatement!=null) preparedStatement.close();
-				if(resultSet!=null) resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return rowCount;
@@ -92,7 +87,7 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 		String query = "SELECT * FROM 가족친화인증기업 WHERE 연번 BETWEEN ? AND ?";
 
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, 1 + (page * pageRowCount - pageRowCount));
 			preparedStatement.setInt(2, page*pageRowCount < allRowCount?
@@ -114,17 +109,7 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 
 		return familyFriendlyCorpDTOs;
@@ -164,7 +149,7 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 		getCorpListQuery = builder.toString();
 
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(getCorpListQuery);
 			resultSet = preparedStatement.executeQuery();
 
@@ -182,17 +167,7 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 			// TODO: handle exception
 			familyFriendlyCorpDTOs = null;
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 
 		return familyFriendlyCorpDTOs;
@@ -215,7 +190,7 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 		query = buffer.toString();
 
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 
@@ -226,17 +201,7 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 
 		return serialNums;
@@ -260,7 +225,7 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 		String query = "SELECT * FROM 가족친화인증기업 WHERE 연번 = ?";
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, serial_num);
 			
@@ -275,17 +240,7 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return corpInfo;
@@ -296,12 +251,12 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 		// TODO Auto-generated method stub
 		ArrayList<RecentSearchDTO> recentRecords = new ArrayList<RecentSearchDTO>();
 		
-		String query = "SELECT f.연번, f.업체명, f.소재지, f.업종, r.search_date FROM 가족친화인증기업 f, Member.최근검색기업 r " + 
-				" WHERE f.연번 IN (SELECT familyFriendlyCorp_id FROM Member.최근검색기업 " + 
+		String query = "SELECT f.연번, f.업체명, f.소재지, f.업종, r.search_date FROM 가족친화인증기업 f, 최근검색기업 r " + 
+				" WHERE f.연번 IN (SELECT familyFriendlyCorp_id FROM 최근검색기업 " + 
 				" WHERE user_id = ? AND familyFriendlyCorp_id IS NOT NULL) AND r.familyFriendlyCorp_id = f.연번";
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
 			
@@ -320,20 +275,22 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 			// TODO: handle exception
 			return recentRecords;
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return recentRecords;
+	}
+
+	@Override
+	public void closing() {
+		try {
+			if (connection != null) connection.close();
+			if (preparedStatement != null) preparedStatement.close();
+			if (resultSet!=null) resultSet.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 	}
 
 }
