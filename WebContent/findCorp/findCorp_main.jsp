@@ -159,13 +159,9 @@
 								
 							</c:when>
 
-							<%-- 처음에 기업 리스트의 값이 아무것도 없으면 findCorp.do 액션 수행 --%>
-							<%-- 기업 찾기 메인 페이지의 경우, 관심 기업 표시 및 출력값 보는 용도 
-								추후 아래 코드 삭제할 것 --%>
 							<c:otherwise>
-								<script>
-								document.getElementById('findCorp').submit();
-								</script>
+								<br><br><br><br><br><br>
+								<br><br><br><br><br><br><br>
 							</c:otherwise>
 
 						</c:choose>
