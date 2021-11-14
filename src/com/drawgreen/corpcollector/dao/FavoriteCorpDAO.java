@@ -449,7 +449,7 @@ public class FavoriteCorpDAO {
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
 			
-			preparedStatement.executeLargeUpdate();
+			preparedStatement.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -464,5 +464,32 @@ public class FavoriteCorpDAO {
 		}
 	}
 	
-	
+	public boolean resetCorpList(String user_id) {
+		boolean resetOk = false;
+		
+		String query = "DELETE FROM 관심기업 WHERE user_id = ?";
+		
+		try {
+			connection = DriverManager.getConnection(url, rootId, rootPw);
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, user_id);
+			
+			int resultNum = preparedStatement.executeUpdate();
+			
+			if(resultNum > 0) {
+				resetOk = true;
+			} else resetOk = false;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedStatement != null) preparedStatement.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return resetOk;
+	}
 }

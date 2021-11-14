@@ -43,3 +43,27 @@ function deleteFavCorp() {
 		$('#deleteForm').submit();
 	}
 }
+
+function resetList() {
+	if (confirm("관심 기업 목록이 사라집니다. 정말로 초기화하시겠습니까?") == true) {
+		$.ajax({
+            type:'post',
+            async:false,
+            url:'ResetFavoriteCorpList.do',
+            dataType:'text',
+            success: function(data, textStatus) {
+            	if(data === 'resetOk') {    
+					alert("관심 기업 목록이 초기화되었습니다.");
+                } else {
+					alert("초기화 할 관심 기업 목록이 없습니다.");
+                }
+            },
+            error:function (data, textStatus) {
+                console.log('error');
+            },
+            complete: function() {
+            	location.href = "FavoriteCorpView.do?page=1";
+            }
+        });   //ajax
+	}
+}
