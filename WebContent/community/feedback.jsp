@@ -53,12 +53,11 @@
 					<c:choose>
 						<%-- 고객후기 글이 없을 경우 --%>
 						<c:when test="${requestScope.postList == 'noResult' }">
-							<div class="content_div_findCorpList" style="border:0;">
-							<br><br><br><br><br><br><br>
-							고객 후기가 없습니다.
-							<br><br><br><br><br><br><br><br><br>
-							<button class="writing_btn" style="margin:0 0 0 92%;" value="feedback_Write.jsp" onclick="writing_Check(this)">글쓰기</button>
+							<div class="content_div_community">
+							<p style="margin:0 auto; padding:15% 10%;">
+							고객 후기가 없습니다.</p>
 							</div>
+							<button class="writing_btn" style="margin:0 0 0 92.5%;" value="feedback_Write.jsp" onclick="writing_Check(this)">글쓰기</button>
 						</c:when>
 
 						<%-- 고객후기 글 목록이 있다면 리스트 출력 --%>

@@ -253,7 +253,7 @@
 			<div>
 				<label class="community_text" style="float:left;">
 					<input type="checkbox" name="favCorp_select" value="favCorp_selectAll" onclick="selectAll(this)"> 전체 선택</label>
-				<input type="button" value="삭제" class="writing_btn" style="float:right; margin-left:1%;" onclick="deleteFavCorp()">
+				<input type="button" value="삭제" class="writing_btn" style="float:right; margin-left:5px;" onclick="deleteFavCorp()">
 				<input type="button" value="목록 초기화" class="writing_btn" style="float:right; width:100px;" onclick="resetList()">
 			</div>
 		</div>

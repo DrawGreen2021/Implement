@@ -95,7 +95,7 @@
 										<td width="22%">기업유형</td>
 									</tr>
 									<c:forEach var="dto" items="${requestScope.corpList }" varStatus="status">
-										<tr class="community_text" style="height:35px; cursor:pointer;">
+										<tr class="community_text" style="height:50px; cursor:pointer;">
 											<c:choose>
 												<c:when
 													test="${dto.serial_number eq favoriteNums[status.index] 
@@ -122,6 +122,9 @@
 
 								</table>
 
+								<%-- 검색 후 초기 화면으로 되돌아가기 --%>
+								<button class="findCorp_list_btn" style="margin:0 0 0 89%;" onclick="resetKeyword()">전체 목록보기</button>
+						
 								<!-- 페이지 번호 div -->
 								<div class="pagelist_text" style="margin:3% auto;">
 								
@@ -160,14 +163,15 @@
 							</c:when>
 
 							<c:otherwise>
-								<br><br><br><br><br><br>
-								<br><br><br><br><br><br><br>
+								<div class="content_div_findCorpList" style="height:400px;">
+									<p style="margin:0 auto; padding:15% 10%; color:gray;">통합 검색 결과가 나타납니다.<br> 검색어를 입력해보세요.</p>
+								</div>
+								<button class="findCorp_list_btn" style="margin:0 0 0 89%;" onclick="resetKeyword()">전체 목록보기</button>
+								
 							</c:otherwise>
 
 						</c:choose>
 						
-						<%-- 검색 후 초기 화면으로 되돌아가기 --%>
-						<button class="findCorp_list_btn" style="margin:0 0 0 89%;" onclick="resetKeyword()">전체 목록보기</button>
 
 					</article>
 				</tr>
