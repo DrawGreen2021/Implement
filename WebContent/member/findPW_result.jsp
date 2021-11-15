@@ -23,7 +23,15 @@
 	<c:set var="user_id" value="${requestScope.user_id }" scope="request"></c:set>
 	<c:choose>
 		<c:when test="${passwordCheck == null}">
-			<div>${requestScope.errorMsg }</div>
+			<div class="content_div_findInfo">
+			<br>
+				<table align="center" class="findInfo_table">
+					<tr>
+					<td>${requestScope.errorMsg }</td>
+					</tr>
+				</table>
+			<br>
+			</div>
 		</c:when>
 		
 		<c:otherwise>

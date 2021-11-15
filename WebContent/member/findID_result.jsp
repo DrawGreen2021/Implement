@@ -22,7 +22,15 @@
 		scope="request"></c:set>
 	<c:choose>
 		<c:when test="${found_ID == null || fn:length(found_ID) == 0}">
-			<div>${requestScope.errorMsg }</div>
+			<div class="content_div_findInfo">
+			<br>
+				<table align="center" class="findInfo_table">
+					<tr>
+					<td>${requestScope.errorMsg }</td>
+					</tr>
+				</table>
+			<br>
+			</div>
 		</c:when>
 		
 		<c:otherwise>
