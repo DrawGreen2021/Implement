@@ -7,6 +7,7 @@ import com.drawgreen.corpcollector.dto.CorpDTO;
 import com.drawgreen.corpcollector.dto.RecentSearchDTO;
 
 public interface CorpDAO {
+	int pageRowCount = 10;
 	int getRowCount(String corpType); // 전체 테이블(키워드x) 튜플 개수 가져오기
 	int getAllRowCount(); // 전체 테이블 튜플 개수를 저장한 변수 값 반환(getter)
 	void setAllRowCount(int allRowCount); // 전체 테이블 튜플 개수 설정

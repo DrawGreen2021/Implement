@@ -21,7 +21,6 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
 	private int allRowCount;
-	private int pageRowCount;
 	// 키워드 검색 결과에 해당하는 연번을 저장할 리스트
 	private ArrayList<Integer> serialNums;
 	// 키워드 값을 저장할 변수
@@ -31,7 +30,6 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 		try {
 			Context context = new InitialContext();
 			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/DrawGreen");
-			pageRowCount = 10;
 			allRowCount = getRowCount("가족친화인증기업");
 			serialNums = new ArrayList<Integer>();
 		} catch (Exception e) {
