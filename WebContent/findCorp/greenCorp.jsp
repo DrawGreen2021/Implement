@@ -100,7 +100,7 @@
 										<td width="22%">사이트 주소</td>
 									</tr>
 									<c:forEach var="dto" items="${requestScope.corpList }" varStatus="status">
-										<tr class="community_text" style="height:35px; cursor:pointer;">
+										<tr class="community_text" style="height:50px; cursor:pointer;">
 											<c:choose>
 												<c:when
 													test="${dto.serial_number eq favoriteNums[status.index] 
@@ -117,7 +117,7 @@
 												<a id="corpName${dto.serial_number }" style="color:black; text-decoration:none;"
 												href='DetailView.do?corpType=${param.corpType }&serial_num=${dto.serial_number }'> 
 													${dto.company_name }</a></td>
-											<td>${dto.location }</td>
+											<td style="font-size:10pt;">${dto.location }</td>
 											<td>${dto.sector }</td>
 											<c:choose>
 												<c:when test="${dto.site eq '없음'}">

@@ -98,7 +98,7 @@
 									</tr>
 									<c:forEach items="${requestScope.corpList }"
 										var="dto" varStatus="status">
-										<tr class="community_text" style="height:35px; cursor:pointer;">
+										<tr class="community_text" style="height:50px; cursor:pointer;">
 											<c:choose>
 												<c:when
 													test="${dto.serial_number eq favoriteNums[status.index] 
@@ -115,7 +115,7 @@
 											href='DetailView.do?corpType=${param.corpType }&serial_num=${dto.serial_number }'>
 												${dto.company_name }</a></td>
 											<td>${dto.representative }</td>
-											<td>${dto.address }</td>
+											<td style="font-size:10pt;">${dto.address }</td>
 											<td>${dto.main_product }</td>
 										</tr>
 

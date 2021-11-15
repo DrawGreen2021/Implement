@@ -76,7 +76,7 @@
 											</c:otherwise>
 										</c:choose>
 										
-										<td>${dto.registration_date }</td>
+										<td style="font-size:10pt;">${dto.registration_date }</td>
 										<td>${dto.hits }</td>
 									</tr>
 								</c:forEach>

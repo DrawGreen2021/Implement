@@ -60,7 +60,7 @@
 									<tr class="community_text" style="height:35px; cursor:pointer;">
 										<td><a style="color:black; text-decoration:none;"
 										href="../findCorp/DetailView.do?corpType=${dto.engCorpType }&serial_num=${dto.serial_number }">${dto.company_name }</a></td>
-										<td>${dto.location }</td>
+										<td style="font-size:10pt;">${dto.location }</td>
 										<td>${dto.sector }</td>
 										<td>${dto.korCorpType }</td>
 									</tr>

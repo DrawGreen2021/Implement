@@ -67,7 +67,7 @@
 								</tr>
 								<tr class="community_text" height="100%;">
 									<td style="background-color: #eeedeb; padding:6px;">내용</td>
-									<td colspan="3" style="text-align:left; padding-left:15px;"><pre>${requestScope.post['content'] }</pre></td>
+									<td colspan="3" style="text-align:left; padding-left:15px;"><pre style="font-family:dotum;">${requestScope.post['content'] }</pre></td>
 								</tr>
 							</table>
 

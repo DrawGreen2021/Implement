@@ -49,7 +49,7 @@
 						
 						<!-- 뉴스 정보 리스트 -->
 						<c:forEach items="${requestScope.newsList }" var="dto">
-						<tr class="community_text" style="height:35px; cursor:pointer; font-weight:10pt;">
+						<tr class="community_text" style="height:50px; cursor:pointer; font-weight:10pt;">
 							<td>${dto.subTitle }</td>
 							<td>${dto.title }</td>
 							<td>${dto.source }</td>

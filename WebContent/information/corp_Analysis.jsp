@@ -42,9 +42,18 @@
 				</div>
 				<div style = "border:1px solid #eeedeb;" width="500px;"></div>
 				
-				<p class="information_text" style="font-size:10pt; margin:4% 0 11% 0;" id="FFcorp">그래프 설명:<br>
-				색상은 업종 종류를 나타냅니다. 그래프의 크기는 업종 분포에 따라 달라집니다.
-				</p>
+				
+				<div width="930px;"style="margin:1% auto; text-align:center;" >
+					<!-- css 적용 왜 안 돼... -->
+					<button class="information_move_button" onclick="location.href='#FFcorp'">가족 친화 기업</button>
+					<button class="information_move_button" onclick="location.href='#Scorp'">사회적 기업</button>
+					<button class="information_move_button" onclick="location.href='#YFcorp'">청년 친화 강소 기업</button>
+					<button class="information_move_button" onclick="location.href='#TDcorp'">인재 육성형 중소 기업</button>
+					<button class="information_move_button" onclick="location.href='#Gcorp'">녹색 기업</button>
+				</div> 
+				
+				<p class="information_text" style="font-size:10pt; margin:4% 0 11% 0;" id="FFcorp">
+				그래프 설명: 색상은 업종 종류를 나타냅니다. 그래프의 크기는 업종 분포에 따라 달라집니다.</p>
 				
 				
 				
