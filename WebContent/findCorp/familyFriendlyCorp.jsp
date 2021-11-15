@@ -147,7 +147,7 @@
 											<c:choose>
 												<%-- 현재 페이지는 회색이 아닌 다른 컬러로 표시 --%>
 												<c:when test="${num == param.page }">
-													<a style="color:yellow;" href='FindCorp.do?corpType=${param.corpType }&page=${num}&keyword=${param.keyword }'>${num}</a>
+													<a style="color:gray; font-weight:bold;" href='FindCorp.do?corpType=${param.corpType }&page=${num}&keyword=${param.keyword }'>${num}</a>
 												</c:when>
 												<c:otherwise>
 													<a style="color:gray;" href='FindCorp.do?corpType=${param.corpType }&page=${num}&keyword=${param.keyword }'>${num}</a>

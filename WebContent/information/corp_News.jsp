@@ -81,7 +81,7 @@
 						<c:if test="${num <= lastPageNum }">
 							<c:choose>
 								<c:when test="${num == param.page }">
-									<a style="color: yellow;"
+									<a style="color:gray; font-weight:bold;"
 									href='CorpNewsView.do?page=${num}'>${num}</a>
 								</c:when>
 								<c:otherwise>

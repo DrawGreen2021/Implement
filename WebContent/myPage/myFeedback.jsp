@@ -116,7 +116,7 @@
 						<c:choose>
 							<%-- 현재 페이지는 회색이 아닌 다른 컬러로 표시 --%>
 							<c:when test="${num == param.page }">
-								<a href='MyFeedbackView.do?page=${num}' style="color:yellow;">${num}</a>
+								<a href='MyFeedbackView.do?page=${num}' style="color:gray; font-weight:bold;">${num}</a>
 							</c:when>
 							<c:otherwise>
 								<a href='MyFeedbackView.do?page=${num}' style="color:gray;">${num}</a>
