@@ -46,7 +46,7 @@
 
 						<c:if test="${empty favCorpMap }">
 							<br><br><br><br><br>
-							관심 기업이 없습니다.
+							<p style="color:gray;">관심 기업이 없습니다.</p>
 							<br><br><br><br><br><br><br>
 						</c:if>
 						<c:if test="${not empty favCorpMap['talentDevelopmentCorp']}">

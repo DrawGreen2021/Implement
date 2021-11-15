@@ -54,7 +54,7 @@
 						<%-- 고객후기 글이 없을 경우 --%>
 						<c:when test="${requestScope.postList == 'noResult' }">
 							<div class="content_div_community">
-							<p style="margin:0 auto; padding:15% 10%;">
+							<p style="margin:0 auto; padding:15% 10%; color:gray;">
 							고객 후기가 없습니다.</p>
 							</div>
 							<button class="writing_btn" style="margin:0 0 0 92.5%;" value="feedback_Write.jsp" onclick="writing_Check(this)">글쓰기</button>

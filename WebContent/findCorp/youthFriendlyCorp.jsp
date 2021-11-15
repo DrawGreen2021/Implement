@@ -80,9 +80,10 @@
 						<c:choose>
 							<%-- 기업 리스트가 null이면 검색 결과가 없다고 표시 --%>
 							<c:when test="${requestScope.corpList == 'noResult' }">
-								<br><br><br><br><br>
-								검색 결과가 없습니다.
-								<br><br><br><br><br><br><br>
+								<div class="content_div_findCorpList" style="height:350px;">
+									<p style="margin:0 auto; padding:14% 10%; color:gray;">검색 결과가 없습니다.</p>
+								</div>
+								<button class="findCorp_list_btn" style="margin:0 0 0 89%;" onclick="resetKeyword()">전체 목록보기</button>
 							</c:when>
 
 							<%-- 기업 리스트가 존재하면 출력해주는 테이블 생성 --%>

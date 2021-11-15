@@ -46,7 +46,7 @@
 						<c:choose>
 							<c:when test="${empty requestScope.postList }">
 								<br><br><br><br><br>
-								작성한 글이 없습니다.
+								<p style="color:gray;">작성한 글이 없습니다.</p>
 								<br><br><br><br><br><br><br>
 							</c:when>
 							<c:otherwise>

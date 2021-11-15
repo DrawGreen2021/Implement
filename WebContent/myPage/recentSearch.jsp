@@ -45,7 +45,7 @@
 						<c:choose>
 							<c:when test="${empty requestScope.corpList }">
 								<br><br><br><br><br>
-								최근 상세 정보를 확인한 기업이 없습니다.
+								<p style="color:gray;">최근 상세 정보를 확인한 기업이 없습니다.</p>
 								<br><br><br><br><br><br><br>
 							</c:when>
 							<c:otherwise>
