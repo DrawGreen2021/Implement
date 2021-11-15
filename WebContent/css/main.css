@@ -53,11 +53,13 @@
 
 
 .footer_div{
+	margin:0 auto;
+	background-color:white;
 	color:black;
 	position:relative; 
-	width:1200px; 
-	margin:auto;
-	margin-top:6%;
+	bottom:0;
+	width:1200px;
+	float:center;
 }
 
 .img{
