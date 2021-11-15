@@ -18,13 +18,15 @@
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!-- 내용 영역 -->
-	<c:set var="finded_ID" value="${requestScope.found_ID }"
+	<c:set var="found_ID" value="${requestScope.found_ID }"
 		scope="request"></c:set>
 	<c:choose>
+		<%-- 아이디 찾기 결과가 없으면 에러 메시지 표시 --%>
 		<c:when test="${found_ID == null || fn:length(found_ID) == 0}">
 			<div>${requestScope.errorMsg }</div>
 		</c:when>
 		
+		<%-- 아이디 찾기 결과가 있으면 아이디 표시 --%>
 		<c:otherwise>
 			<div class="content_div_findInfo">
 			<br>

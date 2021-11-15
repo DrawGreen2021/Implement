@@ -38,6 +38,7 @@ public class LogoutCommand implements Command{
 		try {
 			out = response.getWriter();
 			
+			// 이전 페이지가 로그인이 필요한 페이지였다면 인덱스 페이지로 이동
 			if (Arrays.asList(loginRequiredPages).contains(page)) {
 				out.println("<script>");
 				out.println("alert('로그아웃 되었습니다.');");
