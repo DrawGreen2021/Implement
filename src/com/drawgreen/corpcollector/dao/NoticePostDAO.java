@@ -22,7 +22,6 @@ public class NoticePostDAO implements PostDAO{
 	private CallableStatement callableStatement = null;
 	private ResultSet resultSet = null;
 	private int allRowCount;
-	private int pageRowCount;
 	// 키워드 검색 결과에 해당하는 연번을 저장할 리스트
 	private ArrayList<Integer> boardNums;
 	// 키워드 값을 저장할 변수
@@ -32,7 +31,6 @@ public class NoticePostDAO implements PostDAO{
 		try {
 			Context context = new InitialContext();
 			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/DrawGreen");
-			pageRowCount = 10;
 			allRowCount = getRowCount("공지사항");
 			boardNums = new ArrayList<Integer>();
 		} catch(Exception e) {
@@ -48,6 +46,8 @@ public class NoticePostDAO implements PostDAO{
 		return InnerInstance_PostDAO.noticePostDAO;
 	}
 	
+	// 공지사항 작성
+	@Override
 	public boolean writePost(String title, String private_Writing, String writer, String writer_id, String private_Writer, String content) {
 		boolean writeOk = false;
 		
@@ -87,6 +87,7 @@ public class NoticePostDAO implements PostDAO{
 		return writeOk;
 	}
 	
+	// 공지사항 수정
 	@Override
 	public boolean updatePost(int board_number, String title, String private_Writing, String private_Writer, String content) {
 		boolean updateOk = false;
@@ -125,6 +126,7 @@ public class NoticePostDAO implements PostDAO{
 		return updateOk;
 	}
 	
+	// 공지사항 삭제
 	@Override
 	public boolean deletePost(int board_number, String writer) {
 		boolean deleteOk = false;
@@ -149,6 +151,7 @@ public class NoticePostDAO implements PostDAO{
 		return deleteOk;
 	}
 	
+	// 게시글 번호 AUTO_INCREMENT 1부터 시작하도록 설정하는 프로시저 호출
 	@Override
 	public void resetBoardId() {
 		// TODO Auto-generated method stub
@@ -166,6 +169,8 @@ public class NoticePostDAO implements PostDAO{
 		}
 	}
 	
+	// 전체 테이블 튜플 개수 가져오기
+	@Override
 	public int getRowCount(String boardName) {
 		// TODO Auto-generated method stub
 		int rowCount = 0;
@@ -297,6 +302,7 @@ public class NoticePostDAO implements PostDAO{
 		return postList;
 	}
 	
+	// 검색 키워드가 존재하는 행의 게시글 번호 알아오기
 	@Override
 	public ArrayList<Integer> setBoardNums(String keyword, ArrayList<Integer> boardNums) {
 		// TODO Auto-generated method stub
@@ -343,7 +349,8 @@ public class NoticePostDAO implements PostDAO{
 		// TODO Auto-generated method stub
 		return boardNums.size();
 	}
-
+	
+	// 게시글을 볼 때, 해당 레코드 정보 반환
 	@Override
 	public HashMap<String, Object> getPost(int board_num) {
 		HashMap<String, Object> noticePost = new HashMap<String, Object>();
@@ -375,7 +382,8 @@ public class NoticePostDAO implements PostDAO{
 		
 		return noticePost;
 	}
-
+	
+	// 조회수 1 증가
 	@Override
 	public void updateHits(int board_num) {
 		// TODO Auto-generated method stub
@@ -393,7 +401,8 @@ public class NoticePostDAO implements PostDAO{
 			closing();
 		}
 	}
-
+	
+	// 글 비공개 설정 확인
 	@Override
 	public boolean isAccessible(int board_num) {
 		// TODO Auto-generated method stub
@@ -422,6 +431,7 @@ public class NoticePostDAO implements PostDAO{
 		return isAccessible;
 	}
 	
+	// 현재 사용자가 접근하려는 게시글의 작성자인지 확인
 	@Override
 	public boolean isWriter(String user_id, int board_id) {
 		// TODO Auto-generated method stub

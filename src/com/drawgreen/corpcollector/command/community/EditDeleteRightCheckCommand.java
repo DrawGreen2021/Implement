@@ -47,6 +47,7 @@ public class EditDeleteRightCheckCommand implements Command{
 		if (user == null) {
 			out.print("not-login");
 		} else {
+			// 글 쓴 사람 본인인지 체크
 			isWriter = dao.isWriter(user.getId(), board_number);
 			
 			if (isWriter) {

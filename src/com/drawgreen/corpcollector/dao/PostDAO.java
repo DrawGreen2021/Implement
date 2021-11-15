@@ -6,6 +6,7 @@ import java.util.HashMap;
 import com.drawgreen.corpcollector.dto.PostDTO;
 
 public interface PostDAO {
+	int pageRowCount = 10; // 한 페이지당 표시할 행 개수
 	// 게시글 작성
 	boolean writePost(String title, String private_Writing, String writer, String writer_id, String private_Writer, String content);
 	// 게시글 수정

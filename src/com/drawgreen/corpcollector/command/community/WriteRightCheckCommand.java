@@ -31,6 +31,7 @@ public class WriteRightCheckCommand implements Command{
 			out.print("not-login");
 		if (boardName.equals("공지사항")) {
 			MemberDAO dao = MemberDAO.getInstance();
+			// 공지사항 게시판이라면 관리자만 작성 허용
 			boolean isAdmin = dao.isAdmin(user.getId());
 			if (isAdmin) {
 				out.print("accessible");
