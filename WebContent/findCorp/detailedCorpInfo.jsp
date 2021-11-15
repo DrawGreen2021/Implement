@@ -17,7 +17,9 @@
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!-- 내용 영역 -->
-	<div width="1200px;" style="text-align:center; margin:5% auto;">
+	<table width="1200px;" style="text-align:center; margin:5% auto; border:0; background-color:green;">
+	<tr>
+	<td>
 		<div class="sidebar_div" style="float:left;">
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
@@ -46,58 +48,50 @@
 				
 			</aside>
 		</div>
-		
-		<div class="content_div">
-			<table width="1000px;" style="text-align:center; float:right; background-color:gray;">
-				<tr>
-					<%-- 이 테이블이 없으니까 위치 조정이 안 돼서 임시로 넣음 --%>
-					<table width="900px;"
-						style="text-align: center; margin: 0 auto; position: relative;">
-					</table>
-				</tr>
-				<tr>
-					<article class="content_div_findCorp">
-						<table class="table_detailedFindCorp">
-							<%-- 상세 기업 정보 출력 --%>
-							<c:forEach items="${requestScope.corpInfo }" var="entry">
-								<c:if test="${entry.key == '연번' }">
-									<input type="hidden" id="serial_num" value="${entry.value }" />
-								</c:if>
-								<c:if test="${entry.key == '업체명' }">
-									<input type="hidden" id="corpName" value="${entry.value }" />
-								</c:if>
-								<tr>
-									<td style="background-color:#eeedeb; height:32px;">${entry.key }</td>
-									<td style="height:32px;">${entry.value }</td>
-								</tr>
-							</c:forEach>
-						</table>
+	</td>
+	
+	<td valign="top">	
+		<div class="content_div_findCorp" style="width:980px; background:yellow; float:right;">
+				<table class="table_detailedFindCorp">
+					<%-- 상세 기업 정보 출력 --%>
+					<c:forEach items="${requestScope.corpInfo }" var="entry">
+					<c:if test="${entry.key == '연번' }">
+						<input type="hidden" id="serial_num" value="${entry.value }" />
+					</c:if>
+					<c:if test="${entry.key == '업체명' }">
+						<input type="hidden" id="corpName" value="${entry.value }" />
+					</c:if>
+					<tr>
+						<td style="background-color:#eeedeb; height:32px;">${entry.key }</td>
+						<td style="height:32px;">${entry.value }</td>
+					</tr>
+					</c:forEach>
+				</table>
 						
 						
-						<div style="margin:5% auto;">
-						<%-- 기업유형 지정 --%>
-						<input type="hidden" id="corpType" value="${requestScope.corpType }">
+				<div style="margin:5% auto;">
+				<%-- 기업유형 지정 --%>
+					<input type="hidden" id="corpType" value="${requestScope.corpType }">
 						
-						<%-- 뒤로가기 --%>
-						<button class="writing_btn" style="background-color:#E7F1FD;" onclick="backSpace()">뒤로가기</button>
+					<%-- 뒤로가기 --%>
+					<button class="writing_btn" style="background-color:#E7F1FD;" onclick="backSpace()">뒤로가기</button>
 						
-						<%-- 관심 기업으로 등록하기 --%>
-						<%-- 로그인 여부에 따라 버튼 이름 결정 --%>
-						<c:choose>
-							<c:when test="${not empty sessionScope.MemberDTO && requestScope.isRegistered == true}">
-								<button class="findCorp_list_btn" onclick="addFavoriteCorp_detail(this)">관심기업 삭제</button>
-							</c:when>
-							<c:otherwise>
-								<button class="findCorp_list_btn" onclick="addFavoriteCorp_detail(this)">관심기업 등록</button>
-							</c:otherwise>
-						</c:choose>
-						</div>
-					</article>
-				</tr>
-				
-			</table>
+					<%-- 관심 기업으로 등록하기 --%>
+					<%-- 로그인 여부에 따라 버튼 이름 결정 --%>
+					<c:choose>
+						<c:when test="${not empty sessionScope.MemberDTO && requestScope.isRegistered == true}">
+							<button class="findCorp_list_btn" onclick="addFavoriteCorp_detail(this)">관심기업 삭제</button>
+						</c:when>
+						<c:otherwise>
+							<button class="findCorp_list_btn" onclick="addFavoriteCorp_detail(this)">관심기업 등록</button>
+						</c:otherwise>
+					</c:choose>
+				</div>
 		</div>
-	</div>
+		
+	</td>
+	</tr>	
+	</table>
 
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>

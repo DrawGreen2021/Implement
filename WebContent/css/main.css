@@ -54,7 +54,7 @@
 
 .footer_div{
 	margin:0 auto;
-	background-color:white;
+	background-color:black;
 	color:black;
 	position:relative; 
 	bottom:0;
@@ -428,13 +428,11 @@
 /* 기업 찾기 */
 /* 좌측 사이드 바 통합 div */
 .sidebar_div{
-	width:250px;
-	height:500px;
+	width:200px;
+	height:100%;
 	color:black;
 	border:0px;
-	background-color:white;
 	position:relative;
-	margin: 0 0 0 5%;
 }
 
 /* aside(좌측 사이드 바) */
@@ -491,7 +489,8 @@
 	position: relative;
 	width: 930px;
 	height:100%;
-	margin: 2% auto;
+	/*margin: 2% auto;*/
+	margin:0 auto;
 	border:1px solid gray;
 	padding:5;
 	text-align:center;
@@ -561,9 +560,10 @@
 	background-color: white;
 	color:black;
 	position: relative;
-	width: 930px;
+	width: 970px;
 	height:100%;
 	margin: 0 auto;
+	margin-right:0;
 	border:1px solid gray;
 	padding:5;
 	text-align:center;
