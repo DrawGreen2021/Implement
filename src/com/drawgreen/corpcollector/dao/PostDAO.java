@@ -20,4 +20,5 @@ public interface PostDAO {
 	void updateHits(int board_num);
 	boolean isAccessible(int board_num);
 	boolean isWriter(String user_id, int board_id);
+	void closing();
 }

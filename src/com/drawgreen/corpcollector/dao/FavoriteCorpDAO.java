@@ -1,7 +1,6 @@
 package com.drawgreen.corpcollector.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -12,23 +11,23 @@ import java.util.LinkedHashMap;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 import com.drawgreen.corpcollector.dto.InterCorpDTO;
 
 public class FavoriteCorpDAO {
+	private DataSource dataSource = null;
 	private Connection connection = null;
-	private Connection rootConnection = null;
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
-	private String userId = "general_user_id";
-	private String userPw = "general_user_password"; 
-	private String rootId = "drawgreen";
-	private String rootPw = "drawgreen2021"; 
-	private String url = "jdbc:mysql://corpcollector.ciqetekukvwo.ap-northeast-2.rds.amazonaws.com:3306/Member";
 	private int pageRowCount;
 	
 	private FavoriteCorpDAO() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Context context = new InitialContext();
+			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/DrawGreen");
 			pageRowCount = 10;
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -51,7 +50,7 @@ public class FavoriteCorpDAO {
 				+ "WHERE user_id = ? AND "+corpType+"_id=?";
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
 			preparedStatement.setInt(2, corp_serialNum);
@@ -66,14 +65,7 @@ public class FavoriteCorpDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-				if (resultSet!=null) resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return false;
@@ -86,8 +78,8 @@ public class FavoriteCorpDAO {
 				+ "VALUES(?,?,?)";
 		
 		try {
-			rootConnection = DriverManager.getConnection(url, rootId, rootPw);
-			preparedStatement = rootConnection.prepareStatement(query);
+			connection = dataSource.getConnection();
+			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
 			preparedStatement.setInt(2, corp_serialNum);
 			preparedStatement.setString(3, CorpName);
@@ -98,13 +90,7 @@ public class FavoriteCorpDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 	}
 	
@@ -113,8 +99,8 @@ public class FavoriteCorpDAO {
 		String query = "DELETE FROM 관심기업 WHERE user_id=? AND "+corpType+"_id=?";
 		
 		try {
-			rootConnection = DriverManager.getConnection(url, rootId, rootPw);
-			preparedStatement = rootConnection.prepareStatement(query);
+			connection = dataSource.getConnection();
+			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
 			preparedStatement.setInt(2, corp_serialNum);
 			
@@ -123,13 +109,7 @@ public class FavoriteCorpDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 	}
 	
@@ -143,7 +123,7 @@ public class FavoriteCorpDAO {
 						+ "ORDER BY "+corpType+"_id ASC";
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
 			preparedStatement.setInt(2, 1 + (page * pageRowCount - pageRowCount));
@@ -163,17 +143,7 @@ public class FavoriteCorpDAO {
 			//e.printStackTrace();
 			favoriteSerialNums = null;
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return favoriteSerialNums;
@@ -200,7 +170,7 @@ public class FavoriteCorpDAO {
 		query = builder.toString();
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
 			resultSet = preparedStatement.executeQuery();
@@ -214,17 +184,7 @@ public class FavoriteCorpDAO {
 			// TODO: handle exception
 			favoriteSerialNums = null;
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return favoriteSerialNums;
@@ -263,13 +223,13 @@ public class FavoriteCorpDAO {
 		
 		String corpType = null;
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			
 			for (int i = 0; i < corpList.size(); i++) {
 				InterCorpDTO dto = corpList.get(i);
 				corpType = getCorpType(dto.getCorpType());
 				String query = "select i.연번 from " + 
-						"(select 업체명, 소재지, 업종 from Corp."+dto.getCorpType()+" sub" + 
+						"(select 업체명, 소재지, 업종 from "+dto.getCorpType()+" sub" + 
 						" where 업체명 = ? and 소재지 = ? and 업종 = ? and 연번 IN" + 
 						" (select IFNULL("+corpType+"_id,0) from 관심기업 where user_id = ? and sub.연번 = "+corpType+"_id))origin, " + 
 						"Corp.Inter_corp i where i.업체명 = origin.업체명 and i.소재지 = origin.소재지 and i.업종 = origin.업종;";
@@ -290,17 +250,7 @@ public class FavoriteCorpDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return favoriteSerialNums;
@@ -321,7 +271,7 @@ public class FavoriteCorpDAO {
 		String query = "SELECT * FROM 관심기업 WHERE user_id = ? LIMIT ?,?";
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
 			preparedStatement.setInt(2, (page-1)*pageRowCount);
@@ -350,17 +300,7 @@ public class FavoriteCorpDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		favCorpMap.put("familyFriendlyCorp", familyFriendlyCorp);
@@ -378,7 +318,7 @@ public class FavoriteCorpDAO {
 		int count = 0;
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
 			
@@ -390,17 +330,7 @@ public class FavoriteCorpDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return count;
@@ -445,7 +375,7 @@ public class FavoriteCorpDAO {
 		query = builder.toString();
 		
 		try {
-			connection = DriverManager.getConnection(url, rootId, rootPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
 			
@@ -454,13 +384,7 @@ public class FavoriteCorpDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 	}
 	
@@ -470,7 +394,7 @@ public class FavoriteCorpDAO {
 		String query = "DELETE FROM 관심기업 WHERE user_id = ?";
 		
 		try {
-			connection = DriverManager.getConnection(url, rootId, rootPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
 			
@@ -482,14 +406,21 @@ public class FavoriteCorpDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return resetOk;
+	}
+	
+	public void closing() {
+		try {
+			if (connection != null) connection.close();
+			if (preparedStatement != null) preparedStatement.close();
+			if (resultSet!=null) resultSet.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
 	}
 }

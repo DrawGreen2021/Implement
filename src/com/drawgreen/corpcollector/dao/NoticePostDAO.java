@@ -1,28 +1,26 @@
 package com.drawgreen.corpcollector.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 import com.drawgreen.corpcollector.dto.PostDTO;
 import com.mysql.cj.jdbc.CallableStatement;
 
 public class NoticePostDAO implements PostDAO{
+	private DataSource dataSource = null;
 	private Connection connection = null;
 	private PreparedStatement preparedStatement = null;
 	private CallableStatement callableStatement = null;
 	private ResultSet resultSet = null;
-	private String userId = "general_user_id";
-	private String userPw = "general_user_password"; 
-	private String rootId = "drawgreen";
-	private String rootPw = "drawgreen2021"; 
-	private String url = "jdbc:mysql://corpcollector.ciqetekukvwo.ap-northeast-2.rds.amazonaws.com:3306/Community";
 	private int allRowCount;
 	private int pageRowCount;
 	// 키워드 검색 결과에 해당하는 연번을 저장할 리스트
@@ -32,7 +30,8 @@ public class NoticePostDAO implements PostDAO{
 	
 	private NoticePostDAO() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Context context = new InitialContext();
+			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/DrawGreen");
 			pageRowCount = 10;
 			allRowCount = getRowCount("공지사항");
 			boardNums = new ArrayList<Integer>();
@@ -66,7 +65,7 @@ public class NoticePostDAO implements PostDAO{
 					+"VALUES(?,?,?,?,?,?)";
 		
 		try {
-			connection = DriverManager.getConnection(url, rootId, rootPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, writer_id);
 			preparedStatement.setString(2, title);
@@ -82,13 +81,7 @@ public class NoticePostDAO implements PostDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return writeOk;
@@ -111,7 +104,7 @@ public class NoticePostDAO implements PostDAO{
 		String query = "UPDATE 공지사항 SET title=?, content=?, 작성자_비공개=?, 글_비공개=? WHERE board_id = ?";
 		
 		try {
-			connection = DriverManager.getConnection(url, rootId, rootPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, title);
 			preparedStatement.setString(2, content);
@@ -126,13 +119,7 @@ public class NoticePostDAO implements PostDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return updateOk;
@@ -144,7 +131,7 @@ public class NoticePostDAO implements PostDAO{
 		String query = "DELETE FROM 공지사항 WHERE board_id = ? AND id = ?";
 		
 		try {
-			connection = DriverManager.getConnection(url, rootId, rootPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, board_number);
 			preparedStatement.setString(2, writer);
@@ -156,13 +143,7 @@ public class NoticePostDAO implements PostDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return deleteOk;
@@ -174,22 +155,14 @@ public class NoticePostDAO implements PostDAO{
 		String query = "{ CALL reset_notice_id() }";
 		
 		try {
-			connection = DriverManager.getConnection(url, rootId, rootPw);
+			connection = dataSource.getConnection();
 			callableStatement = (CallableStatement) connection.prepareCall(query);
 			callableStatement.executeQuery();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection!=null)
-					connection.close();
-				if (callableStatement!=null)
-					callableStatement.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 	}
 	
@@ -199,7 +172,7 @@ public class NoticePostDAO implements PostDAO{
 		String query = "SELECT count(*) FROM " + boardName;
 
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 
@@ -210,17 +183,7 @@ public class NoticePostDAO implements PostDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 
 		return rowCount;
@@ -234,7 +197,7 @@ public class NoticePostDAO implements PostDAO{
 				+ "ORDER BY n.등록일시 DESC LIMIT ?, ?";
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, (page-1)*pageRowCount);
 			preparedStatement.setInt(2, pageRowCount);
@@ -262,17 +225,7 @@ public class NoticePostDAO implements PostDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return postList;
@@ -296,7 +249,7 @@ public class NoticePostDAO implements PostDAO{
 			return null;
 		}
 		
-		String query = "SELECT n.*, m.nickname FROM 공지사항 n, Member.members m " 
+		String query = "SELECT n.*, m.nickname FROM 공지사항 n, members m " 
 				+ "WHERE m.id = n.id AND board_id IN(";
 		// 0~9, 10~19 ...
 		int startNum = page * pageRowCount - pageRowCount;
@@ -313,7 +266,7 @@ public class NoticePostDAO implements PostDAO{
 		query = builder.toString();
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 
 			
@@ -337,17 +290,7 @@ public class NoticePostDAO implements PostDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		
@@ -371,7 +314,7 @@ public class NoticePostDAO implements PostDAO{
 		query = buffer.toString();
 
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 
@@ -381,17 +324,7 @@ public class NoticePostDAO implements PostDAO{
 		} catch (Exception e) {
 			// TODO: handle exception
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 
 		return boardNums;
@@ -415,10 +348,10 @@ public class NoticePostDAO implements PostDAO{
 	public HashMap<String, Object> getPost(int board_num) {
 		HashMap<String, Object> noticePost = new HashMap<String, Object>();
 		
-		String query = "SELECT n.*, m.nickname FROM 공지사항 n, Member.members m WHERE board_id = ? AND m.id = n.id";
+		String query = "SELECT n.*, m.nickname FROM 공지사항 n, members m WHERE board_id = ? AND m.id = n.id";
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, board_num);
 			
@@ -437,17 +370,7 @@ public class NoticePostDAO implements PostDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return noticePost;
@@ -459,7 +382,7 @@ public class NoticePostDAO implements PostDAO{
 		String query = "UPDATE 공지사항 SET 조회수 = 조회수+1 WHERE board_id = ?";
 		
 		try {
-			connection = DriverManager.getConnection(url, rootId, rootPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, board_num);
 			preparedStatement.executeUpdate();
@@ -467,15 +390,7 @@ public class NoticePostDAO implements PostDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 	}
 
@@ -488,7 +403,7 @@ public class NoticePostDAO implements PostDAO{
 		boolean isAccessible = true;
 		
 		try {
-			connection = DriverManager.getConnection(url, rootId, rootPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, board_num);
 			
@@ -501,17 +416,7 @@ public class NoticePostDAO implements PostDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return isAccessible;
@@ -525,7 +430,7 @@ public class NoticePostDAO implements PostDAO{
 				+ "WHERE id = ? AND board_id = ?";
 		
 		try {
-			connection = DriverManager.getConnection(url, rootId, rootPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
 			preparedStatement.setInt(2, board_id);
@@ -539,20 +444,22 @@ public class NoticePostDAO implements PostDAO{
 			e.printStackTrace();
 			isWriter = false;
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return isWriter;
+	}
+
+	@Override
+	public void closing() {
+		try {
+			if (connection != null) connection.close();
+			if (preparedStatement != null) preparedStatement.close();
+			if (resultSet!=null) resultSet.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 	}
 
 }

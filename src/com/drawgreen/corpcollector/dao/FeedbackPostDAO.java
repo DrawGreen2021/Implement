@@ -1,7 +1,6 @@
 package com.drawgreen.corpcollector.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
@@ -9,19 +8,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 import com.drawgreen.corpcollector.dto.PostDTO;
 import com.mysql.cj.jdbc.CallableStatement;
 
 public class FeedbackPostDAO implements PostDAO{
+	private DataSource dataSource = null;
 	private Connection connection = null;
 	private PreparedStatement preparedStatement = null;
 	private CallableStatement callableStatement = null;
 	private ResultSet resultSet = null;
-	private String userId = "general_user_id";
-	private String userPw = "general_user_password"; 
-	private String rootId = "drawgreen";
-	private String rootPw = "drawgreen2021"; 
-	private String url = "jdbc:mysql://corpcollector.ciqetekukvwo.ap-northeast-2.rds.amazonaws.com:3306/Community";
 	private int allRowCount;
 	private int pageRowCount;
 	// 키워드 검색 결과에 해당하는 연번을 저장할 리스트
@@ -31,7 +30,8 @@ public class FeedbackPostDAO implements PostDAO{
 	
 	private FeedbackPostDAO() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Context context = new InitialContext();
+			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/DrawGreen");
 			pageRowCount = 10;
 			allRowCount = getRowCount("고객후기");
 			boardNums = new ArrayList<Integer>();
@@ -67,7 +67,7 @@ public class FeedbackPostDAO implements PostDAO{
 					+"VALUES(?,?,?,?,?,?)";
 		
 		try {
-			connection = DriverManager.getConnection(url, rootId, rootPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, writer_id);
 			preparedStatement.setString(2, title);
@@ -83,13 +83,7 @@ public class FeedbackPostDAO implements PostDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return writeOk;
@@ -113,7 +107,7 @@ public class FeedbackPostDAO implements PostDAO{
 		String query = "UPDATE 고객후기 SET title=?, content=?, 작성자_비공개=?, 글_비공개=? WHERE board_id = ?";
 		
 		try {
-			connection = DriverManager.getConnection(url, rootId, rootPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, title);
 			preparedStatement.setString(2, content);
@@ -128,13 +122,7 @@ public class FeedbackPostDAO implements PostDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return updateOk;
@@ -148,7 +136,7 @@ public class FeedbackPostDAO implements PostDAO{
 		String query = "DELETE FROM 고객후기 WHERE board_id = ? AND id = ?";
 		
 		try {
-			connection = DriverManager.getConnection(url, rootId, rootPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, board_number);
 			preparedStatement.setString(2, writer);
@@ -160,13 +148,7 @@ public class FeedbackPostDAO implements PostDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return deleteOk;
@@ -178,22 +160,14 @@ public class FeedbackPostDAO implements PostDAO{
 		String query = "{ CALL reset_feedback_id() }";
 		
 		try {
-			connection = DriverManager.getConnection(url, rootId, rootPw);
+			connection = dataSource.getConnection();
 			callableStatement = (CallableStatement) connection.prepareCall(query);
 			callableStatement.executeQuery();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection!=null)
-					connection.close();
-				if (callableStatement!=null)
-					callableStatement.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 	}
 
@@ -204,7 +178,7 @@ public class FeedbackPostDAO implements PostDAO{
 		String query = "SELECT count(*) FROM " + boardName;
 
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 
@@ -215,17 +189,7 @@ public class FeedbackPostDAO implements PostDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 
 		return rowCount;
@@ -235,11 +199,11 @@ public class FeedbackPostDAO implements PostDAO{
 	@Override
 	public ArrayList<PostDTO> getPostList(int page) {
 		ArrayList<PostDTO> postList = new ArrayList<PostDTO>();
-		String query = "SELECT f.*, m.nickname FROM 고객후기 f, Member.members m WHERE m.id = f.id "
+		String query = "SELECT f.*, m.nickname FROM 고객후기 f, members m WHERE m.id = f.id "
 				+ "ORDER BY f.등록일시 DESC LIMIT ?, ?";
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, (page-1)*pageRowCount);
 			preparedStatement.setInt(2, pageRowCount);
@@ -267,17 +231,7 @@ public class FeedbackPostDAO implements PostDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return postList;
@@ -301,7 +255,7 @@ public class FeedbackPostDAO implements PostDAO{
 			return null;
 		}
 		
-		String query = "SELECT f.*, m.nickname FROM 고객후기 f, Member.members m " 
+		String query = "SELECT f.*, m.nickname FROM 고객후기 f, members m " 
 				+ "WHERE m.id = f.id AND board_id IN(";
 		// 0~9, 10~19 ...
 		int startNum = page * pageRowCount - pageRowCount;
@@ -318,7 +272,7 @@ public class FeedbackPostDAO implements PostDAO{
 		query = builder.toString();
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 
 			
@@ -342,17 +296,7 @@ public class FeedbackPostDAO implements PostDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		
@@ -376,7 +320,7 @@ public class FeedbackPostDAO implements PostDAO{
 		query = buffer.toString();
 
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 
@@ -386,17 +330,7 @@ public class FeedbackPostDAO implements PostDAO{
 		} catch (Exception e) {
 			// TODO: handle exception
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 
 		return boardNums;
@@ -423,10 +357,10 @@ public class FeedbackPostDAO implements PostDAO{
 		// TODO Auto-generated method stub
 		HashMap<String, Object> feedbackPost = new HashMap<String, Object>();
 		
-		String query = "SELECT f.*, m.nickname FROM 고객후기 f, Member.members m WHERE board_id = ? AND m.id = f.id";
+		String query = "SELECT f.*, m.nickname FROM 고객후기 f, members m WHERE board_id = ? AND m.id = f.id";
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, board_num);
 			
@@ -445,17 +379,7 @@ public class FeedbackPostDAO implements PostDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return feedbackPost;
@@ -466,7 +390,7 @@ public class FeedbackPostDAO implements PostDAO{
 		String query = "UPDATE 고객후기 SET 조회수 = 조회수+1 WHERE board_id = ?";
 		
 		try {
-			connection = DriverManager.getConnection(url, rootId, rootPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, board_num);
 			preparedStatement.executeUpdate();
@@ -474,15 +398,7 @@ public class FeedbackPostDAO implements PostDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 	}
 
@@ -494,7 +410,7 @@ public class FeedbackPostDAO implements PostDAO{
 		boolean isAccessible = true;
 		
 		try {
-			connection = DriverManager.getConnection(url, rootId, rootPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, board_num);
 			
@@ -507,17 +423,7 @@ public class FeedbackPostDAO implements PostDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return isAccessible;
@@ -530,7 +436,7 @@ public class FeedbackPostDAO implements PostDAO{
 				+ "WHERE id = ? AND board_id = ?";
 		
 		try {
-			connection = DriverManager.getConnection(url, rootId, rootPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
 			preparedStatement.setInt(2, board_id);
@@ -543,17 +449,7 @@ public class FeedbackPostDAO implements PostDAO{
 			// TODO: handle exception
 			isWriter = false;
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return isWriter;
@@ -564,11 +460,11 @@ public class FeedbackPostDAO implements PostDAO{
 		
 		ArrayList<PostDTO> postList = new ArrayList<PostDTO>();
 		
-		String query = "SELECT f.*, m.nickname FROM 고객후기 f, Member.members m "
+		String query = "SELECT f.*, m.nickname FROM 고객후기 f, members m "
 				+ "WHERE f.id = ? AND f.id = m.id ORDER BY f.등록일시 DESC LIMIT ?, ?";
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
 			preparedStatement.setInt(2, (page-1)*pageRowCount);
@@ -595,17 +491,7 @@ public class FeedbackPostDAO implements PostDAO{
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return postList;
@@ -617,7 +503,7 @@ public class FeedbackPostDAO implements PostDAO{
 		int rowcount = 0;
 		
 		try {
-			connection = DriverManager.getConnection(url, userId, userPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
 			
@@ -628,17 +514,7 @@ public class FeedbackPostDAO implements PostDAO{
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
 		}
 		
 		return rowcount;
@@ -656,22 +532,26 @@ public class FeedbackPostDAO implements PostDAO{
 		query = builder.toString();
 		
 		try {
-			connection = DriverManager.getConnection(url, rootId, rootPw);
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				if (connection != null)
-					connection.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
+			closing();
+		}
+	}
+
+	@Override
+	public void closing() {
+		try {
+			if (connection != null) connection.close();
+			if (preparedStatement != null) preparedStatement.close();
+			if (resultSet!=null) resultSet.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 
