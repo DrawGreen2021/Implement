@@ -43,12 +43,15 @@
 				</tr>
 				<tr>
 					<table class="content_div_write">
-
+						
+						<%-- 관심 기업으로 등록한 기록이 없다면 아래 메시지를 표시 --%>
 						<c:if test="${empty favCorpMap }">
 							<br><br><br><br><br>
 							관심 기업이 없습니다.
 							<br><br><br><br><br><br><br>
 						</c:if>
+						
+						<%-- 인재 육성형 중소 기업 --%>
 						<c:if test="${not empty favCorpMap['talentDevelopmentCorp']}">
 							<c:forEach items="${favCorpMap['talentDevelopmentCorp'] }"
 									var="favCorp" varStatus="status">
@@ -79,6 +82,7 @@
 							</c:forEach>
 						</c:if>
 						
+						<%-- 녹색 기업 --%>
 						<c:if test="${not empty favCorpMap['greenCorp']}">
 							<c:forEach items="${favCorpMap['greenCorp'] }"
 									var="favCorp" varStatus="status">
@@ -109,6 +113,7 @@
 							</c:forEach>
 						</c:if>
 						
+						<%-- 사회적 기업 --%>
 						<c:if test="${not empty favCorpMap['socialCorp']}">
 							<c:forEach items="${favCorpMap['socialCorp'] }"
 									var="favCorp" varStatus="status">
@@ -139,6 +144,7 @@
 							</c:forEach>
 						</c:if>
 						
+						<%-- 가족 친화 기업 --%>
 						<c:if test="${not empty favCorpMap['familyFriendlyCorp']}">
 							<c:forEach items="${favCorpMap['familyFriendlyCorp'] }"
 									var="favCorp" varStatus="status">
@@ -169,6 +175,7 @@
 							</c:forEach>
 						</c:if>
 						
+						<%-- 청년 친화 강소 기업 --%>
 						<c:if test="${not empty favCorpMap['youthFriendlyCorp']}">
 							<c:forEach items="${favCorpMap['youthFriendlyCorp'] }"
 									var="favCorp" varStatus="status">
@@ -199,53 +206,6 @@
 							</c:forEach>
 						</c:if>
 						
-						<!-- <tr class="community_text" height="30px;">
-							<td width="20%" style="background-color:#eeedeb;">인재 육성형 중소 기업</td>
-							<td>
-								<table> 여기에 기업이름 추가하기
-									<tr><td></td></tr>
-								</table>
-							</td>
-							<td width="5%"><input type="checkbox" name="favCorp_select" value="favCorp_select" style=" text-align:left;"></td>
-						</tr>
-						<tr class="community_text" height="30px;">
-							<td style="background-color:#eeedeb;">녹색기업</td>
-							<td>
-								<table> 여기에 기업이름 추가하기
-									<tr><td></td></tr>
-								</table>
-							</td>
-							<td><input type="checkbox" name="favCorp_select" value="favCorp_select" style=" text-align:left;"></td>
-						</tr>
-						<tr class="community_text" height="30px;">
-							<td style="background-color:#eeedeb;">사회적 기업</td>
-							<td>
-								<table> 여기에 기업이름 추가하기
-									<tr><td></td></tr>
-								</table>
-							</td>
-							<td><input type="checkbox" name="favCorp_select" value="favCorp_select" style=" text-align:left;"></td>
-						</tr>
-						<tr class="community_text" height="30px;">
-							<td style="background-color:#eeedeb;">가족 친화 기업</td>
-							<td>
-								<table> 여기에 기업이름 추가하기
-									<tr><td></td></tr>
-								</table>
-							</td>
-							<td><input type="checkbox" name="favCorp_select" value="favCorp_select" style=" text-align:left;"></td>
-						</tr>
-						<tr class="community_text" height="30px;">
-							<td style="background-color:#eeedeb;">청년 친화 강소 기업</td>
-							<td>
-								<table> 여기에 기업이름 추가하기
-									<tr><td></td></tr>
-								</table>
-							</td>
-							<td><input type="checkbox" name="favCorp_select" value="favCorp_select" style=" text-align:left;"></td>
-							
-						</tr> -->
-
 					</table>
 				</tr>
 			</table>
@@ -302,7 +262,6 @@
 	<c:import url='/importedFile/footer.html'></c:import>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/common.js"></script>
 	<script type="text/javascript" src="../JavaScript/myPage_common.js?v=<%=System.currentTimeMillis() %>"></script>
 </body>
 </html>

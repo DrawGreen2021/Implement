@@ -115,18 +115,12 @@
 		</div>
 		</form>
 	</div>
-	<%-- <p>5월: ${(requestScope.personalInfo['birth_month'] == 5)?'':'selected' }</p>
-	<p>12월: ${(requestScope.personalInfo['birth_month'] == 12)?'':requestScope.personalInfo['birth_month'] }</p>
-	<p>선택안함: ${(requestScope.personalInfo['gender'] == 'none')?'':'selected' }</p>
-	<p>여성: ${(requestScope.personalInfo['gender'] == 'woman')?'':requestScope.personalInfo['gender'] }</p> --%>
-	
 	
 	
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/common.js"></script>
 	<script type="text/javascript" src="../JavaScript/updatePersonalInfo_Check.js"></script>
 </body>
 </html>

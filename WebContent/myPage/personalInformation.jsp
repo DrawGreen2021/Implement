@@ -47,10 +47,6 @@
 							<td colspan="3" style="text-align:left; padding-left:15px; ">${requestScope.personalInfo['id'] }
 								<input type="hidden" name="id" value="${requestScope.personalInfo['id'] }"></td>
 						</tr>
-						<!-- <tr class="community_text" height="30px;">
-							<td width="100px" style="background-color:#eeedeb;">비밀번호/PW</td>
-							<td colspan="3"></td>
-						</tr> -->
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">닉네임</td>
 							<td colspan="3" style="text-align:left; padding-left:15px; ">${requestScope.personalInfo['nickname'] }
@@ -75,7 +71,6 @@
 			</table>
 			<div style="float:right;">
 			<input type="submit" value="수정" class="writing_btn">
-			<%-- <button class="writing_btn" onclick="location.href='${pageContext.request.contextPath}/myPage/UpdatePersonalInfo.do'">수정</button> --%>
 			</div>
 			
 		</div>
@@ -85,9 +80,6 @@
 	
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
-	
-	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/common.js"></script>
 
 </body>
 </html>

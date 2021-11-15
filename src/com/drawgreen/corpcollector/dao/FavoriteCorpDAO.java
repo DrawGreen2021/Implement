@@ -190,33 +190,6 @@ public class FavoriteCorpDAO {
 		return favoriteSerialNums;
 	}
 
-	// 기업 테이블명 가져오기
-	public String getCorpType(String tableName) {
-		String corpType = "";
-		
-		switch (tableName) {
-		case "녹색기업":
-			corpType = "greenCorp";
-			break;
-		case "인재육성형중소기업":
-			corpType = "talentDevelopmentCorp";
-			break;
-		case "사회적기업":
-			corpType = "socialCorp";
-			break;
-		case "가족친화인증기업":
-			corpType = "familyFriendlyCorp";
-			break;
-		case "청년친화강소기업":
-			corpType = "youthFriendlyCorp";
-			break;
-		default:
-			break;
-		}
-		
-		return corpType;
-	}
-	
 	// 통합 검색일 경우, 관심 기업 불러오기
 	public int[] getFavoriteSerialNums(String user_id, ArrayList<InterCorpDTO> corpList) {
 		int[] favoriteSerialNums = new int[pageRowCount];
@@ -254,6 +227,33 @@ public class FavoriteCorpDAO {
 		}
 		
 		return favoriteSerialNums;
+	}
+	
+	// 기업 테이블명 가져오기
+	public String getCorpType(String tableName) {
+		String corpType = "";
+
+		switch (tableName) {
+		case "녹색기업":
+			corpType = "greenCorp";
+			break;
+		case "인재육성형중소기업":
+			corpType = "talentDevelopmentCorp";
+			break;
+		case "사회적기업":
+			corpType = "socialCorp";
+			break;
+		case "가족친화인증기업":
+			corpType = "familyFriendlyCorp";
+			break;
+		case "청년친화강소기업":
+			corpType = "youthFriendlyCorp";
+			break;
+		default:
+			break;
+		}
+
+		return corpType;
 	}
 	
 	// 마이페이지 - 관심기업에 표시할 관심기업 연번 및 업체명 얻어오기
@@ -388,6 +388,7 @@ public class FavoriteCorpDAO {
 		}
 	}
 	
+	// 사용자의 관심 기업 목록 초기화
 	public boolean resetCorpList(String user_id) {
 		boolean resetOk = false;
 		

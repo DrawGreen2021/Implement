@@ -108,19 +108,13 @@
 				</tr>
 			</table>
 			
-			<!-- <div>
-				<label class="community_text" style="float:left;"><input type="checkbox" name="favCorp_select" value="favCorp_selectAll" > 전체 선택</label>
-				<button class="writing_btn" style="float:right;" onclick="">삭제</button>
-			</div> -->
 		</div>
 	</div>
 	<br><br><br><br>
 	
+	
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
-	
-	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/common.js"></script>
 
 </body>
 </html>
