@@ -43,8 +43,7 @@
 				<div style = "border:1px solid #eeedeb;" width="500px;"></div> -->
 				
 				
-				<table width="930px;"style="margin:1% auto; text-align:center; border:0;" >
-					<!-- css 적용 왜 안 돼... -->
+				<table width="930px;" style="margin:0 auto; border:0;" >
 					<tr>
 					<td><button class="information_move_button" onclick="location.href='#FFcorp'">가족 친화 기업</button></td>
 					<td><button class="information_move_button" onclick="location.href='#Scorp'">사회적 기업</button></td>
