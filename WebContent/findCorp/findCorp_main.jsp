@@ -182,7 +182,6 @@
 	<c:import url='/importedFile/footer.html'></c:import>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/common.js"></script>
-	<script type="text/javascript" src='<c:url value="/JavaScript/findCorp_common.js"/>'></script>
+	<script type="text/javascript" src='<c:url value="/JavaScript/findCorp_common.js?ver=<%=System.currentTimeMillis() %>"/>'></script>
 </body>
 </html>
