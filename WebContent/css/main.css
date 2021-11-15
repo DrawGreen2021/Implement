@@ -710,3 +710,22 @@
 .information_move_text a:hover{
 	color:#e1bf27;
 }
+
+/* 정보 나눔 위치 이동 버튼 */
+.information_move_button{
+	width:150px;
+	background-color:white;
+	cursor:pointer;
+	border:0;
+}
+
+.information_move_button button{
+	color:black;
+	font-size:11pt;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+.information_move_button button:hover{
+	background-color:#eeedeb;
+}
