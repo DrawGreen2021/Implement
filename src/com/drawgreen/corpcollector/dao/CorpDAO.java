@@ -7,14 +7,15 @@ import com.drawgreen.corpcollector.dto.CorpDTO;
 import com.drawgreen.corpcollector.dto.RecentSearchDTO;
 
 public interface CorpDAO {
+	int pageRowCount = 10; // 한 페이지당 표시할 행 개수
 	int getRowCount(String corpType); // 전체 테이블(키워드x) 튜플 개수 가져오기
 	int getAllRowCount(); // 전체 테이블 튜플 개수를 저장한 변수 값 반환(getter)
 	void setAllRowCount(int allRowCount); // 전체 테이블 튜플 개수 설정
-	ArrayList<? extends CorpDTO> getCorpList(int page); // 키워드 없을 때 기업리스트 가져오기
+	ArrayList<? extends CorpDTO> getCorpList(int page); // 키워드 없을 때 기업 리스트 가져오기
 	
 	// -----------------------------------------------------------------------------
 	
-	// 키워드 있을 때 기업리스트 가져오기
+	// 키워드 있을 때 기업 리스트 가져오기
 	ArrayList<? extends CorpDTO> getCorpList(String keyword, int page); 
 	// 검색 키워드가 존재하는 행의 연번 알아오기
 	ArrayList<Integer> setSerialNum(String keyword, ArrayList<Integer> serialNums);

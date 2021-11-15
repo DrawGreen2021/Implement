@@ -79,7 +79,7 @@
 	<c:import url='/importedFile/footer.html'></c:import>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="<c:url value='/JavaScript/findPW_Check.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/JavaScript/findPW_check.js?ver=<%=System.currentTimeMillis() %>'/>"></script>
 	
 </body>
 </html>

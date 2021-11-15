@@ -158,6 +158,6 @@
 
 
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="<c:url value='/JavaScript/signUpCheck.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/JavaScript/signUp_check.js?ver=<%=System.currentTimeMillis() %>'/>"></script>
 </body>
 </html>

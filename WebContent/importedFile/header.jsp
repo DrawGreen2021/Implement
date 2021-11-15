@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script type="text/javascript" src="<c:url value='/JavaScript/logoutCheck.js'/>"/></script>
+<script type="text/javascript" src="<c:url value='/JavaScript/logout_check.js'/>"/></script>
 	<c:choose>
 		<c:when test="${sessionScope.MemberDTO!=null }">
 			<div>

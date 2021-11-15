@@ -22,7 +22,6 @@ public class TalentDevelopmentCorpDAO implements CorpDAO{
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
 	private int allRowCount;
-	private int pageRowCount;
 	// 키워드 검색 결과에 해당하는 연번을 저장할 리스트
 	private ArrayList<Integer> serialNums;
 	// 키워드 값을 저장할 변수
@@ -32,7 +31,6 @@ public class TalentDevelopmentCorpDAO implements CorpDAO{
 		try {
 			Context context = new InitialContext();
 			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/DrawGreen");
-			pageRowCount = 10;
 			allRowCount = getRowCount("인재육성형중소기업");
 			serialNums = new ArrayList<Integer>();
 		} catch (Exception e) {
@@ -82,6 +80,7 @@ public class TalentDevelopmentCorpDAO implements CorpDAO{
 	}
 	
 	// 검색 키워드가 없다면 연번으로 행 개수만큼 불러오기
+	@Override
 	public ArrayList<TalentDevelopmentCorpDTO> getCorpList(int page) {
 		ArrayList<TalentDevelopmentCorpDTO> talentDevelopmentCorpDTOs = new ArrayList<TalentDevelopmentCorpDTO>();
 		String query = "SELECT * FROM 인재육성형중소기업 WHERE 연번 BETWEEN ? AND ?";
@@ -116,6 +115,7 @@ public class TalentDevelopmentCorpDAO implements CorpDAO{
 	}
 
 	// 검색어가 있을 경우 기업 리스트 받아오기
+	@Override
 	public ArrayList<TalentDevelopmentCorpDTO> getCorpList(String keyword, int page) {
 		// TODO Auto-generated method stub
 		ArrayList<TalentDevelopmentCorpDTO> talentDevelopmentCorpDTOs = new ArrayList<TalentDevelopmentCorpDTO>();
@@ -177,6 +177,7 @@ public class TalentDevelopmentCorpDAO implements CorpDAO{
 	}
 	
 	// 검색 키워드가 존재하는 행의 연번 알아오기
+	@Override
 	public ArrayList<Integer> setSerialNum(String keyword, ArrayList<Integer> serialNums) {
 		
 		// 키워드 공백으로 분리
@@ -210,6 +211,7 @@ public class TalentDevelopmentCorpDAO implements CorpDAO{
 		return serialNums;
 	}
 	
+	@Override
 	public int getRowCount_byKeyword() {
 		return serialNums.size();
 	}
@@ -220,6 +222,7 @@ public class TalentDevelopmentCorpDAO implements CorpDAO{
 		return serialNums;
 	}
 
+	// 상세 기업 페이지에서 관련 정보를 가져올 때, 해당 레코드 정보 반환
 	@Override
 	public LinkedHashMap<String, Object> getInfo(int serial_num) {
 		// TODO Auto-generated method stub
@@ -252,7 +255,8 @@ public class TalentDevelopmentCorpDAO implements CorpDAO{
 		
 		return corpInfo;
 	}
-
+	
+	// 최근 검색 기업과 연관된 정보 가져오기
 	@Override
 	public ArrayList<RecentSearchDTO> getRecentRecords(String user_id) {
 		// TODO Auto-generated method stub

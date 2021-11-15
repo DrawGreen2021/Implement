@@ -38,8 +38,8 @@ public class MemberDAO {
 		return InnerInstance_MemberDAO.memberDAO;
 	}
 	
+	// 아이디 중복 검사
 	public boolean idCheck(String id) {
-		if(id == null || id.length() == 0) throw new NullPointerException("아이디가 없습니다.");
 		
 		String query = "SELECT IF(count(*)=1, 'true', 'false') AS result"
                 + " FROM members"
@@ -66,7 +66,7 @@ public class MemberDAO {
 		return false;
 	}
 
-	
+	// 회원 정보 추가
 	public boolean insertMember(String id, String pw, String name, String email, String birth, String gender) {
 		String query = "INSERT INTO members values (?, ?, ?, ?, ?, ?)";
 		boolean singUpCheck = false;
@@ -94,9 +94,8 @@ public class MemberDAO {
 		return singUpCheck;
 	}
 	
-	
+	// 로그인 처리
 	public boolean login(String id, String pw, HttpServletRequest request, HttpServletResponse response) {
-		if(id == null || id.length() == 0) throw new NullPointerException("아이디가 없습니다.");
 		
 		String query = "SELECT * FROM members WHERE id=? AND password=?";
 		boolean loginCheck = false;
@@ -131,6 +130,7 @@ public class MemberDAO {
 		return loginCheck;
 	}
 	
+	// 아이디 찾기
 	public String findID(String name, String email) {
 		String user_id = "";
 		String query = "SELECT id FROM members WHERE nickname=? AND email=?";
@@ -155,6 +155,7 @@ public class MemberDAO {
 		return user_id;
 	}
 	
+	// 비밀번호 유무 확인
 	public boolean findPw(String id, String name, String email) {
 		boolean passwordCheck = false;
 		String query = "SELECT password FROM members "
@@ -180,6 +181,7 @@ public class MemberDAO {
 		return passwordCheck;
 	}
 	
+	// 비밀번호 재설정
 	public boolean updatePW(String id, String pw) {
 		boolean updateCheck = false;
 		String query = "UPDATE members SET password=? "
@@ -204,6 +206,7 @@ public class MemberDAO {
 		return updateCheck;
 	}
 	
+	// 접속한 사용자가 관리자인지 권한 확인
 	public boolean isAdmin(String id) {
 		boolean isAdmin = false;
 		String query = "SELECT level FROM 관리자 WHERE id = ?";
@@ -226,6 +229,7 @@ public class MemberDAO {
 		return isAdmin;
 	}
 	
+	// 개인정보 불러오기
 	public HashMap<String, Object> getPersonalInfo(String id) {
 		HashMap<String, Object> personalInfo = new HashMap<String, Object>();
 		
@@ -254,6 +258,7 @@ public class MemberDAO {
 		return personalInfo;
 	}
 	
+	// 개인정보 수정
 	public void updatePersonalInfo(String origin_id, String id, String name, String email, String birth, String gender) {
 		String query = "UPDATE members SET id=?, nickname=?, email=?, birth=?, gender=? "
 				+ "WHERE id=?";
@@ -278,6 +283,7 @@ public class MemberDAO {
 		}
 	}
 	
+	// 자원 해제
 	public void closing() {
 		try {
 			if (connection != null) connection.close();

@@ -44,11 +44,14 @@
 					<table class="content_div_findCorpList" style="word-break: break-all;">
 					
 						<c:choose>
+							<%-- 사용자가 작성한 고객후기가 없으면 아래 메시지 표시 --%>
 							<c:when test="${empty requestScope.postList }">
 								<br><br><br><br><br>
 								<p style="color:gray;">작성한 글이 없습니다.</p>
 								<br><br><br><br><br><br><br>
 							</c:when>
+							
+							<%-- 사용자가 작성한 글이 있다면 게시글 리스트 출력 --%>
 							<c:otherwise>
 								<tr class="community_text"
 									style="background-color: #eeedeb; height: 32px;">
@@ -142,7 +145,6 @@
 	<c:import url='/importedFile/footer.html'></c:import>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/common.js"></script>
 	<script type="text/javascript" src="../JavaScript/myPage_common.js"></script>
 </body>
 </html>

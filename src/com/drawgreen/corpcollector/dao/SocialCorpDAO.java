@@ -21,7 +21,6 @@ public class SocialCorpDAO implements CorpDAO {
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
 	private int allRowCount;
-	private int pageRowCount;
 	// 키워드 검색 결과에 해당하는 연번을 저장할 리스트
 	private ArrayList<Integer> serialNums;
 	// 키워드 값을 저장할 변수
@@ -32,7 +31,6 @@ public class SocialCorpDAO implements CorpDAO {
 		try {
 			Context context = new InitialContext();
 			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/DrawGreen");
-			pageRowCount = 10;
 			allRowCount = getRowCount("사회적기업");
 			serialNums = new ArrayList<Integer>();
 		} catch (Exception e) {
@@ -231,7 +229,8 @@ public class SocialCorpDAO implements CorpDAO {
 		// TODO Auto-generated method stub
 		return serialNums;
 	}
-
+	
+	// 상세 기업 페이지에서 관련 정보를 가져올 때, 해당 레코드 정보 반환
 	@Override
 	public LinkedHashMap<String, Object> getInfo(int serial_num) {
 		LinkedHashMap<String, Object> corpInfo = new LinkedHashMap<String, Object>();
@@ -267,7 +266,8 @@ public class SocialCorpDAO implements CorpDAO {
 		
 		return corpInfo;
 	}
-
+	
+	// 최근 검색 기업과 연관된 정보 가져오기
 	@Override
 	public ArrayList<RecentSearchDTO> getRecentRecords(String user_id) {
 		// TODO Auto-generated method stub
