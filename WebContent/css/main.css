@@ -716,6 +716,11 @@
 	background-color:white;
 	cursor:pointer;
 	border:0;
+	margin:0 4%;
+	color:black;
+	font-size:11pt;
+	font-weight:bold;
+	text-decoration:none;
 }
 
 .information_move_button button{
@@ -725,6 +730,6 @@
 	text-decoration:none;
 }
 
-.information_move_button button:hover{
+.information_move_button:hover{
 	background-color:#eeedeb;
 }

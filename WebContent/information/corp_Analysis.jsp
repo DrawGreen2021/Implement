@@ -33,24 +33,26 @@
 			<div width="930px" height="100%">
 				<h2 style="color:#180E5A;  margin-bottom:5%;">기업 데이터 분석</h2>
 				
-				<div width="930px;"style="margin:1% auto; text-align:center;" >
+				<!--  <div width="930px;"style="margin:1% auto; text-align:center;" >
 					<a href="#FFcorp" class="information_move_text">가족 친화 기업</a>
 					<a href="#Scorp" class="information_move_text" >사회적 기업</a>
 					<a href="#YFcorp" class="information_move_text">청년 친화 강소 기업</a>
 					<a href="#TDcorp" class="information_move_text">인재 육성형 중소 기업</a>
 					<a href="#Gcorp" class="information_move_text">녹색 기업</a>
 				</div>
-				<div style = "border:1px solid #eeedeb;" width="500px;"></div>
+				<div style = "border:1px solid #eeedeb;" width="500px;"></div> -->
 				
 				
-				<div width="930px;"style="margin:1% auto; text-align:center;" >
+				<table width="930px;"style="margin:1% auto; text-align:center; border:0;" >
 					<!-- css 적용 왜 안 돼... -->
-					<button class="information_move_button" onclick="location.href='#FFcorp'">가족 친화 기업</button>
-					<button class="information_move_button" onclick="location.href='#Scorp'">사회적 기업</button>
-					<button class="information_move_button" onclick="location.href='#YFcorp'">청년 친화 강소 기업</button>
-					<button class="information_move_button" onclick="location.href='#TDcorp'">인재 육성형 중소 기업</button>
-					<button class="information_move_button" onclick="location.href='#Gcorp'">녹색 기업</button>
-				</div> 
+					<tr>
+					<td><button class="information_move_button" onclick="location.href='#FFcorp'">가족 친화 기업</button></td>
+					<td><button class="information_move_button" onclick="location.href='#Scorp'">사회적 기업</button></td>
+					<td><button class="information_move_button" onclick="location.href='#YFcorp'">청년 친화 강소 기업</button></td>
+					<td><button class="information_move_button" onclick="location.href='#TDcorp'">인재 육성형 중소 기업</button></td>
+					<td><button class="information_move_button" onclick="location.href='#Gcorp'">녹색 기업</button></td>
+					</tr>
+				</table> 
 				
 				<p class="information_text" style="font-size:10pt; margin:4% 0 11% 0;" id="FFcorp">
 				그래프 설명: 색상은 업종 종류를 나타냅니다. 그래프의 크기는 업종 분포에 따라 달라집니다.</p>
