@@ -79,8 +79,16 @@
 				<span> <c:forEach var="num" begin="${startNum }"
 						end="${lastNum }">
 						<c:if test="${num <= lastPageNum }">
-							<a style="color: gray;"
-								href='CorpNewsView.do?page=${num}'>${num}</a>
+							<c:choose>
+								<c:when test="${num == param.page }">
+									<a style="color: yellow;"
+									href='CorpNewsView.do?page=${num}'>${num}</a>
+								</c:when>
+								<c:otherwise>
+									<a style="color: gray;"
+									href='CorpNewsView.do?page=${num}'>${num}</a>
+								</c:otherwise>
+							</c:choose>
 						</c:if>
 					</c:forEach>
 				</span>

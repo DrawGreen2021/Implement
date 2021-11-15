@@ -278,8 +278,17 @@
 			<span> <c:forEach var="num" begin="${startNum }"
 					end="${lastNum }">
 					<c:if test="${num <= lastPageNum }">
-						<a style="color: gray;"
-							href='FavoriteCorpView.do?page=${num}'>${num}</a>
+						<c:choose>
+							<%-- 현재 페이지는 회색이 아닌 다른 컬러로 표시 --%>
+							<c:when test="${num == param.page }">
+								<a style="color: yellow;"
+								href='FavoriteCorpView.do?page=${num}'>${num}</a>
+							</c:when>
+							<c:otherwise>
+								<a style="color: gray;"
+								href='FavoriteCorpView.do?page=${num}'>${num}</a>
+							</c:otherwise>
+						</c:choose>
 					</c:if>
 				</c:forEach>
 			</span>
