@@ -38,7 +38,7 @@
 						<a href="<c:url value='/service/service_Summary.jsp'/>">서비스 소개</a>
 						<ul class="sub_Menu">
 							<li><a href="<c:url value='/service/service_Summary.jsp'/>">서비스 개요</a></li>
-							<li><a href="<c:url value='/service/developmentProcess.jsp'/>">개발 과정</a></li>
+							<li><a href="<c:url value='/service/DevProcessView.do'/>">개발 과정</a></li>
 						</ul>
 					</li>
 					<li>
@@ -111,7 +111,7 @@
 						<a href="<c:url value='/service/service_Summary.jsp'/>">서비스 소개</a>
 						<ul class="sub_Menu">
 							<li><a href="<c:url value='/service/service_Summary.jsp'/>">서비스 개요</a></li>
-							<li><a href="<c:url value='/service/developmentProcess.jsp'/>">개발 과정</a></li>
+							<li><a href="<c:url value='/service/DevProcessView.do'/>">개발 과정</a></li>
 						</ul>
 					</li>
 					<li>
