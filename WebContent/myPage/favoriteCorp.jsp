@@ -9,7 +9,7 @@
 	<meta name="description" content="캡스톤_01">
 	<meta name="keywords" content="HTML5, CSS, JQUERY">
 	
-	<link rel="stylesheet" type="text/css" href="../css/main.css?after">
+	<link rel="stylesheet" type="text/css" href="../css/main.css?ver=<%=System.currentTimeMillis() %>">
 	
 	<title>CorpCollector : 관심 기업</title>
 </head>
@@ -19,7 +19,7 @@
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!-- 내용 영역 -->
-	<div width="1200px;" style="text-align:center; margin:5% auto;">
+	<div class="outer_block">
 		<div class="sidebar_div" style="float:left;">
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
@@ -209,55 +209,57 @@
 					</table>
 				</tr>
 			</table>
-			
-			<div>
-				<label class="community_text" style="float:left;">
-					<input type="checkbox" name="favCorp_select" value="favCorp_selectAll" onclick="selectAll(this)"> 전체 선택</label>
-				<input type="button" value="삭제" class="writing_btn" style="float:right;" onclick="deleteFavCorp()">
-				<input type="button" value="목록 초기화" class="writing_btn" style="float:right;" onclick="resetList()">
-			</div>
-		</div>
-		</form>
-		
-		<!-- 페이지 번호 div -->
-		<div class="pagelist_text" style="margin: 6% auto;">
 
-			<%-- 페이징 변수 파일 포함 --%>
-			<c:import url='/importedFile/pagingVariables.jsp'></c:import>
+				<p style="height: 30px">
+					<label class="community_text" style="float: left;"> 
+						<input type="checkbox" name="favCorp_select" value="favCorp_selectAll"
+						onclick="selectAll(this)"> 전체 선택
+					</label> 
+					<input type="button" value="삭제" class="writing_btn"
+						style="float: right;" onclick="deleteFavCorp()"> 
+					<input type="button" value="목록 초기화" class="writing_btn"
+						style="float: right;" onclick="resetList()">
+				</p>
 
-			<c:if test="${startNum > 1}">
-				<span> <a
-					href='FavoriteCorpView.do?page=${startNum - pageCount}'>이전</a>
-				</span>
-			</c:if>
-			<c:if test="${startNum <= 1}">
-				<span onclick="alert('이전 페이지가 없습니다.');">이전</span>
-			</c:if>
+				<!-- 페이지 번호 div -->
+				<div class="pagelist_text" style="margin: 0 auto;">
 
-			<%-- 페이지의 가장 끝 번호까지만 표시 --%>
-			<span> <c:forEach var="num" begin="${startNum }"
-					end="${lastNum }">
-					<c:if test="${num <= lastPageNum }">
-						<a style="color: gray;"
-							href='FavoriteCorpView.do?page=${num}'>${num}</a>
+					<%-- 페이징 변수 파일 포함 --%>
+					<c:import url='/importedFile/pagingVariables.jsp'></c:import>
+
+					<c:if test="${startNum > 1}">
+						<span> <a
+							href='FavoriteCorpView.do?page=${startNum - pageCount}'>이전</a>
+						</span>
 					</c:if>
-				</c:forEach>
-			</span>
+					<c:if test="${startNum <= 1}">
+						<span onclick="alert('이전 페이지가 없습니다.');">이전</span>
+					</c:if>
 
-			<c:if test="${(startNum + pageCount -1) < lastPageNum }">
-				<span> <a
-					href='FavoriteCorpView.do?&page=${startNum + pageCount}'>다음</a>
-				</span>
-			</c:if>
-			<c:if test="${(startNum + pageCount -1) >= lastPageNum }">
-				<span onclick="alert('다음 페이지가 없습니다.');">다음</span>
-			</c:if>
-		</div>
+					<%-- 페이지의 가장 끝 번호까지만 표시 --%>
+					<span> <c:forEach var="num" begin="${startNum }"
+							end="${lastNum }">
+							<c:if test="${num <= lastPageNum }">
+								<a style="color: gray;" href='FavoriteCorpView.do?page=${num}'>${num}</a>
+							</c:if>
+						</c:forEach>
+					</span>
+
+					<c:if test="${(startNum + pageCount -1) < lastPageNum }">
+						<span> <a
+							href='FavoriteCorpView.do?&page=${startNum + pageCount}'>다음</a>
+						</span>
+					</c:if>
+					<c:if test="${(startNum + pageCount -1) >= lastPageNum }">
+						<span onclick="alert('다음 페이지가 없습니다.');">다음</span>
+					</c:if>
+				</div>
+			</div>
+		</form>
 
 	</div>
 
-	
-	
+
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
 	
