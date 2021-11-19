@@ -26,7 +26,7 @@ public class DevProcessViewCommand implements Command{
 		String[] UIdesign = new String[UIdesignImgCount];
 		for (int i = 0; i < UIdesign.length; i++) {
 			UIdesign[i] = "UI images\\image"+(i+1)+".PNG";
-			createThumbnail(UIdesign[i], 0.15);
+			createThumbnail(UIdesign[i], 0.2);
 		}
 		request.setAttribute("UIdesignImgCount", UIdesignImgCount);
 		
