@@ -205,7 +205,7 @@ public class FavoriteCorpDAO {
 						"(select 업체명, 소재지, 업종 from "+dto.getCorpType()+" sub" + 
 						" where 업체명 = ? and 소재지 = ? and 업종 = ? and 연번 IN" + 
 						" (select IFNULL("+corpType+"_id,0) from 관심기업 where user_id = ? and sub.연번 = "+corpType+"_id))origin, " + 
-						"Corp.Inter_corp i where i.업체명 = origin.업체명 and i.소재지 = origin.소재지 and i.업종 = origin.업종;";
+						"Inter_corp i where i.업체명 = origin.업체명 and i.소재지 = origin.소재지 and i.업종 = origin.업종;";
 				preparedStatement = connection.prepareStatement(query);
 				preparedStatement.setString(1, dto.getCompany_name());
 				preparedStatement.setString(2, dto.getLocation());

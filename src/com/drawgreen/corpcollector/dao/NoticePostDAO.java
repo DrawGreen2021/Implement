@@ -198,7 +198,7 @@ public class NoticePostDAO implements PostDAO{
 	@Override
 	public ArrayList<PostDTO> getPostList(int page) {
 		ArrayList<PostDTO> postList = new ArrayList<PostDTO>();
-		String query = "SELECT n.*, m.nickname FROM 공지사항 n, Member.members m WHERE m.id = n.id "
+		String query = "SELECT n.*, m.nickname FROM 공지사항 n, members m WHERE m.id = n.id "
 				+ "ORDER BY n.등록일시 DESC LIMIT ?, ?";
 		
 		try {
