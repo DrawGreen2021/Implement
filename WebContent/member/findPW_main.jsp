@@ -8,7 +8,7 @@
 	<meta name="description" content="캡스톤_01">
 	<meta name="keywords" content="HTML5, CSS, JQUERY">
 	
-	<link rel="stylesheet" type="text/css" href="../css/main.css?after">
+	<link rel="stylesheet" type="text/css" href="../css/main.css?ver=<%=System.currentTimeMillis() %>">
 	
 	<title>CorpCollector : 비밀번호 찾기</title>
 </head>

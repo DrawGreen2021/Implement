@@ -8,7 +8,7 @@
 	<meta name="description" content="캡스톤_01">
 	<meta name="keywords" content="HTML5, CSS, JQUERY">
 	
-	<link rel="stylesheet" type="text/css" href="../css/main.css?after">
+	<link rel="stylesheet" type="text/css" href="../css/main.css?ver=<%=System.currentTimeMillis() %>">
 	
 	<title>CorpCollector : 고객 후기</title>
 </head>
@@ -18,7 +18,7 @@
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!-- 내용 영역 -->
-	<div width="1200px;" style="text-align:center; margin:5% auto;">
+	<div class="outer_block">
 		<div class="sidebar_div" style="float:left;">
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
@@ -29,7 +29,7 @@
 			</aside>
 		</div>
 		
-		<div class="content_div">
+		<div class="content_div" >
 			<table width="1000px;" style="text-align:center; float:right; background-color:gray;">
 				<tr>
 				<table width="900px;" style="text-align: center; margin:0 auto; position:relative;">
@@ -62,7 +62,7 @@
 
 						<%-- 고객후기 글 목록이 있다면 리스트 출력 --%>
 						<c:when test="${not empty requestScope.postList }">
-							<table class="content_div_community">
+							<table class="content_div_community" id="content_div_community">
 								<tr class="community_text"
 									style="background-color: #eeedeb; height: 30px;">
 									<td width="30px"> </td>
@@ -145,6 +145,7 @@
 								<span onclick="alert('다음 페이지가 없습니다.');">다음</span>
 							</c:if>
 							</div>
+
 						</c:when>
 						
 						<%-- 그 외의 경우 --%>
@@ -160,13 +161,12 @@
 			
 		</div>
 	</div>
-	
-	
-	
+
+
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/community_common.js"></script>
+	<script type="text/javascript" src="../JavaScript/community_common.js?ver=<%=System.currentTimeMillis() %>"></script>
 </body>
 </html>

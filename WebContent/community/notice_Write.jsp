@@ -8,7 +8,7 @@
 	<meta name="description" content="캡스톤_01">
 	<meta name="keywords" content="HTML5, CSS, JQUERY">
 	
-	<link rel="stylesheet" type="text/css" href="../css/main.css?after">
+	<link rel="stylesheet" type="text/css" href="../css/main.css?ver=<%=System.currentTimeMillis() %>">
 	
 	<title>CorpCollector : 공지사항 작성</title>
 </head>
@@ -18,7 +18,7 @@
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!-- 내용 영역 -->
-	<div width="1200px;" style="text-align:center; margin:5% auto;">
+	<div class="outer_block" >
 		<div class="sidebar_div" style="float:left;">
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
@@ -29,7 +29,7 @@
 			</aside>
 		</div>
 		
-		<div class="content_div">
+		<div class="content_div" >
 			<form id="postForm" method="post">
 			<table width="1000px;" style="text-align:center; float:right;">
 				<tr>
@@ -87,6 +87,6 @@
 	<c:import url='/importedFile/footer.html'></c:import>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/community_common.js"></script>
+	<script type="text/javascript" src="../JavaScript/community_common.js?ver=<%=System.currentTimeMillis() %>"></script>
 </body>
 </html>

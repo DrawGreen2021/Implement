@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+#popupDiv { /* 팝업창 css */
+	position: absolute; 
+	width: 80%;
+	height: 100vh;
+	background: white;
+	display: none;
+}
+
+#popup_mask { /* 팝업 배경 css */
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	display: none;
+	background-color: #000;
+	opacity: 0.8;
+}
+
+.thumbnail img {
+	transition: all 0.2s linear;
+}
+
+.thumbnail:hover img {
+	transform: scale(0.8);
+}

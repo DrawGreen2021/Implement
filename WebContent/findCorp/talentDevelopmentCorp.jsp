@@ -8,7 +8,7 @@
 <meta name="description" content="캡스톤_01">
 <meta name="keywords" content="HTML5, CSS, JQUERY">
 
-<link rel="stylesheet" type="text/css" href='<c:url value="/css/main.css?after"/>'>
+<link rel="stylesheet" type="text/css" href='<c:url value="/css/main.css?ver=<%=System.currentTimeMillis() %>"/>'>
 
 <title>CorpCollector : 인재 육성형 중소 기업</title>
 </head>
@@ -17,7 +17,7 @@
 	<c:import url='/importedFile/header.jsp'></c:import>
 
 	<!-- 내용 영역 -->
-	<div width="1200px;" style="text-align: center; margin: 5% auto;">
+	<div class="outer_block">
 		<div class="sidebar_div" style="float: left;">
 			<aside class="sidebar">
 				<ul style="list-style-type: none;">
