@@ -8,7 +8,7 @@
 	<meta name="description" content="캡스톤_01">
 	<meta name="keywords" content="HTML5, CSS, JQUERY">
 	
-	<link rel="stylesheet" type="text/css" href="../css/main.css?after">
+	<link rel="stylesheet" type="text/css" href="../css/main.css?ver=<%=System.currentTimeMillis() %>">
 	
 	<title>CorpCollector : 공지사항</title>
 </head>
@@ -18,7 +18,7 @@
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!-- 내용 영역 -->
-	<div width="1200px;" style="text-align:center; margin:5% auto;">
+	<div class="outer_block">
 		<div class="sidebar_div" style="float:left;">
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
@@ -53,7 +53,7 @@
 					<c:choose>
 						<%-- 공지사항 글이 없을 경우 --%>
 						<c:when test="${requestScope.postList == 'noResult' }">
-							<div class="content_div_findCorpList" style="border:0;">
+							<div class="content_div_findCorpList" style="border:0;" id="content_div_findCorpList">
 								<br><br><br><br><br><br><br>
 								공지사항이 없습니다.
 								<br><br><br><br><br><br><br><br><br>
@@ -109,39 +109,6 @@
 							
 							<button class="writing_btn" style="margin:0 0 0 92%;" value="notice_Write.jsp" onclick="writing_Check(this)">글쓰기</button>
 							
-							<!-- 페이지 번호 div -->
-							<div class="pagelist_text" style="margin:3% auto;">
-							
-							<%-- 페이징 변수 파일 포함 --%>
-							<c:import url='/importedFile/pagingVariables.jsp'></c:import>
-							<c:if test="${startNum > 1}">
-								<span><a
-									href='SearchPost.do?boardName=${param.boardName }&page=${startNum - pageCount}&keyword=${param.keyword}'>이전</a>
-								</span>
-							</c:if>
-							<c:if test="${startNum <= 1}">
-								<span onclick="alert('이전 페이지가 없습니다.');">이전</span>
-							</c:if>
-
-							<%-- 페이지의 가장 끝 번호까지만 표시 --%>
-							<span> <c:forEach var="num" begin="${startNum }"
-									end="${lastNum }">
-									<c:if test="${num <= lastPageNum }">
-										<a style="color:gray;"
-											href='SearchPost.do?boardName=${param.boardName }&page=${num}&keyword=${param.keyword }'>${num}</a>
-									</c:if>
-								</c:forEach>
-							</span>
-
-							<c:if test="${(startNum + pageCount -1) < lastPageNum }">
-								<span> <a
-									href='SearchPost.do?boardName=${param.boardName }&page=${startNum + pageCount}&keyword=${param.keyword}'>다음</a>
-								</span>
-							</c:if>
-							<c:if test="${(startNum + pageCount -1) >= lastPageNum }">
-								<span onclick="alert('다음 페이지가 없습니다.');">다음</span>
-							</c:if>
-							</div>
 						</c:when>
 
 						<%-- 그 외의 경우 --%>
@@ -157,13 +124,47 @@
 			
 		</div>
 	</div>
-	
-	
-	
+
+
+	<!-- 페이지 번호 div -->
+	<div class="pagelist_text" style="margin: 0 auto;">
+
+		<%-- 페이징 변수 파일 포함 --%>
+		<c:import url='/importedFile/pagingVariables.jsp'></c:import>
+		<c:if test="${startNum > 1}">
+			<span><a
+				href='SearchPost.do?boardName=${param.boardName }&page=${startNum - pageCount}&keyword=${param.keyword}'>이전</a>
+			</span>
+		</c:if>
+		<c:if test="${startNum <= 1}">
+			<span onclick="alert('이전 페이지가 없습니다.');">이전</span>
+		</c:if>
+
+		<%-- 페이지의 가장 끝 번호까지만 표시 --%>
+		<span> <c:forEach var="num" begin="${startNum }"
+				end="${lastNum }">
+				<c:if test="${num <= lastPageNum }">
+					<a style="color: gray;"
+						href='SearchPost.do?boardName=${param.boardName }&page=${num}&keyword=${param.keyword }'>${num}</a>
+				</c:if>
+			</c:forEach>
+		</span>
+
+		<c:if test="${(startNum + pageCount -1) < lastPageNum }">
+			<span> <a
+				href='SearchPost.do?boardName=${param.boardName }&page=${startNum + pageCount}&keyword=${param.keyword}'>다음</a>
+			</span>
+		</c:if>
+		<c:if test="${(startNum + pageCount -1) >= lastPageNum }">
+			<span onclick="alert('다음 페이지가 없습니다.');">다음</span>
+		</c:if>
+	</div>
+
+
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/community_common.js"></script>
+	<script type="text/javascript" src="../JavaScript/community_common.js?ver=<%=System.currentTimeMillis() %>"></script>
 </body>
 </html>
