@@ -18,6 +18,7 @@
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!-- 내용 영역 -->
+	<div class="outer_block">
 	<form method="post">
 	<div class="content_div_findInfo">
 		<br>
@@ -76,6 +77,7 @@
 		<br>
 	</div>
 	</form>
+	</div>
 	
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>

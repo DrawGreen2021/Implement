@@ -17,6 +17,7 @@
 	<!-- 헤더 파일 포함 -->
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
+	<div class="outer_block">
 	<!-- 내용 영역 -->
 	<c:set var="passwordCheck" value="${requestScope.passwordCheck }"
 		scope="request"></c:set>
@@ -67,7 +68,7 @@
 			</div>
 		</c:otherwise>
 	</c:choose>
-
+	</div>
 	
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
