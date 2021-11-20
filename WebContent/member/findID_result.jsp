@@ -18,6 +18,7 @@
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!-- 내용 영역 -->
+	<div class="outer_block">
 	<c:set var="found_ID" value="${requestScope.found_ID }"
 		scope="request"></c:set>
 	<c:choose>
@@ -55,7 +56,7 @@
 			</div>
 		</c:otherwise>
 	</c:choose>
-
+	</div>
 	
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>

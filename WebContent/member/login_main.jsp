@@ -18,6 +18,7 @@
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!--로그인 영역-->
+	<div class="outer_block">
 	<div class="content_div_login">
 		<!--로그인 타이틀 글자-->
 		<table align="center" height="90px;">
@@ -74,6 +75,7 @@
 			</tr>
 		</table>
 		
+	</div>
 	</div>
 	
 	<!-- 푸터 파일 포함 -->
