@@ -25,7 +25,7 @@
 					<a href="<c:url value='/index.jsp'/>"><img src="images/logo1.PNG" alt="CorpCollector" class="logo1_img"/></a>
 				</td>
 			
-				<form action="FindCorp.do" method="get" align="center">
+				<form action="FindCorp.do" method="get" id="findCorpForm">
 					<td>
 						<input type="hidden" id="corpType" name="corpType" value="intercorp">
 						<input type="hidden" name="page" value="1">

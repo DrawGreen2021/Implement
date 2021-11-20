@@ -4,5 +4,6 @@ var corpType = document.getElementById("corpType");
 
 function setType(button) {
 	corpType.value = button.value;
+	document.getElementById("findCorpForm").submit();
 }
 
