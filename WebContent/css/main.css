@@ -310,6 +310,11 @@
 	margin-top: 2px;
 }
 
+.search_btn img {
+	width: 58px;
+	display: block;
+}
+
 /* 구분선 */
 .horizontal_rule {
 	margin: 0 auto;
@@ -348,8 +353,8 @@
 	color:#21499b; 
 	background-color:white;
 	border:0px;
-	font-weight:bold; 
-	/* font-family:dotum; */
+	/* font-weight:bold; 
+	font-family:dotum; */
 	padding: 0 2%;
 	margin: 0 auto;
 	cursor:pointer;
@@ -508,12 +513,28 @@
 	font-weight:bold;
 }
 
+.bar_div {
+	float: left;
+	margin-top: 2px;
+}
+
+.btn_div {
+	float: left;
+	margin-top: 10px;
+}
+
+.horizontal_rule_long {
+	margin: 10px auto;
+	background: linear-gradient(70deg,#21499b,#93ABD5,#FED967);
+	width: 930px;
+	height: 5px;
+}
+
 /* 기업찾기 컨텐츠 div 설정 */
 .contend_div_findCorp{
 	background-color: white;
 	position: relative;
 	width: 930px;
-	height:100%;
 	margin: 2% auto;
 	border:0;
 }

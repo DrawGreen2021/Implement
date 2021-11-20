@@ -31,7 +31,7 @@
 		</div>
 		
 		<div class="content_div" style="text-align:left;">
-			<div width="930px" height="500px">
+			<div style="width: 930px;">
 				<h1 style="font-size:50px; color:#180E5A;">TEAM 그릴그린</h1>
 				<br><br> <c:set var="colCount" value="3"></c:set>
 				
@@ -85,6 +85,9 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- 푸터 파일 포함 -->
+	<c:import url='/importedFile/footer.html'></c:import>
 	
 	<!-- 레이어 팝업 -->
 	<div id="popup_mask"></div>
@@ -92,10 +95,6 @@
 		style="display: none; border: 3px solid rgb(204, 204, 204);"
 		onclick="closeLayer()">
 	</div>
-	
-	
-	<!-- 푸터 파일 포함 -->
-	<c:import url='/importedFile/footer.html'></c:import>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
 	<script type="text/javascript" src="../JavaScript/thumbnailClickFunc.js?ver=<%=System.currentTimeMillis() %>"></script>

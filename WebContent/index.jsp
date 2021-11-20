@@ -39,7 +39,7 @@
 				</div>
 				<div style="float: left; margin-top: 10px;">
 					<button class="search_btn" type="submit">
-						<img src="images/search_logo.PNG" alt="search" width="58px;" style="display: block;">
+						<img src="images/search_logo.PNG" alt="search">
 					</button>
 				</div>
 			</form>
