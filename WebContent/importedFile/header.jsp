@@ -67,7 +67,7 @@
 					</li>
 					<li style="float:right;">
 						<a href="<c:url value='/myPage/PersonalInfoView.do'/>">마이페이지</a>
-						<ul class="sub_Menu" style="float:right;">
+						<ul class="sub_Menu" style="float:right; width: 380px; margin-left: -139px;">
 							<li><a href="<c:url value='/myPage/PersonalInfoView.do'/>">개인 정보 관리</a></li>
 							<li><a href="<c:url value='/myPage/FavoriteCorpView.do?page=1'/>">관심 기업</a></li>
 							<li><a href="<c:url value='/myPage/RecentSearchView.do?page=1'/>">최근 검색 기업</a></li>
@@ -140,7 +140,7 @@
 					</li>
 					<li>
 						<a href=""  onclick="alert('로그인 후 이용 가능합니다')">마이페이지</a>
-						<ul class="sub_Menu" float="right">
+						<ul class="sub_Menu" style="float: right; width: 380px; margin-left: -139px;">
 							<li><a href="" onclick="alert('로그인 후 이용 가능합니다')">개인 정보 관리</a></li>
 							<li><a href="" onclick="alert('로그인 후 이용 가능합니다')">관심 기업</a></li>
 							<li><a href="" onclick="alert('로그인 후 이용 가능합니다')">최근 검색 기업</a></li>
