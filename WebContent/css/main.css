@@ -72,12 +72,9 @@ body {
 
 .footer_div{
 	margin:0 auto;
-<<<<<<< HEAD
 	background-color:black;
-=======
-	margin-top:60px;
+	margin-top:10%;
 	background-color:white;
->>>>>>> 357a12d4fe2f13be7affbde4a07e2cdf8a5dbe77
 	color:black;
 	position:relative; 
 	bottom:0;
@@ -482,20 +479,14 @@ body {
 /* 기업 찾기 */
 /* 좌측 사이드 바 통합 div */
 .sidebar_div{
-<<<<<<< HEAD
 	width:200px;
 	height:100%;
-=======
 	width:250px;
->>>>>>> 357a12d4fe2f13be7affbde4a07e2cdf8a5dbe77
 	color:black;
 	border:0px;
 	position:relative;
-<<<<<<< HEAD
-=======
 	margin: 0 0 0 20px;
 	/* margin: 0 0 0 5%; */
->>>>>>> 357a12d4fe2f13be7affbde4a07e2cdf8a5dbe77
 }
 
 /* aside(좌측 사이드 바) */
@@ -567,14 +558,11 @@ body {
 	color:black;
 	position: relative;
 	width: 930px;
-<<<<<<< HEAD
 	height:100%;
 	/*margin: 2% auto;*/
 	margin:0 auto;
-=======
 	/* height:100%; */
 	margin: 2% auto;
->>>>>>> 357a12d4fe2f13be7affbde4a07e2cdf8a5dbe77
 	border:1px solid gray;
 	padding:5;
 	text-align:center;

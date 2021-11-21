@@ -135,13 +135,8 @@
 										<c:choose>
 											<%-- 현재 페이지는 회색이 아닌 다른 컬러로 표시 --%>
 											<c:when test="${num == param.page }">
-<<<<<<< HEAD
 												<a style="color:gray; font-weight:bold;"
 												href='SearchPost.do?boardName=${param.boardName }&page=${num}&keyword=${param.keyword }'>${num}</a>
-=======
-												<a style="color: yellow;"
-													href='SearchPost.do?boardName=${param.boardName }&page=${num}&keyword=${param.keyword }'>${num}</a>
->>>>>>> 357a12d4fe2f13be7affbde4a07e2cdf8a5dbe77
 											</c:when>
 											<c:otherwise>
 												<a style="color: gray;"

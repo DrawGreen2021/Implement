@@ -83,12 +83,19 @@
 			</table>
 
 			<!-- 페이지 번호 div -->
-			<div class="pagelist_text" style="margin: 0 auto;">
+			<div class="pagelist_text" style="margin: 3% auto;">
 			
 				<c:import url='/importedFile/pagingVariables.jsp'></c:import>
+	
+				<c:if test="${startNum > 1}">
+					<span><a
+						href='RecentSearchView.do?page=${startNum - pageCount}'>이전</a> </span>
+				</c:if>
+				<c:if test="${startNum <= 1}">
+					<span onclick="alert('이전 페이지가 없습니다.');">이전</span>
+				</c:if>
 
-<<<<<<< HEAD
-						<%-- 페이지의 가장 끝 번호까지만 표시 --%>
+				<%-- 페이지의 가장 끝 번호까지만 표시 --%>
 						<span> <c:forEach var="num" begin="${startNum }"
 								end="${lastNum }">
 								<c:if test="${num <= lastPageNum }">
@@ -105,32 +112,6 @@
 								</c:if>
 							</c:forEach>
 						</span>
-=======
-				<c:if test="${startNum > 1}">
-					<span><a
-						href='RecentSearchView.do?page=${startNum - pageCount}'>이전</a> </span>
-				</c:if>
-				<c:if test="${startNum <= 1}">
-					<span onclick="alert('이전 페이지가 없습니다.');">이전</span>
-				</c:if>
->>>>>>> 357a12d4fe2f13be7affbde4a07e2cdf8a5dbe77
-
-				<%-- 페이지의 가장 끝 번호까지만 표시 --%>
-				<span> <c:forEach var="num" begin="${startNum }"
-						end="${lastNum }">
-						<c:if test="${num <= lastPageNum }">
-							<c:choose>
-								<c:when test="${num == param.page }">
-									<a style="color: yellow;"
-										href='RecentSearchView.do?page=${num}'>${num}</a>
-								</c:when>
-								<c:otherwise>
-									<a style="color: gray;" href='RecentSearchView.do?page=${num}'>${num}</a>
-								</c:otherwise>
-							</c:choose>
-						</c:if>
-					</c:forEach>
-				</span>
 
 				<c:if test="${(startNum + pageCount -1) < lastPageNum }">
 					<span> <a
@@ -144,9 +125,6 @@
 
 		</div>
 	</div>
-
-	
-	<br><br><br><br>
 	
 	
 	<!-- 푸터 파일 포함 -->

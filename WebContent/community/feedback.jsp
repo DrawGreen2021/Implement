@@ -107,16 +107,6 @@
 					<!-- 페이지 번호 div -->
 					<div class="pagelist_text" style="margin: 3% auto;">
 
-<<<<<<< HEAD
-							<%-- 페이지의 가장 끝 번호까지만 표시 --%>
-							<span> <c:forEach var="num" begin="${startNum }"
-									end="${lastNum }">
-									<c:if test="${num <= lastPageNum }">
-										<c:choose>
-											<%-- 현재 페이지는 회색이 아닌 다른 컬러로 표시 --%>
-											<c:when test="${num == param.page }">
-												<a style="color:gray; font-weight:bold;"
-=======
 						<%-- 페이징 변수 파일 포함 --%>
 						<c:import url='/importedFile/pagingVariables.jsp'></c:import>
 						<c:if test="${startNum > 1}">
@@ -135,8 +125,7 @@
 									<c:choose>
 										<%-- 현재 페이지는 회색이 아닌 다른 컬러로 표시 --%>
 										<c:when test="${num == param.page }">
-											<a style="color: yellow;"
->>>>>>> 357a12d4fe2f13be7affbde4a07e2cdf8a5dbe77
+											<a style="color: gray; font-weight:bold;"
 												href='SearchPost.do?boardName=${param.boardName }&page=${num}&keyword=${param.keyword }'>${num}</a>
 										</c:when>
 										<c:otherwise>

@@ -111,7 +111,6 @@
 										<c:when
 											test="${dto.serial_number eq favoriteNums[status.index] 
 															&& requestScope.favoriteNums != null && not empty sessionScope.MemberDTO}">
-<<<<<<< HEAD
 													<td style="text-align:center;"><button value="${dto.serial_number }"
 															onclick="addFavoriteCorp(this)" class="favoriteCorp_btn">★</button></td>
 												</c:when>
@@ -132,66 +131,6 @@
 
 									</c:forEach>
 								</table>
-								
-								
-								<%-- 검색 후 초기 화면으로 되돌아가기 --%>
-								<button class="findCorp_list_btn" style="margin:0 0 0 89%;" onclick="resetKeyword()">전체 목록보기</button>
-								
-								
-								<!-- 페이지 번호 div -->
-								<div class="pagelist_text" style="margin:3% auto;">
-
-								<%-- 페이징 변수 파일 포함 --%>
-								<c:import url='/importedFile/pagingVariables.jsp'></c:import>
-
-								<c:if test="${startNum > 1}">
-									<span><a
-										href='FindCorp.do?corpType=${param.corpType }&page=${startNum - pageCount}&keyword=${param.keyword}'>이전</a>
-									</span>
-								</c:if>
-								<c:if test="${startNum <= 1}">
-									<span onclick="alert('이전 페이지가 없습니다.');">이전</span>
-								</c:if>
-
-								<%-- 페이지의 가장 끝 번호까지만 표시 --%>
-								<span> <c:forEach var="num" begin="${startNum }"
-										end="${lastNum }">
-										<c:if test="${num <= lastPageNum }">
-											<c:choose>
-												<%-- 현재 페이지는 회색이 아닌 다른 컬러로 표시 --%>
-												<c:when test="${num == param.page }">
-													<a style="color:gray; font-weight:bold;" href='FindCorp.do?corpType=${param.corpType }&page=${num}&keyword=${param.keyword }'>${num}</a>
-												</c:when>
-												<c:otherwise>
-													<a style="color:gray;" href='FindCorp.do?corpType=${param.corpType }&page=${num}&keyword=${param.keyword }'>${num}</a>
-												</c:otherwise>
-											</c:choose>
-										</c:if>
-									</c:forEach>
-=======
-											<td style="text-align: center;"><button
-													value="${dto.serial_number }"
-													onclick="addFavoriteCorp(this)" class="favoriteCorp_btn">★</button></td>
-										</c:when>
-										<c:otherwise>
-											<td style="text-align: center;"><button
-													value="${dto.serial_number }"
-													onclick="addFavoriteCorp(this)" class="favoriteCorp_btn">☆</button></td>
-										</c:otherwise>
-									</c:choose>
-									<td><a id="corpName${dto.serial_number }"
-										style="color: black; text-decoration: none;"
-										href='DetailView.do?corpType=${param.corpType }&serial_num=${dto.serial_number }'>
-											${dto.company_name }</a></td>
-									<td style="font-size: 10pt;">${dto.location }</td>
-									<td>${dto.sector }</td>
-									<td>${dto.best_wage }</td>
-									<td>${dto.best_balance }</td>
-									<td>${dto.best_employ }</td>
-								</tr>
-
-							</c:forEach>
-						</table>
 
 
 						<%-- 검색 후 초기 화면으로 되돌아가기 --%>
@@ -208,7 +147,6 @@
 							<c:if test="${startNum > 1}">
 								<span><a
 									href='FindCorp.do?corpType=${param.corpType }&page=${startNum - pageCount}&keyword=${param.keyword}'>이전</a>
->>>>>>> 357a12d4fe2f13be7affbde4a07e2cdf8a5dbe77
 								</span>
 							</c:if>
 							<c:if test="${startNum <= 1}">
@@ -222,7 +160,7 @@
 										<c:choose>
 											<%-- 현재 페이지는 회색이 아닌 다른 컬러로 표시 --%>
 											<c:when test="${num == param.page }">
-												<a style="color: yellow;"
+												<a style="color: gray; font-weight:bold;"
 													href='FindCorp.do?corpType=${param.corpType }&page=${num}&keyword=${param.keyword }'>${num}</a>
 											</c:when>
 											<c:otherwise>
