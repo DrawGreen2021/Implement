@@ -8,11 +8,12 @@
 <meta name="description" content="캡스톤_01">
 <meta name="keywords" content="HTML5, CSS, JQUERY">
 
-<link rel="stylesheet" type="text/css" href='<c:url value="/css/main.css?ver=<%=System.currentTimeMillis() %>"/>'>
+<link rel="stylesheet" type="text/css" href='<c:url value="/css/main.css?ver1=<%=System.currentTimeMillis() %>"/>'>
 
 <title>CorpCollector : 인재 육성형 중소 기업</title>
 </head>
 <body>
+	<div id="container">
 	<!-- 헤더 파일 포함 -->
 	<c:import url='/importedFile/header.jsp'></c:import>
 
@@ -69,6 +70,7 @@
 					</div>
 				</form>
 			</div>
+			<div class="horizontal_rule_long"></div>
 			
 			<article class="content_div_findCorp">
 				<!-- 기업 리스트 출력 -->
@@ -76,7 +78,7 @@
 					<%-- 기업 리스트가 null이면 검색 결과가 없다고 표시 --%>
 					<c:when test="${requestScope.corpList == 'noResult' }">
 						<div class="content_div_findCorpList" style="height: 350px;">
-							<p style="margin: 0 auto; padding: 14% 10%; color: gray;">검색
+							<p style="margin: 0 auto; padding: 14% 10%; color: gray; text-align: center;">검색
 								결과가 없습니다.</p>
 						</div>
 						<button class="findCorp_list_btn" style="margin: 0 0 0 89%;"
@@ -195,7 +197,8 @@
 
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
-
+	</div>
+	
 	<!-- 자바 스크립트 파일 외부 참조 -->
 	<script type="text/javascript" src='<c:url value="/JavaScript/findCorp_common.js"/>'></script>
 </body>

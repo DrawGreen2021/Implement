@@ -15,6 +15,7 @@
 </head>
 
 <body>
+	<div id="container">
 	<!-- 헤더 파일 포함 -->
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
@@ -53,7 +54,7 @@
 								<br>
 								<br>
 								<br>
-								<p style="color: gray;">관심 기업이 없습니다.</p>
+								<p style="color: gray; text-align: center;">관심 기업이 없습니다.</p>
 								<br>
 								<br>
 								<br>
@@ -285,6 +286,7 @@
 
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
+	</div>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
 	<script type="text/javascript" src="../JavaScript/myPage_common.js?v=<%=System.currentTimeMillis() %>"></script>

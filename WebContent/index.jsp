@@ -14,6 +14,7 @@
 </head>
 
 <body>
+	<div id="container">
 	<!-- 헤더 파일 포함 -->
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
@@ -80,6 +81,7 @@
 	
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
+	</div>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
 	<script type="text/javascript" src="JavaScript/common.js?ver=<%=System.currentTimeMillis() %>"></script>

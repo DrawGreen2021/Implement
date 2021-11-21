@@ -14,6 +14,7 @@
 </head>
 
 <body>
+	<div id="container">
 	<!-- 헤더 파일 포함 -->
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
@@ -47,7 +48,7 @@
 							<%-- 사용자가 작성한 고객후기가 없으면 아래 메시지 표시 --%>
 							<c:when test="${empty requestScope.postList }">
 								<br><br><br><br><br>
-								<p style="color:gray;">작성한 글이 없습니다.</p>
+								<p style="color:gray; text-align: center;">작성한 글이 없습니다.</p>
 								<br><br><br><br><br><br><br>
 							</c:when>
 							
@@ -148,6 +149,7 @@
 
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
+	</div>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
 	<script type="text/javascript" src="../JavaScript/myPage_common.js"></script>
