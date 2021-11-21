@@ -8,17 +8,18 @@
 	<meta name="description" content="캡스톤_01">
 	<meta name="keywords" content="HTML5, CSS, JQUERY">
 	
-	<link rel="stylesheet" type="text/css" href="../css/main.css?after">
+	<link rel="stylesheet" type="text/css" href="../css/main.css?ver=<%=System.currentTimeMillis() %>">
 	
 	<title>CorpCollector : 개인 정보 관리</title>
 </head>
 
 <body>
+	<div id="container">
 	<!-- 헤더 파일 포함 -->
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!-- 내용 영역 -->
-	<div width="1200px;" style="text-align:center; margin:5% auto; margin-bottom:18%;">
+	<div class="outer_block">
 		<div class="sidebar_div" style="float:left;">
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
@@ -32,7 +33,7 @@
 		</div>
 		
 		<form action="PersonalInfoWriteView.do" method="post">
-		<div class="content_div">
+		<div class="content_div" >
 			<table width="1000px;" style="text-align:center; float:right;">
 				<tr>
 					<p style="font-size:16pt; color:#21499b; font-weight:bold; margin:0 83% 0 0; ">개인 정보 관리</p>
@@ -47,10 +48,6 @@
 							<td colspan="3" style="text-align:left; padding-left:15px; ">${requestScope.personalInfo['id'] }
 								<input type="hidden" name="id" value="${requestScope.personalInfo['id'] }"></td>
 						</tr>
-						<!-- <tr class="community_text" height="30px;">
-							<td width="100px" style="background-color:#eeedeb;">비밀번호/PW</td>
-							<td colspan="3"></td>
-						</tr> -->
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">닉네임</td>
 							<td colspan="3" style="text-align:left; padding-left:15px; ">${requestScope.personalInfo['nickname'] }
@@ -75,7 +72,6 @@
 			</table>
 			<div style="float:right;">
 			<input type="submit" value="수정" class="writing_btn">
-			<%-- <button class="writing_btn" onclick="location.href='${pageContext.request.contextPath}/myPage/UpdatePersonalInfo.do'">수정</button> --%>
 			</div>
 			
 		</div>
@@ -85,9 +81,7 @@
 	
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
+	</div>
 	
-	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/common.js"></script>
-
 </body>
 </html>

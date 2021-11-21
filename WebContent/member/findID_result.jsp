@@ -9,18 +9,21 @@
 	<meta name="description" content="캡스톤_01">
 	<meta name="keywords" content="HTML5, CSS, JQUERY">
 	
-	<link rel="stylesheet" type="text/css" href="../css/main.css?after">
+	<link rel="stylesheet" type="text/css" href="../css/main.css?ver=<%=System.currentTimeMillis() %>">
 	
 	<title>CorpCollector : 아이디 찾기 결과</title>
 </head>
 <body>
+	<div id="container">
 	<!-- 헤더 파일 포함 -->
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!-- 내용 영역 -->
-	<c:set var="finded_ID" value="${requestScope.found_ID }"
+	<div class="outer_block">
+	<c:set var="found_ID" value="${requestScope.found_ID }"
 		scope="request"></c:set>
 	<c:choose>
+		<%-- 아이디 찾기 결과가 없으면 에러 메시지 표시 --%>
 		<c:when test="${found_ID == null || fn:length(found_ID) == 0}">
 			<div class="content_div_findInfo">
 			<br>
@@ -33,6 +36,7 @@
 			</div>
 		</c:when>
 		
+		<%-- 아이디 찾기 결과가 있으면 아이디 표시 --%>
 		<c:otherwise>
 			<div class="content_div_findInfo">
 			<br>
@@ -53,10 +57,11 @@
 			</div>
 		</c:otherwise>
 	</c:choose>
-
+	</div>
 	
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
+	</div>
 	
 </body>
 </html>

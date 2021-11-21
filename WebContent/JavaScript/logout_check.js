@@ -1,5 +1,5 @@
 /**
- * a태그 클릭 시 post방식으로 값 전달
+ * 로그아웃 a태그 클릭 시 post방식으로 값 전달
  */
 
 function logoutDo() {

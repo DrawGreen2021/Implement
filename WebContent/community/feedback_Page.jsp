@@ -8,17 +8,18 @@
 	<meta name="description" content="캡스톤_01">
 	<meta name="keywords" content="HTML5, CSS, JQUERY">
 	
-	<link rel="stylesheet" type="text/css" href="../css/main.css?after">
+	<link rel="stylesheet" type="text/css" href="../css/main.css?ver=<%=System.currentTimeMillis() %>">
 	
 	<title>CorpCollector : 고객 후기</title>
 </head>
 
 <body>
+	<div id="container">
 	<!-- 헤더 파일 포함 -->
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!-- 내용 영역 -->
-	<div width="1200px;" style="text-align:center; margin:5% auto;">
+	<div class="outer_block">
 		<div class="sidebar_div" style="float:left;">
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
@@ -31,10 +32,12 @@
 		
 		<c:choose>
 			<c:when test="${requestScope.post != null }">
-				<div class="content_div">
+				<div class="content_div" id="content_div">
 					<table width="1000px;" style="text-align: center; float: right;">
 						<tr>
-							<p style="font-size: 16pt; color: #21499b; font-weight: bold; margin: 0 90% 0 0;">고객 후기</p>
+							<p
+								style="font-size: 16pt; color: #21499b; font-weight: bold; margin: 0 90% 0 0;">고객
+								후기</p>
 						</tr>
 						<tr>
 							<div style="border: 1px solid #21499b; margin: 1% auto;"></div>
@@ -42,25 +45,26 @@
 						<tr>
 							<table class="content_div_write">
 								<tr class="community_text" height="30px;">
-									<td width="100px" style="background-color: #eeedeb; text-align:center;">제목</td>
-									<td colspan="3" style="text-align:left; padding-left:15px;">${requestScope.post['title']}</td>
+									<td width="100px"
+										style="background-color: #eeedeb; text-align: center;">제목</td>
+									<td colspan="3" style="text-align: left; padding-left: 15px;">${requestScope.post['title']}</td>
 								</tr>
 								<tr class="community_text" height="30px;">
 									<td width="100px" style="background-color: #eeedeb;">작성자</td>
 									<c:choose>
 										<c:when
 											test="${requestScope.post['is_private_writer'] == true}">
-											<td colspan="3" style="text-align:left; padding-left:15px;">비공개</td>
+											<td colspan="3" style="text-align: left; padding-left: 15px;">비공개</td>
 										</c:when>
 										<c:otherwise>
-											<td colspan="3" style="text-align:left; padding-left:15px;">${requestScope.post['writer_name'] }</td>
+											<td colspan="3" style="text-align: left; padding-left: 15px;">${requestScope.post['writer_name'] }</td>
 										</c:otherwise>
 									</c:choose>
 
 								</tr>
 								<tr class="community_text" height="30px;">
 									<td width="100px" style="background-color: #eeedeb;">등록일</td>
-									<td width="350px" style="text-align:left; padding-left:15px;">${requestScope.post['registration_date'] }</td>
+									<td width="350px" style="text-align: left; padding-left: 15px;">${requestScope.post['registration_date'] }</td>
 									<td width="100px" style="background-color: #eeedeb;">조회수</td>
 									<td width="200px">${requestScope.post['hits'] }</td>
 
@@ -74,9 +78,10 @@
 											height="100%" readonly="readonly">${requestScope.post['content'] }</textarea> -->
 								</tr>
 							</table>
-							
+
 						</tr>
 					</table>
+					
 					<div style="float: right;">
 						<input type="hidden" id="boardName" value="고객후기">
 						<button class="writing_btn" onclick="updating_Check(this)"
@@ -88,6 +93,7 @@
 						<!-- 목록으로 돌아가기 -->
 					</div>
 				</div>
+
 			</c:when>
 			
 			<c:otherwise>
@@ -99,14 +105,12 @@
 		</c:choose>
 		
 	</div>
-	
-	
-	
+
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
+	</div>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/common.js"></script>
-	<script type="text/javascript" src="../JavaScript/community_common.js"></script>
+	<script type="text/javascript" src="../JavaScript/community_common.js?ver=<%=System.currentTimeMillis() %>"></script>
 </body>
 </html>

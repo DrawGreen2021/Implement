@@ -8,18 +8,23 @@
 	<meta name="description" content="캡스톤_01">
 	<meta name="keywords" content="HTML5, CSS, JQUERY">
 	
-	<link rel="stylesheet" type="text/css" href='<c:url value="/css/main.css?after"/>'>
+	<link rel="stylesheet" type="text/css" href='<c:url value="/css/main.css?ver1=<%=System.currentTimeMillis() %>"/>'>
 	
 	<title>CorpCollector : 상세 기업 정보</title>
 </head>
 <body>
+	<div id="container">
 	<!-- 헤더 파일 포함 -->
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!-- 내용 영역 -->
+<<<<<<< HEAD
 	<table width="1200px;" style="text-align:center; margin:5% auto; border:0; background-color:green;">
 	<tr>
 	<td>
+=======
+	<div class="outer_block">
+>>>>>>> 357a12d4fe2f13be7affbde4a07e2cdf8a5dbe77
 		<div class="sidebar_div" style="float:left;">
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
@@ -95,9 +100,9 @@
 
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
+	</div>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/common.js"></script>
 	<script type="text/javascript" src='<c:url value="/JavaScript/findCorp_common.js?v=<%=System.currentTimeMillis() %>"/>'></script>
 </body>
 </html>

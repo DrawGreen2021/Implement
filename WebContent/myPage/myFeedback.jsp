@@ -8,17 +8,18 @@
 	<meta name="description" content="캡스톤_01">
 	<meta name="keywords" content="HTML5, CSS, JQUERY">
 	
-	<link rel="stylesheet" type="text/css" href="../css/main.css?after">
+	<link rel="stylesheet" type="text/css" href="../css/main.css?ver=<%=System.currentTimeMillis() %>">
 	
 	<title>CorpCollector : 내가 쓴 글</title>
 </head>
 
 <body>
+	<div id="container">
 	<!-- 헤더 파일 포함 -->
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!-- 내용 영역 -->
-	<div width="1200px;" style="text-align:center; margin:5% auto;">
+	<div class="outer_block" >
 		<div class="sidebar_div" style="float:left;">
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
@@ -44,11 +45,14 @@
 					<table class="content_div_findCorpList" style="word-break: break-all;">
 					
 						<c:choose>
+							<%-- 사용자가 작성한 고객후기가 없으면 아래 메시지 표시 --%>
 							<c:when test="${empty requestScope.postList }">
 								<br><br><br><br><br>
-								<p style="color:gray;">작성한 글이 없습니다.</p>
+								<p style="color:gray; text-align: center;">작성한 글이 없습니다.</p>
 								<br><br><br><br><br><br><br>
 							</c:when>
+							
+							<%-- 사용자가 작성한 글이 있다면 게시글 리스트 출력 --%>
 							<c:otherwise>
 								<tr class="community_text"
 									style="background-color: #eeedeb; height: 32px;">
@@ -78,37 +82,18 @@
 										
 										<td style="font-size:10pt;">${dto.registration_date }</td>
 										<td>${dto.hits }</td>
+
 									</tr>
 								</c:forEach>
 
-							</c:otherwise>
-						</c:choose>
-							
-					</table>
-				</tr>
-			</table>
-			
-			<div>
-				<label class="community_text" style="float:left;">
-					<input type="checkbox" name="favCorp_select" value="favCorp_selectAll" onclick="selectAll(this)"> 전체 선택</label>
-				<input type="button" value="삭제" class="writing_btn" style="float:right;" onclick="deleteFeedback()">
-			</div>
-		</div>
-		</form>
-		
-		<!-- 페이지 번호 div -->
-		<div class="pagelist_text" style="margin: 6% auto;">
+								</c:otherwise>
+							</c:choose>
 
-			<%-- 페이징 변수 파일 포함 --%>
-			<c:import url='/importedFile/pagingVariables.jsp'></c:import>
-			<c:if test="${startNum > 1}">
-				<span><a
-					href='MyFeedbackView.do?page=${startNum - pageCount}'>이전</a> </span>
-			</c:if>
-			<c:if test="${startNum <= 1}">
-				<span onclick="alert('이전 페이지가 없습니다.');">이전</span>
-			</c:if>
+						</table>
+					</tr>
+				</table>
 
+<<<<<<< HEAD
 			<%-- 페이지의 가장 끝 번호까지만 표시 --%>
 			<span> <c:forEach var="num" begin="${startNum }"
 					end="${lastNum }">
@@ -122,27 +107,67 @@
 								<a href='MyFeedbackView.do?page=${num}' style="color:gray;">${num}</a>
 							</c:otherwise>
 						</c:choose>
-					</c:if>
-				</c:forEach>
-			</span>
+=======
+				<p style="height: 30px">
+					<label class="community_text" style="float: left;"> <input
+						type="checkbox" name="favCorp_select" value="favCorp_selectAll"
+						onclick="selectAll(this)"> 전체 선택
+					</label> <input type="button" value="삭제" class="writing_btn"
+						style="float: right;" onclick="deleteFeedback()">
+				</p>
 
-			<c:if test="${(startNum + pageCount -1) < lastPageNum }">
-				<span> <a
-					href='MyFeedbackView.do?page=${startNum + pageCount}'>다음</a>
-				</span>
-			</c:if>
-			<c:if test="${(startNum + pageCount -1) >= lastPageNum }">
-				<span onclick="alert('다음 페이지가 없습니다.');">다음</span>
-			</c:if>
-		</div>
+				<!-- 페이지 번호 div -->
+				<div class="pagelist_text" style="margin: 0 auto;">
+
+					<%-- 페이징 변수 파일 포함 --%>
+					<c:import url='/importedFile/pagingVariables.jsp'></c:import>
+					<c:if test="${startNum > 1}">
+						<span><a
+							href='MyFeedbackView.do?page=${startNum - pageCount}'>이전</a> </span>
+					</c:if>
+					<c:if test="${startNum <= 1}">
+						<span onclick="alert('이전 페이지가 없습니다.');">이전</span>
+>>>>>>> 357a12d4fe2f13be7affbde4a07e2cdf8a5dbe77
+					</c:if>
+
+					<%-- 페이지의 가장 끝 번호까지만 표시 --%>
+					<span> <c:forEach var="num" begin="${startNum }"
+							end="${lastNum }">
+							<c:if test="${num <= lastPageNum }">
+								<c:choose>
+									<%-- 현재 페이지는 회색이 아닌 다른 컬러로 표시 --%>
+									<c:when test="${num == param.page }">
+										<a href='MyFeedbackView.do?page=${num}' style="color:yellow;">${num}</a>
+									</c:when>
+									<c:otherwise>
+										<a href='MyFeedbackView.do?page=${num}' style="color:gray;">${num}</a>
+									</c:otherwise>
+								</c:choose>
+							</c:if>
+						</c:forEach>
+					</span>
+
+					<c:if test="${(startNum + pageCount -1) < lastPageNum }">
+						<span> <a
+							href='MyFeedbackView.do?page=${startNum + pageCount}'>다음</a>
+						</span>
+					</c:if>
+					<c:if test="${(startNum + pageCount -1) >= lastPageNum }">
+						<span onclick="alert('다음 페이지가 없습니다.');">다음</span>
+					</c:if>
+				</div>
+			</div>
+		</form>
+		
 	</div>
 	
 	
+
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
+	</div>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/common.js"></script>
 	<script type="text/javascript" src="../JavaScript/myPage_common.js"></script>
 </body>
 </html>

@@ -98,11 +98,3 @@ function cancelWriting() {
 		history.go(-1);
 	}
 }
-
-/*function cancelWriting(button) {
-	var nextPage = button.value;
-	
-	if(confirm('작성을 취소하시겠습니까?') == true) {
-		location.href = nextPage;
-	}
-}*/

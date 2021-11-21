@@ -1,0 +1,730 @@
+@charset "utf-8";
+/* Cascading Style Sheets
+	HTML 파일을 작성할 때 글자의 크기나 색깔, 여백 등의 각종 스타일을 지정 할 때 사용
+ */
+ 
+ /* -----메인 화면------*/
+ 
+.header{
+	background-color:#21499b; 
+	position:relative; 
+	width:1200px; 
+	height: 130px;
+	margin:0 auto;
+}
+
+.nav{
+	background-color:white; 
+	width:1200px; 
+	height:70px; 
+	padding-top:10px;
+	font-size:8px; 
+	color:black; 
+	font-weight:normal; 
+	text-decoration:none; 
+	font-family:dotum; 
+}
+
+.nav a:hover{
+	font-weight:bold; 
+}
+
+.nav a{
+	font-size:12px; 
+	color:black; 
+	font-weight:normal; 
+	text-decoration:none; 
+	font-family:dotum; 
+	margin-left:10px;
+}
+
+.nav_logo{
+	width:385px;
+	float:left;
+}
+
+.content_div{
+	background-color: white;
+	position:relative; 
+	width:930px; 
+	margin:0 0 0 25%;
+	border:0px;
+}
+
+
+.footer_div{
+	margin:0 auto;
+	background-color:white;
+	color:black;
+	position:relative; 
+	bottom:0;
+	width:1200px;
+	float:center;
+}
+
+.img{
+	width:310px;
+	height:310px;
+	cursor: pointer;
+}
+
+/* ------로그인 화면------*/
+/* 로그인 화면 전체 div 설정*/
+.content_div_login{
+	background-color: white;
+	position: relative;
+	width: 500px;
+	height: 450px;
+	margin: 5% auto;
+	border:1px solid gray;
+}
+
+/* LOGIN 타이틀 검사 */
+.main_title{
+	color:gray;
+	font-size: 50px;
+	font-weight: bold;
+	margin-top:30px;
+	margin-bottom:30px;
+}
+
+/* 아이디 입력 텍스트 박스 테이블 설정 */
+.id_table{
+	height: 40px;
+	width: 430px;
+	border: solid 4px white;
+	margin-top: 1%;
+}
+
+/* id, pw 입력 텍스트 박스 */
+.id_pw_input{
+	height: 40px;
+	width: 410px;
+	font-size: 15px;
+}
+
+/* 로그인 버튼 테이블 설정 */
+.login_btn_table{
+	height: 40px;
+	width:430px;
+	margin-top: 1%;
+}
+
+/* 로그인 버튼 설정 */
+.login_btn{
+	height: 50px;
+	width:420px;
+	background-color:black;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	border: solid 1px black;
+	cursor: pointer;
+}
+
+/* 로그인 하위 메뉴 경계선 설정 */
+.menu_line{
+	height: 0px;
+	width: 430px;
+	border: solid 1px white;
+	margin-top: 2%;
+}
+
+/* 로그인 하위 메뉴 설정 */
+.login_sub_menu{
+	height: 50px;
+	margin-top: 1%;
+}
+
+/* 로그인 하위 메뉴 글자 설정 */
+.login_sub_menu a{
+	text-decoration: none;
+	color:gray;
+}
+
+/* ------ 회원가입 화면------*/
+/* 회원가입 화면 전체 div 설정 */
+.content_div_signUp{
+	background-color: white;
+	position: relative;
+	width:500px;
+	margin: 5% auto;
+	border:1px solid gray;
+}
+
+/* 타이틀 테이블 설정 */
+.signUp_table{
+	background-color: white;
+	color: gray;
+	font-size: 15pt;
+	font-weight: bold;
+}
+
+/* input 태그 전체 설정 */
+.signUp_table input{
+	width: 230px;
+	height:20px;
+}
+
+/* div 태그 전체 설정 - 오혜진 추가*/
+.signUp_table div{
+	width: 230px;
+	height:20px;
+} 
+
+/* 가입하기 버튼 테이블 설정 */
+.signUp_btn_table{
+	margin-top:1%;
+}
+
+/* 회원가입 페이지 버튼 설정 */
+.signUpPage_btn{
+	width: 238px;
+	height:30px;
+	background-color:black;
+	color:white;
+	font-size: 10pt;
+	font-weight:normal;
+	border: solid 1px gray;
+	cursor: pointer;
+}
+
+/* 가입하기 버튼 설정 */
+.signUp_btn{
+	height:30px;
+	width: 115px;
+	background-color:black;
+	color:white;
+	font-size: 10pt;
+	font-weight:bold;
+	border: solid 1px black;
+	cursor: pointer;
+}
+
+/* ------ 아이디, 비밀번호 찾기 ------*/
+/* 전체 div 설정 */
+.content_div_findInfo{
+	background-color: white;
+	position: relative;
+	width: 400px;
+	margin: 5% auto;
+	border:1px solid gray;
+}
+
+/* 테이블 설정 */
+.findInfo_table{
+	background-color: white;
+	color: gray;
+	font-size:10pt;
+	font-weight:bold;
+}
+
+/* 테이블 안에 input 설정 */
+.findInfo_table input{
+	width:200px;
+	height:20px;
+}
+
+/* 버튼 table 설정 */
+.findInfo_btn_table{
+	margin-top:5%;
+}
+
+/* 인증번호 받기, 아이디 찾기 버튼 설정 */
+.findInfo_btn{
+	width: 206px;
+	height: 25px;
+	background-color: black;
+	color: white;
+	font-size: 10pt;
+	font-weight:bold;
+	border: solid 1px black;
+	cursor: pointer;
+}
+
+
+/* 인덱스 화면*/
+/* 인덱스 화면 테이블*/
+.index_div{
+	width: 1200px;
+	position: relative;
+	margin:10% auto;
+}
+
+/* 인덱스 화면 로고 이미지*/
+.logo1_img{
+	width:200px;
+	cursor: pointer;
+}
+
+/* 검색바 */
+.search_bar{
+	width:600px;
+	height:50px;
+	position: relative;
+	background-color: white;
+	border:2px solid #808080;
+	font-size: 15pt;
+	
+}
+
+/* 검색바 안에 input 설정 */
+.search_bar input{
+	width:600px;
+	height:50px;
+	font-size: 13pt;
+}
+
+/* 검색바 버튼 설정 */
+.search_btn{
+	width:57px;
+	height:60px;
+	border:0px;
+	background-color:white;
+	cursor:pointer;
+	position:relative;
+}
+
+.index_keyword{
+	width:1200px;
+	height:60px;
+	font-size:11pt; 
+	background-color:white;
+	color:#21499b; 
+	font-weight:bold; 
+	text-decoration:none; 
+	font-family:dotum; 
+	margin:0 auto;
+}
+
+.index_keyword a{
+	width:800px;
+	height:60px;
+	font-size:11pt; 
+	color:#21499b; 
+	font-weight:bold; 
+	text-decoration:none; 
+	font-family:dotum; 
+	margin-left:10px;
+}
+
+.index_keyword button{
+	width:220px;
+	font-size:11pt; 
+	color:#21499b; 
+	background-color:white;
+	border:0px;
+	font-weight:bold; 
+	font-family:dotum;
+	padding: 0 2%;
+	margin: 0 auto;
+	cursor:pointer;
+}
+
+.index_keyword button:hover{
+	color:#e1bf27;
+	font-size:11pt;
+	font-weight:bold;
+}
+
+/* 메뉴바 버튼 설정 */
+.menu_btn{
+	width:230px;
+	height:50px;
+	border:0px;
+	background-color:#21499b;
+	cursor:pointer;
+	position:relative;
+	color:white;
+	font-size:12pt;
+}
+
+.menu_btn:hover{
+	color:#e1bf27;
+	font-size:12pt;
+	font-weight:bold;
+}
+
+/* 메뉴바 ul */
+.my_Menu{
+	float:left;
+	list-style:none;
+	margin:0 auto;
+	padding:0;
+	-webkit-padding-start:0px;
+}
+
+.my_Menu a{
+	color:white;
+	font-size:13pt;
+	text-decoration:none;
+	cursor:pointer;
+	margin:0 auto;
+	text-align:center;
+	vertical-align:middle;
+}
+
+.my_Menu > li{
+	display:inline-block;
+	width:234px;
+	background-color:#21499b;
+	cursor:pointer;
+	padding-top:10px;
+	margin:0 auto;
+	list-style:none;
+	text-align:center;
+	vertical-align:middle;
+}
+
+.my_Menu a:hover{
+	color:#e1bf27;
+}
+
+.my_Menu > li:hover .sub_Menu{
+	opacity: 1;
+ 	visibility: visible;
+ 	background-color:#E7F1FD;
+ 	margin-top:16px;
+}
+
+/* 메뉴 서브메뉴 */
+.sub_Menu{
+	z-index: 2;
+  	list-style:none;
+  	-webkit-padding-start: 0px;
+	position:absolute;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.15s ease-in;
+	margin:0 auto;
+	margin-top:2%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.sub_Menu a{
+	color:black;
+	font-size:10pt;
+	text-decoration:none;
+	cursor:pointer;
+	margin:0 auto;
+	text-align:center;
+	vertical-align:middle;
+	font-weight:normal;
+	font-family:dotum;
+}
+
+.sub_Menu > li{
+	padding:10px 10px;
+}
+
+.sub_Menu > li > a{
+	color:black;
+	text-decoration:none;
+}
+
+
+
+/* 기업 찾기 */
+/* 좌측 사이드 바 통합 div */
+.sidebar_div{
+	width:250px;
+	height:500px;
+	color:black;
+	border:0px;
+	background-color:white;
+	position:relative;
+	margin: 0 0 0 5%;
+}
+
+/* aside(좌측 사이드 바) */
+.sidebar{
+	width:200px;
+	border:1px solid #eeedeb;
+	background-color:white;
+	position:relative;
+	color:black;
+	font-size:10pt;
+	padding: 2px;
+	text-align:left;
+}
+
+/* aside(좌측 사이드 순위) */
+.rankbar{
+	width:200px;
+	border:0px;
+	background-color:white;
+	position:relative;
+	color:black;
+	font-size:10pt;
+}
+
+/* 사이드 바 메뉴 글씨, 효과 */
+.sidebar a{
+	width:200px;
+	font-size:10pt; 
+	color:#21499b; 
+	font-weight:normal; 
+	text-decoration:none; 
+	font-family:dotum; 
+}
+
+.sidebar a:hover{
+	color:#e1bf27; 
+	font-weight:bold;
+}
+
+/* 기업찾기 컨텐츠 div 설정 */
+.contend_div_findCorp{
+	background-color: white;
+	position: relative;
+	width: 930px;
+	height:100%;
+	margin: 2% auto;
+	border:0;
+}
+
+/* 기업찾기 컨텐츠 목록 테이블 설정 */
+.content_div_findCorpList{
+	background-color: white;
+	color:black;
+	position: relative;
+	width: 930px;
+	height:100%;
+	margin: 2% auto;
+	border:1px solid gray;
+	padding:5;
+	text-align:center;
+}
+
+/* 기업찾기 관심기업 등록 버튼 */
+.favoriteCorp_btn{
+	background-color:white;
+	color:#e1bf27;
+	width:20px;
+	height:20px;
+	border:0;
+	cursor:pointer;
+	font-size:10pt;
+}
+
+/* 기업찾기 전체 목록으로 돌아가기 버튼 */
+.findCorp_list_btn{
+	width: 100px;
+	height: 30px;
+	background-color: #F1E265;
+	color: black;
+	font-size: 10pt;
+	font-weight:normal;
+	border: 0px;
+	cursor: pointer;
+}
+
+/* 컨텐츠 하단 페이지 이동 버튼 */
+.page_move{
+	color: black;
+	font-size: 10pt;
+	font-weight:normal;
+	font-family:dotum;
+	border: 0px;
+	cursor: pointer;
+}
+
+/* 컨텐츠 페이지 번호 텍스트 */
+.pagelist_text{
+	background-color:white;
+	color:black;
+	text-align:center;
+	font-size:11pt; 
+	font-weight:normal; 
+	font-family:dotum; 
+	text-decoration:none;
+	padding:3px;
+}
+
+.pagelist_text a{
+	color:black;
+	text-align:center;
+	font-size:11pt; 
+	font-weight:normal; 
+	font-family:dotum; 
+	text-decoration:none;
+	padding:3px;
+}
+
+.pagelist_text a:hover{
+	font-weight:bold;
+}
+
+/* 기업찾기 상세 정보 테이블 설정 */
+.table_detailedFindCorp{
+	background-color: white;
+	color:black;
+	position: relative;
+	width: 930px;
+	height:100%;
+	margin: 0 auto;
+	border:1px solid gray;
+	padding:5;
+	text-align:center;
+}
+
+.table_detailedFindCorp a{
+	background-color:white;
+	color:black;
+	text-align:center;
+	font-size:11pt; 
+	font-weight:normal; 
+	font-family:dotum; 
+	padding:3px;
+}
+
+/* 커뮤니티 */
+/* 커뮤니티 컨텐츠 목록 div 설정 */
+.content_div_community{
+	background-color: white;
+	color:black;
+	position: relative;
+	width: 930px;
+	height:100%;
+	margin: 2% auto;
+	border:1px solid gray;
+	padding:0px;
+}
+
+/* 커뮤니티 컨텐츠 div 분류 텍스트 */
+.community_text{
+	background-color:white;
+	color:black;
+	text-align:center;
+	text-decoration:none;
+	font-size:11pt; 
+	font-weight:normal; 
+	font-family:dotum; 
+	padding:3px;
+	border:0;
+}
+
+/* 커뮤니티 글쓰기 div 설정 */
+.content_div_write{
+	background-color: white;
+	color:black;
+	position: relative;
+	width: 930px;
+	height:100%;
+	margin: 2% auto;
+	border:1px solid gray;
+	padding:0px;
+}
+
+/* 커뮤니티 글쓰기 input 설정 */
+.write_input{
+	background-color: white;
+	color:black;
+	font-size:11pt;
+	font-weight:normal; 
+	font-family:dotum; 
+	position: relative;
+	width: 685px;
+	border:0px;
+}
+
+.write_input input{
+	background-color: white;
+	color:black;
+	font-size:11pt;
+	font-weight:normal; 
+	font-family:dotum; 
+	position: relative;
+	width: 100%;
+	height:100%;
+	border:0px;
+	text-align:left;
+	padding-left:12px;
+}
+
+.write_input textarea{
+	background-color: white;
+	color:black;
+	font-size:11pt;
+	font-weight:normal; 
+	font-family:dotum; 
+	position: relative;
+	width: 820px;
+	height:280px;
+	border:none;
+	resize:none;
+	padding:0;
+}
+
+.write_input input:focus{
+	outline:none;
+}
+
+.write_input textarea:focus{
+	outline:none;
+	resize:none;
+}
+
+/* 커뮤니티 글쓰기 버튼 설정 */
+.writing_btn{
+	width: 70px;
+	height: 30px;
+	background-color: #F1E265;
+	color: black;
+	font-size: 10pt;
+	font-weight:normal;
+	border: 0px;
+	cursor: pointer;
+}
+
+
+/* 정보 나눔 */
+/* 정보 나눔 텍스트 */
+.information_text{
+	background-color:white;
+	color:black;
+	text-align:left;
+	font-size:11pt; 
+	font-family:dotum; 
+}
+
+/* 정보 나눔 위치 이동 텍스트 */
+.information_move_text{
+	color:black;
+	font-size:11pt;
+	font-weight:bold;
+	text-decoration:none;
+	padding:0 4%;
+	cursor:pointer;
+}
+
+.information_move_text a{
+	color:black;
+	font-size:11pt;
+	font-weight:bold;
+	text-decoration:none;
+	padding:0 3% 0 3%;
+	cursor:pointer;
+}
+
+.information_move_text a:hover{
+	color:#e1bf27;
+}
+
+/* 정보 나눔 위치 이동 버튼 */
+.information_move_button{
+	width:182px;
+	height:42px;
+	background-color:white;
+	cursor:pointer;
+	border:0;
+	color:black;
+	font-size:11pt;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+.information_move_button:hover{
+	background-color:#eeedeb;
+}

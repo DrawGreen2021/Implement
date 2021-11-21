@@ -9,19 +9,23 @@
 	<meta name="description" content="캡스톤_01">
 	<meta name="keywords" content="HTML5, CSS, JQUERY">
 	
-	<link rel="stylesheet" type="text/css" href="../css/main.css?after">
+	<link rel="stylesheet" type="text/css" href="../css/main.css?ver=<%=System.currentTimeMillis() %>">
 	
 	<title>CorpCollector : 비밀번호 찾기 결과</title>
 </head>
 <body>
+	<div id="container">
 	<!-- 헤더 파일 포함 -->
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
+	<div class="outer_block">
 	<!-- 내용 영역 -->
 	<c:set var="passwordCheck" value="${requestScope.passwordCheck }"
 		scope="request"></c:set>
 	<c:set var="user_id" value="${requestScope.user_id }" scope="request"></c:set>
+	
 	<c:choose>
+		<%-- 비밀번호 찾기 결과가 없으면 에러 메시지 표시 --%>
 		<c:when test="${passwordCheck == null}">
 			<div class="content_div_findInfo">
 			<br>
@@ -34,6 +38,7 @@
 			</div>
 		</c:when>
 		
+		<%-- 비밀번호 찾기 결과가 있으면 비밀번호 재설정 화면을 띄운다. --%>
 		<c:otherwise>
 			<div class="content_div_findInfo">
 			<br>
@@ -64,12 +69,13 @@
 			</div>
 		</c:otherwise>
 	</c:choose>
-
+	</div>
 	
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
+	</div>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="<c:url value='/JavaScript/updatePW_Check.js'/>"/></script>
+	<script type="text/javascript" src="<c:url value='/JavaScript/updatePW_check.js?ver=<%=System.currentTimeMillis() %>'/>"/></script>
 </body>
 </html>

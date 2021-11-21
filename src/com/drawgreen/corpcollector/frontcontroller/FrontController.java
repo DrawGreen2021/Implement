@@ -42,6 +42,7 @@ import com.drawgreen.corpcollector.command.mypage.PersonalInfoWriteViewCommand;
 import com.drawgreen.corpcollector.command.mypage.RecentSearchViewCommand;
 import com.drawgreen.corpcollector.command.mypage.ResetFavoriteCorpListCommand;
 import com.drawgreen.corpcollector.command.mypage.UpdatePersonalInfoCommand;
+import com.drawgreen.corpcollector.command.service.DevProcessViewCommand;
 
 /**
  * Servlet implementation class FrontController
@@ -126,6 +127,13 @@ public class FrontController extends HttpServlet {
 		else if(com.equals("UpdatePw.do")) {
 			command = new UpdatePwCommand();
 			command.execute(request, response);
+		}
+		
+		/*----- 서비스 소개 -----*/
+		else if(com.equals("DevProcessView.do")) {
+			command = new DevProcessViewCommand();
+			command.execute(request, response);
+			viewPage = "developmentProcess.jsp";
 		}
 		
 		/*----- 기업 찾기 -----*/

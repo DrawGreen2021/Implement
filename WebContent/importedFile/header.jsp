@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script type="text/javascript" src="<c:url value='/JavaScript/logoutCheck.js'/>"/></script>
+<script type="text/javascript" src="<c:url value='/JavaScript/logout_check.js'/>"/></script>
 	<c:choose>
 		<c:when test="${sessionScope.MemberDTO!=null }">
 			<div>
@@ -38,7 +38,7 @@
 						<a href="<c:url value='/service/service_Summary.jsp'/>">서비스 소개</a>
 						<ul class="sub_Menu">
 							<li><a href="<c:url value='/service/service_Summary.jsp'/>">서비스 개요</a></li>
-							<li><a href="<c:url value='/service/developmentProcess.jsp'/>">개발 과정</a></li>
+							<li><a href="<c:url value='/service/DevProcessView.do'/>">개발 과정</a></li>
 						</ul>
 					</li>
 					<li>
@@ -67,7 +67,7 @@
 					</li>
 					<li style="float:right;">
 						<a href="<c:url value='/myPage/PersonalInfoView.do'/>">마이페이지</a>
-						<ul class="sub_Menu" style="float:right;">
+						<ul class="sub_Menu" style="float:right; width: 380px; margin-left: -139px;">
 							<li><a href="<c:url value='/myPage/PersonalInfoView.do'/>">개인 정보 관리</a></li>
 							<li><a href="<c:url value='/myPage/FavoriteCorpView.do?page=1'/>">관심 기업</a></li>
 							<li><a href="<c:url value='/myPage/RecentSearchView.do?page=1'/>">최근 검색 기업</a></li>
@@ -111,7 +111,7 @@
 						<a href="<c:url value='/service/service_Summary.jsp'/>">서비스 소개</a>
 						<ul class="sub_Menu">
 							<li><a href="<c:url value='/service/service_Summary.jsp'/>">서비스 개요</a></li>
-							<li><a href="<c:url value='/service/developmentProcess.jsp'/>">개발 과정</a></li>
+							<li><a href="<c:url value='/service/DevProcessView.do'/>">개발 과정</a></li>
 						</ul>
 					</li>
 					<li>
@@ -140,7 +140,7 @@
 					</li>
 					<li>
 						<a href=""  onclick="alert('로그인 후 이용 가능합니다')">마이페이지</a>
-						<ul class="sub_Menu" float="right">
+						<ul class="sub_Menu" style="float: right; width: 380px; margin-left: -139px;">
 							<li><a href="" onclick="alert('로그인 후 이용 가능합니다')">개인 정보 관리</a></li>
 							<li><a href="" onclick="alert('로그인 후 이용 가능합니다')">관심 기업</a></li>
 							<li><a href="" onclick="alert('로그인 후 이용 가능합니다')">최근 검색 기업</a></li>

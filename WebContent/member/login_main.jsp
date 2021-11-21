@@ -8,16 +8,18 @@
 	<meta name="description" content="캡스톤_01">
 	<meta name="keywords" content="HTML5, CSS, JQUERY">
 	
-	<link rel="stylesheet" type="text/css" href="../css/main.css?after">
+	<link rel="stylesheet" type="text/css" href="../css/main.css?ver=<%=System.currentTimeMillis() %>">
 	
 	<title>CorpCollector : 로그인</title>
 </head>
 
 <body>
+	<div id="container">
 	<!-- 헤더 파일 포함 -->
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!--로그인 영역-->
+	<div class="outer_block">
 	<div class="content_div_login">
 		<!--로그인 타이틀 글자-->
 		<table align="center" height="90px;">
@@ -75,11 +77,13 @@
 		</table>
 		
 	</div>
+	</div>
 	
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
+	</div>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="<c:url value='/JavaScript/loginCheck.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/JavaScript/login_check.js?ver=<%=System.currentTimeMillis() %>'/>"></script>
 </body>
 </html>

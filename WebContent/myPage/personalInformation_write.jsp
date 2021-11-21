@@ -8,17 +8,18 @@
 	<meta name="description" content="캡스톤_01">
 	<meta name="keywords" content="HTML5, CSS, JQUERY">
 	
-	<link rel="stylesheet" type="text/css" href="../css/main.css?after">
+	<link rel="stylesheet" type="text/css" href="../css/main.css?ver=<%=System.currentTimeMillis() %>">
 	
 	<title>CorpCollector : 개인 정보 수정</title>
 </head>
 
 <body>
+	<div id="container">
 	<!-- 헤더 파일 포함 -->
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!-- 내용 영역 -->
-	<div width="1200px;" style="text-align:center; margin:5% auto; margin-bottom:10%">
+	<div class="outer_block" >
 		<div class="sidebar_div" style="float:left;">
 			<aside class="sidebar">
 				<ul style="list-style-type:none; ">
@@ -32,7 +33,7 @@
 		</div>
 		
 		<form action="UpdatePersonalInfo.do" method="post">
-		<div class="content_div">
+		<div class="content_div" >
 			<table width="1000px;" style="text-align:center; float:right;">
 				<tr>
 					<p style="font-size:16pt; color:#21499b; font-weight:bold; margin:0 83% 0 0; ">개인 정보 관리</p>
@@ -115,18 +116,13 @@
 		</div>
 		</form>
 	</div>
-	<%-- <p>5월: ${(requestScope.personalInfo['birth_month'] == 5)?'':'selected' }</p>
-	<p>12월: ${(requestScope.personalInfo['birth_month'] == 12)?'':requestScope.personalInfo['birth_month'] }</p>
-	<p>선택안함: ${(requestScope.personalInfo['gender'] == 'none')?'':'selected' }</p>
-	<p>여성: ${(requestScope.personalInfo['gender'] == 'woman')?'':requestScope.personalInfo['gender'] }</p> --%>
-	
 	
 	
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
+	</div>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/common.js"></script>
 	<script type="text/javascript" src="../JavaScript/updatePersonalInfo_Check.js"></script>
 </body>
 </html>

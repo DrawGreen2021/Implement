@@ -8,12 +8,13 @@
 <meta name="description" content="캡스톤_01">
 <meta name="keywords" content="HTML5, CSS, JQUERY">
 
-<link rel="stylesheet" type="text/css" href="../css/main.css?after">
+<link rel="stylesheet" type="text/css" href="../css/main.css?ver=<%=System.currentTimeMillis() %>">
 
 <title>CorpCollector : 회원가입</title>
 </head>
 
 <body>
+	<div id="container">
 	<!-- 헤더 파일 포함 -->
 	<c:import url='/importedFile/header.jsp'></c:import>
 
@@ -155,9 +156,9 @@
 
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
-
+	</div>
 
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="<c:url value='/JavaScript/signUpCheck.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/JavaScript/signUp_check.js?ver=<%=System.currentTimeMillis() %>'/>"></script>
 </body>
 </html>
