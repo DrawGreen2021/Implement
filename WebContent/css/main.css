@@ -4,7 +4,19 @@
  */
  
  /* -----메인 화면------*/
- 
+html>/**/body {
+	overflow-y:scroll;
+} 
+
+body {
+	overflow-y:scroll;
+}
+
+#container {
+	width: 100%;
+	margin: 0 auto;
+}
+
 .header{
 	background-color:#21499b; 
 	position:relative; 
@@ -55,7 +67,6 @@
 	width: 1200px;
 	margin: 50px auto;
     position: relative; 
-    text-align: center;
 }
 
 

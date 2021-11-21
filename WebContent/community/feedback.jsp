@@ -8,12 +8,13 @@
 	<meta name="description" content="캡스톤_01">
 	<meta name="keywords" content="HTML5, CSS, JQUERY">
 	
-	<link rel="stylesheet" type="text/css" href="../css/main.css?ver=<%=System.currentTimeMillis() %>">
+	<link rel="stylesheet" type="text/css" href="../css/main.css?ver1=<%=System.currentTimeMillis() %>">
 	
 	<title>CorpCollector : 고객 후기</title>
 </head>
 
 <body>
+	<div id="container">
 	<!-- 헤더 파일 포함 -->
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
@@ -52,7 +53,7 @@
 				<%-- 고객후기 글이 없을 경우 --%>
 				<c:when test="${requestScope.postList == 'noResult' }">
 					<div class="content_div_community">
-						<p style="margin: 0 auto; padding: 15% 10%; color: gray;">고객
+						<p style="margin: 0 auto; padding: 15% 10%; color: gray; text-align: center;">고객
 							후기가 없습니다.</p>
 					</div>
 					<button class="writing_btn" style="margin: 0 0 0 92.5%;"
@@ -163,6 +164,7 @@
 
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
+	</div>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
 	<script type="text/javascript" src="../JavaScript/community_common.js?ver=<%=System.currentTimeMillis() %>"></script>

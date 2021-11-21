@@ -14,6 +14,7 @@
 </head>
 
 <body>
+	<div id="container">
 	<!-- 헤더 파일 포함 -->
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
@@ -285,6 +286,7 @@
 	
 	<!-- 푸터 파일 포함 -->
 	<c:import url='/importedFile/footer.html'></c:import>
+	</div>
 	
 </body>
 </html>
