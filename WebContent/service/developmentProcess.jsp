@@ -39,7 +39,7 @@
 				<p>사이트 맵에 따른 웹사이트 구성과 배치, 제작을 수행했다.</p>
 				<br>
 				<c:set var="UIdesign" value="../images/thumbnails/UI images/image"></c:set>
-				<table>
+				<table style="margin-bottom:10%;">
 					<c:forEach var="i" begin="1" end="${requestScope.UIdesignImgCount / colCount }" varStatus="status">
 						<tr>
 							<c:forEach var="j" begin="${1 + (status.current-1) * colCount }" end="${status.current * colCount }">
@@ -57,7 +57,7 @@
 				<p> 웹 사이트 기능에 따른 알고리즘을 플로우 차트로 나타내고 데이터베이스를 다루며 프론트 엔드와 빅데이터 처리 사이 통합 과정을 총괄했다.</p>
 				<br>
 				<c:set var="flowChart" value="../images/thumbnails/flow charts/image"></c:set>
-				<table>
+				<table  style="margin-bottom:10%;">
 					<c:forEach var="i" begin="1" end="${requestScope.FlowChartImgCount / colCount }" varStatus="status">
 						<tr>
 							<c:forEach var="j" begin="${1 + (status.current-1) * colCount }" end="${status.current * colCount }">
