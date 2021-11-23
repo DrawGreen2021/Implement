@@ -282,7 +282,6 @@ body {
 .search_div {
 	width: 720px;
 	float: left;
-	margin-left: 20px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -300,7 +299,7 @@ body {
 	/* border:2px solid #808080; */
 	border: 0px;
 	font-size: 15pt;
-	
+	padding-left:15px;
 }
 
 /* 검색바 안에 input 설정 */
