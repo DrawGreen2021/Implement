@@ -51,33 +51,23 @@ public class EmailSendCommand implements Command{
 		String AuthenticationKey = autoCodeMaker.MakeAuthCode();
 				
 		// mail server 설정
-		String host = "smtp.gmail.com";
-		String user = ServerLogin.getHostID(); // 서버 관리자 구글 계정
+		String host = "mw-002.cafe24.com";
+		String user = ServerLogin.getHostID(); // 서버 관리자 아웃룩 계정
 		
 		// 메일 받을 주소
 		String to_email = email;
 		System.out.println("inputedEmail : " + email);
 
 		// SMTP 서버 정보 설정
-		Properties prop = System.getProperties();
+		Properties prop = new Properties();
 		prop.put("mail.smtp.host", host);
-		prop.put("mail.smtp.user", user);
-		//google - TLS : 587, SSL: 465
-		prop.put("mail.smtp.port", 465);
-		prop.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-		prop.put("mail.smtp.socketFactory.port", "465");
-		prop.put("mail.smtp.starttls.enable", "true");
 		prop.put("mail.smtp.auth", "true");
-		prop.put("mail.smtp.ssl.enable", "true");
-		prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-		prop.put("mail.debug", "true");
-		prop.put("mail.smtp.socketFactory.fallback", "false");
-
+		
+		Authenticator auth = new Mail();
+		Session session = Session.getInstance(prop, auth);
 		
 		// email 전송
 		try {
-			Authenticator auth = new Mail();
-			Session session = Session.getInstance(prop, auth);
 			session.setDebug(true);
 			MimeMessage msg = new MimeMessage(session);
 			msg.setFrom(new InternetAddress(user));
@@ -95,10 +85,7 @@ public class EmailSendCommand implements Command{
 			
 			return true;
 
-		} catch (AddressException e) { 
-			// TODO Auto-generated catch block 
-			e.printStackTrace(); 
-		} catch (MessagingException e) { 
+		} catch (Exception e) { 
 			// TODO Auto-generated catch block 
 			e.printStackTrace(); 
 		}
