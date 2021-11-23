@@ -143,7 +143,10 @@ window.onload=function(){
 		
 		const id = $('#id').val();
 
-        if(id.length === 0 || id === null) return alert("아이디를 입력하세요.");
+        if(id.length === 0 || id === null) {
+        	alert("아이디를 입력하세요.");
+        	return false;
+        }
 
         $.ajax({
             type:'post',
@@ -174,15 +177,19 @@ window.onload=function(){
 		
 		const email = $('#email').val();
 
-		if(email.length === 0 || email === null) return alert("이메일을 입력하세요.");
+		if(email.length === 0 || email === null) {
+			alert("이메일을 입력하세요.");
+			return false;
+		}
 		
 		$.ajax({
             type:'post',
-            async:false,
             url:'EmailSend.do',
             dataType:'text',
+            async:false,
             data:{"email":email},
             success: function(data, textStatus) {
+            	
                 if(data === 'connectable') {
                     //$('#emailSendMessage').text('이메일 주소 인증 메일이 전송되었습니다. 인증번호를 확인해주세요.') 
 					alert("이메일 주소 인증 메일이 전송되었습니다. 인증번호를 확인해주세요.");     
@@ -202,7 +209,10 @@ window.onload=function(){
 	$('#emailCheckBtn').click(function () { 
 		const email_auth_num = $('#email_auth_num').val();
 		
-		if(email_auth_num.length === 0 || email_auth_num === null) return alert("인증번호를 입력하세요");
+		if(email_auth_num.length === 0 || email_auth_num === null) {
+			alert("인증번호를 입력하세요");
+			return false;
+		}
 		
 		$.ajax({
             type:'post',
