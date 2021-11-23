@@ -3,7 +3,8 @@ package com.drawgreen.corpcollector.util;
 import java.util.Random;
 
 public class AutoCodeMaker {
-	String authCode = null;
+	private String authCode = null;
+	private int authCodeLen = 10;
 	
 	private AutoCodeMaker() {
 		super();
@@ -21,7 +22,7 @@ public class AutoCodeMaker {
 		
 		StringBuffer temp = new StringBuffer();
 		Random random = new Random();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < authCodeLen; i++) {
 			int rIndex = random.nextInt(3);
 			switch (rIndex) {
 			case 0:

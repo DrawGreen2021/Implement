@@ -42,15 +42,11 @@
 			</tr>
 		</table>
 		
-		<!-- 
 		<table align="center" class="findInfo_btn_table">
 			<tr>
 				<td>
 					<input type = "submit" id="emailSendBtn" value="인증번호 받기" class="findInfo_btn">
 				</td>
-			</tr>
-			<tr>
-				<td><div id='emailSendMessage'></div></td>
 			</tr>
 		</table>
 		
@@ -63,7 +59,7 @@
 					<input type = "text" id="email_auth_num" name="email_auth_num" placeholder="인증번호 6자리 숫자 입력">
 				</td>
 			</tr>
-		</table> -->
+		</table>
 		
 		<!-- 비밀번호 찾기 -->
 		<table align="center" class="findInfo_btn_table">

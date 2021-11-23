@@ -122,11 +122,11 @@ window.onload=function(){
 			return false;
 		} 
 		
-		/*// 이메일 인증 검사
+		// 이메일 인증 검사
 		else if(authEmail == "false") {
 			alert("이메일을 인증해주세요.");
 			return false;
-		}*/
+		}
 		
 		else {
 			if(confirm("입력하신 정보로 가입하시겠습니까?") == true){
@@ -143,7 +143,10 @@ window.onload=function(){
 		
 		const id = $('#id').val();
 
-        if(id.length === 0 || id === null) return alert("아이디를 입력하세요.");
+        if(id.length === 0 || id === null) {
+        	alert("아이디를 입력하세요.");
+        	return false;
+        }
 
         $.ajax({
             type:'post',
@@ -168,21 +171,25 @@ window.onload=function(){
         return false;
 	});
 	
-	/*
+
 	// 사용자 이메일로 인증번호 전송
 	$('#emailSendBtn').click(function () {
 		
 		const email = $('#email').val();
 
-		if(email.length === 0 || email === null) return alert("이메일을 입력하세요.");
+		if(email.length === 0 || email === null) {
+			alert("이메일을 입력하세요.");
+			return false;
+		}
 		
 		$.ajax({
             type:'post',
-            async:false,
             url:'EmailSend.do',
             dataType:'text',
+            async:false,
             data:{"email":email},
             success: function(data, textStatus) {
+            	
                 if(data === 'connectable') {
                     //$('#emailSendMessage').text('이메일 주소 인증 메일이 전송되었습니다. 인증번호를 확인해주세요.') 
 					alert("이메일 주소 인증 메일이 전송되었습니다. 인증번호를 확인해주세요.");     
@@ -202,7 +209,10 @@ window.onload=function(){
 	$('#emailCheckBtn').click(function () { 
 		const email_auth_num = $('#email_auth_num').val();
 		
-		if(email_auth_num.length === 0 || email_auth_num === null) return alert("인증번호를 입력하세요");
+		if(email_auth_num.length === 0 || email_auth_num === null) {
+			alert("인증번호를 입력하세요");
+			return false;
+		}
 		
 		$.ajax({
             type:'post',
@@ -226,7 +236,7 @@ window.onload=function(){
         });   //ajax
         return false;
 	});
-	*/
+
 	
 }
 

@@ -8,7 +8,7 @@ public class Mail extends Authenticator{
 	@Override
 	protected PasswordAuthentication getPasswordAuthentication() {
 		// TODO Auto-generated method stub
-		return new PasswordAuthentication("ohj37599","saxzoc1520~!");
+		return new PasswordAuthentication("drawgreen@corpcollector.or.kr","T!36KySrGqMeEJm");
 	}
 	
 }

@@ -11,6 +11,7 @@ window.onload=function(){
 	var origin_id = $('#id').val();
 	var origin_pw = $('#pw').val();
 	var origin_pw_chk = $('#pw_chk').val();
+	var origin_email = $('#email').val();
 	
 	$("#updatePersonalInfoBtn").click(function () {
 		var id = $('#id').val();
@@ -23,7 +24,7 @@ window.onload=function(){
 		var day = $('#day').val();
 		var gender = $('#gender').val();
 		var email = $('#email').val();
-		//var authEmail = $('#authEmail').val();
+		var authEmail = $('#authEmail').val();
 		
 		var pattern_chk_specialChar1 = /[`~!@#$%^&*|\\\'\";:\/?]/gi; //아이디 특수문자 체크
 		var pattern_chk_number = /[0-9]/;
@@ -102,6 +103,20 @@ window.onload=function(){
 			return false;
 		}
 		
+		// 이메일 입력 검사
+		else if(email.length === 0 || email === null) {
+			alert("이메일을 입력하세요.");
+			return false;
+		} 
+		
+		if (origin_email != email) {
+			// 이메일 인증 검사
+			if(authEmail == "false") {
+				alert("이메일을 인증해주세요.");
+				return false;
+			}
+		}
+		
 		// 생년월일 검사
 		else if(year.length != 4) {
 			alert("생년은 4자리 숫자여야 합니다.");
@@ -123,19 +138,7 @@ window.onload=function(){
 			alert("성별을 선택하세요.");
 			return false;
 		}
-		
-		// 이메일 입력 검사
-		else if(email.length === 0 || email === null) {
-			alert("이메일을 입력하세요.");
-			return false;
-		} 
-		
-		/*// 이메일 인증 검사
-		else if(authEmail == "false") {
-			alert("이메일을 인증해주세요.");
-			return false;
-		}*/
-		
+
 		else {
 			if(confirm("입력하신 정보로 수정하시겠습니까?") == true){
 				$("form").attr("action", "UpdatePersonalInfo.do");
@@ -151,7 +154,10 @@ window.onload=function(){
 		
 		const id = $('#id').val();
 
-        if(id.length === 0 || id === null) return alert("아이디를 입력하세요.");
+        if(id.length === 0 || id === null) {
+        	alert("아이디를 입력하세요.");
+        	return false;
+        }
 
         $.ajax({
             type:'post',
@@ -177,13 +183,16 @@ window.onload=function(){
         return false;
 	});
 	
-	/*
+	
 	// 사용자 이메일로 인증번호 전송
 	$('#emailSendBtn').click(function () {
 		
 		const email = $('#email').val();
 
-		if(email.length === 0 || email === null) return alert("이메일을 입력하세요.");
+		if(email.length === 0 || email === null) {
+			alert("이메일을 입력하세요.");
+			return false;
+		}
 		
 		$.ajax({
             type:'post',
@@ -211,7 +220,10 @@ window.onload=function(){
 	$('#emailCheckBtn').click(function () { 
 		const email_auth_num = $('#email_auth_num').val();
 		
-		if(email_auth_num.length === 0 || email_auth_num === null) return alert("인증번호를 입력하세요");
+		if(email_auth_num.length === 0 || email_auth_num === null) {
+			alert("인증번호를 입력하세요");
+			return false;
+		}
 		
 		$.ajax({
             type:'post',
@@ -235,6 +247,5 @@ window.onload=function(){
         });   //ajax
         return false;
 	});
-	*/
 	
 }

@@ -33,14 +33,9 @@
 					<td colspan="3">아이디/ID 중복 확인</td>
 				</tr>
 				<tr>
-					<td colspan="3"><input type="submit" id="idCheckBtn" value="아이디 중복 확인" class="signUpPage_btn"></td>
-				</tr>
-				
-				<tr>
-					<td colspan="3"><div id='idCheckMessage'></div>
+					<td colspan="3"><input type="submit" id="idCheckBtn" value="아이디 중복 확인" class="signUpPage_btn">
 					<input type="hidden" name="authId" id="authID" value="false"></td>
 				</tr>
-
 				<tr>
 					<td colspan="3">비밀번호/PW</td>
 				</tr>
@@ -110,17 +105,13 @@
 					<td colspan="3"><input type="text" id="email" name="email">
 					</td>
 				</tr>
-				<!-- <tr>
+				<tr>
 					<td colspan="3">이메일 인증</td>
 				</tr>
 				<tr>
 					<td colspan="3"><input type="submit" id="emailSendBtn" value="이메일 인증" class="signUpPage_btn">
 					</td>
 				</tr>
-				<tr>
-					<td colspan="3"><div id='emailSendMessage'></div></td>
-				</tr>
-				
 				<tr>
 					<td colspan="3">인증번호</td>
 				</tr>
@@ -133,13 +124,9 @@
 				</tr>
 				<tr>
 					<td colspan="3"><input type="submit" id="emailCheckBtn" value="인증번호 확인" class="signUpPage_btn">
+					<input type="hidden" name="authEmail" id="authEmail" value="false">
 					</td>
 				</tr>
-				<tr>
-					<td colspan="3"><div id='emailCheckMessage'></div>
-   					<input type="hidden" name="authEmail" id="authEmail" value="false">
-					</td>
-				</tr> -->
 			</table>
 
 			<!-- 가입하기 버튼 -->
