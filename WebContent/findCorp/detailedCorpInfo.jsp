@@ -18,9 +18,9 @@
 	<c:import url='/importedFile/header.jsp'></c:import>
 	
 	<!-- 내용 영역 -->
-	<table width="1200px;" style="text-align:center; margin:5% auto; border:0; background-color:green;">
+	<table width="1200px;" style="text-align:center; margin:5% auto; border:0; padding:0;">
 	<tr>
-	<td>
+	<td valign="top">
 	
 		<div class="sidebar_div" style="float:left;">
 			<aside class="sidebar">
@@ -53,7 +53,7 @@
 	</td>
 	
 	<td valign="top">	
-		<div class="content_div_findCorp" style="width:980px; background:yellow; float:right;">
+		<div class="content_div_findCorp" style="width:930px; float:right;">
 				<table class="table_detailedFindCorp">
 					<%-- 상세 기업 정보 출력 --%>
 					<c:forEach items="${requestScope.corpInfo }" var="entry">

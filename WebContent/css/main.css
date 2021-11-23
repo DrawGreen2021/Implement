@@ -485,7 +485,7 @@ body {
 	color:black;
 	border:0px;
 	position:relative;
-	margin: 0 0 0 20px;
+	margin: 0 0 0 5px;
 	/* margin: 0 0 0 5%; */
 }
 
@@ -632,7 +632,7 @@ body {
 	background-color: white;
 	color:black;
 	position: relative;
-	width: 970px;
+	width: 930px;
 	height:100%;
 	margin: 0 auto;
 	margin-right:0;
