@@ -82,7 +82,7 @@ window.onload=function(){
 			return false;
 		}
 		
-		// 이름 특수문자 검사
+		/*// 이름 특수문자 검사
 		else if(pattern_chk_specialChar1.test(name)) {
 			alert("이름에 특수문자는 들어갈 수 없습니다.");
 			return false;
@@ -92,7 +92,7 @@ window.onload=function(){
 		else if(pattern_chk_number.test(name)) {
 			alert("이름에 숫자는 들어갈 수 없습니다.");
 			return false;
-		}
+		}*/
 		
 		// 생년월일 검사
 		else if(year.length != 4) {
