@@ -2,8 +2,8 @@ package com.drawgreen.corpcollector.util;
 
 public class ServerLogin {
 	
-	private static String hostID = "ohj37599@gmail.com";
-	private static String hostPW = "saxzoc1520~!";
+	private static String hostID = "drawgreen@corpcollector.or.kr";
+	private static String hostPW = "T!36KySrGqMeEJm";
 	private String authEamilCode = "";
 	
 	private ServerLogin() {}

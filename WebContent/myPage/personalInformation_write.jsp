@@ -45,13 +45,9 @@
 					<table class="content_div_write">
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">아이디/ID</td>
-							<td colspan="3" style="text-align:left; padding-left:12px;"><input type="text" autocomplete="off" class="write_input" 
-								name="id" value="${requestScope.personalInfo['id'] }"></td>
-						</tr>
-						<tr class="community_text" height="30px;">
-							<td width="100px" style="background-color:#eeedeb;">아이디/ID 중복 확인</td>
-							<td colspan="3" style="text-align:left; padding-left:12px;">
-								<input type="submit" id="idCheckBtn" value="아이디 중복 확인" class="writing_btn" style="width:120px;">
+							<td style="text-align:left; padding-left:12px;"><input type="text" autocomplete="off" class="write_input" 
+								name="id" id="id" value="${requestScope.personalInfo['id'] }" style="width: 580px;"></td>
+							<td style="width: 200px;"><input type="submit" id="idCheckBtn" value="아이디 중복 확인" class="writing_btn" style="width:120px;">
 								<input type="hidden" name="authId" id="authID" value="not-changed"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
@@ -65,12 +61,21 @@
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">닉네임</td>
 							<td colspan="3" style="text-align:left; padding-left:12px;"><input type="text" name="name" autocomplete="off" class="write_input"
-								value="${requestScope.personalInfo['nickname'] }"></td>
+								id="name" value="${requestScope.personalInfo['nickname'] }"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">이메일</td>
-							<td colspan="3" style="text-align:left; padding-left:12px;"><input type="text" name="email" autocomplete="off" class="write_input"
-								value="${requestScope.personalInfo['email'] }"></td>
+							<td style="text-align:left; padding-left:12px;"><input type="text" name="email" id="email" autocomplete="off" class="write_input"
+								value="${requestScope.personalInfo['email'] }" style="width: 580px; margin-bottom: 2px;"><br>
+								<span style="font-size: 9pt; color: gray; margin-top: 10px;">* 이메일이 도착하지 않았다면 스팸 메일함을 확인해주세요.</span></td>
+							<td style="width: 150px;"><input type = "submit" id="emailSendBtn" value="인증번호 받기" class="writing_btn" style="width: 120px;"></td>
+						</tr>
+						<tr class="community_text" height="30px;">
+							<td width="100px" style="background-color:#eeedeb;">인증번호</td>
+							<td style="text-align:left; padding-left:12px;"><input type="text" name="email_auth_num" autocomplete="off" class="write_input"
+								style="width: 580px;" id="email_auth_num"></td>
+							<td style="width: 200px;"><input type = "submit" id="emailCheckBtn" value="인증번호 확인" class="writing_btn" style="width: 120px;">
+								<input type="hidden" name="authEmail" id="authEmail" value="false"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">생년월일</td>
@@ -92,8 +97,16 @@
 									<option value="11" ${(requestScope.personalInfo['birth_month']==11)?'selected':'' }>11</option>
 									<option value="12" ${(requestScope.personalInfo['birth_month']==12)?'selected':'' }>12</option>
 								</select>
-								<input type="number" name="day" id="day" value="${requestScope.personalInfo['birth_day'] }"
-								style="width: 60px; height: 20px; margin: 0 auto;">
+								<c:choose>
+									<c:when test="${requestScope.personalInfo['birth_day'] < 10 }">
+										<input type="number" name="day" id="day" value="0${requestScope.personalInfo['birth_day'] }"
+										style="width: 60px; height: 20px; margin: 0 auto;">
+									</c:when>
+									<c:otherwise>
+										<input type="number" name="day" id="day" value="${requestScope.personalInfo['birth_day'] }"
+										style="width: 60px; height: 20px; margin: 0 auto;">
+									</c:otherwise>
+								</c:choose>
 							</td>
 						</tr>
 						<tr class="community_text" height="30px;">
@@ -111,7 +124,7 @@
 				</tr>
 			</table>
 			<div style="float:right;">
-			<button class="writing_btn" id="updatePersonalInfoBtn">수정</button>
+				<input type="button" class="writing_btn" id="updatePersonalInfoBtn" value="수정">
 			</div>
 		</div>
 		</form>
@@ -123,6 +136,6 @@
 	</div>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/updatePersonalInfo_Check.js"></script>
+	<script type="text/javascript" src="../JavaScript/updatePersonalInfo_check.js"></script>
 </body>
 </html>

@@ -33,14 +33,9 @@
 					<td colspan="3">아이디/ID 중복 확인</td>
 				</tr>
 				<tr>
-					<td colspan="3"><input type="submit" id="idCheckBtn" value="아이디 중복 확인" class="signUpPage_btn"></td>
-				</tr>
-				
-				<tr>
-					<td colspan="3"><div id='idCheckMessage'></div>
+					<td colspan="3"><input type="submit" id="idCheckBtn" value="아이디 중복 확인" class="signUpPage_btn">
 					<input type="hidden" name="authId" id="authID" value="false"></td>
 				</tr>
-
 				<tr>
 					<td colspan="3">비밀번호/PW</td>
 				</tr>
@@ -95,7 +90,7 @@
 				</tr>
 				<tr>
 					<td colspan="3"><select id="gender" name="gender"
-						style="width: 238px; height: 26px; font-size: 10pt;">
+						style="width: 232px; height: 26px; font-size: 10pt;">
 							<option value="">성별</option>
 							<option value="man">남</option>
 							<option value="woman">여</option>
@@ -110,7 +105,7 @@
 					<td colspan="3"><input type="text" id="email" name="email">
 					</td>
 				</tr>
-				<!-- <tr>
+				<tr>
 					<td colspan="3">이메일 인증</td>
 				</tr>
 				<tr>
@@ -118,28 +113,25 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3"><div id='emailSendMessage'></div></td>
-				</tr>
-				
-				<tr>
-					<td colspan="3">인증번호</td>
-				</tr>
-				<tr>
-					<td colspan="3"><input type="text" id="email_auth_num" name="email_auth_num">
+					<td colspan="3" class="emailNotice" >
+						<p style="width: 220px;">* 이메일이 도착하지 않았다면<br> 스팸 메일함을 확인해주세요.</p>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3">인증번호 확인</td>
+					<td colspan="3">인증코드</td>
+				</tr>
+				<tr>
+					<td colspan="3"><input type="text" id="email_auth_code" name="email_auth_code">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">인증코드 확인</td>
 				</tr>
 				<tr>
 					<td colspan="3"><input type="submit" id="emailCheckBtn" value="인증번호 확인" class="signUpPage_btn">
+					<input type="hidden" name="authEmail" id="authEmail" value="false">
 					</td>
 				</tr>
-				<tr>
-					<td colspan="3"><div id='emailCheckMessage'></div>
-   					<input type="hidden" name="authEmail" id="authEmail" value="false">
-					</td>
-				</tr> -->
 			</table>
 
 			<!-- 가입하기 버튼 -->

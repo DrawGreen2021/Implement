@@ -42,7 +42,6 @@
 			</tr>
 		</table>
 		
-		<!-- 
 		<table align="center" class="findInfo_btn_table">
 			<tr>
 				<td>
@@ -50,20 +49,22 @@
 				</td>
 			</tr>
 			<tr>
-				<td><div id='emailSendMessage'></div></td>
+				<td colspan="3" class="emailNotice" >
+					<p style="width: 200px;">* 이메일이 도착하지 않았다면<br> 스팸 메일함을 확인해주세요.</p>
+				</td>
 			</tr>
 		</table>
 		
 		<table align="center" class="findInfo_table">
 			<tr>
-				<td>인증번호 입력</td>
+				<td>인증코드 입력</td>
 			</tr>
 			<tr>
 				<td>
 					<input type = "text" id="email_auth_num" name="email_auth_num" placeholder="인증번호 6자리 숫자 입력">
 				</td>
 			</tr>
-		</table> -->
+		</table>
 		
 		<!-- 비밀번호 찾기 -->
 		<table align="center" class="findInfo_btn_table">

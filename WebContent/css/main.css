@@ -180,10 +180,32 @@ body {
 	font-weight: bold;
 }
 
+/* 이메일 공지 폰트 */
+.emailNotice{
+	color: gray;
+	font-size: 10pt;
+	font-weight: normal;
+	text-align: center;
+	border:1px solid gray;
+	margin: 0;
+}
+
 /* input 태그 전체 설정 */
 .signUp_table input{
 	width: 230px;
 	height:20px;
+}
+
+.signUp_table input[type=text], 
+	input[type=password], input[type=number],
+	select > option {
+	padding: 1px 0px;
+	border-width: 1px;
+}
+
+.signUp_table input[type=submit]{
+	padding: 0;
+	width: 100%;
 }
 
 /* div 태그 전체 설정 - 오혜진 추가*/

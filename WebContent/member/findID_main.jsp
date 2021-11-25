@@ -42,30 +42,29 @@
 			</tr>
 		</table>
 		
-		
-		<!-- <table align="center" class="findInfo_btn_table">
+		<table align="center" class="findInfo_btn_table">
 			<tr>
 				<td>
 					<input type = "submit" id="emailSendBtn" value="인증번호 받기" class="findInfo_btn">
 				</td>
 			</tr>
 			<tr>
-				<td>
-					<div id='emailSendmessage'></div>
+				<td colspan="3" class="emailNotice" >
+					<p style="width: 200px;">* 이메일이 도착하지 않았다면<br> 스팸 메일함을 확인해주세요.</p>
 				</td>
 			</tr>
 		</table>
 		
 		<table align="center" class="findInfo_table">
 			<tr>
-				<td>인증번호 입력</td>
+				<td>인증코드 입력</td>
 			</tr>
 			<tr>
 				<td>
-					<input type = "text" id="email_auth_num" name="email_auth_num" placeholder="인증번호 10자리 입력">
+					<input type = "text" id="email_auth_code" name="email_auth_code" placeholder="인증코드 10자리 입력">
 				</td>
 			</tr>
-		</table> -->
+		</table> 
 		
 		<!-- 아이디 찾기 -->
 		<table align="center" class="findInfo_btn_table">
