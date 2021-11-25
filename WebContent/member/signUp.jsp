@@ -118,14 +118,14 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3">인증번호</td>
+					<td colspan="3">인증코드</td>
 				</tr>
 				<tr>
-					<td colspan="3"><input type="text" id="email_auth_num" name="email_auth_num">
+					<td colspan="3"><input type="text" id="email_auth_code" name="email_auth_code">
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3">인증번호 확인</td>
+					<td colspan="3">인증코드 확인</td>
 				</tr>
 				<tr>
 					<td colspan="3"><input type="submit" id="emailCheckBtn" value="인증번호 확인" class="signUpPage_btn">

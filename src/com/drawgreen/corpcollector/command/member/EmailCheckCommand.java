@@ -21,7 +21,7 @@ public class EmailCheckCommand implements Command{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		String email_auth_num = request.getParameter("email_auth_num");
+		String email_auth_code = request.getParameter("email_auth_code");
 		
 		PrintWriter out = null;
 		try {
@@ -31,7 +31,7 @@ public class EmailCheckCommand implements Command{
 			e.printStackTrace();
 		}
 		
-		boolean emailAuthNumCheck = checkAuthEmail(email_auth_num);
+		boolean emailAuthNumCheck = checkAuthEmail(email_auth_code);
 		
 		if (emailAuthNumCheck) {
 			out.print("authenticated");
@@ -40,10 +40,10 @@ public class EmailCheckCommand implements Command{
 		}
 	}
 	
-	public boolean checkAuthEmail(String email_auth_num) {
+	public boolean checkAuthEmail(String email_auth_code) {
 		ServerLogin serverLogin = ServerLogin.getInstance();
 		
-		if (email_auth_num.equals(serverLogin.getAuthEamilCode())) {
+		if (email_auth_code.equals(serverLogin.getAuthEamilCode())) {
 			return true;
 		} else {
 			return false;

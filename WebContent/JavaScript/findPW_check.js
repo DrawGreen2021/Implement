@@ -37,21 +37,24 @@ window.onload=function(){
 		return false;
 	});
 	
-	// 인증번호 체크 후에 아이디 찾기 수행
+	// 인증코드 체크 후에 아이디 찾기 수행
 	$('#findPwBtn').click(function() {
 		var irregular = validate();
 		
 		if(!irregular) {
-			const email_auth_num = $('#email_auth_num').val();
+			const email_auth_code = $('#email_auth_code').val();
 			
-			if(email_auth_num.length === 0 || email_auth_num === null) return alert("인증번호를 입력하세요");
+			if(email_auth_code.length === 0 || email_auth_code === null) {
+				alert("인증번호를 입력하세요");
+				return false;
+			}
 			
 			$.ajax({
 	            type:'post',
 	            async:false,
 	            url:'EmailCheck.do',
 	            dataType:'text',
-	            data:{"email_auth_num":email_auth_num},
+	            data:{"email_auth_code":email_auth_code},
 	            success: function(data, textStatus) {
 	                if(data === 'authenticated') {
 	                	$("form").attr("action", "FindPw.do");

@@ -207,9 +207,9 @@ window.onload=function(){
 	 
 	// 인증번호 체크
 	$('#emailCheckBtn').click(function () { 
-		const email_auth_num = $('#email_auth_num').val();
+		const email_auth_code = $('#email_auth_code').val();
 		
-		if(email_auth_num.length === 0 || email_auth_num === null) {
+		if(email_auth_code.length === 0 || email_auth_code === null) {
 			alert("인증번호를 입력하세요");
 			return false;
 		}
@@ -219,7 +219,7 @@ window.onload=function(){
             async:false,
             url:'EmailCheck.do',
             dataType:'text',
-            data:{"email_auth_num":email_auth_num},
+            data:{"email_auth_code":email_auth_code},
             success: function(data, textStatus) {
                 if(data === 'authenticated') {
                     //$('#emailCheckMessage').text('이메일 인증이 완료되었습니다.')      

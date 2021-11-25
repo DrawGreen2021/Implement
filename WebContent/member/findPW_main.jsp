@@ -57,7 +57,7 @@
 		
 		<table align="center" class="findInfo_table">
 			<tr>
-				<td>인증번호 입력</td>
+				<td>인증코드 입력</td>
 			</tr>
 			<tr>
 				<td>
