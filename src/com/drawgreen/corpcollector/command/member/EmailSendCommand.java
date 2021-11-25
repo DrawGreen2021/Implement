@@ -6,10 +6,8 @@ import java.util.Properties;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
@@ -74,9 +72,10 @@ public class EmailSendCommand implements Command{
 			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
 
 			// 메일 제목
-			msg.setSubject("안녕하세요. CorpCollector의 인증메일입니다.", "UTF-8");
+			msg.setSubject("안녕하세요. CorpCollector의 인증메일입니다.");
 			// 메일 내용
-			msg.setText("인증 번호 :" + AuthenticationKey );
+			String mailContent = makeMailContent(AuthenticationKey);
+			msg.setContent(mailContent, "text/html; charset=UTF-8");
 
 			Transport.send(msg);
 			System.out.println("이메일 전송 : " + AuthenticationKey);
@@ -91,5 +90,24 @@ public class EmailSendCommand implements Command{
 		}
 		
 		return false;
+	}
+	
+	private String makeMailContent(String authCode) {
+		StringBuffer buffer = new StringBuffer();
+		buffer.append("<table style=\"border: solid 1px gray; padding: 10px 15px; margin: 0 auto; font-size: 12pt;\">");
+		buffer.append("<tr>");
+		buffer.append("<td>안녕하세요! CorpCollector입니다.<br>");
+		buffer.append("아래의 코드를 인증코드 란에 입력해주세요.</td>");
+		buffer.append("</tr>");
+		buffer.append("<tr>");
+		buffer.append("<td><br><br>");
+		buffer.append("<div style=\"text-align: center; font-weight: bold; font-size: 20pt;"
+				+ "	padding: 10px; background-color: black; color: white; margin-bottom: 10px;\">");
+		buffer.append("인증코드: "+authCode+"</div>");
+		buffer.append("</td>");
+		buffer.append("</tr>");
+		buffer.append("</table>");
+		
+		return buffer.toString();
 	}
 }
