@@ -66,8 +66,9 @@
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">이메일</td>
 							<td style="text-align:left; padding-left:12px;"><input type="text" name="email" id="email" autocomplete="off" class="write_input"
-								value="${requestScope.personalInfo['email'] }" style="width: 580px;"></td>
-							<td style="width: 200px;"><input type = "submit" id="emailSendBtn" value="인증번호 받기" class="writing_btn" style="width: 120px;"></td>
+								value="${requestScope.personalInfo['email'] }" style="width: 580px; margin-bottom: 2px;"><br>
+								<span style="font-size: 9pt; color: gray; margin-top: 10px;">* 이메일이 도착하지 않았다면 스팸 메일함을 확인해주세요.</span></td>
+							<td style="width: 150px;"><input type = "submit" id="emailSendBtn" value="인증번호 받기" class="writing_btn" style="width: 120px;"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">인증번호</td>

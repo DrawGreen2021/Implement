@@ -48,6 +48,11 @@
 					<input type = "submit" id="emailSendBtn" value="인증번호 받기" class="findInfo_btn">
 				</td>
 			</tr>
+			<tr>
+				<td colspan="3" class="emailNotice" >
+					<p style="width: 200px;">* 이메일이 도착하지 않았다면<br> 스팸 메일함을 확인해주세요.</p>
+				</td>
+			</tr>
 		</table>
 		
 		<table align="center" class="findInfo_table">

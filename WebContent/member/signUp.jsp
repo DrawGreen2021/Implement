@@ -90,7 +90,7 @@
 				</tr>
 				<tr>
 					<td colspan="3"><select id="gender" name="gender"
-						style="width: 238px; height: 26px; font-size: 10pt;">
+						style="width: 232px; height: 26px; font-size: 10pt;">
 							<option value="">성별</option>
 							<option value="man">남</option>
 							<option value="woman">여</option>
@@ -110,6 +110,11 @@
 				</tr>
 				<tr>
 					<td colspan="3"><input type="submit" id="emailSendBtn" value="이메일 인증" class="signUpPage_btn">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3" class="emailNotice" >
+						<p style="width: 220px;">* 이메일이 도착하지 않았다면<br> 스팸 메일함을 확인해주세요.</p>
 					</td>
 				</tr>
 				<tr>
