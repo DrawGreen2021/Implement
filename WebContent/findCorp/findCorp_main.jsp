@@ -53,7 +53,7 @@
 					name="findCorp" id="findCorp">
 					<div class="bar_div">
 						<input type="hidden" id="corpType" name="corpType"
-							value="intercorp"> 
+							value="interCorp"> 
 						<input type="hidden" name="page"
 							value="1"> 
 						<input class="search_bar" type="text"
@@ -63,7 +63,7 @@
 					</div>
 					<div class="btn_div">
 						<button class="search_btn" type="submit">
-							<img src="../images/search_logo.PNG" alt="search">
+							<img src="<c:url value='/images/search_logo.PNG'/>" alt="search">
 						</button>
 					</div>
 				</form>

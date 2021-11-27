@@ -29,7 +29,7 @@
 			<form action="FindCorp.do" method="get" id="findCorpForm">
 				<div style="float: left; margin-top: 2px;">
 					<input type="hidden" id="corpType" name="corpType"
-						value="intercorp"> 
+						value="interCorp"> 
 					<input type="hidden" name="page"
 						value="1"> 
 					<input class="search_bar" type="text" style="margin: 10px;"
