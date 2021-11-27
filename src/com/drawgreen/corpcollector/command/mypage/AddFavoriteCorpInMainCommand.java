@@ -44,6 +44,7 @@ public class AddFavoriteCorpInMainCommand implements Command{
 			// 원래 있던 기업 테이블의 연번 받아오기
 			InterCorpDAO interCorpDAO = InterCorpDAO.getInstance();
 			String corpName = request.getParameter("corpName");
+			corpName = corpName.replaceAll("\\s+","");
 			String location = request.getParameter("location");
 			String sector = request.getParameter("sector");
 			String tableName = request.getParameter("tableName");
