@@ -192,9 +192,14 @@ public class FrontController extends HttpServlet {
 		}
 		
 		else if(com.equals("DetailView.do")) {
+			String servletPath = request.getServletPath();
+			
 			command = new DetailViewCommand();
 			command.execute(request, response);
-			viewPage = "detailedCorpInfo.jsp";
+			
+			if(servletPath.equals("/DetailView.do"))
+				viewPage = "findCorp/detailedCorpInfo.jsp";
+			else viewPage = "detailedCorpInfo.jsp";
 		}
 		
 		/*----- 정보나눔 기능 -----*/
