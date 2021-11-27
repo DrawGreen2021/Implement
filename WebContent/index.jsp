@@ -26,7 +26,7 @@
 		</div>
 		
 		<div class="search_div">
-			<form action="FindCorp.do" method="get">
+			<form action="FindCorp.do" method="get" id="findCorpForm">
 				<div style="float: left; margin-top: 2px;">
 					<input type="hidden" id="corpType" name="corpType"
 						value="intercorp"> 
