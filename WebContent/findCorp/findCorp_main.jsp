@@ -58,7 +58,8 @@
 							value="1"> 
 						<input class="search_bar" type="text"
 							style="margin: 10px; width: 800px; height: 53px;" id="search_keyword" name="keyword"
-							autocomplete="off" placeholder=" 검색어를 입력하세요">
+							autocomplete="off" placeholder=" 검색어를 입력하세요"
+							value="${(param.keyword==undefined)?'':param.keyword}">
 					</div>
 					<div class="btn_div">
 						<button class="search_btn" type="submit">
