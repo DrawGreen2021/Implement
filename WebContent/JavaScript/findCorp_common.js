@@ -34,7 +34,7 @@ function addFavoriteCorp_main(button) {
 	var corpType = $('#corpType').val();
 	var corpName = $('#corpName'+serial_number).text();
 	
-	addFavAjaxInMain(corpName, button, '★', '☆');
+	addFavAjaxInMain(serial_number, corpName, button, '★', '☆');
 }
 
 // 상세 기업 페이지에서 관심기업을 등록한 경우
@@ -46,7 +46,7 @@ function addFavoriteCorp_detail(button) {
 	var btn_text_rm = "관심기업 등록" // 관심 기업을 삭제한 이후 버튼의 텍스트
 	
 	if (corpType == 'interCorp') {
-		addFavAjaxInMain(corpName, button, btn_text_add, btn_text_rm);
+		addFavAjaxInMain(serial_number, corpName, button, btn_text_add, btn_text_rm);
 	}
 	else {
 		addFavAjax(serial_number, corpType, corpName, button, btn_text_add, btn_text_rm);
