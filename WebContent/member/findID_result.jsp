@@ -49,7 +49,8 @@
 				<table align="center" class="signUp_btn_table">
 				<tr>
 					<td><input type="submit" value="로그인" class="signUp_btn" onclick="location.href='${pageContext.request.contextPath}/member/login_main.jsp'"></td>
-					<td><input type="button" value="비밀번호 찾기" class="signUp_btn" onclick="location.href='${pageContext.request.contextPath}/member/findPW_main.jsp'"></td>
+					<td><input type="button" value="비밀번호 찾기" class="signUp_btn" style="background-color:#eeedeb;"
+					onclick="location.href='${pageContext.request.contextPath}/member/findPW_main.jsp'"></td>
 				</tr>
 				<br>
 				</table>

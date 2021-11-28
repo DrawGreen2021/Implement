@@ -21,21 +21,27 @@
 	<!--로그인 영역-->
 	<div class="outer_block">
 	<div class="content_div_login">
-		<!--로그인 타이틀 글자-->
+		<!--로그인 타이틀 글자
 		<table align="center" height="90px;">
 			<tr>
 				<td>
 					<div class="main_title">LOGIN</div>
 				</td>
 			</tr>
-		</table>
+		</table> -->
 		
 		<!-- 아이디 입력 텍스트 박스-->
 		<form method="post">
 		<table align="center" class="id_table">
 			<tr>
 				<td>
-					<input type="text" id="id" name="id" class="id_pw_input" placeholder=" 아이디 입력" onkeyup="enterKey()">
+					<p style="float:left;">아이디/ID</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="text" id="id" name="id" class="id_pw_input" 
+					style="padding-left:10px;" placeholder=" 아이디 입력" onkeyup="enterKey()">
 				</td>
 			</tr>
 		</table>
@@ -44,7 +50,13 @@
 		<table align="center" class="id_table">
 			<tr>
 				<td>
-					<input type="password" id="pw" name="pw" class="id_pw_input" placeholder=" 비밀번호 입력" onkeyup="enterKey()">
+					<p style="float:left;">비밀번호/PW</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="password" id="pw" name="pw" class="id_pw_input"
+					style="padding-left:10px;" placeholder=" 비밀번호 입력" onkeyup="enterKey()">
 				</td>
 			</tr>
 		</table>
