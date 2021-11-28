@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>4</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>-4</x>
-      <y>572</y>
-      <w>152</w>
-      <h>64</h>
+      <x>0</x>
+      <y>1144</y>
+      <w>304</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 FrontController
@@ -24,10 +24,10 @@ Package::frontcontroller
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>92</x>
-      <y>460</y>
-      <w>152</w>
-      <h>40</h>
+      <x>192</x>
+      <y>920</y>
+      <w>304</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Interface&gt;&gt;
 Command
@@ -40,10 +40,10 @@ Package::command
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>288</x>
-      <y>420</y>
-      <w>140</w>
-      <h>52</h>
+      <x>584</x>
+      <y>840</y>
+      <w>280</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 FindCorpCommand
@@ -59,10 +59,10 @@ Package::command.findCorp
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>288</x>
-      <y>484</y>
-      <w>140</w>
-      <h>36</h>
+      <x>584</x>
+      <y>968</y>
+      <w>280</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 DetailViewCommand
@@ -76,15 +76,16 @@ Package::command.findCorp
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>704</x>
+      <x>1416</x>
       <y>0</y>
-      <w>188</w>
-      <h>144</h>
+      <w>376</w>
+      <h>312</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 FamilyFriendlyCorpDAO
 Package::dao
 --
+- dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
 - resultSet:ResultSet
@@ -103,16 +104,17 @@ Package::dao
 + getRowCount_byKeyword():int
 + getSerialNums():ArrayList&lt;Integer&gt;
 + getInfo(int):LinkedHashMap&lt;String, Object&gt;
-+ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;</panel_attributes>
++ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;
++ closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>144</x>
-      <y>496</y>
-      <w>52</w>
-      <h>116</h>
+      <x>296</x>
+      <y>992</y>
+      <w>104</w>
+      <h>232</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 m1=0..*
@@ -122,10 +124,10 @@ m1=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>444</y>
-      <w>56</w>
-      <h>40</h>
+      <x>488</x>
+      <y>888</y>
+      <w>112</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;80.0;120.0;10.0</additional_attributes>
@@ -133,10 +135,10 @@ m1=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>472</y>
-      <w>56</w>
-      <h>44</h>
+      <x>488</x>
+      <y>944</y>
+      <w>112</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;120.0;90.0</additional_attributes>
@@ -144,10 +146,10 @@ m1=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>424</x>
-      <y>440</y>
-      <w>40</w>
-      <h>24</h>
+      <x>856</x>
+      <y>880</y>
+      <w>80</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>80.0;40.0;10.0;10.0</additional_attributes>
@@ -155,10 +157,10 @@ m1=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>424</x>
-      <y>488</y>
-      <w>40</w>
-      <h>28</h>
+      <x>856</x>
+      <y>976</y>
+      <w>80</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>80.0;10.0;10.0;50.0</additional_attributes>
@@ -166,22 +168,22 @@ m1=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>868</x>
-      <y>108</y>
-      <w>44</w>
-      <h>56</h>
+      <x>1744</x>
+      <y>216</y>
+      <w>88</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>60.0;10.0;90.0;100.0;30.0;120.0;10.0;90.0</additional_attributes>
+    <additional_attributes>60.0;10.0;90.0;100.0;30.0;120.0;10.0;120.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>456</x>
-      <y>424</y>
-      <w>156</w>
-      <h>88</h>
+      <x>920</x>
+      <y>848</y>
+      <w>312</w>
+      <h>176</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Interface&gt;&gt;
 CorpDAO
@@ -202,27 +204,28 @@ Package::dao
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>860</x>
-      <y>272</y>
-      <w>52</w>
-      <h>56</h>
+      <x>1728</x>
+      <y>544</y>
+      <w>104</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>80.0;10.0;110.0;80.0;50.0;120.0;10.0;90.0</additional_attributes>
+    <additional_attributes>80.0;10.0;110.0;80.0;50.0;120.0;10.0;120.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>704</x>
-      <y>164</y>
-      <w>188</w>
-      <h>144</h>
+      <x>1416</x>
+      <y>328</y>
+      <w>376</w>
+      <h>312</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 GreenCorpDAO
 Package::dao
 --
+- dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
 - resultSet:ResultSet
@@ -241,33 +244,35 @@ Package::dao
 + getRowCount_byKeyword():int
 + getSerialNums():ArrayList&lt;Integer&gt;
 + getInfo(int):LinkedHashMap&lt;String, Object&gt;
-+ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;</panel_attributes>
++ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;
++ closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>860</x>
-      <y>440</y>
-      <w>52</w>
-      <h>52</h>
+      <x>1728</x>
+      <y>880</y>
+      <w>104</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>80.0;10.0;110.0;70.0;50.0;110.0;10.0;80.0</additional_attributes>
+    <additional_attributes>80.0;10.0;110.0;70.0;50.0;130.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>704</x>
-      <y>328</y>
-      <w>188</w>
-      <h>144</h>
+      <x>1416</x>
+      <y>656</y>
+      <w>376</w>
+      <h>312</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 SocialCorpDAO
 Package::dao
 --
+- dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
 - resultSet:ResultSet
@@ -286,45 +291,47 @@ Package::dao
 + getRowCount_byKeyword():int
 + getSerialNums():ArrayList&lt;Integer&gt;
 + getInfo(int):LinkedHashMap&lt;String, Object&gt;
-+ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;</panel_attributes>
++ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;
++ closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>860</x>
-      <y>600</y>
-      <w>52</w>
-      <h>60</h>
+      <x>1728</x>
+      <y>1200</y>
+      <w>104</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>80.0;10.0;110.0;90.0;50.0;130.0;10.0;90.0</additional_attributes>
+    <additional_attributes>80.0;10.0;110.0;90.0;60.0;140.0;10.0;120.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>860</x>
-      <y>768</y>
-      <w>52</w>
-      <h>56</h>
+      <x>1728</x>
+      <y>1536</y>
+      <w>104</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>80.0;10.0;110.0;90.0;50.0;120.0;10.0;90.0</additional_attributes>
+    <additional_attributes>80.0;10.0;110.0;90.0;50.0;140.0;10.0;120.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>704</x>
-      <y>660</y>
-      <w>188</w>
-      <h>144</h>
+      <x>1416</x>
+      <y>1320</y>
+      <w>376</w>
+      <h>312</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 YouthFriendlyCorpDAO
 Package::dao
 --
+- dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
 - resultSet:ResultSet
@@ -343,16 +350,17 @@ Package::dao
 + getRowCount_byKeyword():int
 + getSerialNums():ArrayList&lt;Integer&gt;
 + getInfo(int):LinkedHashMap&lt;String, Object&gt;
-+ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;</panel_attributes>
++ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;
++ closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1168</x>
-      <y>316</y>
-      <w>164</w>
-      <h>172</h>
+      <x>2344</x>
+      <y>632</y>
+      <w>328</w>
+      <h>344</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 SocialCorpDTO
@@ -386,15 +394,16 @@ Package::dto
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>704</x>
-      <y>492</y>
-      <w>188</w>
-      <h>144</h>
+      <x>1416</x>
+      <y>984</y>
+      <w>376</w>
+      <h>312</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 TalentDevelopmentCorpDAO
 Package::dao
 --
+- dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
 - resultSet:ResultSet
@@ -413,21 +422,23 @@ Package::dao
 + getRowCount_byKeyword():int
 + getSerialNums():ArrayList&lt;Integer&gt;
 + getInfo(int):LinkedHashMap&lt;String, Object&gt;
-+ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;</panel_attributes>
++ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;
++ closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>704</x>
-      <y>820</y>
-      <w>188</w>
-      <h>144</h>
+      <x>1416</x>
+      <y>1640</y>
+      <w>376</w>
+      <h>312</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 InterCorpDAO
 Package::dao
 --
+- dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
 - resultSet:ResultSet
@@ -446,28 +457,29 @@ Package::dao
 + getRowCount_byKeyword():int
 + getSerialNums():ArrayList&lt;Integer&gt;
 + getInfo(int):LinkedHashMap&lt;String, Object&gt;
-+ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;</panel_attributes>
++ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;
++ closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>860</x>
-      <y>940</y>
-      <w>52</w>
-      <h>48</h>
+      <x>1728</x>
+      <y>1880</y>
+      <w>104</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>80.0;10.0;110.0;70.0;50.0;100.0;10.0;60.0</additional_attributes>
+    <additional_attributes>80.0;10.0;110.0;70.0;50.0;120.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>968</x>
-      <y>464</y>
-      <w>104</w>
-      <h>24</h>
+      <x>1944</x>
+      <y>928</y>
+      <w>208</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Interface&gt;&gt;
 CorpDTO
@@ -479,10 +491,10 @@ Package::dto
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1176</x>
-      <y>164</y>
-      <w>152</w>
-      <h>128</h>
+      <x>2360</x>
+      <y>328</y>
+      <w>304</w>
+      <h>256</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 GreenCorpDTO
@@ -510,10 +522,10 @@ Package::dto
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1176</x>
-      <y>32</y>
-      <w>152</w>
-      <h>112</h>
+      <x>2360</x>
+      <y>64</y>
+      <w>304</w>
+      <h>224</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 FamilyFriendlyCorpDTO
@@ -538,10 +550,10 @@ Package::dto
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1176</x>
-      <y>504</y>
-      <w>152</w>
-      <h>132</h>
+      <x>2360</x>
+      <y>1008</y>
+      <w>304</w>
+      <h>264</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 TalentDevelopmentCorpDTO
@@ -569,10 +581,10 @@ Package::dto
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1176</x>
-      <y>656</y>
-      <w>152</w>
-      <h>176</h>
+      <x>2360</x>
+      <y>1312</y>
+      <w>304</w>
+      <h>352</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 YouthFriendlyCorpDTO
@@ -607,10 +619,10 @@ String, String, String)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1176</x>
-      <y>856</y>
-      <w>152</w>
-      <h>132</h>
+      <x>2360</x>
+      <y>1712</y>
+      <w>304</w>
+      <h>264</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 InterCorpDTO
@@ -638,10 +650,10 @@ package::dto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>608</x>
-      <y>72</y>
-      <w>104</w>
-      <h>368</h>
+      <x>1224</x>
+      <y>144</y>
+      <w>208</w>
+      <h>736</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;900.0;240.0;10.0</additional_attributes>
@@ -649,10 +661,10 @@ package::dto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>608</x>
-      <y>240</y>
-      <w>104</w>
-      <h>216</h>
+      <x>1224</x>
+      <y>480</y>
+      <w>208</w>
+      <h>432</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;520.0;240.0;10.0</additional_attributes>
@@ -660,10 +672,10 @@ package::dto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>608</x>
-      <y>392</y>
-      <w>104</w>
-      <h>72</h>
+      <x>1224</x>
+      <y>784</y>
+      <w>208</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;160.0;240.0;10.0</additional_attributes>
@@ -671,10 +683,10 @@ package::dto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>608</x>
-      <y>472</y>
-      <w>104</w>
-      <h>264</h>
+      <x>1224</x>
+      <y>944</y>
+      <w>208</w>
+      <h>528</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;240.0;640.0</additional_attributes>
@@ -682,10 +694,10 @@ package::dto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>608</x>
-      <y>460</y>
-      <w>104</w>
-      <h>104</h>
+      <x>1224</x>
+      <y>920</y>
+      <w>208</w>
+      <h>208</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;240.0;240.0</additional_attributes>
@@ -693,10 +705,10 @@ package::dto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>608</x>
-      <y>504</y>
-      <w>104</w>
-      <h>400</h>
+      <x>1224</x>
+      <y>1008</y>
+      <w>208</w>
+      <h>800</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;240.0;980.0</additional_attributes>
@@ -704,10 +716,10 @@ package::dto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>888</x>
-      <y>56</y>
-      <w>128</w>
-      <h>416</h>
+      <x>1784</x>
+      <y>112</y>
+      <w>256</w>
+      <h>832</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>300.0;1020.0;10.0;10.0</additional_attributes>
@@ -715,10 +727,10 @@ package::dto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>888</x>
-      <y>224</y>
-      <w>116</w>
-      <h>248</h>
+      <x>1784</x>
+      <y>448</y>
+      <w>232</w>
+      <h>496</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>270.0;600.0;10.0;10.0</additional_attributes>
@@ -726,10 +738,10 @@ package::dto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>888</x>
-      <y>396</y>
-      <w>104</w>
-      <h>76</h>
+      <x>1784</x>
+      <y>792</y>
+      <w>208</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>240.0;170.0;10.0;10.0</additional_attributes>
@@ -737,10 +749,10 @@ package::dto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>888</x>
-      <y>484</y>
-      <w>104</w>
-      <h>88</h>
+      <x>1784</x>
+      <y>968</y>
+      <w>208</w>
+      <h>176</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>240.0;10.0;10.0;200.0</additional_attributes>
@@ -748,10 +760,10 @@ package::dto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>888</x>
-      <y>484</y>
-      <w>112</w>
-      <h>252</h>
+      <x>1784</x>
+      <y>968</y>
+      <w>224</w>
+      <h>504</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>260.0;10.0;10.0;610.0</additional_attributes>
@@ -759,10 +771,10 @@ package::dto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>888</x>
-      <y>484</y>
-      <w>128</w>
-      <h>420</h>
+      <x>1784</x>
+      <y>968</y>
+      <w>256</w>
+      <h>840</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>300.0;10.0;10.0;1030.0</additional_attributes>
@@ -770,10 +782,10 @@ package::dto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1060</x>
-      <y>228</y>
-      <w>124</w>
-      <h>244</h>
+      <x>2128</x>
+      <y>456</y>
+      <w>248</w>
+      <h>488</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;590.0;290.0;10.0</additional_attributes>
@@ -781,10 +793,10 @@ package::dto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1068</x>
-      <y>392</y>
-      <w>108</w>
-      <h>88</h>
+      <x>2144</x>
+      <y>784</y>
+      <w>216</w>
+      <h>176</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;200.0;250.0;10.0</additional_attributes>
@@ -792,10 +804,10 @@ package::dto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1068</x>
-      <y>476</y>
-      <w>116</w>
-      <h>96</h>
+      <x>2144</x>
+      <y>952</y>
+      <w>232</w>
+      <h>192</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;270.0;220.0</additional_attributes>
@@ -803,10 +815,10 @@ package::dto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1064</x>
-      <y>484</y>
-      <w>120</w>
-      <h>240</h>
+      <x>2136</x>
+      <y>968</y>
+      <w>240</w>
+      <h>480</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;280.0;580.0</additional_attributes>
@@ -814,10 +826,10 @@ package::dto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1056</x>
-      <y>484</y>
-      <w>128</w>
-      <h>444</h>
+      <x>2120</x>
+      <y>968</y>
+      <w>256</w>
+      <h>888</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;300.0;1090.0</additional_attributes>
@@ -825,10 +837,10 @@ package::dto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1052</x>
-      <y>88</y>
-      <w>128</w>
-      <h>384</h>
+      <x>2112</x>
+      <y>176</y>
+      <w>256</w>
+      <h>768</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;940.0;300.0;10.0</additional_attributes>
@@ -836,10 +848,10 @@ package::dto
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>296</x>
-      <y>244</y>
-      <w>124</w>
-      <h>128</h>
+      <x>600</x>
+      <y>488</y>
+      <w>248</w>
+      <h>256</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 Pager
@@ -866,10 +878,10 @@ HttpServletRequest, HttpServletResponse):void</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>352</x>
-      <y>368</y>
-      <w>20</w>
-      <h>60</h>
+      <x>712</x>
+      <y>736</y>
+      <w>40</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m2=0..1</panel_attributes>
@@ -878,15 +890,16 @@ m2=0..1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>400</x>
-      <y>576</y>
-      <w>172</w>
-      <h>136</h>
+      <x>808</x>
+      <y>1152</y>
+      <w>344</w>
+      <h>296</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 FavoriteCorpDAO
 Package::dao
 --
+- dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
 - resultSet:ResultSet
@@ -904,28 +917,29 @@ Package::dao
 + getFavoriteSerialNums_forMyPage(String, int)
 :LinkedHashMap&lt;String, LinkedHashMap&lt;Integer, String&gt;&gt;
 + getRowCount(String, int):int
-+ deleteFavCorp(String, HashMap&lt;String, int[]&gt;):void</panel_attributes>
++ deleteFavCorp(String, HashMap&lt;String, int[]&gt;):void
++ closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>544</x>
-      <y>684</y>
-      <w>48</w>
-      <h>52</h>
+      <x>1096</x>
+      <y>1368</y>
+      <w>96</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>70.0;10.0;100.0;70.0;50.0;110.0;10.0;70.0</additional_attributes>
+    <additional_attributes>70.0;10.0;100.0;70.0;50.0;110.0;10.0;100.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>424</x>
-      <y>452</y>
-      <w>48</w>
-      <h>132</h>
+      <x>856</x>
+      <y>904</y>
+      <w>96</w>
+      <h>264</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>100.0;310.0;10.0;10.0</additional_attributes>
@@ -933,10 +947,10 @@ m1=0..1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>404</x>
-      <y>516</y>
-      <w>48</w>
-      <h>68</h>
+      <x>816</x>
+      <y>1032</y>
+      <w>96</w>
+      <h>136</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>100.0;150.0;10.0;10.0</additional_attributes>
@@ -944,15 +958,16 @@ m1=0..1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>192</x>
-      <y>576</y>
-      <w>180</w>
-      <h>128</h>
+      <x>392</x>
+      <y>1152</y>
+      <w>360</w>
+      <h>272</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 RecentSearchCorpDAO
 Package::dao
 --
+- dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
 - resultSet:ResultSet
@@ -962,33 +977,35 @@ Package::dao
 - RecentSearchCorpDAO()
 + getInstance():RecentSearchCorpDAO
 + insertSearchCorp(int, String, String, String):void
++ deleteOldSearch(String):void
 + isDuplicated(int, String, String):boolean
 + deleteRecord(int, String, String):void
 + getCorpList(String):List&lt;RecentSearchDTO&gt;
 + setCorpCount(int, List&lt;RecentSearchDTO&gt;)
 :ArrayList&lt;RecentSearchDTO&gt;
-+ getRecentSearchRank():LinkedHashMap&lt;Integer, String&gt;</panel_attributes>
++ getRecentSearchRank():LinkedHashMap&lt;Integer, String&gt;
++ closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>348</x>
-      <y>684</y>
-      <w>48</w>
-      <h>48</h>
+      <x>704</x>
+      <y>1368</y>
+      <w>96</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>60.0;10.0;100.0;60.0;40.0;100.0;10.0;50.0</additional_attributes>
+    <additional_attributes>60.0;10.0;100.0;60.0;40.0;100.0;10.0;70.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>280</x>
-      <y>468</y>
-      <w>36</w>
-      <h>116</h>
+      <x>568</x>
+      <y>936</y>
+      <w>72</w>
+      <h>232</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>10.0;270.0;70.0;10.0</additional_attributes>
@@ -996,10 +1013,10 @@ m1=0..1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>304</x>
-      <y>516</y>
-      <w>44</w>
-      <h>68</h>
+      <x>616</x>
+      <y>1032</y>
+      <w>88</w>
+      <h>136</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>10.0;150.0;90.0;10.0</additional_attributes>

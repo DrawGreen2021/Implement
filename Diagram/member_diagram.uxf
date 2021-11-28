@@ -168,6 +168,7 @@ Package::command.member
 MemberDAO
 Package::dao
 --
+- dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
 - resultSet:ResultSet
@@ -181,7 +182,8 @@ Package::dao
 + updatePW(String, String):boolean
 + isAdmin(String):boolean
 + getPersonalInfo(String):HashMap&lt;String, Object&gt;
-+ updatePersonalInfo(String, String, String, String, String, String):void</panel_attributes>
++ updatePersonalInfo(String, String, String, String, String, String):void
++ closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
