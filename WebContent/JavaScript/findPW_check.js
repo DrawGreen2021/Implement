@@ -76,7 +76,6 @@ window.onload=function(){
 function validate(){
 	var irregular = false;
 	var findInfo_id = document.getElementById("findInfo_id").value;
-	var findInfo_name = document.getElementById("findInfo_name").value;
 	var findInfo_email = document.getElementById("findInfo_email").value;
 	
 	var pattern_chk1 = /[`~!@#$%^&*()_+:{}\\\'\";\/?]/gi;
@@ -97,24 +96,6 @@ function validate(){
 		alert("아이디에 특수문자는 들어갈 수 없습니다");
 		irregular = true;
 	}
-	
-	//이름 체크
-	else if(findInfo_name.length == 0){
-		alert("닉네임을 입력해주십시오");
-		irregular = true;
-	}
-	else if(findInfo_name.search(/\s/) != -1){
-		alert("닉네임에 공백은 들어갈 수 없습니다");
-		irregular = true;
-	}
-	/*else if(pattern_chk1.test(findInfo_name)){
-		alert("닉네임에 특수문자는 들어갈 수 없습니다");
-		irregular = true;
-	}
-	else if(pattern_chk2.test(findInfo_name)){
-		alert("닉네임에 숫자는 들어갈 수 없습니다");
-		irregular = true;
-	}*/
 	
 	//이메일 체크
 	else if(findInfo_email.length === 0 || findInfo_email.search(/\s/) != -1 || pattern_chk4.test(findInfo_email)){
