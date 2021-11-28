@@ -60,7 +60,7 @@ Package::command.member
       <x>560</x>
       <y>184</y>
       <w>280</w>
-      <h>80</h>
+      <h>96</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 EmailSendCommand
@@ -68,7 +68,8 @@ Package::command.member
 --
 --
 + execute(HttpServletRequest, HttpServletResponse)
-+ emailSend(String):boolean</panel_attributes>
++ emailSend(String):boolean
+- makeMailContent(String):String</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -206,22 +207,22 @@ Package::util
     <id>Relation</id>
     <coordinates>
       <x>784</x>
-      <y>256</y>
+      <y>272</y>
       <w>96</w>
-      <h>112</h>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>100.0;120.0;10.0;10.0</additional_attributes>
+    <additional_attributes>100.0;100.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>768</x>
-      <y>256</y>
+      <y>272</y>
       <w>120</w>
-      <h>248</h>
+      <h>232</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>130.0;290.0;10.0;10.0</additional_attributes>
+    <additional_attributes>130.0;270.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
