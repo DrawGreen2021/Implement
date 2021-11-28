@@ -401,12 +401,13 @@ Package::command.community
       <x>1169</x>
       <y>0</y>
       <w>329</w>
-      <h>287</h>
+      <h>308</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 FeedbackPostDAO
 Package::dao
 --
+- dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
 - resultSet:ResultSet
@@ -428,7 +429,8 @@ String, String):boolean
 + updateHits(int):void
 + isAccessible(int):boolean
 + isWriter(String, int):boolean
-+ getPostList_forMyPage(String, int):ArrayList&lt;PostDTO&gt;</panel_attributes>
++ getPostList_forMyPage(String, int):ArrayList&lt;PostDTO&gt;
++ closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -437,11 +439,11 @@ String, String):boolean
       <x>1442</x>
       <y>245</y>
       <w>91</w>
-      <h>91</h>
+      <h>98</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>80.0;10.0;100.0;60.0;50.0;110.0;10.0;60.0</additional_attributes>
+    <additional_attributes>80.0;10.0;110.0;70.0;60.0;120.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -449,12 +451,13 @@ m1=0..1</panel_attributes>
       <x>861</x>
       <y>126</y>
       <w>217</w>
-      <h>210</h>
+      <h>224</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Interface&gt;&gt;
 PostDAO
 Package::dao
 --
+- pageRowCount:int
 --
 + writePost(String, String, String, String,
 String, String):boolean
@@ -476,12 +479,12 @@ String, String):boolean
     <id>Relation</id>
     <coordinates>
       <x>756</x>
-      <y>329</y>
+      <y>343</y>
       <w>119</w>
-      <h>336</h>
+      <h>322</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>150.0;10.0;10.0;460.0</additional_attributes>
+    <additional_attributes>150.0;10.0;10.0;440.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -489,12 +492,13 @@ String, String):boolean
       <x>1225</x>
       <y>357</y>
       <w>329</w>
-      <h>280</h>
+      <h>294</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 NoticePostDAO
 Package::dao
 --
+- dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
 - resultSet:ResultSet
@@ -515,7 +519,8 @@ String, String):boolean
 + getPost(int):HashMap&lt;String, Object&gt;
 + updateHits(int):void
 + isAccessible(int):boolean
-+ isWriter(String, int):boolean</panel_attributes>
++ isWriter(String, int):boolean
++ closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -528,7 +533,7 @@ String, String):boolean
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>80.0;10.0;100.0;60.0;50.0;110.0;10.0;60.0</additional_attributes>
+    <additional_attributes>80.0;10.0;100.0;60.0;50.0;110.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -586,6 +591,7 @@ m1=0..1</panel_attributes>
 MemberDAO
 Package::dao
 --
+- dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
 - resultSet:ResultSet
@@ -599,7 +605,8 @@ Package::dao
 + updatePW(String, String):boolean
 + isAdmin(String):boolean
 + getPersonalInfo(String):HashMap&lt;String, Object&gt;
-+ updatePersonalInfo(String, String, String, String, String, String):void</panel_attributes>
++ updatePersonalInfo(String, String, String, String, String, String):void
++ closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -635,7 +642,7 @@ m1=0..1</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>60.0;10.0;80.0;60.0;40.0;80.0;10.0;50.0</additional_attributes>
+    <additional_attributes>60.0;10.0;80.0;60.0;40.0;80.0;10.0;70.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>

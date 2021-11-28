@@ -136,12 +136,13 @@ m1=0..*
       <x>920</x>
       <y>360</y>
       <w>312</w>
-      <h>176</h>
+      <h>200</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Interface&gt;&gt;
 CorpDAO
 Package::dao
 --
+- pageRowCount:int
 --
 + getRowCount(String):int
 + getAllRowCount():int
@@ -151,20 +152,21 @@ Package::dao
 + getRowCount_byKeyword():int
 + getSerialNums():ArrayList&lt;Integer&gt;
 + getInfo(int):LinkedHashMap&lt;String, Object&gt;
-+ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;</panel_attributes>
++ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;
++ closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1608</x>
-      <y>384</y>
+      <y>392</y>
       <w>120</w>
       <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>100.0;10.0;120.0;90.0;50.0;120.0;10.0;80.0</additional_attributes>
+    <additional_attributes>100.0;10.0;120.0;80.0;60.0;120.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -172,17 +174,17 @@ m1=0..1</panel_attributes>
       <x>1312</x>
       <y>504</y>
       <w>376</w>
-      <h>288</h>
+      <h>304</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 InterCorpDAO
 Package::dao
 --
+- dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
 - resultSet:ResultSet
 - allRowCount:int
-- pageRowcount:int
 - serialNums:ArrayList&lt;Integer&gt;
 - beforeKeyword:String
 --
@@ -196,7 +198,8 @@ Package::dao
 + getRowCount_byKeyword():int
 + getSerialNums():ArrayList&lt;Integer&gt;
 + getInfo(int):LinkedHashMap&lt;String, Object&gt;
-+ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;</panel_attributes>
++ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;
++ closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -209,7 +212,7 @@ Package::dao
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>80.0;10.0;110.0;80.0;60.0;130.0;10.0;90.0</additional_attributes>
+    <additional_attributes>80.0;10.0;110.0;80.0;60.0;130.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -303,12 +306,12 @@ package::dto
     <id>Relation</id>
     <coordinates>
       <x>1680</x>
-      <y>272</y>
+      <y>280</y>
       <w>160</w>
-      <h>192</h>
+      <h>184</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>180.0;220.0;10.0;10.0</additional_attributes>
+    <additional_attributes>180.0;210.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -389,19 +392,19 @@ m2=0..1</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1312</x>
-      <y>160</y>
+      <y>168</y>
       <w>376</w>
-      <h>288</h>
+      <h>296</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 GreenCorpDAO
 Package::dao
 --
+- dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
 - resultSet:ResultSet
 - allRowCount:int
-- pageRowcount:int
 - serialNums:ArrayList&lt;Integer&gt;
 - beforeKeyword:String
 --
@@ -415,25 +418,26 @@ Package::dao
 + getRowCount_byKeyword():int
 + getSerialNums():ArrayList&lt;Integer&gt;
 + getInfo(int):LinkedHashMap&lt;String, Object&gt;
-+ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;</panel_attributes>
++ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;
++ closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1224</x>
-      <y>312</y>
+      <y>320</y>
       <w>104</w>
-      <h>144</h>
+      <h>136</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;160.0;110.0;10.0</additional_attributes>
+    <additional_attributes>10.0;150.0;110.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
       <x>1488</x>
-      <y>792</y>
+      <y>816</y>
       <w>80</w>
       <h>72</h>
     </coordinates>
@@ -487,12 +491,13 @@ style=wordwrap</panel_attributes>
       <x>808</x>
       <y>664</y>
       <w>344</w>
-      <h>272</h>
+      <h>304</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 FavoriteCorpDAO
 Package::dao
 --
+- dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
 - resultSet:ResultSet
@@ -510,7 +515,8 @@ Package::dao
 + getFavoriteSerialNums_forMyPage(String, int)
 :LinkedHashMap&lt;String, LinkedHashMap&lt;Integer, String&gt;&gt;
 + getRowCount(String, int):int
-+ deleteFavCorp(String, HashMap&lt;String, int[]&gt;):void</panel_attributes>
++ deleteFavCorp(String, HashMap&lt;String, int[]&gt;):void
++ closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -519,11 +525,11 @@ Package::dao
       <x>1096</x>
       <y>880</y>
       <w>96</w>
-      <h>104</h>
+      <h>128</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>70.0;10.0;100.0;70.0;50.0;110.0;10.0;70.0</additional_attributes>
+    <additional_attributes>70.0;10.0;100.0;70.0;50.0;140.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -531,12 +537,13 @@ m1=0..1</panel_attributes>
       <x>384</x>
       <y>664</y>
       <w>360</w>
-      <h>256</h>
+      <h>272</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 RecentSearchCorpDAO
 Package::dao
 --
+- dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
 - resultSet:ResultSet
@@ -546,12 +553,14 @@ Package::dao
 - RecentSearchCorpDAO()
 + getInstance():RecentSearchCorpDAO
 + insertSearchCorp(int, String, String, String):void
++ deleteOldSearch(String):void
 + isDuplicated(int, String, String):boolean
 + deleteRecord(int, String, String):void
 + getCorpList(String):List&lt;RecentSearchDTO&gt;
 + setCorpCount(int, List&lt;RecentSearchDTO&gt;)
 :ArrayList&lt;RecentSearchDTO&gt;
-+ getRecentSearchRank():LinkedHashMap&lt;Integer, String&gt;</panel_attributes>
++ getRecentSearchRank():LinkedHashMap&lt;Integer, String&gt;
++ closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -564,7 +573,7 @@ Package::dao
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>60.0;10.0;100.0;60.0;40.0;100.0;10.0;50.0</additional_attributes>
+    <additional_attributes>60.0;10.0;100.0;60.0;40.0;100.0;10.0;70.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>

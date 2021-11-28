@@ -301,11 +301,11 @@ Package::dao
       <x>1728</x>
       <y>1200</y>
       <w>104</w>
-      <h>120</h>
+      <h>128</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>80.0;10.0;110.0;90.0;50.0;130.0;10.0;90.0</additional_attributes>
+    <additional_attributes>80.0;10.0;110.0;90.0;60.0;140.0;10.0;120.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -313,11 +313,11 @@ m1=0..1</panel_attributes>
       <x>1728</x>
       <y>1536</y>
       <w>104</w>
-      <h>112</h>
+      <h>128</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>80.0;10.0;110.0;90.0;50.0;120.0;10.0;90.0</additional_attributes>
+    <additional_attributes>80.0;10.0;110.0;90.0;50.0;140.0;10.0;120.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -325,12 +325,13 @@ m1=0..1</panel_attributes>
       <x>1416</x>
       <y>1320</y>
       <w>376</w>
-      <h>288</h>
+      <h>312</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 YouthFriendlyCorpDAO
 Package::dao
 --
+- dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
 - resultSet:ResultSet
@@ -349,7 +350,8 @@ Package::dao
 + getRowCount_byKeyword():int
 + getSerialNums():ArrayList&lt;Integer&gt;
 + getInfo(int):LinkedHashMap&lt;String, Object&gt;
-+ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;</panel_attributes>
++ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;
++ closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -395,12 +397,13 @@ Package::dto
       <x>1416</x>
       <y>984</y>
       <w>376</w>
-      <h>288</h>
+      <h>312</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 TalentDevelopmentCorpDAO
 Package::dao
 --
+- dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
 - resultSet:ResultSet
@@ -419,7 +422,8 @@ Package::dao
 + getRowCount_byKeyword():int
 + getSerialNums():ArrayList&lt;Integer&gt;
 + getInfo(int):LinkedHashMap&lt;String, Object&gt;
-+ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;</panel_attributes>
++ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;
++ closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -428,12 +432,13 @@ Package::dao
       <x>1416</x>
       <y>1640</y>
       <w>376</w>
-      <h>288</h>
+      <h>312</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 InterCorpDAO
 Package::dao
 --
+- dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
 - resultSet:ResultSet
@@ -452,7 +457,8 @@ Package::dao
 + getRowCount_byKeyword():int
 + getSerialNums():ArrayList&lt;Integer&gt;
 + getInfo(int):LinkedHashMap&lt;String, Object&gt;
-+ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;</panel_attributes>
++ getRecentRecords(String):ArrayList&lt;RecentSearchDTO&gt;
++ closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -461,11 +467,11 @@ Package::dao
       <x>1728</x>
       <y>1880</y>
       <w>104</w>
-      <h>96</h>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>80.0;10.0;110.0;70.0;50.0;100.0;10.0;60.0</additional_attributes>
+    <additional_attributes>80.0;10.0;110.0;70.0;50.0;120.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
