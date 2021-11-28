@@ -26,7 +26,7 @@ public class RecentSearchViewCommand implements Command{
 		RecentSearchCorpDAO dao = RecentSearchCorpDAO.getInstance();
 		List<RecentSearchDTO> corpList = dao.getCorpList(user.getId());
 		corpList = dao.setCorpCount(page, corpList);
-		int rowCount = corpList.size();
+		int rowCount = dao.getRowCount_forMyPage(user.getId());
 		
 		request.setAttribute("corpList", corpList);
 		pager.setNumbers(page, rowCount, request, response);

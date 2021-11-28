@@ -166,6 +166,28 @@ public class RecentSearchCorpDAO {
 		return recentRecords;
 	}
 	
+	public int getRowCount_forMyPage(String user_id) {
+		String query = "SELECT count(*) FROM 최근검색기업 WHERE user_id = ?";
+		int rowCount = 0;
+		
+		try {
+			connection = dataSource.getConnection();
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, user_id);
+			
+			resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			rowCount = resultSet.getInt(1);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			closing();
+		}
+		
+		return rowCount;
+	}
+	
 	// 한 페이지에 들어가는 행의 개수만큼 DTO 개수를 조정
 	public ArrayList<RecentSearchDTO> setCorpCount(int page, List<RecentSearchDTO> corpList) {
 		ArrayList<RecentSearchDTO> corpListFor1page = new ArrayList<RecentSearchDTO>();

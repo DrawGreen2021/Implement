@@ -96,22 +96,22 @@
 				</c:if>
 
 				<%-- 페이지의 가장 끝 번호까지만 표시 --%>
-						<span> <c:forEach var="num" begin="${startNum }"
-								end="${lastNum }">
-								<c:if test="${num <= lastPageNum }">
-									<c:choose>
-										<c:when test="${num == param.page }">
-											<a style="color:gray; font-weight:bold;"
-											href='RecentSearchView.do?page=${num}'>${num}</a>
-										</c:when>
-										<c:otherwise>
-											<a style="color: gray;"
-											href='RecentSearchView.do?page=${num}'>${num}</a>
-										</c:otherwise>
-									</c:choose>
-								</c:if>
-							</c:forEach>
-						</span>
+				<span> <c:forEach var="num" begin="${startNum }"
+						end="${lastNum }">
+						<c:if test="${num <= lastPageNum }">
+							<c:choose>
+								<c:when test="${num == param.page }">
+									<a style="color:gray; font-weight:bold;"
+										href='RecentSearchView.do?page=${num}'>${num}</a>
+								</c:when>
+								<c:otherwise>
+									<a style="color: gray;"
+										href='RecentSearchView.do?page=${num}'>${num}</a>
+								</c:otherwise>
+							</c:choose>
+						</c:if>
+					</c:forEach>
+				</span>
 
 				<c:if test="${(startNum + pageCount -1) < lastPageNum }">
 					<span> <a
