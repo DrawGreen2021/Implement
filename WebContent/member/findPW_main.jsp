@@ -61,7 +61,7 @@
 			</tr>
 			<tr>
 				<td>
-					<input type = "text" id="email_auth_num" name="email_auth_num" placeholder="인증코드 10자리 입력">
+					<input type = "text" id="email_auth_code" name="email_auth_code" placeholder="인증코드 10자리 입력">
 				</td>
 			</tr>
 		</table>
