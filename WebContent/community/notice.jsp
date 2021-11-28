@@ -53,6 +53,7 @@
 					</div>
 				</form>
 			</div>
+			<div class="horizontal_rule_long"></div>
 			
 			<article>
 				<c:choose>

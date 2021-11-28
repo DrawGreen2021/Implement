@@ -32,16 +32,9 @@
 		
 		<div class="content_div" style="text-align:left;">
 			<div width="930px" height="100%">
-				<h2 style="color:#180E5A;  margin-bottom:5%;">기업 데이터 분석</h2>
-				
-				<!--  <div width="930px;"style="margin:1% auto; text-align:center;" >
-					<a href="#FFcorp" class="information_move_text">가족 친화 기업</a>
-					<a href="#Scorp" class="information_move_text" >사회적 기업</a>
-					<a href="#YFcorp" class="information_move_text">청년 친화 강소 기업</a>
-					<a href="#TDcorp" class="information_move_text">인재 육성형 중소 기업</a>
-					<a href="#Gcorp" class="information_move_text">녹색 기업</a>
-				</div>
-				<div style = "border:1px solid #eeedeb;" width="500px;"></div> -->
+				<!-- <h2 style="color:#180E5A;  margin-bottom:5%;">기업 데이터 분석</h2> -->
+				<p style="font-size: 16pt; color: #21499b; font-weight: bold;">기업 데이터 분석</p>
+				<div style="border: 1px solid #21499b; margin: 1% auto; margin-top:0;"></div>
 				
 				
 				<table width="930px;" style="margin:0 auto; border:0;" >
@@ -54,7 +47,7 @@
 					</tr>
 				</table> 
 				
-				<p class="information_text" style="font-size:10pt; margin:4% 0 11% 0;" id="FFcorp">
+				<p class="information_text" style="font-size:10pt; margin:5% 0 11% 0;" id="FFcorp">
 				그래프 설명: 색상은 업종 종류를 나타냅니다. 그래프의 크기는 업종 분포에 따라 달라집니다.</p>
 				
 				

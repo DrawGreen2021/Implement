@@ -36,7 +36,7 @@
 					<p style="font-size: 16pt; color: #21499b; font-weight: bold; margin: 0 83% 0 0;">기업 기사 모음</p>
 				</tr>
 				<tr>
-					<div style="border: 1px solid #21499b; margin: 1% auto;"></div>
+					<div style="border: 1px solid #21499b; margin: 2.3% auto;"></div>
 				</tr>
 				<tr>
 					<table class="content_div_community" style="word-break: break-all; font-weight:10pt;">

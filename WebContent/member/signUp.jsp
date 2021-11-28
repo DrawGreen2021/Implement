@@ -23,20 +23,20 @@
 		<div class="content_div_signUp">
 			<br>
 			<table align="center" class="signUp_table">
-				<tr>
+				<tr height="40px;">
 					<td colspan="3">아이디/ID</td>
 				</tr>
 				<tr>
 					<td colspan="3"><input type="text" name="id" id="id"></td>
 				</tr>
-				<tr>
+				<tr height="40px;">
 					<td colspan="3">아이디/ID 중복 확인</td>
 				</tr>
 				<tr>
-					<td colspan="3"><input type="submit" id="idCheckBtn" value="아이디 중복 확인" class="signUpPage_btn">
+					<td colspan="3"><input type="submit" id="idCheckBtn" value="아이디 중복 확인" style="height:28px;" class="signUpPage_btn">
 					<input type="hidden" name="authId" id="authID" value="false"></td>
 				</tr>
-				<tr>
+				<tr height="40px;">
 					<td colspan="3">비밀번호/PW</td>
 				</tr>
 				<tr>
@@ -44,7 +44,7 @@
 					</td>
 				</tr>
 
-				<tr>
+				<tr height="40px;">
 					<td colspan="3">비밀번호 확인</td>
 				</tr>
 				<tr>
@@ -52,14 +52,14 @@
 					</td>
 				</tr>
 
-				<tr>
+				<tr height="40px;">
 					<td colspan="3">닉네임</td>
 				</tr>
 				<tr>
 					<td colspan="3"><input type="text" name="name" id="name"></td>
 				</tr>
 
-				<tr>
+				<tr height="40px;">
 					<td colspan="3">생년월일</td>
 				</tr>
 				<tr>
@@ -85,7 +85,7 @@
 						style="width: 60px; height: 20px; margin: 0 auto;"></td>
 				</tr>
 
-				<tr>
+				<tr height="40px;">
 					<td colspan="3">성별</td>
 				</tr>
 				<tr>
@@ -98,18 +98,18 @@
 					</select></td>
 				</tr>
 
-				<tr>
+				<tr height="40px;">
 					<td colspan="3">e-mail</td>
 				</tr>
 				<tr>
 					<td colspan="3"><input type="text" id="email" name="email">
 					</td>
 				</tr>
-				<tr>
+				<tr height="40px;">
 					<td colspan="3">이메일 인증</td>
 				</tr>
 				<tr>
-					<td colspan="3"><input type="submit" id="emailSendBtn" value="이메일 인증" class="signUpPage_btn">
+					<td colspan="3"><input type="submit" id="emailSendBtn" value="이메일 인증" style="height:28px;" class="signUpPage_btn">
 					</td>
 				</tr>
 				<tr>
@@ -117,18 +117,18 @@
 						<p style="width: 220px;">* 이메일이 도착하지 않았다면<br> 스팸 메일함을 확인해주세요.</p>
 					</td>
 				</tr>
-				<tr>
+				<tr height="40px;">
 					<td colspan="3">인증코드</td>
 				</tr>
 				<tr>
 					<td colspan="3"><input type="text" id="email_auth_code" name="email_auth_code">
 					</td>
 				</tr>
-				<tr>
+				<tr height="40px;">
 					<td colspan="3">인증코드 확인</td>
 				</tr>
 				<tr>
-					<td colspan="3"><input type="submit" id="emailCheckBtn" value="인증번호 확인" class="signUpPage_btn">
+					<td colspan="3"><input type="submit" id="emailCheckBtn" value="인증번호 확인" style="height:28px;" class="signUpPage_btn">
 					<input type="hidden" name="authEmail" id="authEmail" value="false">
 					</td>
 				</tr>
@@ -138,7 +138,7 @@
 			<table align="center" class="signUp_btn_table">
 				<tr>
 					<td><input type="submit" value="회원가입" id="signUpBtn" class="signUp_btn"></td>
-					<td><input type="reset" value="취소" class="signUp_btn"></td>
+					<td><input type="reset" value="취소" style="background-color:#eeedeb;"class="signUp_btn"></td>
 				</tr>
 				<br>
 			</table>
