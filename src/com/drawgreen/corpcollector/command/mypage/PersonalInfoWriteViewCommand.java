@@ -1,6 +1,5 @@
 package com.drawgreen.corpcollector.command.mypage;
 
-import java.sql.Date;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 

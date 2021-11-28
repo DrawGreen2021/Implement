@@ -2,7 +2,6 @@ package com.drawgreen.corpcollector.command.member;
 
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;

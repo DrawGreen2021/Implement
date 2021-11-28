@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import com.drawgreen.corpcollector.command.Command;
 import com.drawgreen.corpcollector.dao.FeedbackPostDAO;
-import com.drawgreen.corpcollector.dao.MemberDAO;
 import com.drawgreen.corpcollector.dao.NoticePostDAO;
 import com.drawgreen.corpcollector.dao.PostDAO;
 import com.drawgreen.corpcollector.dto.MemberDTO;
