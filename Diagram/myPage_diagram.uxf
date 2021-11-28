@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>728</y>
+      <y>736</y>
       <w>304</w>
       <h>128</h>
     </coordinates>
@@ -25,7 +25,7 @@ Package::frontcontroller
     <id>UMLClass</id>
     <coordinates>
       <x>192</x>
-      <y>504</y>
+      <y>512</y>
       <w>304</w>
       <h>80</h>
     </coordinates>
@@ -41,7 +41,7 @@ Package::command
     <id>UMLClass</id>
     <coordinates>
       <x>584</x>
-      <y>88</y>
+      <y>96</y>
       <w>280</w>
       <h>72</h>
     </coordinates>
@@ -58,7 +58,7 @@ Package::command.mypage
     <id>UMLClass</id>
     <coordinates>
       <x>584</x>
-      <y>280</y>
+      <y>288</y>
       <w>280</w>
       <h>72</h>
     </coordinates>
@@ -75,7 +75,7 @@ Package::command.mypage
     <id>UMLClass</id>
     <coordinates>
       <x>584</x>
-      <y>376</y>
+      <y>384</y>
       <w>280</w>
       <h>72</h>
     </coordinates>
@@ -92,7 +92,7 @@ Package::command.mypage
     <id>UMLClass</id>
     <coordinates>
       <x>584</x>
-      <y>184</y>
+      <y>192</y>
       <w>280</w>
       <h>72</h>
     </coordinates>
@@ -109,7 +109,7 @@ Package::command.mypage
     <id>UMLClass</id>
     <coordinates>
       <x>584</x>
-      <y>472</y>
+      <y>480</y>
       <w>280</w>
       <h>72</h>
     </coordinates>
@@ -126,7 +126,7 @@ Package::command.mypage
     <id>UMLClass</id>
     <coordinates>
       <x>584</x>
-      <y>568</y>
+      <y>576</y>
       <w>280</w>
       <h>72</h>
     </coordinates>
@@ -143,7 +143,7 @@ Package::command.mypage
     <id>UMLClass</id>
     <coordinates>
       <x>584</x>
-      <y>664</y>
+      <y>672</y>
       <w>280</w>
       <h>72</h>
     </coordinates>
@@ -160,7 +160,7 @@ Package::command.mypage
     <id>UMLClass</id>
     <coordinates>
       <x>960</x>
-      <y>320</y>
+      <y>328</y>
       <w>376</w>
       <h>256</h>
     </coordinates>
@@ -178,6 +178,7 @@ Package::dao
 + idCheck(String):boolean
 + insertMember(String, String, String, String, String, String):boolean
 + login(String, String, HttpServletRequest, HttpServletResponse):boolean
++ findID(String, String):String
 + findPw(String, String):boolean
 + updatePW(String, String):boolean
 + isAdmin(String):boolean
@@ -190,7 +191,7 @@ Package::dao
     <id>Relation</id>
     <coordinates>
       <x>296</x>
-      <y>576</y>
+      <y>584</y>
       <w>104</w>
       <h>232</h>
     </coordinates>
@@ -203,7 +204,7 @@ m1=0..*
     <id>Relation</id>
     <coordinates>
       <x>488</x>
-      <y>136</y>
+      <y>144</y>
       <w>112</w>
       <h>416</h>
     </coordinates>
@@ -214,7 +215,7 @@ m1=0..*
     <id>Relation</id>
     <coordinates>
       <x>488</x>
-      <y>224</y>
+      <y>232</y>
       <w>112</w>
       <h>328</h>
     </coordinates>
@@ -225,7 +226,7 @@ m1=0..*
     <id>Relation</id>
     <coordinates>
       <x>488</x>
-      <y>320</y>
+      <y>328</y>
       <w>112</w>
       <h>232</h>
     </coordinates>
@@ -236,7 +237,7 @@ m1=0..*
     <id>Relation</id>
     <coordinates>
       <x>488</x>
-      <y>408</y>
+      <y>416</y>
       <w>112</w>
       <h>152</h>
     </coordinates>
@@ -247,7 +248,7 @@ m1=0..*
     <id>Relation</id>
     <coordinates>
       <x>488</x>
-      <y>512</y>
+      <y>520</y>
       <w>112</w>
       <h>48</h>
     </coordinates>
@@ -258,7 +259,7 @@ m1=0..*
     <id>Relation</id>
     <coordinates>
       <x>488</x>
-      <y>536</y>
+      <y>544</y>
       <w>112</w>
       <h>88</h>
     </coordinates>
@@ -269,7 +270,7 @@ m1=0..*
     <id>Relation</id>
     <coordinates>
       <x>488</x>
-      <y>544</y>
+      <y>552</y>
       <w>112</w>
       <h>168</h>
     </coordinates>
@@ -280,7 +281,7 @@ m1=0..*
     <id>Relation</id>
     <coordinates>
       <x>1280</x>
-      <y>536</y>
+      <y>544</y>
       <w>96</w>
       <h>80</h>
     </coordinates>
@@ -292,7 +293,7 @@ m1=0..1</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>584</x>
-      <y>856</y>
+      <y>864</y>
       <w>280</w>
       <h>72</h>
     </coordinates>
@@ -309,7 +310,7 @@ Package::command.mypage
     <id>UMLClass</id>
     <coordinates>
       <x>584</x>
-      <y>952</y>
+      <y>960</y>
       <w>280</w>
       <h>72</h>
     </coordinates>
@@ -326,7 +327,7 @@ Package::command.mypage
     <id>UMLClass</id>
     <coordinates>
       <x>584</x>
-      <y>1048</y>
+      <y>1056</y>
       <w>280</w>
       <h>72</h>
     </coordinates>
@@ -343,7 +344,7 @@ Package::command.mypage
     <id>Relation</id>
     <coordinates>
       <x>488</x>
-      <y>560</y>
+      <y>568</y>
       <w>112</w>
       <h>352</h>
     </coordinates>
@@ -354,7 +355,7 @@ Package::command.mypage
     <id>Relation</id>
     <coordinates>
       <x>488</x>
-      <y>576</y>
+      <y>584</y>
       <w>112</w>
       <h>432</h>
     </coordinates>
@@ -365,7 +366,7 @@ Package::command.mypage
     <id>Relation</id>
     <coordinates>
       <x>480</x>
-      <y>576</y>
+      <y>584</y>
       <w>120</w>
       <h>528</h>
     </coordinates>
@@ -375,7 +376,7 @@ Package::command.mypage
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>976</x>
+      <x>968</x>
       <y>0</y>
       <w>344</w>
       <h>312</h>
@@ -397,11 +398,11 @@ Package::dao
 + deleteFavoriteCorp(String, int, String):void
 + getFavoirteSerialNums(int, String, String, int):int[]
 + getFavoirteSerialNums(int, String, String, ArrayList&lt;Integer&gt;):int[]
++ getFavoriteSerialNums(String, ArrayList&lt;InterCorpDTO&gt;:int[]
 + getCorpType(String):String
-+ getFavoriteSerialNums(String, ArrayList&lt;InterCorpDTO&gt;):int[]
 + getFavoriteSerialNums_forMyPage(String, int)
 :LinkedHashMap&lt;String, LinkedHashMap&lt;Integer, String&gt;&gt;
-+ getRowCount(String, int):int
++ getRowCount(String):int
 + deleteFavCorp(String, HashMap&lt;String, int[]&gt;):void
 + resetCorpList(String):boolean
 + closing():void</panel_attributes>
@@ -410,22 +411,22 @@ Package::dao
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1280</x>
-      <y>216</y>
-      <w>80</w>
-      <h>120</h>
+      <x>1272</x>
+      <y>248</y>
+      <w>88</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>50.0;10.0;80.0;100.0;50.0;130.0;10.0;120.0</additional_attributes>
+    <additional_attributes>50.0;10.0;90.0;70.0;60.0;100.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>968</x>
-      <y>600</y>
+      <y>608</y>
       <w>360</w>
-      <h>272</h>
+      <h>288</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 RecentSearchCorpDAO
@@ -434,6 +435,7 @@ Package::dao
 - dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
+- callableStatement:CallableStatement
 - resultSet:ResultSet
 - pageRowCount:int
 - rankCount:int
@@ -454,22 +456,22 @@ Package::dao
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1280</x>
-      <y>816</y>
-      <w>88</w>
-      <h>88</h>
+      <x>1288</x>
+      <y>824</y>
+      <w>80</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>60.0;10.0;80.0;60.0;30.0;90.0;10.0;70.0</additional_attributes>
+    <additional_attributes>50.0;10.0;70.0;60.0;20.0;110.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>952</x>
-      <y>888</y>
+      <x>960</x>
+      <y>912</y>
       <w>376</w>
-      <h>352</h>
+      <h>416</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 FeedbackPostDAO
@@ -478,6 +480,7 @@ Package::dao
 - dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
+- callableStatement:CallableStatement
 - resultSet:ResultSet
 - boardNums:ArrayList&lt;Integer&gt;
 - beforeKeyword:String
@@ -487,37 +490,41 @@ Package::dao
 String, String):boolean
 + updatePost(int, String, String, String, String):boolean
 + deletePost(int, String):boolean
++ resetBoardId():void
 + getRowCount(String):int
 + getPostList(int):ArrayList&lt;PostDTO&gt;
 + getPostList(String, int):ArrayList&lt;PostDTO&gt;
 + setBoardNums(String, ArrayList&lt;Integer&gt;):ArrayList&lt;Integer&gt;
 + getAllRowCount():int
++ setAllRowCount(int):void
 + getRowCount_byKeyword():int
 + getPost(int):HashMap&lt;String, Object&gt;
 + updateHits(int):void
 + isAccessible(int):boolean
 + isWriter(String, int):boolean
 + getPostList_forMyPage(String, int):ArrayList&lt;PostDTO&gt;
++ getRowCount_forMyPage(String):int
++ deleteMyFeedbakc(int[]):void
 + closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1272</x>
-      <y>1168</y>
+      <x>1280</x>
+      <y>1240</y>
       <w>96</w>
       <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>70.0;10.0;90.0;80.0;40.0;120.0;10.0;90.0</additional_attributes>
+    <additional_attributes>70.0;10.0;100.0;70.0;50.0;120.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>1392</x>
-      <y>432</y>
+      <y>440</y>
       <w>304</w>
       <h>352</h>
     </coordinates>
@@ -556,50 +563,50 @@ String, String, Timestamp)
     <coordinates>
       <x>856</x>
       <y>104</y>
-      <w>136</w>
-      <h>32</h>
+      <w>128</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>150.0;10.0;10.0;20.0</additional_attributes>
+    <additional_attributes>140.0;10.0;10.0;30.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>856</x>
       <y>128</y>
-      <w>136</w>
-      <h>112</h>
+      <w>128</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>150.0;10.0;10.0;120.0</additional_attributes>
+    <additional_attributes>140.0;10.0;10.0;130.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>856</x>
       <y>144</y>
-      <w>136</w>
-      <h>472</h>
+      <w>128</w>
+      <h>480</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>150.0;10.0;10.0;570.0</additional_attributes>
+    <additional_attributes>140.0;10.0;10.0;580.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>856</x>
       <y>200</y>
-      <w>136</w>
-      <h>512</h>
+      <w>128</w>
+      <h>520</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>150.0;10.0;10.0;620.0</additional_attributes>
+    <additional_attributes>140.0;10.0;10.0;630.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>856</x>
-      <y>312</y>
+      <y>320</y>
       <w>120</w>
       <h>128</h>
     </coordinates>
@@ -610,7 +617,7 @@ String, String, Timestamp)
     <id>Relation</id>
     <coordinates>
       <x>856</x>
-      <y>472</y>
+      <y>480</y>
       <w>120</w>
       <h>56</h>
     </coordinates>
@@ -621,7 +628,7 @@ String, String, Timestamp)
     <id>Relation</id>
     <coordinates>
       <x>856</x>
-      <y>664</y>
+      <y>672</y>
       <w>128</w>
       <h>248</h>
     </coordinates>
@@ -632,29 +639,29 @@ String, String, Timestamp)
     <id>Relation</id>
     <coordinates>
       <x>856</x>
-      <y>904</y>
-      <w>112</w>
-      <h>112</h>
+      <y>928</y>
+      <w>120</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>120.0;10.0;10.0;120.0</additional_attributes>
+    <additional_attributes>130.0;10.0;10.0;100.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>840</x>
-      <y>952</y>
-      <w>128</w>
-      <h>184</h>
+      <y>976</y>
+      <w>136</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>140.0;10.0;10.0;210.0</additional_attributes>
+    <additional_attributes>150.0;10.0;10.0;190.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>1384</x>
-      <y>808</y>
+      <y>816</y>
       <w>328</w>
       <h>432</h>
     </coordinates>
@@ -698,7 +705,7 @@ int, boolean, boolean)
     <id>Relation</id>
     <coordinates>
       <x>1320</x>
-      <y>608</y>
+      <y>616</y>
       <w>88</w>
       <h>136</h>
     </coordinates>
@@ -708,19 +715,19 @@ int, boolean, boolean)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1320</x>
-      <y>992</y>
-      <w>80</w>
-      <h>48</h>
+      <x>1328</x>
+      <y>1000</y>
+      <w>72</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>80.0;10.0;10.0;40.0</additional_attributes>
+    <additional_attributes>70.0;10.0;10.0;60.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>584</x>
-      <y>760</y>
+      <y>768</y>
       <w>280</w>
       <h>72</h>
     </coordinates>
@@ -737,7 +744,7 @@ Package::command.mypage
     <id>Relation</id>
     <coordinates>
       <x>488</x>
-      <y>552</y>
+      <y>560</y>
       <w>112</w>
       <h>264</h>
     </coordinates>
@@ -749,10 +756,10 @@ Package::command.mypage
     <coordinates>
       <x>856</x>
       <y>240</y>
-      <w>136</w>
-      <h>584</h>
+      <w>128</w>
+      <h>592</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>150.0;10.0;10.0;710.0</additional_attributes>
+    <additional_attributes>140.0;10.0;10.0;720.0</additional_attributes>
   </element>
 </diagram>

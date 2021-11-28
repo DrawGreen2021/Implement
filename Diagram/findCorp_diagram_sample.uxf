@@ -491,7 +491,7 @@ style=wordwrap</panel_attributes>
       <x>808</x>
       <y>664</y>
       <w>344</w>
-      <h>304</h>
+      <h>312</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 FavoriteCorpDAO
@@ -510,12 +510,13 @@ Package::dao
 + deleteFavoriteCorp(String, int, String):void
 + getFavoirteSerialNums(int, String, String, int):int[]
 + getFavoirteSerialNums(int, String, String, ArrayList&lt;Integer&gt;):int[]
++ getFavoriteSerialNums(String, ArrayList&lt;InterCorpDTO&gt;:int[]
 + getCorpType(String):String
-+ getFavoriteSerialNums(String, ArrayList&lt;InterCorpDTO&gt;):int[]
 + getFavoriteSerialNums_forMyPage(String, int)
 :LinkedHashMap&lt;String, LinkedHashMap&lt;Integer, String&gt;&gt;
-+ getRowCount(String, int):int
++ getRowCount(String):int
 + deleteFavCorp(String, HashMap&lt;String, int[]&gt;):void
++ resetCorpList(String):boolean
 + closing():void</panel_attributes>
     <additional_attributes/>
   </element>
@@ -524,12 +525,12 @@ Package::dao
     <coordinates>
       <x>1096</x>
       <y>880</y>
-      <w>96</w>
+      <w>104</w>
       <h>128</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>70.0;10.0;100.0;70.0;50.0;140.0;10.0;110.0</additional_attributes>
+    <additional_attributes>70.0;10.0;110.0;80.0;50.0;140.0;10.0;120.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -537,7 +538,7 @@ m1=0..1</panel_attributes>
       <x>384</x>
       <y>664</y>
       <w>360</w>
-      <h>272</h>
+      <h>288</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 RecentSearchCorpDAO
@@ -546,6 +547,7 @@ Package::dao
 - dataSource:DataSource
 - connection:Connection
 - preparedStatement:PreparedStatement
+- callableStatement:CallableStatement
 - resultSet:ResultSet
 - pageRowCount:int
 - rankCount:int
@@ -569,11 +571,11 @@ Package::dao
       <x>696</x>
       <y>880</y>
       <w>96</w>
-      <h>96</h>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>60.0;10.0;100.0;60.0;40.0;100.0;10.0;70.0</additional_attributes>
+    <additional_attributes>60.0;10.0;100.0;60.0;40.0;120.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
