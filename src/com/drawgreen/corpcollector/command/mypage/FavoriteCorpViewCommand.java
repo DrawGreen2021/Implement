@@ -24,7 +24,7 @@ public class FavoriteCorpViewCommand implements Command{
 		
 		FavoriteCorpDAO dao = FavoriteCorpDAO.getInstance();
 		LinkedHashMap<String, LinkedHashMap<Integer, String>> favCorpMap = dao.getFavoriteSerialNums_forMyPage(user.getId(), page);
-		int rowCount = dao.getRowCount(user.getId(), page);
+		int rowCount = dao.getRowCount(user.getId());
 		
 		request.setAttribute("favCorpMap", favCorpMap);
 		pager.setNumbers(page, rowCount, request, response);

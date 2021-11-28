@@ -313,7 +313,7 @@ public class FavoriteCorpDAO {
 	}
 	
 	// 사용자가 등록한 관심기업 개수 가져오기
-	public int getRowCount(String user_id, int page) {
+	public int getRowCount(String user_id) {
 		String query = "SELECT count(*) FROM 관심기업 WHERE user_id = ?";
 		int count = 0;
 		
