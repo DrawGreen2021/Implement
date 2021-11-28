@@ -15,11 +15,13 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.drawgreen.corpcollector.dto.RecentSearchDTO;
+import java.sql.CallableStatement;
 
 public class RecentSearchCorpDAO {
 	private DataSource dataSource = null;
 	private Connection connection = null;
 	private PreparedStatement preparedStatement = null;
+	private CallableStatement callableStatement = null;
 	private ResultSet resultSet = null;
 	private int pageRowCount;
 	private int rankCount;
@@ -52,6 +54,8 @@ public class RecentSearchCorpDAO {
 		if (isDuplicated) {
 			deleteRecord(serial_num, user_id, corpType);
 		}
+		deleteOldSearch(user_id);
+		
 		String select_query = "INSERT INTO 최근검색기업(user_id,"+corpType+"_id, corpName, search_date) "
 				+ "VALUES(?,?,?,?)";
 		
@@ -64,6 +68,23 @@ public class RecentSearchCorpDAO {
 			preparedStatement.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
 			
 			preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			closing();
+		}
+	}
+	
+	// 검색 기록이 50개가 넘으면 가장 오래된 검색 기록을 삭제하는 프로시저 호출
+	public void deleteOldSearch(String user_id) {
+		String query = "{ CALL delete_old_search(?) }";
+		
+		try {
+			connection = dataSource.getConnection();
+			callableStatement = (CallableStatement) connection.prepareCall(query);
+			callableStatement.setString(1, user_id);
+			callableStatement.execute();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
