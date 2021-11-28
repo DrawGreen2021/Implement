@@ -13,7 +13,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.drawgreen.corpcollector.dto.PostDTO;
-import com.mysql.cj.jdbc.CallableStatement;
+import java.sql.CallableStatement;
 
 public class NoticePostDAO implements PostDAO{
 	private DataSource dataSource = null;
