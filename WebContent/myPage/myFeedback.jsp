@@ -55,7 +55,7 @@
 							<%-- 사용자가 작성한 글이 있다면 게시글 리스트 출력 --%>
 							<c:otherwise>
 								<tr class="community_text"
-									style="background-color: #eeedeb; height: 32px;">
+									style="background-color: #eeedeb; height: 32px; font-size:11pt;">
 									<td width="3%"></td>
 									<td width="5%">번호</td>
 									<td width="50%">제목</td>

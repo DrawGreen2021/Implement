@@ -94,7 +94,7 @@
 							style="word-break: break-all;">
 
 							<tr class="community_text"
-								style="background-color: #eeedeb; height: 32px;">
+								style="background-color: #eeedeb; height: 32px; font-size:11pt;">
 								<td width="3%"></td>
 								<td width="22%">사업장명</td>
 								<td width="25%">소재지</td>
@@ -106,7 +106,7 @@
 							<c:forEach items="${requestScope.corpList }" var="dto"
 								varStatus="status">
 								<tr class="community_text"
-									style="height: 50px; cursor: pointer;">
+									style="height: 50px; cursor: pointer; font-size:10pt;">
 									<c:choose>
 										<c:when
 											test="${dto.serial_number eq favoriteNums[status.index] 

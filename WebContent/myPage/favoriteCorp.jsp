@@ -73,7 +73,7 @@
 											<tr class="community_text" height="30px;">
 												<td
 													rowspan="${fn:length(favCorpMap['talentDevelopmentCorp']) }"
-													width="20%" style="background-color: #eeedeb;">인재 육성형
+													style="background-color: #eeedeb; font-size:11pt; width:20%;">인재 육성형
 													중소 기업</td>
 												<td><a style="color: black; text-decoration: none;"
 													href="../findCorp/DetailView.do?corpType=talentDevelopmentCorp&serial_num=${favCorp.key }">
@@ -105,7 +105,7 @@
 										<c:when test="${status.count == 1 }">
 											<tr class="community_text" height="30px;">
 												<td rowspan="${fn:length(favCorpMap['greenCorp']) }"
-													style="background-color: #eeedeb;">녹색기업</td>
+													style="background-color: #eeedeb; font-size:11pt;">녹색기업</td>
 												<td><a style="color: black; text-decoration: none;"
 													href="../findCorp/DetailView.do?corpType=greenCorp&serial_num=${favCorp.key }">
 														${favCorp.value }</a></td>
@@ -136,7 +136,7 @@
 										<c:when test="${status.count == 1 }">
 											<tr class="community_text" height="30px;">
 												<td rowspan="${fn:length(favCorpMap['socialCorp']) }"
-													style="background-color: #eeedeb;">사회적 기업</td>
+													style="background-color: #eeedeb; font-size:11pt; width:35%;">사회적 기업</td>
 												<td><a style="color: black; text-decoration: none;"
 													href="../findCorp/DetailView.do?corpType=socialCorp&serial_num=${favCorp.key }">
 														${favCorp.value }</a></td>
@@ -168,7 +168,7 @@
 											<tr class="community_text" height="30px;">
 												<td
 													rowspan="${fn:length(favCorpMap['familyFriendlyCorp']) }"
-													style="background-color: #eeedeb;">가족 친화 기업</td>
+													style="background-color: #eeedeb; font-size:11pt;">가족 친화 기업</td>
 												<td><a style="color: black; text-decoration: none;"
 													href="../findCorp/DetailView.do?corpType=familyFriendlyCorp&serial_num=${favCorp.key }">
 														${favCorp.value }</a></td>
@@ -199,7 +199,7 @@
 										<c:when test="${status.count == 1 }">
 											<tr class="community_text" height="30px;">
 												<td rowspan="${fn:length(favCorpMap['youthFriendlyCorp']) }"
-													style="background-color: #eeedeb;">청년 친화 강소 기업</td>
+													style="background-color: #eeedeb; font-size:11pt;">청년 친화 강소 기업</td>
 												<td><a style="color: black; text-decoration: none;"
 													href="../findCorp/DetailView.do?corpType=youthFriendlyCorp&serial_num=${favCorp.key }">
 														${favCorp.value }</a></td>

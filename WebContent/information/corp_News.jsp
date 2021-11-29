@@ -39,8 +39,8 @@
 					<div style="border: 1px solid #21499b; margin: 2.3% auto;"></div>
 				</tr>
 				<tr>
-					<table class="content_div_community" style="word-break: break-all; font-weight:10pt;">
-						<tr class="community_text" style="background-color: #eeedeb; height: 32px; font-weight:10pt;">
+					<table class="content_div_community" style="word-break: break-all;">
+						<tr class="community_text" style="background-color: #eeedeb; height: 32px; font-size:11pt;">
 							<td width="15%">키워드</td>
 							<td width="45%">제목</td>
 							<td width="10%">출처</td>
@@ -50,12 +50,12 @@
 						
 						<!-- 뉴스 정보 리스트 -->
 						<c:forEach items="${requestScope.newsList }" var="dto">
-						<tr class="community_text" style="height:50px; cursor:pointer; font-weight:10pt;">
+						<tr class="community_text" style="height:50px; cursor:pointer;">
 							<td>${dto.subTitle }</td>
 							<td>${dto.title }</td>
 							<td>${dto.source }</td>
 							<td><a href="${dto.link }" target="_blank"
-							style="color:black; text-decoration:none; font-size:10pt;">${dto.link }</a></td>
+							style="color:black; text-decoration:none;">${dto.link }</a></td>
 						</tr>
 						</c:forEach>
 								
@@ -63,7 +63,7 @@
 			</table>
 
 			<!-- 페이지 번호 div -->
-			<div class="pagelist_text" style="margin: 3% auto;">
+			<div class="pagelist_text" style="margin: 7% auto;">
 
 				<%-- 페이징 변수 파일 포함 --%>
 				<c:import url='/importedFile/pagingVariables.jsp'></c:import>

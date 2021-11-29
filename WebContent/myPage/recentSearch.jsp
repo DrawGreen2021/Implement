@@ -55,7 +55,7 @@
 							</c:when>
 							<c:otherwise>
 								<tr class="community_text"
-									style="background-color: #eeedeb; height: 32px;">
+									style="background-color: #eeedeb; height: 32px; font-size:11pt;">
 									<!-- <td width="5%">번호</td> -->
 									<td width="28%">업체명</td>
 									<td width="37%x">소재지</td>
@@ -66,7 +66,7 @@
 									<tr class="community_text" style="height:35px; cursor:pointer;">
 										<td><a style="color:black; text-decoration:none;"
 										href="../findCorp/DetailView.do?corpType=${dto.engCorpType }&serial_num=${dto.serial_number }">${dto.company_name }</a></td>
-										<td style="font-size:10pt;">${dto.location }</td>
+										<td>${dto.location }</td>
 
 										<td>${dto.sector }</td>
 										<td>${dto.korCorpType }</td>

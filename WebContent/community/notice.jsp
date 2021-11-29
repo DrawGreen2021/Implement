@@ -72,7 +72,7 @@
 
 						<table class="content_div_community">
 							<tr class="community_text"
-								style="background-color: #eeedeb; height: 30px;">
+								style="background-color: #eeedeb; height: 30px; font-size:11pt;">
 								<td width="30px"></td>
 								<td width="80px">번호</td>
 								<td width="500px">제목</td>

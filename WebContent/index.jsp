@@ -68,7 +68,7 @@
 			</tr>
 		</table> --%>
 		<br>
-		<div class="horizontal_rule"></div>	
+		<div class="horizontal_rule" style="width:1200px;"></div>	
 		<br>
 		<div class="index_keyword" style="padding-top: 15px;">
 			<button id="greenCorp" value="greenCorp" onclick="setType(this)">녹색 기업</button>
