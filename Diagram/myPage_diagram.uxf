@@ -471,7 +471,7 @@ m1=0..1</panel_attributes>
       <x>960</x>
       <y>912</y>
       <w>376</w>
-      <h>416</h>
+      <h>424</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 FeedbackPostDAO
@@ -485,7 +485,8 @@ Package::dao
 - boardNums:ArrayList&lt;Integer&gt;
 - beforeKeyword:String
 --
-+ FeedbackPostDAO()
+- FeedbackPostDAO()
++ getInstance():FeedbackPostDAO
 + writePost(String, String, String, String,
 String, String):boolean
 + updatePost(int, String, String, String, String):boolean
@@ -513,12 +514,12 @@ String, String):boolean
     <coordinates>
       <x>1280</x>
       <y>1240</y>
-      <w>96</w>
-      <h>112</h>
+      <w>112</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>70.0;10.0;100.0;70.0;50.0;120.0;10.0;110.0</additional_attributes>
+    <additional_attributes>70.0;10.0;120.0;90.0;70.0;160.0;10.0;120.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
