@@ -401,7 +401,7 @@ Package::command.community
       <x>1169</x>
       <y>0</y>
       <w>329</w>
-      <h>364</h>
+      <h>371</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 FeedbackPostDAO
@@ -415,7 +415,8 @@ Package::dao
 - boardNums:ArrayList&lt;Integer&gt;
 - beforeKeyword:String
 --
-+ FeedbackPostDAO()
+- FeedbackPostDAO()
++ getInstance():FeedbackPostDAO
 + writePost(String, String, String, String,
 String, String):boolean
 + updatePost(int, String, String, String, String):boolean
@@ -448,7 +449,7 @@ String, String):boolean
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>80.0;10.0;120.0;110.0;70.0;190.0;10.0;170.0</additional_attributes>
+    <additional_attributes>80.0;10.0;120.0;110.0;70.0;190.0;10.0;180.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -497,7 +498,7 @@ String, String):boolean
       <x>1225</x>
       <y>378</y>
       <w>329</w>
-      <h>329</h>
+      <h>343</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 NoticePostDAO
@@ -511,7 +512,8 @@ Package::dao
 - boardNums:ArrayList&lt;Integer&gt;
 - beforeKeyword:String
 --
-+ NoticePostDAO()
+- NoticePostDAO()
++ getInstance():NoticePostDAO
 + writePost(String, String, String, String,
 String, String):boolean
 + updatePost(int, String, String, String, String):boolean
@@ -537,11 +539,11 @@ String, String):boolean
       <x>1498</x>
       <y>616</y>
       <w>98</w>
-      <h>126</h>
+      <h>133</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>80.0;10.0;120.0;100.0;50.0;160.0;10.0;130.0</additional_attributes>
+    <additional_attributes>80.0;10.0;120.0;100.0;60.0;170.0;10.0;150.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
