@@ -313,7 +313,7 @@ public class FeedbackPostDAO implements PostDAO{
 		// 키워드 공백으로 분리
 		StringTokenizer tokenizer = new StringTokenizer(keyword);
 
-		String query = "SELECT board_id FROM feedback_view " + "WHERE text REGEXP('";
+		String query = "SELECT board_id FROM feedback_view WHERE text REGEXP('";
 		StringBuffer buffer = new StringBuffer(query);
 		buffer.append(tokenizer.nextToken() + "'");
 		while (tokenizer.hasMoreTokens()) {

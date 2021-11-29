@@ -183,8 +183,7 @@ public class TalentDevelopmentCorpDAO implements CorpDAO{
 		// 키워드 공백으로 분리
 		StringTokenizer tokenizer = new StringTokenizer(keyword);
 		
-		String query = "SELECT 연번 FROM talentDevelopmentCorp_view "
-				+ "WHERE text REGEXP('";
+		String query = "SELECT 연번 FROM talentDevelopmentCorp_view WHERE text REGEXP('";
 		StringBuffer buffer = new StringBuffer(query);
 		buffer.append(tokenizer.nextToken()+"'");
 		while(tokenizer.hasMoreTokens()) {
