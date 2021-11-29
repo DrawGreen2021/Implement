@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.drawgreen.corpcollector.command.Command;
+import com.drawgreen.corpcollector.dao.MemberDAO;
 import com.drawgreen.corpcollector.util.AutoCodeMaker;
 import com.drawgreen.corpcollector.util.Mail;
 import com.drawgreen.corpcollector.util.ServerLogin;
@@ -34,6 +35,20 @@ public class EmailSendCommand implements Command{
 			e.printStackTrace();
 		}
 		
+		String signUpReq_str = request.getParameter("signUp")==null?"false":request.getParameter("signUp");
+		boolean signUpReq = Boolean.parseBoolean(signUpReq_str);
+		if (signUpReq) {
+			MemberDAO dao = MemberDAO.getInstance();
+			boolean emailDupCheck = dao.emailCheck(email);
+			
+			if (emailDupCheck)
+				out.print("duplicated");
+			else returnSedingResult(email, out);
+		} else returnSedingResult(email, out);
+		
+	}
+	
+	public void returnSedingResult(String email, PrintWriter out) {
 		boolean emailSendCheck = emailSend(email);
 		
 		if(emailSendCheck) {

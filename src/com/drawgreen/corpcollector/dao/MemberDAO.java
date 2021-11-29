@@ -65,6 +65,32 @@ public class MemberDAO {
 		
 		return false;
 	}
+	
+	public boolean emailCheck(String email) {
+		String query = "SELECT IF(count(*)=1, 'true', 'false') AS result"
+                + " FROM members"
+                + " WHERE email = ?";
+		try {
+			connection = dataSource.getConnection();
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, email);
+			
+			resultSet = preparedStatement.executeQuery();
+			
+			resultSet.next();
+            String result = resultSet.getString(1);
+
+            return Boolean.parseBoolean(result);
+            
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			closing();
+		}
+		
+		return false;
+	}
 
 	// 회원 정보 추가
 	public boolean insertMember(String id, String pw, String name, String email, String birth, String gender) {
