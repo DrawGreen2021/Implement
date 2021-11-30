@@ -136,7 +136,7 @@ m1=0..*
       <x>920</x>
       <y>360</y>
       <w>312</w>
-      <h>200</h>
+      <h>208</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Interface&gt;&gt;
 CorpDAO
@@ -149,6 +149,7 @@ Package::dao
 + setAllRowCount(int):void
 + getCorpList(int):ArrayList&lt;? extends CorpDTO&gt;
 + getCorpList(String, int):ArrayList&lt;? extends CorpDTO&gt;
++ setSerialNum(String, ArrayList&lt;Integer&gt;):ArrayList&lt;Integer&gt;
 + getRowCount_byKeyword():int
 + getSerialNums():ArrayList&lt;Integer&gt;
 + getInfo(int):LinkedHashMap&lt;String, Object&gt;
