@@ -62,14 +62,15 @@
 					고객후기 - CorpCollector 사용 후기, 건의 사항, 문의 등을 남길 수 있습니다.</p>
 				
 				<h3>마이페이지</h3>
-				<p>: 회원가입을 한 사용자에게 제공되는 페이지입니다. <br><br>
+				<p style="margin-bottom:6%;">: 회원가입을 한 사용자에게 제공되는 페이지입니다. <br><br>
 					개인정보 관리 - 개인정보를 수정할 수 있습니다. 회원 탈퇴는 이 페이지에서 가능합니다. <br>
 					최근 검색 기업 - 최근에 기업의 상세 정보를 조회한 기록을 볼 수 있습니다. <br>
 					관심 기업 - 관심 기업으로 등록한 기업 목록을 볼 수 있습니다. <br>
 					내가 쓴 글 - 고객후기 게시판에 작성한 글을 보고 관리할 수 있습니다. </p>
-					
-				문제가 있으면 아래 메일로 연락주세요. <br>
-				관리자 이메일: drawgreen@corpcollector.or.kr
+				
+				<div style = "border:1px solid #eeedeb; margin-bottom:6%;" width="500px;"></div>
+				<p>문제가 있으면 아래 메일로 연락주세요. <br>
+				관리자 이메일: drawgreen@corpcollector.or.kr</p>
 			</div>
 		</div>
 	</div>
