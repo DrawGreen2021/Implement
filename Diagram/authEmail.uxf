@@ -42,7 +42,7 @@ Package::command
     <coordinates>
       <x>560</x>
       <y>88</y>
-      <w>280</w>
+      <w>296</w>
       <h>80</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
@@ -50,7 +50,7 @@ EmailCheckCommand
 Package::command.member
 --
 --
-+ execute(HttpServletRequest, HttpServletResponse)
++ execute(HttpServletRequest, HttpServletResponse):void
 + checkAuthEmail(String):boolean</panel_attributes>
     <additional_attributes/>
   </element>
@@ -59,15 +59,16 @@ Package::command.member
     <coordinates>
       <x>560</x>
       <y>184</y>
-      <w>280</w>
-      <h>96</h>
+      <w>296</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 EmailSendCommand
 Package::command.member
 --
 --
-+ execute(HttpServletRequest, HttpServletResponse)
++ execute(HttpServletRequest, HttpServletResponse):void
++ returnSedingResult(String, PrintWriter):void
 + emailSend(String):boolean
 - makeMailContent(String):String</panel_attributes>
     <additional_attributes/>
@@ -110,24 +111,24 @@ m1=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>832</x>
+      <x>848</x>
       <y>128</y>
-      <w>104</w>
+      <w>88</w>
       <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>110.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>90.0;50.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>832</x>
+      <x>848</x>
       <y>184</y>
-      <w>104</w>
+      <w>88</w>
       <h>64</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>110.0;10.0;10.0;60.0</additional_attributes>
+    <additional_attributes>90.0;10.0;10.0;60.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -207,22 +208,22 @@ Package::util
     <id>Relation</id>
     <coordinates>
       <x>784</x>
-      <y>272</y>
+      <y>288</y>
       <w>96</w>
-      <h>96</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>100.0;100.0;10.0;10.0</additional_attributes>
+    <additional_attributes>100.0;80.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>768</x>
-      <y>272</y>
+      <y>288</y>
       <w>120</w>
-      <h>232</h>
+      <h>216</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>130.0;270.0;10.0;10.0</additional_attributes>
+    <additional_attributes>130.0;250.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

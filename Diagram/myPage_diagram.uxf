@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>8</zoom_level>
+  <zoom_level>13</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>736</y>
-      <w>304</w>
-      <h>128</h>
+      <y>1209</y>
+      <w>494</w>
+      <h>208</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 FrontController
@@ -24,10 +24,10 @@ Package::frontcontroller
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>192</x>
-      <y>512</y>
-      <w>304</w>
-      <h>80</h>
+      <x>312</x>
+      <y>845</y>
+      <w>494</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Interface&gt;&gt;
 Command
@@ -40,129 +40,129 @@ Package::command
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>584</x>
-      <y>96</y>
-      <w>280</w>
-      <h>72</h>
+      <x>949</x>
+      <y>156</y>
+      <w>481</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 AddFavoriteCorpCommand
 Package::command.mypage
 --
 --
-+ execute(HttpServletRequest, HttpServletResponse)
++ execute(HttpServletRequest, HttpServletResponse):void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>584</x>
-      <y>288</y>
-      <w>280</w>
-      <h>72</h>
+      <x>949</x>
+      <y>468</y>
+      <w>481</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 PersonalInfoViewCommand
 Package::command.mypage
 --
 --
-+ execute(HttpServletRequest, HttpServletResponse)
++ execute(HttpServletRequest, HttpServletResponse):void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>584</x>
-      <y>384</y>
-      <w>280</w>
-      <h>72</h>
+      <x>949</x>
+      <y>624</y>
+      <w>481</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 PersonalInfoWriteViewCommand
 Package::command.mypage
 --
 --
-+ execute(HttpServletRequest, HttpServletResponse)
++ execute(HttpServletRequest, HttpServletResponse):void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>584</x>
-      <y>192</y>
-      <w>280</w>
-      <h>72</h>
+      <x>949</x>
+      <y>312</y>
+      <w>481</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 AddFavoriteCorpInMainCommand
 Package::command.mypage
 --
 --
-+ execute(HttpServletRequest, HttpServletResponse)
++ execute(HttpServletRequest, HttpServletResponse):void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>584</x>
-      <y>480</y>
-      <w>280</w>
-      <h>72</h>
+      <x>949</x>
+      <y>780</y>
+      <w>481</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 UpdatePersonalInfoCommand
 Package::command.mypage
 --
 --
-+ execute(HttpServletRequest, HttpServletResponse)
++ execute(HttpServletRequest, HttpServletResponse):void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>584</x>
-      <y>576</y>
-      <w>280</w>
-      <h>72</h>
+      <x>949</x>
+      <y>1066</y>
+      <w>481</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 FavoriteCorpViewCommand
 Package::command.mypage
 --
 --
-+ execute(HttpServletRequest, HttpServletResponse)
++ execute(HttpServletRequest, HttpServletResponse):void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>584</x>
-      <y>672</y>
-      <w>280</w>
-      <h>72</h>
+      <x>949</x>
+      <y>1222</y>
+      <w>481</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 DeleteFavoriteCorpCommand
 Package::command.mypage
 --
 --
-+ execute(HttpServletRequest, HttpServletResponse)
++ execute(HttpServletRequest, HttpServletResponse):void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>960</x>
-      <y>328</y>
-      <w>376</w>
-      <h>256</h>
+      <x>1560</x>
+      <y>520</y>
+      <w>611</w>
+      <h>468</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 MemberDAO
@@ -176,6 +176,7 @@ Package::dao
 - MemberDAO()
 + getInstance():MemberDAO
 + idCheck(String):boolean
++ email(String):boolean
 + insertMember(String, String, String, String, String, String):boolean
 + login(String, String, HttpServletRequest, HttpServletResponse):boolean
 + findID(String, String):String
@@ -184,16 +185,17 @@ Package::dao
 + isAdmin(String):boolean
 + getPersonalInfo(String):HashMap&lt;String, Object&gt;
 + updatePersonalInfo(String, String, String, String, String, String):void
++ deleteMember(String)
 + closing():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>296</x>
-      <y>584</y>
-      <w>104</w>
-      <h>232</h>
+      <x>481</x>
+      <y>962</y>
+      <w>169</w>
+      <h>377</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 m1=0..*
@@ -203,183 +205,183 @@ m1=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>488</x>
-      <y>144</y>
-      <w>112</w>
-      <h>416</h>
+      <x>793</x>
+      <y>234</y>
+      <w>182</w>
+      <h>689</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;500.0;120.0;10.0</additional_attributes>
+    <additional_attributes>10.0;510.0;120.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>488</x>
-      <y>232</y>
-      <w>112</w>
-      <h>328</h>
+      <x>793</x>
+      <y>377</y>
+      <w>182</w>
+      <h>546</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;390.0;120.0;10.0</additional_attributes>
+    <additional_attributes>10.0;400.0;120.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>488</x>
-      <y>328</y>
-      <w>112</w>
-      <h>232</h>
+      <x>793</x>
+      <y>533</y>
+      <w>182</w>
+      <h>390</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;270.0;120.0;10.0</additional_attributes>
+    <additional_attributes>10.0;280.0;120.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>488</x>
-      <y>416</y>
-      <w>112</w>
-      <h>152</h>
+      <x>793</x>
+      <y>676</y>
+      <w>182</w>
+      <h>260</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;170.0;120.0;10.0</additional_attributes>
+    <additional_attributes>10.0;180.0;120.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>488</x>
-      <y>520</y>
-      <w>112</w>
-      <h>48</h>
+      <x>793</x>
+      <y>845</y>
+      <w>182</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;40.0;120.0;10.0</additional_attributes>
+    <additional_attributes>10.0;50.0;120.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>488</x>
-      <y>544</y>
-      <w>112</w>
-      <h>88</h>
+      <x>793</x>
+      <y>897</y>
+      <w>182</w>
+      <h>260</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;120.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;120.0;180.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>488</x>
-      <y>552</y>
-      <w>112</w>
-      <h>168</h>
+      <x>793</x>
+      <y>910</y>
+      <w>182</w>
+      <h>390</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;120.0;190.0</additional_attributes>
+    <additional_attributes>10.0;10.0;120.0;280.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1280</x>
-      <y>544</y>
-      <w>96</w>
-      <h>80</h>
+      <x>2080</x>
+      <y>871</y>
+      <w>156</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>70.0;10.0;90.0;50.0;30.0;80.0;10.0;50.0</additional_attributes>
+    <additional_attributes>70.0;10.0;90.0;70.0;30.0;100.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>584</x>
-      <y>864</y>
-      <w>280</w>
-      <h>72</h>
+      <x>949</x>
+      <y>1534</y>
+      <w>481</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 RecentSearchViewCommand
 Package::command.mypage
 --
 --
-+ execute(HttpServletRequest, HttpServletResponse)
++ execute(HttpServletRequest, HttpServletResponse):void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>584</x>
-      <y>960</y>
-      <w>280</w>
-      <h>72</h>
+      <x>949</x>
+      <y>1690</y>
+      <w>481</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 MyFeedbackViewCorpCommand
 Package::command.mypage
 --
 --
-+ execute(HttpServletRequest, HttpServletResponse)
++ execute(HttpServletRequest, HttpServletResponse):void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>584</x>
-      <y>1056</y>
-      <w>280</w>
-      <h>72</h>
+      <x>949</x>
+      <y>1846</y>
+      <w>481</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 DeleteMyFeedbackCommand
 Package::command.mypage
 --
 --
-+ execute(HttpServletRequest, HttpServletResponse)
++ execute(HttpServletRequest, HttpServletResponse):void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>488</x>
-      <y>568</y>
-      <w>112</w>
-      <h>352</h>
+      <x>793</x>
+      <y>936</y>
+      <w>182</w>
+      <h>689</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;120.0;420.0</additional_attributes>
+    <additional_attributes>10.0;10.0;120.0;510.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>488</x>
-      <y>584</y>
-      <w>112</w>
-      <h>432</h>
+      <x>793</x>
+      <y>962</y>
+      <w>182</w>
+      <h>819</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;120.0;520.0</additional_attributes>
+    <additional_attributes>10.0;10.0;120.0;610.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>584</y>
-      <w>120</w>
-      <h>528</h>
+      <x>780</x>
+      <y>962</y>
+      <w>195</w>
+      <h>975</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;130.0;640.0</additional_attributes>
+    <additional_attributes>10.0;10.0;130.0;730.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>968</x>
+      <x>1573</x>
       <y>0</y>
-      <w>344</w>
-      <h>312</h>
+      <w>559</w>
+      <h>507</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 FavoriteCorpDAO
@@ -411,22 +413,22 @@ Package::dao
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1272</x>
-      <y>248</y>
-      <w>88</w>
-      <h>96</h>
+      <x>2067</x>
+      <y>403</y>
+      <w>130</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>50.0;10.0;90.0;70.0;60.0;100.0;10.0;80.0</additional_attributes>
+    <additional_attributes>50.0;10.0;80.0;60.0;50.0;100.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>968</x>
-      <y>608</y>
-      <w>360</w>
-      <h>288</h>
+      <x>1573</x>
+      <y>1001</y>
+      <w>585</w>
+      <h>481</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 RecentSearchCorpDAO
@@ -447,6 +449,7 @@ Package::dao
 + isDuplicated(int, String, String):boolean
 + deleteRecord(int, String, String):void
 + getCorpList(String):List&lt;RecentSearchDTO&gt;
++ getRowCount_forMyPAge(String):int
 + setCorpCount(int, List&lt;RecentSearchDTO&gt;)
 :ArrayList&lt;RecentSearchDTO&gt;
 + getRecentSearchRank():LinkedHashMap&lt;Integer, String&gt;
@@ -456,22 +459,22 @@ Package::dao
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1288</x>
-      <y>824</y>
-      <w>80</w>
-      <h>104</h>
+      <x>2093</x>
+      <y>1352</y>
+      <w>130</w>
+      <h>169</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>50.0;10.0;70.0;60.0;20.0;110.0;10.0;90.0</additional_attributes>
+    <additional_attributes>50.0;10.0;70.0;60.0;20.0;110.0;10.0;100.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>960</x>
-      <y>912</y>
-      <w>376</w>
-      <h>424</h>
+      <x>1560</x>
+      <y>1495</y>
+      <w>611</w>
+      <h>689</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 FeedbackPostDAO
@@ -512,22 +515,22 @@ String, String):boolean
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1280</x>
-      <y>1240</y>
-      <w>112</w>
-      <h>144</h>
+      <x>2080</x>
+      <y>2028</y>
+      <w>169</w>
+      <h>208</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>
-    <additional_attributes>70.0;10.0;120.0;90.0;70.0;160.0;10.0;120.0</additional_attributes>
+    <additional_attributes>70.0;10.0;110.0;90.0;50.0;140.0;10.0;120.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1392</x>
-      <y>440</y>
-      <w>304</w>
-      <h>352</h>
+      <x>2262</x>
+      <y>728</y>
+      <w>494</w>
+      <h>572</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 RecentSearchDTO
@@ -562,109 +565,109 @@ String, String, Timestamp)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>856</x>
-      <y>104</y>
-      <w>128</w>
-      <h>40</h>
+      <x>1417</x>
+      <y>169</y>
+      <w>182</w>
+      <h>65</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>140.0;10.0;10.0;30.0</additional_attributes>
+    <additional_attributes>120.0;10.0;10.0;30.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>856</x>
-      <y>128</y>
-      <w>128</w>
-      <h>120</h>
+      <x>1417</x>
+      <y>208</y>
+      <w>182</w>
+      <h>195</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>140.0;10.0;10.0;130.0</additional_attributes>
+    <additional_attributes>120.0;10.0;10.0;130.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>856</x>
-      <y>144</y>
-      <w>128</w>
-      <h>480</h>
+      <x>1417</x>
+      <y>234</y>
+      <w>182</w>
+      <h>910</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>140.0;10.0;10.0;580.0</additional_attributes>
+    <additional_attributes>120.0;10.0;10.0;680.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>856</x>
-      <y>200</y>
-      <w>128</w>
+      <x>1417</x>
+      <y>325</y>
+      <w>182</w>
+      <h>975</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>120.0;10.0;10.0;730.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1417</x>
+      <y>520</y>
+      <w>169</w>
+      <h>195</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>110.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1417</x>
+      <y>767</y>
+      <w>169</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1417</x>
+      <y>1105</y>
+      <w>182</w>
       <h>520</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>140.0;10.0;10.0;630.0</additional_attributes>
+    <additional_attributes>120.0;10.0;10.0;380.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>856</x>
-      <y>320</y>
-      <w>120</w>
-      <h>128</h>
+      <x>1417</x>
+      <y>1521</y>
+      <w>169</w>
+      <h>273</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>130.0;140.0;10.0;10.0</additional_attributes>
+    <additional_attributes>110.0;10.0;10.0;190.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>856</x>
-      <y>480</y>
-      <w>120</w>
-      <h>56</h>
+      <x>1365</x>
+      <y>1599</y>
+      <w>221</w>
+      <h>390</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>130.0;10.0;10.0;50.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>856</x>
-      <y>672</y>
-      <w>128</w>
-      <h>248</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>140.0;10.0;10.0;290.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>856</x>
-      <y>928</y>
-      <w>120</w>
-      <h>96</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>130.0;10.0;10.0;100.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>840</x>
-      <y>976</y>
-      <w>136</w>
-      <h>168</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>150.0;10.0;10.0;190.0</additional_attributes>
+    <additional_attributes>150.0;10.0;10.0;280.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1384</x>
-      <y>816</y>
-      <w>328</w>
-      <h>432</h>
+      <x>2249</x>
+      <y>1339</y>
+      <w>533</w>
+      <h>702</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 PostDTO
@@ -705,10 +708,10 @@ int, boolean, boolean)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1320</x>
-      <y>616</y>
-      <w>88</w>
-      <h>136</h>
+      <x>2145</x>
+      <y>1014</y>
+      <w>143</w>
+      <h>221</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>90.0;10.0;10.0;150.0</additional_attributes>
@@ -716,10 +719,10 @@ int, boolean, boolean)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1328</x>
-      <y>1000</y>
-      <w>72</w>
-      <h>64</h>
+      <x>2158</x>
+      <y>1638</y>
+      <w>117</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>70.0;10.0;10.0;60.0</additional_attributes>
@@ -727,40 +730,79 @@ int, boolean, boolean)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>584</x>
-      <y>768</y>
-      <w>280</w>
-      <h>72</h>
+      <x>949</x>
+      <y>1378</y>
+      <w>481</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 ResetFavoriteCorpListCommand
 Package::command.mypage
 --
 --
-+ execute(HttpServletRequest, HttpServletResponse)
++ execute(HttpServletRequest, HttpServletResponse):void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>488</x>
-      <y>560</y>
-      <w>112</w>
-      <h>264</h>
+      <x>793</x>
+      <y>923</y>
+      <w>182</w>
+      <h>546</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;120.0;310.0</additional_attributes>
+    <additional_attributes>10.0;10.0;120.0;400.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>856</x>
-      <y>240</y>
-      <w>128</w>
-      <h>592</h>
+      <x>1417</x>
+      <y>390</y>
+      <w>182</w>
+      <h>1092</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>140.0;10.0;10.0;720.0</additional_attributes>
+    <additional_attributes>120.0;10.0;10.0;820.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>949</x>
+      <y>923</y>
+      <w>481</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Java Class&gt;&gt;
+ResignMembershipCommand
+Package::command.mypage
+--
+--
++ execute(HttpServletRequest, HttpServletResponse):void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1417</x>
+      <y>793</y>
+      <w>169</w>
+      <h>221</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>793</x>
+      <y>897</y>
+      <w>182</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;60.0</additional_attributes>
   </element>
 </diagram>

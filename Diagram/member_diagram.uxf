@@ -40,9 +40,9 @@ Package::command
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>518</x>
+      <x>504</x>
       <y>56</y>
-      <w>245</w>
+      <w>259</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
@@ -50,16 +50,16 @@ SignUpCommand
 Package::command.member
 --
 --
-+ execute(HttpServletRequest, HttpServletResponse)
++ execute(HttpServletRequest, HttpServletResponse):void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>518</x>
+      <x>504</x>
       <y>224</y>
-      <w>245</w>
+      <w>259</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
@@ -67,16 +67,16 @@ LoginCommand
 Package::command.member
 --
 --
-+ execute(HttpServletRequest, HttpServletResponse)
++ execute(HttpServletRequest, HttpServletResponse):void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>518</x>
+      <x>504</x>
       <y>308</y>
-      <w>245</w>
+      <w>259</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
@@ -84,16 +84,16 @@ LogoutCommand
 Package::command.member
 --
 --
-+ execute(HttpServletRequest, HttpServletResponse)
++ execute(HttpServletRequest, HttpServletResponse):void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>518</x>
+      <x>504</x>
       <y>140</y>
-      <w>245</w>
+      <w>259</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
@@ -101,16 +101,16 @@ IdCheckCommand
 Package::command.member
 --
 --
-+ execute(HttpServletRequest, HttpServletResponse)
++ execute(HttpServletRequest, HttpServletResponse):void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>518</x>
+      <x>504</x>
       <y>392</y>
-      <w>245</w>
+      <w>259</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
@@ -118,16 +118,16 @@ FindIdCommand
 Package::command.member
 --
 --
-+ execute(HttpServletRequest, HttpServletResponse)
++ execute(HttpServletRequest, HttpServletResponse):void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>518</x>
+      <x>504</x>
       <y>476</y>
-      <w>245</w>
+      <w>259</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
@@ -135,16 +135,16 @@ FindPwCommand
 Package::command.member
 --
 --
-+ execute(HttpServletRequest, HttpServletResponse)
++ execute(HttpServletRequest, HttpServletResponse):void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>518</x>
+      <x>504</x>
       <y>560</y>
-      <w>245</w>
+      <w>259</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
@@ -152,7 +152,7 @@ UpdatePwCommand
 Package::command.member
 --
 --
-+ execute(HttpServletRequest, HttpServletResponse)
++ execute(HttpServletRequest, HttpServletResponse):void
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -160,9 +160,9 @@ Package::command.member
     <id>UMLClass</id>
     <coordinates>
       <x>819</x>
-      <y>196</y>
+      <y>175</y>
       <w>329</w>
-      <h>231</h>
+      <h>252</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 MemberDAO
@@ -176,6 +176,7 @@ Package::dao
 - MemberDAO()
 + getInstance():MemberDAO
 + idCheck(String):boolean
++ emailCheck(String):boolean
 + insertMember(String, String, String, String, String, String):boolean
 + login(String, String, HttpServletRequest, HttpServletResponse):boolean
 + findID(String, String):String
@@ -184,6 +185,7 @@ Package::dao
 + isAdmin(String):boolean
 + getPersonalInfo(String):HashMap&lt;String, Object&gt;
 + updatePersonalInfo(String, String, String, String, String, String):void
++ deleteMember(String):boolean
 + closing():void</panel_attributes>
     <additional_attributes/>
   </element>
@@ -205,77 +207,77 @@ m1=0..*
     <coordinates>
       <x>427</x>
       <y>98</y>
-      <w>105</w>
+      <w>91</w>
       <h>175</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;230.0;130.0;10.0</additional_attributes>
+    <additional_attributes>10.0;230.0;110.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>427</x>
       <y>175</y>
-      <w>105</w>
+      <w>91</w>
       <h>98</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;120.0;130.0;10.0</additional_attributes>
+    <additional_attributes>10.0;120.0;110.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>427</x>
       <y>252</y>
-      <w>105</w>
+      <w>91</w>
       <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;130.0;20.0</additional_attributes>
+    <additional_attributes>10.0;10.0;110.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>427</x>
       <y>259</y>
-      <w>105</w>
+      <w>91</w>
       <h>98</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;130.0;120.0</additional_attributes>
+    <additional_attributes>10.0;10.0;110.0;120.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>427</x>
       <y>259</y>
-      <w>105</w>
+      <w>91</w>
       <h>189</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;130.0;250.0</additional_attributes>
+    <additional_attributes>10.0;10.0;110.0;250.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>427</x>
       <y>259</y>
-      <w>105</w>
+      <w>91</w>
       <h>266</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;130.0;360.0</additional_attributes>
+    <additional_attributes>10.0;10.0;110.0;360.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>427</x>
       <y>266</y>
-      <w>105</w>
+      <w>91</w>
       <h>336</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;130.0;460.0</additional_attributes>
+    <additional_attributes>10.0;10.0;110.0;460.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>

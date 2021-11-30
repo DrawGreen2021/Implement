@@ -42,7 +42,7 @@ Package::command
     <coordinates>
       <x>700</x>
       <y>100</y>
-      <w>350</w>
+      <w>370</w>
       <h>90</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
@@ -50,7 +50,7 @@ CorpNewsViewCommand
 Package::command.information
 --
 --
-+ execute(HttpServletRequest, HttpServletResponse)
++ execute(HttpServletRequest, HttpServletResponse):void
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -109,13 +109,13 @@ m1=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1040</x>
+      <x>1060</x>
       <y>150</y>
-      <w>150</w>
+      <w>130</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>130.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
