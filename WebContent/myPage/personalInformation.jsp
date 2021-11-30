@@ -33,8 +33,8 @@
 		</div>
 		
 		<form action="PersonalInfoWriteView.do" method="post">
-		<div class="content_div" >
-			<table width="1000px;" style="text-align:center; float:right;">
+		<div class="content_div" style="margin-bottom:21%;">
+			<table width="1000px;" style="text-align:center; float:right; ">
 				<tr>
 					<p style="font-size:16pt; color:#21499b; font-weight:bold; margin:0 83% 0 0; ">개인 정보 관리</p>
 				</tr>
@@ -42,7 +42,7 @@
 					<div style = "border:1px solid #21499b; margin:1% auto;"></div>
 				</tr>
 				<tr>
-					<table class="content_div_write">
+					<table class="content_div_write" >
 						<tr class="community_text" height="30px;">
 							<td width="100px" style="background-color:#eeedeb;">아이디/ID</td>
 							<td colspan="3" style="text-align:left; padding-left:15px; ">${requestScope.personalInfo['id'] }
@@ -72,7 +72,7 @@
 			</table>
 			<div style="float:right;">
 			<input type="submit" value="수정" class="writing_btn">
-			<input type="button" value="회원 탈퇴" class="writing_btn" onclick="resignMembership()">
+			<input type="button" value="회원 탈퇴" class="writing_btn" style="width:80px; background-color: #E7F1FD;" onclick="resignMembership()">
 			</div>
 			
 		</div>

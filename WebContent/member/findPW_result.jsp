@@ -27,7 +27,7 @@
 	<c:choose>
 		<%-- 비밀번호 찾기 결과가 없으면 에러 메시지 표시 --%>
 		<c:when test="${passwordCheck == null}">
-			<div class="content_div_findInfo" style="margin:10% auto 25%;">
+			<div class="content_div_findInfo" style="margin:15% auto 20%;">
 			<br>
 				<table align="center" class="findInfo_table" >
 					<tr>

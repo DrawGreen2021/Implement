@@ -230,10 +230,12 @@
 					<label class="community_text" style="float: left;"> <input
 						type="checkbox" name="favCorp_select" value="favCorp_selectAll"
 						onclick="selectAll(this)"> 전체 선택
-					</label> <input type="button" value="삭제" class="writing_btn"
-						style="float: right; margin-left: 5px;" onclick="deleteFavCorp()">
+					</label> 
 					<input type="button" value="목록 초기화" class="writing_btn"
-						style="float: right; width: 100px;" onclick="resetList()">
+						style="float: right; margin-left: 5px; width: 100px; background-color:#E7F1FD;"" onclick="resetList()">
+					<input type="button" value="삭제" class="writing_btn"
+						style="float: right;" onclick="deleteFavCorp()">
+					
 				</p>
 
 				<!-- 페이지 번호 div -->

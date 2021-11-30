@@ -32,7 +32,7 @@
 		
 		<c:choose>
 			<c:when test="${requestScope.post != null }">
-				<div class="content_div">
+				<div class="content_div" style=" margin-bottom:19%;">
 					<table width="1000px;" style="text-align: center; float: right;">
 						<tr>
 							<p style="font-size: 16pt; color: #21499b; font-weight: bold; margin: 0 90% 0 0;">

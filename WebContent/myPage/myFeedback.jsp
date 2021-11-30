@@ -33,7 +33,7 @@
 		</div>
 		
 		<form action="DeleteMyFeedback.do" method="post" id="deleteForm">
-		<div class="content_div">
+		<div class="content_div" style="margin-bottom:17%;">
 			<table width="1000px;" style="text-align:center; float:right;">
 				<tr>
 					<p style="font-size:16pt; color:#21499b; font-weight:bold; margin:0 88% 0 0; ">내가 쓴 글</p>

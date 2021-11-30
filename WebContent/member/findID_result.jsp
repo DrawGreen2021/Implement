@@ -25,7 +25,7 @@
 	<c:choose>
 		<%-- 아이디 찾기 결과가 없으면 에러 메시지 표시 --%>
 		<c:when test="${found_ID == null || fn:length(found_ID) == 0}">
-			<div class="content_div_findInfo">
+			<div class="content_div_findInfo" style="margin:15% auto 20%;">
 			<br>
 				<table align="center" class="findInfo_table">
 					<tr>
