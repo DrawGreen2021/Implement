@@ -65,6 +65,32 @@ public class MemberDAO {
 		
 		return false;
 	}
+	
+	public boolean emailCheck(String email) {
+		String query = "SELECT IF(count(*)=1, 'true', 'false') AS result"
+                + " FROM members"
+                + " WHERE email = ?";
+		try {
+			connection = dataSource.getConnection();
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, email);
+			
+			resultSet = preparedStatement.executeQuery();
+			
+			resultSet.next();
+            String result = resultSet.getString(1);
+
+            return Boolean.parseBoolean(result);
+            
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			closing();
+		}
+		
+		return false;
+	}
 
 	// 회원 정보 추가
 	public boolean insertMember(String id, String pw, String name, String email, String birth, String gender) {
@@ -281,6 +307,26 @@ public class MemberDAO {
 		} finally {
 			closing();
 		}
+	}
+	
+	// 회원 탈퇴
+	public boolean deleteMember(String id) {
+		String query = "DELETE FROM members WHERE id = ?";
+		
+		try {
+			connection = dataSource.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, id);
+			
+			int resultNum = preparedStatement.executeUpdate();
+			if (resultNum>0)
+				return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closing();
+		}
+		return false;
 	}
 	
 	// 자원 해제
