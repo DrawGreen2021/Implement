@@ -22,6 +22,8 @@ public class DevProcessViewCommand implements Command{
 		realPath = request.getSession().getServletContext().getRealPath("/");
 		uploadPath = realPath+"images/thumbnails/";
 		
+		
+		
 		// UI 설계 이미지 썸네일 생성
 		String[] UIdesign = new String[UIdesignImgCount];
 		for (int i = 0; i < UIdesign.length; i++) {

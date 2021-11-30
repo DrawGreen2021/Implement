@@ -33,9 +33,9 @@
 		<div class="content_div" style="text-align:left;">
 			<div style="width: 930px;">
 				<h1 style="font-size:50px; color:#180E5A;">TEAM 그릴그린</h1>
-				<br><br> <c:set var="colCount" value="3"></c:set>
+				<c:set var="colCount" value="3"></c:set>
 				
-				<h3>프론트 엔드 담당 : 천세륜</h3>
+				<h3 style="margin-top:12%;">프론트 엔드 담당 : 천세륜</h3>
 				<p>사이트 맵에 따른 웹사이트 구성과 배치, 제작을 수행했다.</p>
 				<br>
 				<c:set var="UIdesign" value="../images/thumbnails/UI images/image"></c:set>
