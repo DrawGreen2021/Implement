@@ -309,6 +309,26 @@ public class MemberDAO {
 		}
 	}
 	
+	// 회원 탈퇴
+	public boolean deleteMember(String id) {
+		String query = "DELETE FROM members WHERE id = ?";
+		
+		try {
+			connection = dataSource.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, id);
+			
+			int resultNum = preparedStatement.executeUpdate();
+			if (resultNum>0)
+				return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closing();
+		}
+		return false;
+	}
+	
 	// 자원 해제
 	public void closing() {
 		try {
