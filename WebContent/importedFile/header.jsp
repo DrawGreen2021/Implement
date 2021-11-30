@@ -11,13 +11,14 @@
 			<!-- 네비게이션(메뉴) 영역-->
 			<nav class="nav">
 				<a href="<c:url value='/index.jsp'/>" style="float:left;"><img src="<c:url value='/images/logo2.PNG'/>" alt="CorpCollector" class="nav_logo"></a>
-				<a href="<c:url value='/myPage/PersonalInfoView.do'/>" style="margin-left : 57%; float:left;">${sessionScope.MemberDTO.name}님</a> <!-- 마이페이지 -->
+				<a href="javascript:logoutDo()" style="float:right;">로그아웃</a>
+				<a href="<c:url value='/myPage/PersonalInfoView.do'/>" style="float:right;">${sessionScope.MemberDTO.name}님</a> <!-- 마이페이지 -->
 				<form name="passBeforeUrl">
 					<input type="hidden" name="beforeUrl">
 					<input type="hidden" name="URI" value="${pageContext.request.requestURI }">
 					<input type="hidden" name="contextPath" value="${pageContext.request.contextPath }">
 				</form>
-				<a href="javascript:logoutDo()">로그아웃</a>
+				
 			</nav>
 			
 			<!-- 
@@ -90,8 +91,8 @@
 			<!-- 네비게이션(메뉴) 영역-->
 			<nav class="nav">
 				<a href="<c:url value='/index.jsp'/>" style="float:left;"><img src="<c:url value='/images/logo2.PNG'/>" alt="CorpCollector" class="nav_logo"></a>
-				<a href="<c:url value='/member/login_main.jsp'/>" style="margin-left : 58%; float:left;">로그인</a>
-				<a href="<c:url value='/member/signUp.jsp'/>">회원가입</a>
+				<a href="<c:url value='/member/signUp.jsp'/>" style="float:right;">회원가입</a>
+				<a href="<c:url value='/member/login_main.jsp'/>" style="float:right;">로그인</a>
 			</nav>
 			
 			<!-- 
