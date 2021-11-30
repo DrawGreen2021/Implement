@@ -67,3 +67,27 @@ function resetList() {
         });   //ajax
 	}
 }
+
+function resignMembership() {
+	
+	if (confirm("회원 탈퇴를 진행하면 회원님의 모든 정보가 삭제됩니다. 그래도 진행하시겠습니까?")==true) {
+		$.ajax({
+            type:'post',
+            async:false,
+            url:'ResignMembership.do',
+            dataType:'text',
+            success: function(data, textStatus) {
+            	if(data === 'resignOk') {    
+					alert("회원 탈퇴가 완료되었습니다.");
+					location.href = "../index.jsp";
+                } else {
+					alert("회원 탈퇴에 문제가 생겼습니다. 관리자 메일로 연락주십시오.");
+					location.href = "../service/service_Summary.jsp";
+                }
+            },
+            error:function (data, textStatus) {
+                console.log('error');
+            }
+        });   //ajax
+	}
+}

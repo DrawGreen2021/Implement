@@ -72,6 +72,7 @@
 			</table>
 			<div style="float:right;">
 			<input type="submit" value="수정" class="writing_btn">
+			<input type="button" value="회원 탈퇴" class="writing_btn" onclick="resignMembership()">
 			</div>
 			
 		</div>
@@ -83,5 +84,7 @@
 	<c:import url='/importedFile/footer.html'></c:import>
 	</div>
 	
+	<!-- 자바 스크립트 파일 외부 참조 -->
+	<script type="text/javascript" src="../JavaScript/myPage_common.js"></script>
 </body>
 </html>

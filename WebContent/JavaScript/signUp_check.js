@@ -176,6 +176,7 @@ window.onload=function(){
 	$('#emailSendBtn').click(function () {
 		
 		const email = $('#email').val();
+		var signUp = true;
 
 		if(email.length === 0 || email === null) {
 			alert("이메일을 입력하세요.");
@@ -187,10 +188,13 @@ window.onload=function(){
             url:'EmailSend.do',
             dataType:'text',
             async:false,
-            data:{"email":email},
+            data:{"email":email, "signUp":signUp},
             success: function(data, textStatus) {
             	
-                if(data === 'connectable') {
+            	if(data === 'duplicated') {
+            		alert("이미 누가 사용하고 있는 이메일입니다.");
+            	}
+            	else if(data === 'connectable') {
                     //$('#emailSendMessage').text('이메일 주소 인증 메일이 전송되었습니다. 인증번호를 확인해주세요.') 
 					alert("이메일 주소 인증 메일이 전송되었습니다. 인증번호를 확인해주세요.");     
                 } else {

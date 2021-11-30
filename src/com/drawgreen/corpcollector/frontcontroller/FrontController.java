@@ -41,6 +41,7 @@ import com.drawgreen.corpcollector.command.mypage.PersonalInfoViewCommand;
 import com.drawgreen.corpcollector.command.mypage.PersonalInfoWriteViewCommand;
 import com.drawgreen.corpcollector.command.mypage.RecentSearchViewCommand;
 import com.drawgreen.corpcollector.command.mypage.ResetFavoriteCorpListCommand;
+import com.drawgreen.corpcollector.command.mypage.ResignMembershipCommand;
 import com.drawgreen.corpcollector.command.mypage.UpdatePersonalInfoCommand;
 import com.drawgreen.corpcollector.command.service.DevProcessViewCommand;
 
@@ -293,6 +294,10 @@ public class FrontController extends HttpServlet {
 			command = new UpdatePersonalInfoCommand();
 			command.execute(request, response);
 			viewPage = "PersonalInfoView.do";
+		}
+		else if(com.equals("ResignMembership.do")) {
+			command = new ResignMembershipCommand();
+			command.execute(request, response);
 		}
 		else if(com.equals("FavoriteCorpView.do")) {
 			command = new FavoriteCorpViewCommand();
