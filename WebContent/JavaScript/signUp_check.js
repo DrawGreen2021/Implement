@@ -82,7 +82,7 @@ window.onload=function(){
 			return false;
 		}
 		
-		/*// 이름 특수문자 검사
+		// 이름 특수문자 검사
 		else if(pattern_chk_specialChar1.test(name)) {
 			alert("이름에 특수문자는 들어갈 수 없습니다.");
 			return false;
@@ -92,7 +92,7 @@ window.onload=function(){
 		else if(pattern_chk_number.test(name)) {
 			alert("이름에 숫자는 들어갈 수 없습니다.");
 			return false;
-		}*/
+		}
 		
 		// 생년월일 검사
 		else if(year.length != 4) {
@@ -194,11 +194,9 @@ window.onload=function(){
             	if(data === 'duplicated') {
             		alert("이미 누가 사용하고 있는 이메일입니다.");
             	}
-            	else if(data === 'connectable') {
-                    //$('#emailSendMessage').text('이메일 주소 인증 메일이 전송되었습니다. 인증번호를 확인해주세요.') 
+            	else if(data === 'connectable') { 
 					alert("이메일 주소 인증 메일이 전송되었습니다. 인증번호를 확인해주세요.");     
                 } else {
-                    //$('#emailSendMessage').text('유효하지 않은 이메일입니다.')
 					alert("유효하지 않은 이메일입니다.");
                 }
             },
@@ -225,12 +223,10 @@ window.onload=function(){
             dataType:'text',
             data:{"email_auth_code":email_auth_code},
             success: function(data, textStatus) {
-                if(data === 'authenticated') {
-                    //$('#emailCheckMessage').text('이메일 인증이 완료되었습니다.')      
+                if(data === 'authenticated') {    
                     $('#authEmail').val("true");
 					alert("이메일 인증이 완료되었습니다.");
                 } else {
-                    //$('#emailCheckMessage').text('인증번호가 다릅니다.')
 					alert("인증번호가 다릅니다.");
                 }
             },

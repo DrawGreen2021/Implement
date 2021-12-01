@@ -47,7 +47,7 @@ window.onload=function(){
 			if(email_auth_code.length === 0 || email_auth_code === null) {
 				alert("인증번호를 입력하세요");
 				return false;
-			}
+			} 
 			
 			$.ajax({
 	            type:'post',
@@ -92,14 +92,14 @@ function validate(){
 		alert("닉네임에 공백은 들어갈 수 없습니다");
 		irregular = true;
 	}
-	/*else if(pattern_chk1.test(findInfo_name)){
+	else if(pattern_chk1.test(findInfo_name)){
 		alert("닉네임에 특수문자는 들어갈 수 없습니다");
 		irregular = true;
 	}
 	else if(pattern_chk2.test(findInfo_name)){
 		alert("닉네임에 숫자는 들어갈 수 없습니다");
 		irregular = true;
-	}*/
+	}
 	
 	//이메일 체크
 	else if(findInfo_email.length === 0 || findInfo_email.search(/\s/) != -1 || pattern_chk4.test(findInfo_email)){
