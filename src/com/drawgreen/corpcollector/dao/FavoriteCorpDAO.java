@@ -363,7 +363,7 @@ public class FavoriteCorpDAO {
 		builder = new StringBuilder(query);
 		boolean isFirst = true;
 
-		for (int i = 1; i < inQuery.length; i++) {
+		for (int i = 0; i < inQuery.length; i++) {
 			if (!inQuery[i].equals("") && isFirst) {
 				builder.append(inQuery[i]);
 				isFirst = false;
