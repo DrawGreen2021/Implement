@@ -89,7 +89,7 @@
 						<button class="writing_btn" onclick="deleting_Check(this)"
 							value="${requestScope.post['board_number'] }">삭제</button>
 						<button class="writing_btn" style="background-color: #E7F1FD;"
-							onclick="goListPage(this)" value="feedback.jsp">목록</button>
+							onclick="backSpace()">목록</button>
 						<!-- 목록으로 돌아가기 -->
 					</div>
 				</div>
@@ -111,6 +111,7 @@
 	</div>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
+	<script type="text/javascript" src="../JavaScript/common.js?ver=<%=System.currentTimeMillis() %>"></script>
 	<script type="text/javascript" src="../JavaScript/community_common.js?ver=<%=System.currentTimeMillis() %>"></script>
 </body>
 </html>

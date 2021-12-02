@@ -112,6 +112,6 @@ function addFavAjaxInMain(serial_number, corpName, button, bnt_text_add, btn_tex
     });   //ajax
 }
 
-function backSpace() {
+/*function backSpace() {
 	location.href = document.referrer;
-}
+}*/

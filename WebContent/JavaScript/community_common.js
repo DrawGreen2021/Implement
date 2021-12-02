@@ -96,18 +96,3 @@ function updatePost() {
 	form.attr("action", "UpdatePost.do");
 	form.submit();
 }
-
-function cancelWriting() {
-	//var boardName = button.value;
-	
-	if(confirm("작성을 취소하시겠습니까?") == true) {
-		window.history.go(-1);
-		return false;
-	}
-}
-
-function goListPage(button) {
-	var nextPage = button.value;
-	window.location.href = nextPage;
-	return false;
-}

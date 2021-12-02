@@ -7,3 +7,6 @@ function setType(button) {
 	document.getElementById("findCorpForm").submit();
 }
 
+function backSpace() {
+	location.href = document.referrer;
+}
