@@ -27,17 +27,19 @@ public class WriteRightCheckCommand implements Command{
 		}
 		
 		String boardName = request.getParameter("boardName");
-		if (user == null)
+		if (user == null) {
 			out.print("not-login");
-		if (boardName.equals("공지사항")) {
-			MemberDAO dao = MemberDAO.getInstance();
-			// 공지사항 게시판이라면 관리자만 작성 허용
-			boolean isAdmin = dao.isAdmin(user.getId());
-			if (isAdmin) {
-				out.print("accessible");
-			} else out.print("inaccessible");
 		} else {
-			out.print("accessible");
+			if (boardName.equals("공지사항")) {
+				MemberDAO dao = MemberDAO.getInstance();
+				// 공지사항 게시판이라면 관리자만 작성 허용
+				boolean isAdmin = dao.isAdmin(user.getId());
+				if (isAdmin) {
+					out.print("accessible");
+				} else out.print("inaccessible");
+			} else {
+				out.print("accessible");
+			}
 		}
 		
 	}

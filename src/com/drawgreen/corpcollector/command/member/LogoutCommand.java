@@ -12,6 +12,7 @@ import com.drawgreen.corpcollector.command.Command;
 
 public class LogoutCommand implements Command{
 	String[] loginRequiredPages = {"community/feedback_Write.jsp", "community/notice_Write.jsp",
+			"community/feedback_Page.jsp", "community/notice_Page.jsp",
 			"myPage/favoriteCorp.jsp", "myPage/myFeedback.jsp", "myPage/personalInformation_write.jsp",
 			"myPage/personalInformation.jsp", "myPage/recentSearch.jsp"};
 	

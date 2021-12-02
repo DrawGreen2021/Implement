@@ -6,6 +6,13 @@ script.src = 'https://code.jquery.com/jquery-3.4.1.min.js';
 script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 
+window.onload=function(){
+	$('#cancel').click(function () {
+		window.history.go(-1);
+		return false;
+	});
+}
+
 function writing_Check(button){
 	var nextPage = button.value;
 	var boardName = $('#boardName').val();
@@ -90,14 +97,17 @@ function updatePost() {
 	form.submit();
 }
 
-function goListPage(button) {
-	var nextPage = button.value;
-	location.href = nextPage;
+function cancelWriting() {
+	//var boardName = button.value;
+	
+	if(confirm("작성을 취소하시겠습니까?") == true) {
+		window.history.go(-1);
+		return false;
+	}
 }
 
-function cancelWriting() {
-	
-	if(confirm('작성을 취소하시겠습니까?') == true) {
-		history.go(-1);
-	}
+function goListPage(button) {
+	var nextPage = button.value;
+	window.location.href = nextPage;
+	return false;
 }

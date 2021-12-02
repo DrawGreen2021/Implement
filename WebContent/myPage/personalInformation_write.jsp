@@ -124,7 +124,7 @@
 				</tr>
 			</table>
 			<div style="float:right;">
-				<input type="button" class="writing_btn" id="updatePersonalInfoBtn" value="수정">
+				<input type="submit" class="writing_btn" id="updatePersonalInfoBtn" value="수정">
 			</div>
 		</div>
 		</form>

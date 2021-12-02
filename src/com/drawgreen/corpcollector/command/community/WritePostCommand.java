@@ -30,7 +30,7 @@ public class WritePostCommand implements Command{
 			nextPage = "notice.jsp";
 			dao = NoticePostDAO.getInstance();
 		}
-		else {
+		else if (boardName.equals("고객후기")){
 			nextPage = "feedback.jsp";
 			dao = FeedbackPostDAO.getInstance();
 		}

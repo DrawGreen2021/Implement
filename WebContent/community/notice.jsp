@@ -64,7 +64,7 @@
 								공지사항이 없습니다.</p>
 						</div>
 						<button class="writing_btn" style="margin: 0 0 0 92.5%;"
-							value="feedback_Write.jsp" onclick="writing_Check(this)">글쓰기</button>
+							value="notice_Write.jsp" onclick="writing_Check(this)">글쓰기</button>
 					</c:when>
 
 					<%-- 공지사항 글 목록이 있다면 리스트 출력 --%>
