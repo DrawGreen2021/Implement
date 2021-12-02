@@ -278,7 +278,7 @@ public class TalentDevelopmentCorpDAO implements CorpDAO{
 				String sector = resultSet.getString("업종");
 				Timestamp search_date = resultSet.getTimestamp("search_date");
 				
-				RecentSearchDTO dto = new RecentSearchDTO(serial_number, company_name, location, sector, "TalentDevelopmentCorp", "인재육성형중소기업", search_date);
+				RecentSearchDTO dto = new RecentSearchDTO(serial_number, company_name, location, sector, "talentDevelopmentCorp", "인재육성형중소기업", search_date);
 				recentRecords.add(dto);
 			}
 		} catch (Exception e) {

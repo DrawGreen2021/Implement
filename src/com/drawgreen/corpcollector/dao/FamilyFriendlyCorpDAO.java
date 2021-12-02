@@ -274,7 +274,7 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 				String sector = resultSet.getString("업종");
 				Timestamp search_date = resultSet.getTimestamp("search_date");
 				
-				RecentSearchDTO dto = new RecentSearchDTO(serial_number, company_name, location, sector, "FamilyFriendlyCorp", "가족친화인증기업", search_date);
+				RecentSearchDTO dto = new RecentSearchDTO(serial_number, company_name, location, sector, "familyFriendlyCorp", "가족친화인증기업", search_date);
 				recentRecords.add(dto);
 			}
 		} catch (Exception e) {
