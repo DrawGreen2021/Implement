@@ -74,7 +74,7 @@
 			</c:choose>
 
 			<button class="writing_btn" style="background-color:#E7F1FD;" 
-				value="feedback.jsp" onclick="cancelWriting()">취소</button> <!-- 취소 선택시 뒤로가기 -->
+				value="feedback.jsp" id="cancel">취소</button> <!-- 취소 선택시 뒤로가기 -->
 			<input type="hidden" name="board_number" value="${requestScope.post==null?'':requestScope.post['board_number'] }">
 			<input type="hidden" name="boardName" value="고객후기">
 			</div>
