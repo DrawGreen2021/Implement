@@ -247,7 +247,8 @@ public class MemberDAO {
 				isAdmin = true;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			isAdmin = false;
+			return isAdmin;
 		} finally {
 			closing();
 		}

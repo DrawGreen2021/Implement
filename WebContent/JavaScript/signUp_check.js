@@ -122,6 +122,12 @@ window.onload=function(){
 			return false;
 		} 
 		
+		// 제대로 된 이메일 형식인지 검사
+		else if(email.indexOf("@") == -1 || email.indexOf(".") == -1) {
+			alert("이메일 형식이 올바르지 않습니다.");
+			return false;
+		}
+		
 		// 이메일 인증 검사
 		else if(authEmail == "false") {
 			alert("이메일을 인증해주세요.");
@@ -180,6 +186,10 @@ window.onload=function(){
 
 		if(email.length === 0 || email === null) {
 			alert("이메일을 입력하세요.");
+			return false;
+		}
+		else if(email.indexOf("@") == -1 || email.indexOf(".") == -1) {
+			alert("이메일 형식이 올바르지 않습니다.");
 			return false;
 		}
 		
