@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>7</zoom_level>
+  <zoom_level>10</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>427</y>
-      <w>266</w>
-      <h>112</h>
+      <y>530</y>
+      <w>380</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 FrontController
@@ -24,10 +24,10 @@ Package::frontcontroller
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>168</x>
-      <y>231</y>
-      <w>266</w>
-      <h>70</h>
+      <x>240</x>
+      <y>250</y>
+      <w>380</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Interface&gt;&gt;
 Command
@@ -40,10 +40,10 @@ Package::command
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>504</x>
-      <y>56</y>
-      <w>259</w>
-      <h>63</h>
+      <x>720</x>
+      <y>0</y>
+      <w>370</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 SignUpCommand
@@ -57,10 +57,10 @@ Package::command.member
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>504</x>
-      <y>224</y>
-      <w>259</w>
-      <h>63</h>
+      <x>720</x>
+      <y>240</y>
+      <w>370</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 LoginCommand
@@ -74,10 +74,10 @@ Package::command.member
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>504</x>
-      <y>308</y>
-      <w>259</w>
-      <h>63</h>
+      <x>720</x>
+      <y>360</y>
+      <w>370</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 LogoutCommand
@@ -91,10 +91,10 @@ Package::command.member
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>504</x>
-      <y>140</y>
-      <w>259</w>
-      <h>63</h>
+      <x>720</x>
+      <y>120</y>
+      <w>370</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 IdCheckCommand
@@ -108,10 +108,10 @@ Package::command.member
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>504</x>
-      <y>392</y>
-      <w>259</w>
-      <h>63</h>
+      <x>720</x>
+      <y>480</y>
+      <w>370</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 FindIdCommand
@@ -125,10 +125,10 @@ Package::command.member
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>504</x>
-      <y>476</y>
-      <w>259</w>
-      <h>63</h>
+      <x>720</x>
+      <y>600</y>
+      <w>370</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 FindPwCommand
@@ -142,10 +142,10 @@ Package::command.member
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>504</x>
-      <y>560</y>
-      <w>259</w>
-      <h>63</h>
+      <x>720</x>
+      <y>720</y>
+      <w>370</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 UpdatePwCommand
@@ -159,10 +159,10 @@ Package::command.member
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>819</x>
-      <y>175</y>
-      <w>329</w>
-      <h>252</h>
+      <x>1170</x>
+      <y>170</y>
+      <w>470</w>
+      <h>360</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 MemberDAO
@@ -192,10 +192,10 @@ Package::dao
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>259</x>
-      <y>294</y>
-      <w>91</w>
-      <h>203</h>
+      <x>370</x>
+      <y>340</y>
+      <w>130</w>
+      <h>290</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 m1=0..*
@@ -205,10 +205,10 @@ m1=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>427</x>
-      <y>98</y>
-      <w>91</w>
-      <h>175</h>
+      <x>610</x>
+      <y>60</y>
+      <w>130</w>
+      <h>250</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;230.0;110.0;10.0</additional_attributes>
@@ -216,10 +216,10 @@ m1=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>427</x>
-      <y>175</y>
-      <w>91</w>
-      <h>98</h>
+      <x>610</x>
+      <y>170</y>
+      <w>130</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;120.0;110.0;10.0</additional_attributes>
@@ -227,10 +227,10 @@ m1=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>427</x>
-      <y>252</y>
-      <w>91</w>
-      <h>28</h>
+      <x>610</x>
+      <y>280</y>
+      <w>130</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;110.0;20.0</additional_attributes>
@@ -238,10 +238,10 @@ m1=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>427</x>
-      <y>259</y>
-      <w>91</w>
-      <h>98</h>
+      <x>610</x>
+      <y>290</y>
+      <w>130</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;110.0;120.0</additional_attributes>
@@ -249,10 +249,10 @@ m1=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>427</x>
-      <y>259</y>
-      <w>91</w>
-      <h>189</h>
+      <x>610</x>
+      <y>290</y>
+      <w>130</w>
+      <h>270</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;110.0;250.0</additional_attributes>
@@ -260,10 +260,10 @@ m1=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>427</x>
-      <y>259</y>
-      <w>91</w>
-      <h>266</h>
+      <x>610</x>
+      <y>290</y>
+      <w>130</w>
+      <h>380</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;110.0;360.0</additional_attributes>
@@ -271,10 +271,10 @@ m1=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>427</x>
-      <y>266</y>
-      <w>91</w>
-      <h>336</h>
+      <x>610</x>
+      <y>300</y>
+      <w>130</w>
+      <h>480</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;110.0;460.0</additional_attributes>
@@ -282,10 +282,10 @@ m1=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
-      <y>91</y>
-      <w>77</w>
-      <h>196</h>
+      <x>1080</x>
+      <y>50</y>
+      <w>110</w>
+      <h>280</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>90.0;260.0;10.0;10.0</additional_attributes>
@@ -293,10 +293,10 @@ m1=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
-      <y>175</y>
-      <w>77</w>
-      <h>133</h>
+      <x>1080</x>
+      <y>170</y>
+      <w>110</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>90.0;170.0;10.0;10.0</additional_attributes>
@@ -304,21 +304,21 @@ m1=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
-      <y>329</y>
-      <w>77</w>
-      <h>28</h>
+      <x>1080</x>
+      <y>290</y>
+      <w>110</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>90.0;10.0;10.0;20.0</additional_attributes>
+    <additional_attributes>90.0;110.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
-      <y>350</y>
-      <w>77</w>
-      <h>98</h>
+      <x>1080</x>
+      <y>420</y>
+      <w>110</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>90.0;10.0;10.0;120.0</additional_attributes>
@@ -326,10 +326,10 @@ m1=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
-      <y>371</y>
-      <w>77</w>
-      <h>161</h>
+      <x>1080</x>
+      <y>450</y>
+      <w>110</w>
+      <h>230</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>90.0;10.0;10.0;210.0</additional_attributes>
@@ -337,10 +337,10 @@ m1=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
-      <y>392</y>
-      <w>77</w>
-      <h>224</h>
+      <x>1080</x>
+      <y>480</y>
+      <w>110</w>
+      <h>320</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>90.0;10.0;10.0;300.0</additional_attributes>
@@ -348,10 +348,10 @@ m1=0..*
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1204</x>
-      <y>182</y>
-      <w>266</w>
-      <h>245</h>
+      <x>1720</x>
+      <y>180</y>
+      <w>380</w>
+      <h>350</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Java Class&gt;&gt;
 MemberDTO
@@ -380,10 +380,10 @@ Package::dto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1141</x>
-      <y>315</y>
-      <w>77</w>
-      <h>42</h>
+      <x>1630</x>
+      <y>370</y>
+      <w>110</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>90.0;10.0;10.0;40.0</additional_attributes>
@@ -391,10 +391,10 @@ Package::dto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1092</x>
-      <y>385</y>
-      <w>91</w>
-      <h>84</h>
+      <x>1560</x>
+      <y>470</y>
+      <w>130</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..1</panel_attributes>

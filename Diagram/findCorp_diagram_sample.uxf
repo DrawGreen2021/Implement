@@ -383,11 +383,11 @@ HttpServletRequest, HttpServletResponse):void</panel_attributes>
     <coordinates>
       <x>712</x>
       <y>248</y>
-      <w>40</w>
+      <w>32</w>
       <h>120</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
-m2=0..1</panel_attributes>
+m2=1</panel_attributes>
     <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
   </element>
   <element>
