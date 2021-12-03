@@ -66,22 +66,22 @@ public class FindCorpCommand implements Command {
 		if (keyword.equals("")) {
 			corpList = dao.getCorpList(page);
 			rowCount = dao.getAllRowCount();
-			if (isUnifiedSearch && loginOk) {
+			if (isUnifiedSearch && loginOk && corpList != null) {
 				// 통합 검색 시 관심 기업 불러오기
 				favoriteNums = favoriteCorpDAO.getFavoriteSerialNums(user.getId(), (ArrayList<InterCorpDTO>)corpList);
 			}
-			else if (loginOk)
+			else if (loginOk && corpList != null)
 				favoriteNums = favoriteCorpDAO.getFavoirteSerialNums(page, corpType, user.getId(), rowCount);
 		}
 		// 키워드 있을 때
 		else {
 			corpList = dao.getCorpList(keyword, page);
 			rowCount = dao.getRowCount_byKeyword();
-			if (isUnifiedSearch && loginOk) {
+			if (isUnifiedSearch && loginOk && corpList != null) {
 				// 통합 검색 시 관심 기업 불러오기
 				favoriteNums = favoriteCorpDAO.getFavoriteSerialNums(user.getId(), (ArrayList<InterCorpDTO>)corpList);
 			}
-			else if (loginOk)
+			else if (loginOk && corpList != null)
 				favoriteNums = favoriteCorpDAO.getFavoirteSerialNums(page, corpType, user.getId(), dao.getSerialNums());
 		}
 
