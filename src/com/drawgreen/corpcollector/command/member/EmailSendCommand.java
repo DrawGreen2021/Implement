@@ -35,9 +35,13 @@ public class EmailSendCommand implements Command{
 			e.printStackTrace();
 		}
 		
-		String signUpReq_str = request.getParameter("signUp")==null?"false":request.getParameter("signUp");
+		String signUpReq_str = request.getParameter("signUp")==null?
+				"false":request.getParameter("signUp");
+		String updatePer_str = request.getParameter("updatePerInfo")==null?
+				"false":request.getParameter("updatePerInfo");
 		boolean signUpReq = Boolean.parseBoolean(signUpReq_str);
-		if (signUpReq) {
+		boolean updatePerReq = Boolean.parseBoolean(updatePer_str);
+		if (signUpReq || updatePerReq) {
 			MemberDAO dao = MemberDAO.getInstance();
 			boolean emailDupCheck = dao.emailCheck(email);
 			
