@@ -50,7 +50,7 @@ public class AddFavoriteCorpCommand implements Command{
 			// 등록이 안 되어 있으면 DB에 적재, 이미 기록이 있으면 삭제
 			if (isRegistered == false) {
 				String corpName = request.getParameter("corpName");
-				corpName = corpName.replaceAll("\\s+","");
+				corpName = corpName.trim();
 				dao.addFavoriteCorp(user_id, corp_serialNum, corpType, corpName);
 				out.print("addFavoriteCorp");
 			}
