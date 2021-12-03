@@ -227,7 +227,7 @@ window.onload=function(){
 		const email_auth_code = $('#email_auth_code').val();
 		
 		if(email_auth_code.length === 0 || email_auth_code === null) {
-			alert("인증번호를 입력하세요");
+			alert("인증코드를 입력하세요");
 			return false;
 		}
 		
@@ -242,7 +242,7 @@ window.onload=function(){
                     $('#authEmail').val("true");
 					alert("이메일 인증이 완료되었습니다.");
                 } else {
-					alert("인증번호가 다릅니다.");
+					alert("인증코드가 다릅니다.");
                 }
             },
             error:function (data, textStatus) {
