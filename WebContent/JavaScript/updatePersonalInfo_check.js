@@ -188,9 +188,14 @@ window.onload=function(){
 	$('#emailSendBtn').click(function () {
 		
 		const email = $('#email').val();
+		var updatePerInfo = true;
 
 		if(email.length === 0 || email === null) {
 			alert("이메일을 입력하세요.");
+			return false;
+		}
+		else if(email.indexOf("@") == -1 || email.indexOf(".") == -1) {
+			alert("이메일 형식이 올바르지 않습니다.");
 			return false;
 		}
 		
@@ -199,13 +204,14 @@ window.onload=function(){
             async:false,
             url:'EmailSend.do',
             dataType:'text',
-            data:{"email":email},
+            data:{"email":email, "updatePerInfo":updatePerInfo},
             success: function(data, textStatus) {
-                if(data === 'connectable') {
-                    //$('#emailSendMessage').text('이메일 주소 인증 메일이 전송되었습니다. 인증번호를 확인해주세요.') 
+            	if(data === 'duplicated') {
+            		alert("이미 누가 사용하고 있는 이메일입니다.");
+            	}
+            	else if(data === 'connectable') { 
 					alert("이메일 주소 인증 메일이 전송되었습니다. 인증번호를 확인해주세요.");     
                 } else {
-                    //$('#emailSendMessage').text('유효하지 않은 이메일입니다.')
 					alert("유효하지 않은 이메일입니다.");
                 }
             },
@@ -218,9 +224,9 @@ window.onload=function(){
 	 
 	// 인증번호 체크
 	$('#emailCheckBtn').click(function () { 
-		const email_auth_num = $('#email_auth_num').val();
+		const email_auth_code = $('#email_auth_code').val();
 		
-		if(email_auth_num.length === 0 || email_auth_num === null) {
+		if(email_auth_code.length === 0 || email_auth_code === null) {
 			alert("인증번호를 입력하세요");
 			return false;
 		}
@@ -230,7 +236,7 @@ window.onload=function(){
             async:false,
             url:'EmailCheck.do',
             dataType:'text',
-            data:{"email_auth_num":email_auth_num},
+            data:{"email_auth_code":email_auth_code},
             success: function(data, textStatus) {
                 if(data === 'authenticated') {     
                     $('#authEmail').val("true");
