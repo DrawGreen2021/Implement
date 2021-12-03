@@ -44,8 +44,11 @@ public class DetailViewCommand implements Command{
 		
 		LinkedHashMap<String, Object> corpInfo = dao.getInfo(serial_num);
 		FavoriteCorpDAO favoriteCorpDAO = FavoriteCorpDAO.getInstance();
-		if (corpType.equals("interCorp"))
+		if (corpType.equals("interCorp")) {
 			corpType = favoriteCorpDAO.getCorpType(request.getParameter("tableName"));
+			serial_num = (int)corpInfo.get("연번");
+		}
+			
 		request.setAttribute("corpInfo", corpInfo);
 		request.setAttribute("corpType", corpType);
 		
