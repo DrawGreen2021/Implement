@@ -161,12 +161,10 @@ window.onload=function(){
             dataType:'text',
             data:{"id":id},
             success: function(data, textStatus) {
-                if(data === 'usable') {
-                   // $('#idCheckMessage').text('사용할 수 있는 ID입니다.')    
+                if(data === 'usable') {   
 					$('#authID').val("true");
 					alert("사용할 수 있는 ID입니다."); 
                 } else {
-                    //$('#idCheckMessage').text('이미 사용 중인 ID입니다.')
 					alert("이미 사용 중인 ID입니다.");
                 }
             },
@@ -200,7 +198,6 @@ window.onload=function(){
             async:false,
             data:{"email":email, "signUp":signUp},
             success: function(data, textStatus) {
-            	
             	if(data === 'duplicated') {
             		alert("이미 누가 사용하고 있는 이메일입니다.");
             	}
@@ -217,12 +214,12 @@ window.onload=function(){
         return false;
 	});
 	 
-	// 인증번호 체크
+	// 인증코드 체크
 	$('#emailCheckBtn').click(function () { 
 		const email_auth_code = $('#email_auth_code').val();
 		
 		if(email_auth_code.length === 0 || email_auth_code === null) {
-			alert("인증번호를 입력하세요");
+			alert("인증코드를 입력하세요");
 			return false;
 		}
 		
@@ -237,7 +234,7 @@ window.onload=function(){
                     $('#authEmail').val("true");
 					alert("이메일 인증이 완료되었습니다.");
                 } else {
-					alert("인증번호가 다릅니다.");
+					alert("인증코드가 다릅니다.");
                 }
             },
             error:function (data, textStatus) {
