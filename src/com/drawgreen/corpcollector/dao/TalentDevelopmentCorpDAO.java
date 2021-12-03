@@ -263,12 +263,14 @@ public class TalentDevelopmentCorpDAO implements CorpDAO{
 		
 		String query = "SELECT t.연번, t.업체명, t.소재지, t.업종, r.search_date FROM 인재육성형중소기업 t, 최근검색기업 r " + 
 				" WHERE t.연번 IN (SELECT talentDevelopmentCorp_id FROM 최근검색기업 " + 
-				" WHERE user_id = ? AND talentDevelopmentCorp_id IS NOT NULL) AND r.talentDevelopmentCorp_id = t.연번";
+				" WHERE user_id = ? AND talentDevelopmentCorp_id IS NOT NULL) AND r.talentDevelopmentCorp_id = t.연번"
+				+ " AND user_id = ?";
 		
 		try {
 			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
+			preparedStatement.setString(2, user_id);
 			
 			resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {

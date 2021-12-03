@@ -125,6 +125,7 @@ public class GreenCorpDAO implements CorpDAO {
 			beforeKeyword = keyword;
 			serialNums = setSerialNum(keyword, serialNums);
 		} else if (!beforeKeyword.equals(keyword)) {
+			beforeKeyword = keyword;
 			serialNums.clear();
 			serialNums = setSerialNum(keyword, serialNums);
 		}
@@ -261,12 +262,14 @@ public class GreenCorpDAO implements CorpDAO {
 		
 		String query = "SELECT g.연번, g.업체명, g.소재지, g.업종, r.search_date FROM 녹색기업 g, 최근검색기업 r " + 
 				" WHERE g.연번 IN (SELECT greenCorp_id FROM 최근검색기업 " + 
-				" WHERE user_id = ? AND greenCorp_id IS NOT NULL) AND r.greenCorp_id = g.연번";
+				" WHERE user_id = ? AND greenCorp_id IS NOT NULL) AND r.greenCorp_id = g.연번"
+				+ " AND user_id = ?";
 		
 		try {
 			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
+			preparedStatement.setString(2, user_id);
 			
 			resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {

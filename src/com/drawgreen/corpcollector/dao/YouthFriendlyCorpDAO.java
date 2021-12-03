@@ -268,12 +268,14 @@ public class YouthFriendlyCorpDAO implements CorpDAO{
 		
 		String query = "SELECT y.연번, y.업체명, y.소재지, y.업종, r.search_date FROM 청년친화강소기업 y, Member.최근검색기업 r" + 
 				" WHERE y.연번 IN (SELECT youthFriendlyCorp_id FROM Member.최근검색기업" + 
-				" WHERE user_id = ? AND youthFriendlyCorp_id IS NOT NULL) r.youthFriendlyCorp_id = y.연번";
+				" WHERE user_id = ? AND youthFriendlyCorp_id IS NOT NULL) r.youthFriendlyCorp_id = y.연번"
+				+ " AND user_id = ?";
 		
 		try {
 			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
+			preparedStatement.setString(2, user_id);
 			
 			resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {

@@ -47,7 +47,7 @@
 						style="word-break: break-all;">
 
 						<c:choose>
-							<c:when test="${empty requestScope.corpList }">
+							<c:when test="${requestScope.corpList == null }">
 								<br><br><br><br><br>
 								<p style="color:gray; text-align: center;">최근 상세 정보를 확인한 기업이 없습니다.</p>
 								<br><br><br><br><br><br><br>

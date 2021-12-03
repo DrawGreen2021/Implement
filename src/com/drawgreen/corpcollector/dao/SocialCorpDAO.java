@@ -275,12 +275,14 @@ public class SocialCorpDAO implements CorpDAO {
 		
 		String query = "SELECT s.연번, s.업체명, s.소재지, s.업종, r.search_date FROM 사회적기업 s, 최근검색기업 r " + 
 				" WHERE s.연번 IN (SELECT socialCorp_id FROM 최근검색기업 " + 
-				" WHERE user_id = ? AND socialCorp_id IS NOT NULL) AND r.socialCorp_id = s.연번";
+				" WHERE user_id = ? AND socialCorp_id IS NOT NULL) AND r.socialCorp_id = s.연번"
+				+ " AND user_id = ?";
 		
 		try {
 			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
+			preparedStatement.setString(2, user_id);
 			
 			resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {

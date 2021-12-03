@@ -259,12 +259,14 @@ public class FamilyFriendlyCorpDAO implements CorpDAO {
 		
 		String query = "SELECT f.연번, f.업체명, f.소재지, f.업종, r.search_date FROM 가족친화인증기업 f, 최근검색기업 r " + 
 				" WHERE f.연번 IN (SELECT familyFriendlyCorp_id FROM 최근검색기업 " + 
-				" WHERE user_id = ? AND familyFriendlyCorp_id IS NOT NULL) AND r.familyFriendlyCorp_id = f.연번";
+				" WHERE user_id = ? AND familyFriendlyCorp_id IS NOT NULL) AND r.familyFriendlyCorp_id = f.연번"
+				+ " AND user_id = ?";
 		
 		try {
 			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user_id);
+			preparedStatement.setString(2, user_id);
 			
 			resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
