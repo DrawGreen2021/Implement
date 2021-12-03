@@ -71,10 +71,10 @@
 							<td style="width: 150px; text-align:right;"><input type = "submit" id="emailSendBtn" value="인증번호 받기" class="writing_btn" style="width: 120px; background-color: #E7F1FD;"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
-							<td width="100px" style="background-color:#eeedeb;">인증번호</td>
-							<td style="text-align:left; padding-left:12px;"><input type="text" name="email_auth_num" autocomplete="off" class="write_input"
-								style="width: 580px;" id="email_auth_num"></td>
-							<td style="width: 200px; text-align:right;"><input type = "submit" id="emailCheckBtn" value="인증번호 확인" class="writing_btn" style="width: 120px; background-color: #E7F1FD;">
+							<td width="100px" style="background-color:#eeedeb;">인증코드</td>
+							<td style="text-align:left; padding-left:12px;"><input type="text" name="email_auth_code" autocomplete="off" class="write_input"
+								style="width: 580px;" id="email_auth_code"></td>
+							<td style="width: 200px; text-align:right;"><input type = "submit" id="emailCheckBtn" value="인증코드 확인" class="writing_btn" style="width: 120px; background-color: #E7F1FD;">
 								<input type="hidden" name="authEmail" id="authEmail" value="false"></td>
 						</tr>
 						<tr class="community_text" height="30px;">
@@ -136,6 +136,6 @@
 	</div>
 	
 	<!-- 자바 스크립트 파일 외부 참조 -->
-	<script type="text/javascript" src="../JavaScript/updatePersonalInfo_check.js"></script>
+	<script type="text/javascript" src="<c:url value='/JavaScript/updatePersonalInfo_check.js?ver=<%=System.currentTimeMillis() %>'/>"/></script>
 </body>
 </html>
