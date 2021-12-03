@@ -11,7 +11,7 @@ import com.drawgreen.corpcollector.dto.NewsDTO;
 import com.drawgreen.corpcollector.util.Pager;
 
 public class CorpNewsViewCommand implements Command{
-	Pager pager = new Pager();
+	private Pager pager = new Pager();
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {

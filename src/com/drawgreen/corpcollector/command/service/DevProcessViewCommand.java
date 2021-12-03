@@ -22,8 +22,6 @@ public class DevProcessViewCommand implements Command{
 		realPath = request.getSession().getServletContext().getRealPath("/");
 		uploadPath = realPath+"images/thumbnails/";
 		
-		
-		
 		// UI 설계 이미지 썸네일 생성
 		String[] UIdesign = new String[UIdesignImgCount];
 		for (int i = 0; i < UIdesign.length; i++) {
@@ -52,7 +50,6 @@ public class DevProcessViewCommand implements Command{
 		File thumFile = new File(uploadPath+imgName); // 썸네일
 		
 		try {
-			
 			Thumbnails.of(imgFile).scale(scale).toFile(thumFile);
 			
 		} catch (Exception e) {
