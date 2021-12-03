@@ -23,7 +23,7 @@ public class FavoriteCorpViewCommand implements Command{
 		int page = Integer.parseInt(page_str);
 		
 		FavoriteCorpDAO dao = FavoriteCorpDAO.getInstance();
-		LinkedHashMap<String, LinkedHashMap<Integer, String>> favCorpMap = dao.getFavoriteSerialNums_forMyPage(user.getId(), page);
+		LinkedHashMap<String, LinkedHashMap<Integer, String>> favCorpMap = dao.getFavoriteCorpMap(user.getId(), page);
 		int rowCount = dao.getRowCount(user.getId());
 		
 		request.setAttribute("favCorpMap", favCorpMap);

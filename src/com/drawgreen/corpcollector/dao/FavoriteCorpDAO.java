@@ -257,7 +257,7 @@ public class FavoriteCorpDAO {
 	}
 	
 	// 마이페이지 - 관심기업에 표시할 관심기업 연번 및 업체명 얻어오기
-	public LinkedHashMap<String, LinkedHashMap<Integer, String>> getFavoriteSerialNums_forMyPage(String user_id, int page) {
+	public LinkedHashMap<String, LinkedHashMap<Integer, String>> getFavoriteCorpMap(String user_id, int page) {
 		
 		LinkedHashMap<String, LinkedHashMap<Integer, String>> favCorpMap 
 			= new LinkedHashMap<String, LinkedHashMap<Integer, String>>();

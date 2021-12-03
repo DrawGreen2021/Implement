@@ -405,7 +405,7 @@ Package::dao
 + getFavoirteSerialNums(int, String, String, ArrayList&lt;Integer&gt;):int[]
 + getFavoriteSerialNums(String, ArrayList&lt;InterCorpDTO&gt;:int[]
 + getCorpType(String):String
-+ getFavoriteSerialNums_forMyPage(String, int)
++ getFavoriteCorpMap(String, int)
 :LinkedHashMap&lt;String, LinkedHashMap&lt;Integer, String&gt;&gt;
 + getRowCount(String):int
 + deleteFavCorp(String, HashMap&lt;String, int[]&gt;):void
