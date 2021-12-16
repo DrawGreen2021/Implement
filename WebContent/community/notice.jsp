@@ -113,15 +113,17 @@
 
 						</table>
 
-						<button class="writing_btn" style="margin: 0 0 0 92%;"
-							value="notice_Write.jsp" onclick="writing_Check(this)">글쓰기</button>
-							
-						<%-- 검색 후 초기 화면으로 되돌아가기 --%>
-						<button class="writing_btn" style="margin: 0 0 0 92%;"
-							onclick="resetKeyword()">전체 목록보기</button>
+						<div style="float:right">
+							<button class="writing_btn"
+								value="notice_Write.jsp" onclick="writing_Check(this)">글쓰기</button>
+								
+							<%-- 검색 후 초기 화면으로 되돌아가기 --%>
+							<button class="findCorp_list_btn"
+								onclick="resetKeyword()">전체 목록보기</button>
+						</div>
 
 						<!-- 페이지 번호 div -->
-						<div class="pagelist_text" style="margin: 3% auto;">
+						<div class="pagelist_text" style="margin: 10% 0 0 0;">
 
 							<%-- 페이징 변수 파일 포함 --%>
 							<c:import url='/importedFile/pagingVariables.jsp'></c:import>
