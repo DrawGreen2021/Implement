@@ -32,10 +32,10 @@
 		
 		<div class="content_div" style="display: grid">
 			<div class="search_div" style="width: 930px;">
-				<form align="center" method="get" action="SearchPost.do" id="searchPost">
+				<form align="center" method="get" action="SearchPost.do" id="searchPost" name="searchPost">
 					<div class="bar_div">
 						<input class="search_bar" type="text" id="search_keyword" name="keyword" autocomplete="off" placeholder=" 검색어를 입력하세요"
-							style="margin: 10px; width: 800px; height: 53px;">
+							style="margin: 10px; width: 800px; height: 53px;" value="${(param.keyword==undefined)?'':param.keyword}">
 						<input type="hidden" name="page" value="1">
 						<input type="hidden" name="boardName" id="boardName" value="고객후기">
 					</div>
@@ -103,6 +103,10 @@
 
 					<button class="writing_btn" style="margin: 0 0 0 92%;"
 						value="feedback_Write.jsp" onclick="writing_Check(this)">글쓰기</button>
+						
+					<%-- 검색 후 초기 화면으로 되돌아가기 --%>
+					<button class="writing_btn" style="margin: 0 0 0 92%;"
+						onclick="resetKeyword()">전체 목록보기</button>
 
 					<!-- 페이지 번호 div -->
 					<div class="pagelist_text" style="margin: 3% auto;">

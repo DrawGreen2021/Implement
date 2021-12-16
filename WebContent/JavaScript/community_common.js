@@ -13,6 +13,17 @@ window.onload=function(){
 	});
 }
 
+//커뮤니티 목록 페이지마다 적용되는 리셋버튼 함수
+function resetKeyword() {
+	var form = document.searchPost;
+	var noKeyword = "";
+
+	form.keyword.value = noKeyword;
+	form.action = "SearchPost.do";
+	form.method = "get";
+	form.submit();
+}
+
 function writing_Check(button){
 	var nextPage = button.value;
 	var boardName = $('#boardName').val();
